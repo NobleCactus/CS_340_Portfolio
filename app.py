@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 # Configuration
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return "Welcome to the OSU CS 340 - Flask Tutorial!"
+    return render_template("main.j2")
 
 
 # Listener
@@ -20,4 +20,4 @@ if __name__ == "__main__":
     #                                 ^^^^
     #              You can replace this number with any valid port
 
-    app.run(port=port) 
+    app.run(port=port, debug=True)
