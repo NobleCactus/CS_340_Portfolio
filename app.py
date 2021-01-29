@@ -1,27 +1,6 @@
 from flask import Flask, render_template
 import os
 
-# Configuration
-
-app = Flask(__name__)
-
-
-# Routes
-
-@app.route('/')
-def root():
-    return render_template("main.j2", people=people_from_app_py)
-
-
-# Listener
-
-if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 9112))
-    #                                 ^^^^
-    #              You can replace this number with any valid port
-
-    app.run(port=port, debug=True)
-
 people_from_app_py =[
 {
     "name": "Thomas",
@@ -48,3 +27,26 @@ people_from_app_py =[
     "favorite_color": "Orange"
 }
 ]
+
+# Configuration
+
+app = Flask(__name__)
+
+
+# Routes
+
+@app.route('/')
+def root():
+    return render_template("main.j2", people=people_from_app_py)
+
+
+# Listener
+
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 9112))
+    #                                 ^^^^
+    #              You can replace this number with any valid port
+
+    app.run(port=port, debug=True)
+
+
