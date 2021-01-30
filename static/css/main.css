@@ -1,0 +1,66 @@
+body {
+	width: 75%;
+	margin: auto;
+}
+
+#titlesTableHeader {
+	text-align: center;
+}
+
+#filterHeader {
+	margin: auto;
+}
+
+#filterTable {
+	width: 90%;
+	margin: auto;
+}
+
+#filterTable td {
+	width: 15%;
+}
+
+#filterButton {
+	margin-right: 10%;
+	float: right;
+}
+
+#titlesTable {
+	border-style: solid;
+	border-collapse: collapse;
+	text-align: center;
+	margin: auto;
+}
+
+#titlesTable tr {
+	border-style: solid;
+}
+
+#titlesTable th {
+	border-style: solid;
+	font-size: 20px;
+	padding: 10px;
+	text-decoration: underline;
+}
+
+#titlesTable td {
+	border-style: solid;
+	padding: 5px;
+}
+
+.platformList {
+	text-align: left;
+	list-style: none;
+	
+	padding: 0;
+}
+
+#addTable {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+#addTable td{
+	width: 20%;
+}
