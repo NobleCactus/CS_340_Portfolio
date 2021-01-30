@@ -1,8 +1,122 @@
 <html>
 <head>
     <title>Andrew Eppigner and Joshua Luo - Video Game Database</title>
+    <link rel="stylesheet" href="css/home.css" type="text/css">
 </head>
 <body>
+	
+	<h1 id="titlesTableHeader">Video Game Catalog</h1>
+  		<h3 id="filterHeader">Filter Options:</h3>
+  		<table id="filterTable">
+  			<tr>
+  				<td>
+  					Platform:<br/>
+  					<select name="filterPlatform">
+  						<option>Select One</option>
+  						<option value="PlayStation">PlayStation</option>
+  						<option value="PlayStation 2">PlayStation 2</option>
+  						<option value="PlayStation 3">PlayStation 3</option>
+  						<option value="PlayStation 4">PlayStation 4</option>
+  						<option value="PlayStation 5">PlayStation 5</option>
+  						<option value="Xbox">Xbox</option>
+  						<option value="Xbox 360">Xbox 360</option>
+  						<option value="Xbox One">Xbox One</option>
+  						<option value="Xbox Series S/X">Xbox Series S/X</option>
+  						<option value="Nintendo 64">Nintendo 64</option>
+  						<option value="GameCube">GameCube</option>
+  						<option value="Wii">Wii</option>
+  						<option value="Wii U">Wii U</option>
+  						<option value="Switch">Switch</option>
+  						<option value="Windows">Windows</option>
+  					</select>
+  				</td>
+  				<td>
+  					Released Date: <input type="date"> to<input type="date">
+  				</td>
+  				<td>
+  					Genre:<br/>
+  					<select name="filterGenre">
+  						<option>Select One</option>
+  						<option value="fps">First-Person Shooter</option>\
+  						<option value="moba">First-Person Shooter</option>
+  				</td>
+  				<td>
+  					Franchise:<br/>
+  					<select name="filterFranchise">
+  						<option>Select One</option>
+  						<option value="CoD">Call of Duty</option>
+  						<option value="Halo">Halo</option>
+  				</td>
+  				<td>
+  					ESRB Rating:<br/>
+  					<select name="esrbRating">
+  						<option>Select One</option>
+  						<option value="everyone">E - Everyone</option>
+  						<option value="teen">T - Teen</option>
+  						<option value="mature">M - Mature</option>
+  				</td>
 
+
+  		</table>
+  		<button type="button" id="filterButton">Filter</button>
+
+  		<br/>
+  		<br/>
+
+  		<table id="titlesTable">
+  			<tr>
+  				<th>Title</th>
+  				<th>Platforms</th>
+  				<th>
+  					<div>Release Date</div>
+  					<div>(North America)</div>
+  				</th>
+  				<th>Genre</th>
+  				<th>Franchise</th>
+  				<th>Developer</th>
+  				<th>ESRB Rating</th>
+  			<tr>
+  				<td>Call of Duty: Black Ops Cold War</td>
+  				<td>
+  					<ul class="platformList">
+  						<li>PlayStation 4</li>
+  						<li>PlayStation 5</li>
+  						<li>Windows</li>
+  						<li>Xbox One</li>
+  						<li>Xbox Series X/S</li>
+  					</ul>
+  				</td>
+				<td>11/13/2020</td>
+  				<td>First-Person Shooter</td>
+  				<td>Call of Duty</td>
+  				<td>Activision</td>
+  				<td>M</td>
+  			<tr>
+  				<td>Halo Infinite</td>
+  				<td>
+  					<ul class="platformList">
+  						<li>Windows</li>
+  						<li>Xbox One</li>
+  						<li>Xbox Series X/S</li>
+  					</ul>
+  				</td>
+  				<td></td>
+  				<td>First-Person Shooter</td>
+  				<td>Halo</td>
+  				<td>343 Industries</td>
+  				<td></td>
+  		</table>
+
+  		<br/>
+  		<br/>
+
+  		<table id="addTable">
+  			<tr>
+  				<td><a href="add_game.html">Add a New Game</td>
+  				<td><a href="add_developer.html">Add a New Development Studio</td>
+  				<td><a href="add_platform.html">Add a New Platform</td>
+  				<td><a href="add_franchise.html">Add a New Franchise</td>
+  		</table>
+   		<script src="yourscript.js"></script>
 </body>
 </html>
