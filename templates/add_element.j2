@@ -4,21 +4,22 @@
     <link rel="stylesheet" href="static/css/add_platform.css" type="text/css">
 </head>
 <body>
-	<h1>Add Games to Database</h1>
-	 <form>
-  <label for="Title">Title:</label><br>
-  <input type="text" id="Title" name="Title"><br>
-  <label for="ESRB">ESRB:</label><br>
-  <select name="ESRB" id="ESRB"><br>
+	<h1>Add to Database</h1>
+	<table id="add_title">
+	 <form class="form-inline">
+  <label for="Title">Title:</label>
+  <input type="text" id="Title" name="Title">
+  <label for="ESRB">ESRB:</label>
+  <select name="ESRB" id="ESRB">
   		<option>-Select One-</option>
   		<option value="E">E</option>
   		<option value="E 10+">E 10+</option>
   		<option value="T">T</option>
   		<option value="M">M</option>
   		<option value="A">A</option>
-  </select><br>
-  <label for="Platform">Platform:</label><br>
-  <select name="Platform"><br>
+  </select>
+  <label for="Platform">Platform:</label>
+  <select name="Platform">
   		<option>-Select One-</option>
   		<option value="PlayStation">PlayStation</option>
   		<option value="PlayStation 2">PlayStation 2</option>
@@ -35,16 +36,26 @@
   		<option value="Wii U">Wii U</option>
   		<option value="Switch">Switch</option>
   		<option value="PC">PC</option>
-  </select><br>
-  <label for="Genre">Genre:</label><br>
-  <input type="text" id="Genre" name="Genre"><br>
-  <label for="Release">Release:</label><br>
-  <input type="date" id="Release" name="Release"><br>
-  <label for="Developer">Developer:</label><br>
-  <input type="text" id="Developer" name="Developer"><br>
-  <label for="Franchise">Franchise:</label><br>
-  <input type="text" id="Franchise" name="Franchise"><br>
+  </select>
+  <label for="Genre">Genre:</label>
+  <input type="text" id="Genre" name="Genre">
+  <label for="Release">Release:</label>
+  <input type="date" id="Release" name="Release">
+  <label for="Developer">Developer:</label>
+  <input type="text" id="Developer" name="Developer">
+  <label for="Franchise">Franchise:</label>
+  <input type="text" id="Franchise" name="Franchise">
   <input type="submit" value="Submit">
+  </table>
+
+  <h1>Add Development Studio to Database</h1>
+  	<table id="add_developer">
+  		<label for="Name">Developer Name:</label>
+  		<input type="text" id="new_dev" name="new_dev">
+  		<label for="Country">Country:</label>
+  		<input type="text" id="country" name="country">
+
+  	</table>	
 </form> 
 	<script src="yourscript.js"></script>
 </body>
