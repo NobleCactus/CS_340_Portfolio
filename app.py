@@ -13,6 +13,9 @@ app = Flask(__name__)
 def root():
     return render_template("main.j2")
 
+@app.route('/add_to_DB')
+def root():
+    return render_template("add_element.j2")
 
 # Listener
 
