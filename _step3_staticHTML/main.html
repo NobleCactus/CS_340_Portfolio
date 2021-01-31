@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<head>
- 		<meta charset="UTF-8">
- 		<title>Andrew Eppigner and Joshua Luo - Video Game Database</title>
- 		<link rel="stylesheet" href="css/main.css" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Andrew Eppigner and Joshua Luo - Video Game Database</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css">
  	</head>
  	<body>
   		<h1 id="titlesTableHeader">Video Game Catalog</h1>
-  		
   		<h3 id="filterHeader">Filter Options:</h3>
   		<table id="filterTable">
   			<tr>
@@ -33,14 +32,15 @@
   					</select>
   				</td>
   				<td>
-  					Released Date: <input type="date"> to<input type="date">
+  					Release Date: <input type="date"> to<input type="date">
   				</td>
   				<td>
   					Genre:<br/>
   					<select name="filterGenre">
   						<option>Select One</option>
   						<option value="fps">First-Person Shooter</option>\
-  						<option value="moba">First-Person Shooter</option>
+  						<option value="moba">Multiplayer Online Battle Arena</option>
+                    </select>
   				</td>
   				<td>
   					Franchise:<br/>
@@ -48,6 +48,7 @@
   						<option>Select One</option>
   						<option value="CoD">Call of Duty</option>
   						<option value="Halo">Halo</option>
+                    </select>
   				</td>
   				<td>
   					ESRB Rating:<br/>
@@ -56,9 +57,8 @@
   						<option value="everyone">E - Everyone</option>
   						<option value="teen">T - Teen</option>
   						<option value="mature">M - Mature</option>
+                    </select>
   				</td>
-
-
   		</table>
   		<button type="button" id="filterButton">Filter</button>
 
@@ -112,7 +112,7 @@
   		<br/>
   		<br/>
 
-  		<table id="addTable">
+  		<table id="crudTable">
   			<tr>
   				<td><a href="add_element.html">Add Something</td>
   				<td><a href="del_element.html">Delete Something</td>

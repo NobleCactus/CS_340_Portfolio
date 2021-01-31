@@ -32,10 +32,6 @@ body {
 	margin: auto;
 }
 
-#titlesTable tr {
-	border-style: solid;
-}
-
 #titlesTable th {
 	border-style: solid;
 	font-size: 20px;
@@ -51,16 +47,15 @@ body {
 .platformList {
 	text-align: left;
 	list-style: none;
-	
 	padding: 0;
 }
 
-#addTable {
+#crudTable {
 	margin: auto;
 	width: 80%;
 	text-align: center;
 }
 
-#addTable td{
+#crudTable td{
 	width: 20%;
 }
