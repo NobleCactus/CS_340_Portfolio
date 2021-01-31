@@ -1,6 +1,10 @@
 body {
-	background-color: blue;
 	width: 75%;
 	margin: auto;
 	text-align: center;
 }
+
+.add_title {
+	text-align: left;
+}
+
