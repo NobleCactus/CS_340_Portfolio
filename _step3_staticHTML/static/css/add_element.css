@@ -14,7 +14,57 @@ body {
 	width: 20%;
 }
 
-.add_title {
+#selHeader {
+	width: 90%;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+
+#selAddEleTable {
+	margin: auto;
+}
+
+#selAddEleTable td {
+	width: 15%;
+	margin: auto;
+}
+
+.addTable {
+	border-collapse: collapse;
+}
+
+.addTable th {
 	text-align: left;
 }
 
+.addTable td {
+	width: 10%;
+	vertical-align: top;
+	text-align: left;
+	padding: 5px;
+}
+
+#addTitle {
+	display: none;
+}
+
+#addDev {
+	display: none;
+}
+
+#addPlat {
+	display: none;
+}
+
+#addFranchise {
+	display: none;
+}
+
+.addButton {
+	float: right;
+}
+
+#addSuccessful {
+	display: none;
+}
