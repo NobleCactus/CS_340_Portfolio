@@ -44,6 +44,10 @@ body {
 	padding: 5px;
 }
 
+.searchButton {
+	float: right;
+}
+
 #delTitleSearch {
 	display: none;
 }
@@ -60,8 +64,13 @@ body {
 	display: none;
 }
 
-.searchButton {
-	float: right;
+#delSuccessful {
+	text-align: right;
+	display: none;
+}
+
+#searchResHeader {
+	margin-top: 0;
 }
 
 #searchResultTable {
@@ -87,8 +96,4 @@ body {
 	text-align: left;
 	list-style: none;
 	padding: 0;
-}
-
-#delSuccessful {
-	display: none;
 }

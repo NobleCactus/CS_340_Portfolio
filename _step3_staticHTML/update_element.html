@@ -6,16 +6,218 @@
  		<link rel="stylesheet" href="static/css/update_element.css" type="text/css">
  	</head>
  	<body>
-  		<table id="crudTable">
+		<table id="crudTable">
+      <tr>
+        <td><a href="main.html">Catalog</a></td>
+        <td><a href="add_element.html">Add Something</a></td>
+        <td><a href="del_element.html">Delete Something</a></td>
+        <td><a href="update_element.html">Update/Edit Something</a></td>
+    </table>
+
+    <h1>Update in Database</h1>
+    <h3 id="searchHeader">Select what to Update:</h3>
+    <table id="selUpdateEleTable">
+    <tr>
+        <td><button type="button" id="selTitleSearch">Video Game Title</button></td>
+        <td><button type="button" id="selDevSearch">Development Studio</button></td>
+        <td><button type="button" id="selPlatSearch">Platform</button></td>
+        <td><button type="button" id="selFranchiseSearch">Franchise</button></td>
+    </table>
+
+    <br/>
+
+    <div id="updateTitleSearch">
+      <h2 class="searchHeader">Search for a Video Game Title</h2>
+      <table class="searchTable">
         <tr>
-          <td><a href="main.html">Catalog</a></td>
-          <td><a href="add_element.html">Add Something</a></td>
-          <td><a href="del_element.html">Delete Something</a></td>
-          <td><a href="update_element.html">Update/Edit Something</a></td>
+          <th>Title:</th>
+          <th>Platform:</th>
+          <th>Release Date:</th>
+          <th>Genre:</th>
+          <th>Franchise:</th>
+          <th>Developer:</th>
+          <th>ESRB Rating:</th>
+        <tr>
+          <td><input type="text"></td>
+          <td>
+            <select name="searchPlatform">
+              <option></option>
+              <option value="PS1">PlayStation</option>
+              <option value="PS2">PlayStation 2</option>
+              <option value="PS3">PlayStation 3</option>
+              <option value="PS4">PlayStation 4</option>
+              <option value="PS5">PlayStation 5</option>
+              <option value="Xbox">Xbox</option>
+              <option value="Xbox 360">Xbox 360</option>
+              <option value="Xbox One">Xbox One</option>
+              <option value="Xbox Series S/X">Xbox Series S/X</option>
+              <option value="N64">Nintendo 64</option>
+              <option value="GameCube">GameCube</option>
+              <option value="Wii">Wii</option>
+              <option value="WiiU">Wii U</option>
+              <option value="Switch">Switch</option>
+              <option value="Windows">Windows</option>
+            </select>
+          </td>
+          <td><input type="date"><br/>to<br/><input type="date"></td>
+          <td>
+            <select name="searchGenre">
+              <option></option>
+              <option value="fps">First-Person Shooter</option>\
+              <option value="moba">Multiplayer Online Battle Arena</option>
+            </select>
+          </td>
+          <td>
+            <select name="searchFranchise">
+              <option></option>
+              <option value="CoD">Call of Duty</option>
+              <option value="Halo">Halo</option>
+            </select>
+          </td>
+          <td>
+            <select name="searchDev">
+              <option></option>
+              <option value="activision">Activision</option>
+              <option value="343industries">343 Industries</option>
+            </select>
+          </td>
+          <td>
+            <select name="searchRating">
+              <option></option>
+              <option value="everyone">E - Everyone</option>
+              <option value="teen">T - Teen</option>
+              <option value="mature">M - Mature</option>
+            </select>
+          </td>
       </table>
+      <button type="button" class="searchButton">Search</button>
+    </div>
 
-      <h1>Update Something</h1>
+    <div id="updateDevSearch">
+      <h2 class="searchHeader">Search for a Development Studio</h2>
+      <table class="searchTable">
+        <tr>
+          <th>Developer Name:</th>
+          <th>Country:</th>
+          <th>Founding Date:</th>
+        <tr>
+          <td><input type="text"></td>
+          <td>
+            <select name="searchDevCountry">
+              <option></option>
+              <option value="USA">USA</option>
+            </select>
+          </td>
+          <td><input type="date"><br/>to<br/><input type="date"></td>
+      </table>
+      <button type="button" class="searchButton">Search</button>                          
+    </div>
 
-   		<script src="yourscript.js"></script>
+    <div id="updatePlatSearch">
+      <h2 class="searchHeader">Search for a Platform</h2>
+      <table class="searchTable">
+        <tr>
+          <th>Platform Name:</th>
+          <th>Release Date:</th>
+          <th>Platform Developer:</th>
+          <th>Platform In Production:</th>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="date"><br/>to<br/><input type="date"></td>
+          <td>
+            <select name="searchPlatformDev">
+              <option></option>
+              <option value="Microsoft">Microsoft</option>
+              <option value="Microsoft">Sony</option>
+            </select>
+          </td>
+          <td>
+            <input type="radio" name="searchPlatInProduction" value="Yes">Yes<br/>
+            <input type="radio" name="searchPlatInProduction" value="No">No<br/>
+            <input type="radio" name="searchPlatInProduction" value="Any">Any<br/>
+          </td>
+      </table>
+      <button type="button" class="searchButton">Search</button>
+    </div>
+
+    <div id="updateFranchiseSearch">
+      <h2 class="searchHeader">Search for a Franchise</h2>
+      <table class="searchTable">
+        <tr>
+          <th>Franchise Name:</th>
+          <th>Franchise Developer:</th>
+        <tr>
+          <td><input type="text"></td>
+          <td>
+            <select name="searchPlatformDev">
+              <option></option>
+              <option value="Microsoft">Activision</option>
+              <option value="Microsoft">343 Industries</option>
+            </select>
+          </td>
+      </table>
+      <button type="button" class="searchButton">Search</button>
+    </div>
+
+    <br/>
+    <br/>
+
+    <span id="updateSuccessful">Update successful!</span>
+    <table id="searchResultTable">
+      <h2 id="searchResHeader">Search Results</h2>
+      <tr>
+        <th>Title</th>
+        <th>Platforms</th>
+        <th>
+          <div>Release Date</div>
+          <div>(North America)</div>
+        </th>
+        <th>Genre</th>
+        <th>Franchise</th>
+        <th>Developer</th>
+        <th>ESRB Rating</th>
+        <th>Action</th>
+      <tr>
+        <td>Call of Duty: Black Ops Cold War</td>
+        <td>
+          <ul class="platformList">
+            <li>PlayStation 4</li>
+            <li>PlayStation 5</li>
+            <li>Windows</li>
+            <li>Xbox One</li>
+            <li>Xbox Series X/S</li>
+          </ul>
+        </td>
+      <td>11/13/2020</td>
+        <td>First-Person Shooter</td>
+        <td>Call of Duty</td>
+        <td>Activision</td>
+        <td>M</td>
+        <td>
+        <button type="button" class="updateButton">Update</button>
+      </td>
+      <tr>
+        <td>Halo Infinite</td>
+        <td>
+          <ul class="platformList">
+            <li>Windows</li>
+            <li>Xbox One</li>
+            <li>Xbox Series X/S</li>
+          </ul>
+        </td>
+        <td></td>
+        <td>First-Person Shooter</td>
+        <td>Halo</td>
+        <td>343 Industries</td>
+        <td></td>
+        <td>
+        <button type="button" class="updateButton">Update</button>
+      </td>
+    </table>
+
+    <br/>
+    <br/>
+
+   		<script src="static/js/update_element.js"></script>
  	</body>
 </html>

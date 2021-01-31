@@ -30,6 +30,15 @@ body {
 	margin: auto;
 }
 
+#addSuccessful {
+	text-align: right;
+	display: none;
+}
+
+.addHeader {
+	margin-top: 0;
+}
+
 .addTable {
 	border-collapse: collapse;
 }
@@ -63,8 +72,4 @@ body {
 
 .addButton {
 	float: right;
-}
-
-#addSuccessful {
-	display: none;
 }
