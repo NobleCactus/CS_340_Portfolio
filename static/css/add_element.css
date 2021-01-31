@@ -6,11 +6,13 @@ body {
 
 
 #add_title {
+	
 	margin: auto;
 
 }
 
 .add_title {
+	text-align: left;
 	padding-right: 15px;
-	background-color: blue;
+	
 }
