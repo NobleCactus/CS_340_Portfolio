@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
- 		<meta charset="UTF-8">
- 		<title>Andrew Eppigner and Joshua Luo - Video Game Database</title>
- 		<link rel="stylesheet" href="stylesheet.css" type="text/css">
- 	</head>
- 	<body>
-  
-   		<script src="yourscript.js"></script>
- 	</body>
+<head>
+    <title>Andrew Eppinger and Joshua Luo - Video Game Database</title>
+    <link rel="stylesheet" href="css/add_ele.css" type="text/css">
+</head>
+<body>
+	<h1>Add to Database</h1>
+	<table id="add_title">
+	<form class="form-inline">
+ 	
+  		<label for="Title">Title:</label>
+  <input type="text" class="add_title" id="Title" name="Title">
+  <label for="ESRB">ESRB:</label>
+  <select name="ESRB" class="add_title" id="ESRB">
+  		<option>-Select One-</option>
+  		<option value="E">E</option>
+  		<option value="E 10+">E 10+</option>
+  		<option value="T">T</option>
+  		<option value="M">M</option>
+  		<option value="A">A</option>
+  </select>
+  <label for="Platform">Platform:</label>
+  <select class="add_title" name="Platform">
+  		<option>-Select One-</option>
+  		<option value="PlayStation">PlayStation</option>
+  		<option value="PlayStation 2">PlayStation 2</option>
+  		<option value="PlayStation 3">PlayStation 3</option>
+  		<option value="PlayStation 4">PlayStation 4</option>
+  		<option value="PlayStation 5">PlayStation 5</option>
+  		<option value="Xbox">Xbox</option>
+  		<option value="Xbox 360">Xbox 360</option>
+  		<option value="Xbox One">Xbox One</option>
+  		<option value="Xbox Series S/X">Xbox Series S/X</option>
+  		<option value="Nintendo 64">Nintendo 64</option>
+  		<option value="GameCube">GameCube</option>
+  		<option value="Wii">Wii</option>
+  		<option value="Wii U">Wii U</option>
+  		<option value="Switch">Switch</option>
+  		<option value="PC">PC</option>
+  </select>
+  <label for="Genre">Genre:</label>
+  <input type="text" class="add_title" id="Genre" name="Genre">
+  <label for="Release">Release:</label>
+  <input type="date" class="add_title" id="Release" name="Release">
+  <label for="Developer">Developer:</label>
+  <input type="text" class="add_title" id="Developer" name="Developer">
+  <label for="Franchise">Franchise:</label>
+  <input type="text" class="add_title" id="Franchise" name="Franchise">
+  <input type="submit" value="Submit">
+  </table>
+
+  <h1>Add Development Studio to Database</h1>
+  	<table id="add_developer">
+  		<label for="Name">Developer Name:</label>
+  		<input type="text" id="new_dev" name="new_dev">
+  		<label for="Country">Country:</label>
+  		<input type="text" id="country" name="country">
+
+  	</table>	
+</form> 
+	<script src="yourscript.js"></script>
+</body>
 </html>
+
