@@ -26,6 +26,11 @@ body {
 	margin: auto;
 }
 
+#filterTable th {
+	width: 15%;
+	text-align: left;
+}
+
 #filterTable td {
 	width: 15%;
 }

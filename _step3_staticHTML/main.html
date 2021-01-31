@@ -8,18 +8,23 @@
  	<body>
   		<table id="crudTable">
         <tr>
-          <td><a href="main.html">Catalog</td>
-          <td><a href="add_element.html">Add Something</td>
-          <td><a href="del_element.html">Delete Something</td>
-          <td><a href="update_element.html">Update/Edit Something</td>
+          <td><a href="main.html">Catalog</a></td>
+          <td><a href="add_element.html">Add Something</a></td>
+          <td><a href="del_element.html">Delete Something</a></td>
+          <td><a href="update_element.html">Update/Edit Something</a></td>
       </table>
 
       <h1 id="titlesTableHeader">Video Game Catalog</h1>
   		<h3 id="filterHeader">Filter Options:</h3>
   		<table id="filterTable">
   			<tr>
+          <th>Platform:</th>
+          <th>Release Date:</th>
+          <th>Genre:</th>
+          <th>Franchise:</th>
+          <th>ESRB Rating:</th>
+        <tr>
   				<td>
-  					Platform:<br/>
   					<select name="filterPlatform">
   						<option>Select One</option>
   						<option value="PlayStation">PlayStation</option>
@@ -40,10 +45,9 @@
   					</select>
   				</td>
   				<td>
-  					Release Date: <input type="date"> to<input type="date">
+  					<input type="date"> to<input type="date">
   				</td>
   				<td>
-  					Genre:<br/>
   					<select name="filterGenre">
   						<option>Select One</option>
   						<option value="fps">First-Person Shooter</option>\
@@ -51,7 +55,6 @@
                     </select>
   				</td>
   				<td>
-  					Franchise:<br/>
   					<select name="filterFranchise">
   						<option>Select One</option>
   						<option value="CoD">Call of Duty</option>
@@ -59,7 +62,6 @@
                     </select>
   				</td>
   				<td>
-  					ESRB Rating:<br/>
   					<select name="esrbRating">
   						<option>Select One</option>
   						<option value="everyone">E - Everyone</option>
