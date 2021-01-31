@@ -21,6 +21,10 @@ def add():
 def delete():
     return render_template("del_element.j2")
 
+@app.route('/update')
+def update():
+    return render_template("update_element.j2")
+
 # Listener
 
 if __name__ == "__main__":
