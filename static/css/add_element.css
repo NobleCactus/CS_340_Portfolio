@@ -7,5 +7,9 @@ body {
 
 #add_title {
 	margin: auto;
-	
+
+}
+
+.form-group {
+	padding-right: 15px;
 }
