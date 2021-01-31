@@ -18,7 +18,7 @@ def add():
     return render_template("add_element.j2")
 
 @app.route('/delete')
-def del():
+def delete():
     return render_template("del_element.html")
 
 # Listener
