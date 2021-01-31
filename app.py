@@ -13,9 +13,13 @@ app = Flask(__name__)
 def root():
     return render_template("main.j2")
 
-@app.route('/add_to_DB')
+@app.route('/add')
 def add():
     return render_template("add_element.j2")
+
+@app.route('/delete')
+def del():
+    return render_template("del_element.html")
 
 # Listener
 
