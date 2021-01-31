@@ -19,7 +19,7 @@ def add():
 
 @app.route('/delete')
 def delete():
-    return render_template("del_element.html")
+    return render_template("del_element.j2")
 
 # Listener
 
