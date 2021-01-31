@@ -1,0 +1,20 @@
+body {
+	width: 75%;
+	margin: auto;
+	text-align: center;
+}
+
+#crudTable {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+#crudTable td{
+	width: 20%;
+}
+
+.add_title {
+	text-align: left;
+}
+

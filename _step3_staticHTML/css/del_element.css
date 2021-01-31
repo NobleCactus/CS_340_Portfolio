@@ -4,6 +4,16 @@ body {
 	text-align: center;
 }
 
+#crudTable {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+#crudTable td{
+	width: 20%;
+}
+
 #searchHeader {
 	width: 90%;
 	text-align: left;

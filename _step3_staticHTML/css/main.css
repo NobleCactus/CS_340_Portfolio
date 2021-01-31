@@ -3,6 +3,16 @@ body {
 	margin: auto;
 }
 
+#crudTable {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+#crudTable td{
+	width: 20%;
+}
+
 #titlesTableHeader {
 	text-align: center;
 }
@@ -48,14 +58,4 @@ body {
 	text-align: left;
 	list-style: none;
 	padding: 0;
-}
-
-#crudTable {
-	margin: auto;
-	width: 80%;
-	text-align: center;
-}
-
-#crudTable td{
-	width: 20%;
 }
