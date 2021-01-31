@@ -30,12 +30,11 @@ body {
 
 .searchTable {
 	border-collapse: collapse;
+	border-style: solid;
 }
 
 .searchTable th {
 	text-align: left;
-
-	border-style: solid;
 }
 
 .searchTable td {
@@ -43,8 +42,26 @@ body {
 	vertical-align: top;
 	text-align: left;
 	padding: 5px;
+}
 
-	border-style: solid;
+#delTitleSearch {
+	display: none;
+}
+
+#delDevSearch {
+	display: none;
+}
+
+#delPlatSearch {
+	display: none;
+}
+
+#delFranchiseSearch {
+	display: none;
+}
+
+.searchButton {
+	float: right;
 }
 
 #searchResultTable {

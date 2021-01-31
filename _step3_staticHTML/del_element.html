@@ -10,10 +10,10 @@
   		<h3 id="searchHeader">Select what to delete:</h3>
   		<table id="selDelEleTable">
   			<tr>
-  				<td><button type="button">Video Game</button></td>
-  				<td><button type="button">Development Studio</button></td>
-  				<td><button type="button">Platform</button></td>
-  				<td><button type="button">Franchise</button></td>
+  				<td><button type="button" id="selTitleSearch">Video Game Title</button></td>
+  				<td><button type="button" id="selDevSearch">Development Studio</button></td>
+  				<td><button type="button" id="selPlatSearch">Platform</button></td>
+  				<td><button type="button" id="selFranchiseSearch">Franchise</button></td>
   		</table>
 
   		<br/>
@@ -82,6 +82,7 @@
                     	</select>
   					</td>
   			</table>
+  			<button type="button" class="searchButton">Search</button>
   		</div>
 
   		<div id="delDevSearch">
@@ -100,7 +101,8 @@
 	  					</select>
   					</td>
   					<td><input type="date"><br/>to<br/><input type="date"></td>
-  			</table>                          
+  			</table>
+  			<button type="button" class="searchButton">Search</button>                          
   		</div>
 
   		<div id="delPlatSearch">
@@ -127,6 +129,7 @@
   						<input type="radio" name="searchPlatInProduction" value="Any">Any<br/>
   					</td>
   			</table>
+  			<button type="button" class="searchButton">Search</button>
   		</div>
 
   		<div id="delFranchiseSearch">
@@ -145,6 +148,7 @@
 	  					</select>
   					</td>
   			</table>
+  			<button type="button" class="searchButton">Search</button>
   		</div>
 
   		<br/>
@@ -180,7 +184,6 @@
   				<td>Activision</td>
   				<td>M</td>
   				<td>
-					<button type="button">Edit</button><br/>
 					<button type="button">Delete</button>
 				</td>
   			<tr>
@@ -198,10 +201,12 @@
   				<td>343 Industries</td>
   				<td></td>
   				<td>
-					<button type="button">Edit</button><br/>
 					<button type="button">Delete</button>
 				</td>
   		</table>
+
+  		<br/>
+  		<br/>
 
    		<script src="js/del_element.js"></script>
  	</body>
