@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="static/css/main.css" type="text/css">
  	</head>
  	<body>
+    <div class="topnav">
   		<table id="crudTable">
         <tr>
           <td><a href="main.html">Catalog</a></td>
@@ -13,17 +14,20 @@
           <td><a href="del_element.html">Delete Something</a></td>
           <td><a href="update_element.html">Update/Edit Something</a></td>
       </table>
-
+    </div>
       <h1 id="titlesTableHeader">Video Game Catalog</h1>
   		<h3 id="filterHeader">Filter Options:</h3>
+      <div class="filterOptions"></div>
   		<table id="filterTable">
   			<tr>
-          <th>Platform:</th>
-          <th>Release Date:</th>
-          <th>Genre:</th>
-          <th>Franchise:</th>
-          <th>ESRB Rating:</th>
-        <tr>
+          <th class="filterBy">Platform:</th>
+          <th class="filterBy">Release Date:</th>
+          <th class="filterBy">Genre:</th>
+          <th class="filterBy">Franchise:</th>
+          <th class="filterBy">ESRB Rating:</th>
+
+        </tr>
+
   				<td>
   					<select name="filterPlatform">
   						<option>Select One</option>
@@ -45,7 +49,7 @@
   					</select>
   				</td>
   				<td>
-  					<input type="date"> to<input type="date">
+  					From:<input type="date"> <br><span id="toDate">To</span>:<input type="date">
   				</td>
   				<td>
   					<select name="filterGenre">

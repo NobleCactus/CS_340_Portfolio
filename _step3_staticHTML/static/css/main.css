@@ -3,6 +3,43 @@ body {
 	margin: auto;
 }
 
+h1 {
+	border: 1px solid black;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.filterOptions {
+	border: 1px solid black;
+}
+
+.filterBy {
+	text-decoration: underline;
+}
+
+#toDate {
+	padding-left: 18px;
+
+}
+
 #crudTable {
 	margin: auto;
 	width: 80%;
@@ -36,7 +73,7 @@ body {
 }
 
 #filterButton {
-	margin-right: 10%;
+	margin-right: 5%;
 	float: right;
 }
 
