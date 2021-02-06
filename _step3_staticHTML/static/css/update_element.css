@@ -46,7 +46,10 @@ h2 {
 	width: 90%;
 	text-align: left;
 	margin-bottom: -23px;
+}
 
+.searchHeader {
+	margin-top: 0;
 }
 
 #selUpdateEleTable {

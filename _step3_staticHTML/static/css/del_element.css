@@ -49,6 +49,9 @@ h2 {
 	margin-bottom: -23px;
 }
 
+.searchHeader {
+	margin-top: 0;
+}
 
 #selDelEleTable {
 	margin: auto;
