@@ -35,11 +35,6 @@ h1 {
 	text-decoration: underline;
 }
 
-#toDate {
-	padding-left: 18px;
-
-}
-
 #crudTable {
 	margin: auto;
 	width: 80%;
