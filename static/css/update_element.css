@@ -32,7 +32,6 @@ h2 {
   color: black;
 }
 
-
 #crudTable {
 	margin: auto;
 	width: 80%;
@@ -43,68 +42,96 @@ h2 {
 	width: 20%;
 }
 
-#selHeader {
+#searchHeader {
 	width: 90%;
 	text-align: left;
 	margin-bottom: -23px;
+
 }
 
-
-#selAddEleTable {
+#selUpdateEleTable {
 	margin: auto;
+	margin-right: 65px;
 }
 
-#selAddEleTable td {
+#selUpdateEleTable td {
 	width: 15%;
 	margin: auto;
 }
 
-#addSuccessful {
-	text-align: right;
-	display: none;
+.toDate {
+	padding-left: 45px;
 }
 
-.addHeader {
-	margin-top: 0;
-}
-
-.addTable {
+.searchTable {
 	border-collapse: collapse;
 }
 
-.addTable th {
+.searchTable th {
 	text-align: left;
 }
 
-.addTable td {
+.searchTable td {
 	width: 10%;
 	vertical-align: top;
 	text-align: left;
 	padding: 5px;
 }
 
-#addTitle {
-	display: none;
-	border: 1px solid black;
-}
-
-#addDev {
-	display: none;
-	border: 1px solid black;
-}
-
-#addPlat {
-	display: none;
-	border: 1px solid black;
-}
-
-#addFranchise {
-	display: none;
-	border: 1px solid black;
-}
-
-.addButton {
+.searchButton {
 	float: right;
-
 }
 
+#updateTitleSearch {
+	display: none;
+	border: 1px solid black;
+}
+
+#updateDevSearch {
+	display: none;
+	border: 1px solid black;
+}
+
+#updatePlatSearch {
+	display: none;
+	border: 1px solid black;
+}
+
+#updateFranchiseSearch {
+	display: none;
+	border: 1px solid black;
+}
+
+#updateSuccessful {
+	text-align: right;
+	display: none;
+}
+
+#searchResHeader {
+	margin-top: 0;
+}
+
+#searchResultTable {
+	border-style: solid;
+	border-collapse: collapse;
+	text-align: center;
+	margin: auto;
+}
+
+#searchResultTable th {
+	border-style: solid;
+	font-size: 20px;
+	padding: 10px;
+	text-decoration: underline;
+}
+
+#searchResultTable td {
+	border-style: solid;
+	padding: 5px;
+}
+
+.platformList {
+	text-align: left;
+	list-style: none;
+	padding: 0;
+}

@@ -1,121 +1,128 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Andrew Eppinger and Joshua Luo - Video Game Database</title>
     <link rel="stylesheet" href="static/css/main.css" type="text/css">
-  </head>
-  <body>
+ 	</head>
+ 	<body>
+    <div class="topnav">
+  		<table id="crudTable">
+        <tr>
+          <td><a href="main.html">Catalog</a></td>
+          <td><a href="add_element.html">Add Something</a></td>
+          <td><a href="del_element.html">Delete Something</a></td>
+          <td><a href="update_element.html">Update/Edit Something</a></td>
+      </table>
+    </div>
       <h1 id="titlesTableHeader">Video Game Catalog</h1>
-      <h3 id="filterHeader">Filter Options:</h3>
-      <table id="filterTable">
-        <tr>
-          <td>
-            Platform:<br/>
-            <select name="filterPlatform">
-              <option>Select One</option>
-              <option value="PlayStation">PlayStation</option>
-              <option value="PlayStation 2">PlayStation 2</option>
-              <option value="PlayStation 3">PlayStation 3</option>
-              <option value="PlayStation 4">PlayStation 4</option>
-              <option value="PlayStation 5">PlayStation 5</option>
-              <option value="Xbox">Xbox</option>
-              <option value="Xbox 360">Xbox 360</option>
-              <option value="Xbox One">Xbox One</option>
-              <option value="Xbox Series S/X">Xbox Series S/X</option>
-              <option value="Nintendo 64">Nintendo 64</option>
-              <option value="GameCube">GameCube</option>
-              <option value="Wii">Wii</option>
-              <option value="Wii U">Wii U</option>
-              <option value="Switch">Switch</option>
-              <option value="Windows">Windows</option>
-            </select>
-          </td>
-          <td>
-            Release Date: <input type="date"> to<input type="date">
-          </td>
-          <td>
-            Genre:<br/>
-            <select name="filterGenre">
-              <option>Select One</option>
-              <option value="fps">First-Person Shooter</option>\
-              <option value="moba">Multiplayer Online Battle Arena</option>
+  		<h3 id="filterHeader">Filter Options:</h3>
+      <div class="filterOptions"></div>
+  		<table id="filterTable">
+  			<tr>
+          <th class="filterBy">Platform:</th>
+          <th class="filterBy">Release Date:</th>
+          <th class="filterBy">Genre:</th>
+          <th class="filterBy">Franchise:</th>
+          <th class="filterBy">ESRB Rating:</th>
+
+        </tr>
+
+  				<td>
+  					<select name="filterPlatform">
+  						<option>Select One</option>
+  						<option value="PS1">PlayStation</option>
+  						<option value="PS2">PlayStation 2</option>
+  						<option value="PS3">PlayStation 3</option>
+  						<option value="PS4">PlayStation 4</option>
+  						<option value="PS5">PlayStation 5</option>
+  						<option value="Xbox">Xbox</option>
+  						<option value="Xbox 360">Xbox 360</option>
+  						<option value="Xbox One">Xbox One</option>
+  						<option value="Xbox Series S/X">Xbox Series S/X</option>
+  						<option value="N64">Nintendo 64</option>
+  						<option value="GameCube">GameCube</option>
+  						<option value="Wii">Wii</option>
+  						<option value="WiiU">Wii U</option>
+  						<option value="Switch">Switch</option>
+  						<option value="Windows">Windows</option>
+  					</select>
+  				</td>
+  				<td>
+  					From:<input type="date"> <br><span id="toDate">To</span>:<input type="date">
+  				</td>
+  				<td>
+  					<select name="filterGenre">
+  						<option>Select One</option>
+  						<option value="fps">First-Person Shooter</option>\
+  						<option value="moba">Multiplayer Online Battle Arena</option>
                     </select>
-          </td>
-          <td>
-            Franchise:<br/>
-            <select name="filterFranchise">
-              <option>Select One</option>
-              <option value="CoD">Call of Duty</option>
-              <option value="Halo">Halo</option>
+  				</td>
+  				<td>
+  					<select name="filterFranchise">
+  						<option>Select One</option>
+  						<option value="CoD">Call of Duty</option>
+  						<option value="Halo">Halo</option>
                     </select>
-          </td>
-          <td>
-            ESRB Rating:<br/>
-            <select name="esrbRating">
-              <option>Select One</option>
-              <option value="everyone">E - Everyone</option>
-              <option value="teen">T - Teen</option>
-              <option value="mature">M - Mature</option>
+  				</td>
+  				<td>
+  					<select name="esrbRating">
+  						<option>Select One</option>
+  						<option value="everyone">E - Everyone</option>
+  						<option value="teen">T - Teen</option>
+  						<option value="mature">M - Mature</option>
                     </select>
-          </td>
-      </table>
-      <button type="button" id="filterButton">Filter</button>
+  				</td>
+  		</table>
+  		<button type="button" id="filterButton">Filter</button>
 
-      <br/>
-      <br/>
+  		<br/>
+  		<br/>
 
-      <table id="titlesTable">
-        <tr>
-          <th>Title</th>
-          <th>Platforms</th>
-          <th>
-            <div>Release Date</div>
-            <div>(North America)</div>
-          </th>
-          <th>Genre</th>
-          <th>Franchise</th>
-          <th>Developer</th>
-          <th>ESRB Rating</th>
-        <tr>
-          <td>Call of Duty: Black Ops Cold War</td>
-          <td>
-            <ul class="platformList">
-              <li>PlayStation 4</li>
-              <li>PlayStation 5</li>
-              <li>Windows</li>
-              <li>Xbox One</li>
-              <li>Xbox Series X/S</li>
-            </ul>
-          </td>
-        <td>11/13/2020</td>
-          <td>First-Person Shooter</td>
-          <td>Call of Duty</td>
-          <td>Activision</td>
-          <td>M</td>
-        <tr>
-          <td>Halo Infinite</td>
-          <td>
-            <ul class="platformList">
-              <li>Windows</li>
-              <li>Xbox One</li>
-              <li>Xbox Series X/S</li>
-            </ul>
-          </td>
-          <td></td>
-          <td>First-Person Shooter</td>
-          <td>Halo</td>
-          <td>343 Industries</td>
-          <td></td>
-      </table>
+  		<table id="titlesTable">
+  			<tr>
+  				<th>Title</th>
+  				<th>Platforms</th>
+  				<th>
+  					<div>Release Date</div>
+  					<div>(North America)</div>
+  				</th>
+  				<th>Genre</th>
+  				<th>Franchise</th>
+  				<th>Developer</th>
+  				<th>ESRB Rating</th>
+  			<tr>
+  				<td>Call of Duty: Black Ops Cold War</td>
+  				<td>
+  					<ul class="platformList">
+  						<li>PlayStation 4</li>
+  						<li>PlayStation 5</li>
+  						<li>Windows</li>
+  						<li>Xbox One</li>
+  						<li>Xbox Series X/S</li>
+  					</ul>
+  				</td>
+				<td>11/13/2020</td>
+  				<td>First-Person Shooter</td>
+  				<td>Call of Duty</td>
+  				<td>Activision</td>
+  				<td>M</td>
+  			<tr>
+  				<td>Halo Infinite</td>
+  				<td>
+  					<ul class="platformList">
+  						<li>Windows</li>
+  						<li>Xbox One</li>
+  						<li>Xbox Series X/S</li>
+  					</ul>
+  				</td>
+  				<td></td>
+  				<td>First-Person Shooter</td>
+  				<td>Halo</td>
+  				<td>343 Industries</td>
+  				<td></td>
+  		</table>
 
-      <br/>
-      <br/>
-
-      <table id="crudTable">
-        <tr>
-          <td><a href="add_element.html">Add Something</td>
-          <td><a href="del_element.html">Delete Something</td>
-          <td><a href="update_element.html">Update/Edit Something</td>
-      </table>
-      <script src="static/js/main.js"></script>
-  </body>
+   		<script src="js/main.js"></script>
+ 	</body>
 </html>
