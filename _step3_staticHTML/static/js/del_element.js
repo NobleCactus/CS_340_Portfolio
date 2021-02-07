@@ -43,7 +43,7 @@ function bindButtons() {
 
   Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-    	if (confirm('Are you sure you want to save this thing into the database?')) {
+    	if (confirm('Are you sure you want to delete this from the database?')) {
   			document.getElementById("delSuccessful").style.display = "block";
       		setTimeout(function() {
         	document.getElementById("delSuccessful").style.display = "none"
