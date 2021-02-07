@@ -43,10 +43,12 @@ function bindButtons() {
 
   Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      document.getElementById("delSuccessful").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("delSuccessful").style.display = "none"
-      }, 1500);
+    	if (confirm('Are you sure you want to save this thing into the database?')) {
+  			document.getElementById("delSuccessful").style.display = "block";
+      		setTimeout(function() {
+        	document.getElementById("delSuccessful").style.display = "none"
+      		}, 1500);
+		} 
     })
   });
 
