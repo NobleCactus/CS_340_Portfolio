@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", bindButtons);
 
+
 function bindButtons() {
+
 	document.getElementById("selTitleSearch").addEventListener("click", function(event){
 		document.getElementById("delDevSearch").style.display = "none";
 		document.getElementById("delPlatSearch").style.display = "none";
@@ -43,10 +45,13 @@ function bindButtons() {
 
 	Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
 		element.addEventListener("click", function(event) {
-			document.getElementById("delSuccessful").style.display = "block";
-			setTimeout(function() {
-				document.getElementById("delSuccessful").style.display = "none"
-			}, 1500);
+		if (confirm('Are you sure you want delete this from the database?')) {
+  		document.getElementById("delSuccessful").style.display = "block";
+		setTimeout(function() {
+		document.getElementById("delSuccessful").style.display = "none"
+		}, 1500);
+		} 
+			;
 		})
 	});
 }
