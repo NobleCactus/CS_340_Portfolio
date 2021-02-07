@@ -45,7 +45,7 @@ h2 {
 #searchHeader {
 	width: 90%;
 	text-align: left;
-	margin-bottom: -23px;
+	margin-bottom: 0;
 }
 
 .searchHeader {
@@ -107,6 +107,10 @@ h2 {
 
 #updateSuccessful {
 	text-align: right;
+	display: none;
+}
+
+#searchResults {
 	display: none;
 }
 
