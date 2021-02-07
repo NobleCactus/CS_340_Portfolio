@@ -59,6 +59,7 @@ h1 {
 }
 
 #filterTable th {
+	padding-top: 5px;
 	width: 15%;
 	text-align: left;
 }
