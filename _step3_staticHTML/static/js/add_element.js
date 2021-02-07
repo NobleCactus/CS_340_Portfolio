@@ -43,7 +43,10 @@ function bindButtons() {
 
 	Array.from(document.getElementsByClassName("addButton")).forEach(function(element) {
 		element.addEventListener("click", function(event) {
-			document.getElementById("addSuccessful").style.display = "block"
+			document.getElementById("addSuccessful").style.display = "block";
+			setTimeout(function() {
+				document.getElementById("addSuccessful").style.display = "none"
+			}, 1500);
 		})
 	});
 }
