@@ -82,6 +82,7 @@ h2 {
 
 .searchButton {
 	float: right;
+	margin-top: 5px;
 }
 
 #updateTitleSearch {
