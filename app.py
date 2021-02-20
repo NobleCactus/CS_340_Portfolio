@@ -2,12 +2,11 @@ from flask import Flask, render_template, request
 from db_connector import connect_to_database, execute_query
 import os
 
-
 # Configuration
 
 app = Flask(__name__)
 
-# Routes
+# Routes.
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -24,7 +23,7 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 		print("DB RESULT: ", result)
 		print("RENDERING TEMPLATE")
-	    return render_template("main.j2", rows=result)
+		return render_template("main.j2", rows=result)
 	else:
 		# get filter parameters from POST request
 
@@ -34,25 +33,24 @@ def root():
 @app.route('/add', methods=['GET', 'POST'])
 def add():
 	db_connection = connect_to_database()
-    return render_template("add_element.j2")
+	return render_template("add_element.j2")
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 	db_connection = connect_to_database()
-    return render_template("del_element.j2")
+	return render_template("del_element.j2")
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
 	db_connection = connect_to_database()
-    return render_template("update_element.j2")
+	return render_template("update_element.j2")
 
 # Listener
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 9112))
-    #                                 ^^^^
+	port = int(os.environ.get('PORT', 9112))
+	#                                 ^^^^
     #              You can replace this number with any valid port
-
-    app.run(port=port, debug=True)
+	app.run(port=port, debug=True)
 
 
