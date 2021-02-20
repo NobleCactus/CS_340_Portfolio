@@ -18,6 +18,7 @@
 
     <h1>Update in Database</h1>
     <h3 id="searchHeader">Select what to update:</h3>
+    <br/>
     <table id="selUpdateEleTable">
     <tr>
         <td><button type="button" id="selTitleSearch">Video Game Title</button></td>
@@ -61,7 +62,9 @@
               <option value="Windows">Windows</option>
             </select>
           </td>
-          <td><input type="date"><br/><span class="toDate">to</span><br/><input type="date"></td>
+          <td>
+            From:<br/><input type="date"><br/>To:<br/><input type="date">
+          </td>
           <td>
             <select name="searchGenre">
               <option></option>
@@ -110,7 +113,7 @@
               <option value="USA">USA</option>
             </select>
           </td>
-          <td><input type="date"><br/><span class="toDate">to</span><br/><input type="date"></td>
+          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
       </table>
       <button type="button" class="searchButton">Search</button>                          
     </div>
@@ -125,7 +128,7 @@
           <th>Platform In Production:</th>
         <tr>
           <td><input type="text"></td>
-          <td><input type="date"><br/><span class="toDate">to</span><br/><input type="date"></td>
+          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
           <td>
             <select name="searchPlatformDev">
               <option></option>
@@ -165,57 +168,59 @@
     <br/>
 
     <span id="updateSuccessful">Update successful!</span>
-    <table id="searchResultTable">
+    <div id="searchResults">
       <h2 id="searchResHeader">Search Results</h2>
-      <tr>
-        <th>Title</th>
-        <th>Platforms</th>
-        <th>
-          <div>Release Date</div>
-          <div>(North America)</div>
-        </th>
-        <th>Genre</th>
-        <th>Franchise</th>
-        <th>Developer</th>
-        <th>ESRB Rating</th>
-        <th>Action</th>
-      <tr>
-        <td>Call of Duty: Black Ops Cold War</td>
-        <td>
-          <ul class="platformList">
-            <li>PlayStation 4</li>
-            <li>PlayStation 5</li>
-            <li>Windows</li>
-            <li>Xbox One</li>
-            <li>Xbox Series X/S</li>
-          </ul>
+      <table id="searchResultTable">
+        <tr>
+          <th>Title</th>
+          <th>Platforms</th>
+          <th>
+            <div>Release Date</div>
+            <div>(North America)</div>
+          </th>
+          <th>Genre</th>
+          <th>Franchise</th>
+          <th>Developer</th>
+          <th>ESRB Rating</th>
+          <th>Action</th>
+        <tr>
+          <td>Call of Duty: Black Ops Cold War</td>
+          <td>
+            <ul class="platformList">
+              <li>PlayStation 4</li>
+              <li>PlayStation 5</li>
+              <li>Windows</li>
+              <li>Xbox One</li>
+              <li>Xbox Series X/S</li>
+            </ul>
+          </td>
+        <td>11/13/2020</td>
+          <td>First-Person Shooter</td>
+          <td>Call of Duty</td>
+          <td>Activision</td>
+          <td>M</td>
+          <td>
+          <button type="button" class="updateButton">Update</button>
         </td>
-      <td>11/13/2020</td>
-        <td>First-Person Shooter</td>
-        <td>Call of Duty</td>
-        <td>Activision</td>
-        <td>M</td>
-        <td>
-        <button type="button" class="updateButton">Update</button>
-      </td>
-      <tr>
-        <td>Halo Infinite</td>
-        <td>
-          <ul class="platformList">
-            <li>Windows</li>
-            <li>Xbox One</li>
-            <li>Xbox Series X/S</li>
-          </ul>
+        <tr>
+          <td>Halo Infinite</td>
+          <td>
+            <ul class="platformList">
+              <li>Windows</li>
+              <li>Xbox One</li>
+              <li>Xbox Series X/S</li>
+            </ul>
+          </td>
+          <td></td>
+          <td>First-Person Shooter</td>
+          <td>Halo</td>
+          <td>343 Industries</td>
+          <td></td>
+          <td>
+          <button type="button" class="updateButton">Update</button>
         </td>
-        <td></td>
-        <td>First-Person Shooter</td>
-        <td>Halo</td>
-        <td>343 Industries</td>
-        <td></td>
-        <td>
-        <button type="button" class="updateButton">Update</button>
-      </td>
-    </table>
+      </table>
+    </div>
 
     <br/>
     <br/>

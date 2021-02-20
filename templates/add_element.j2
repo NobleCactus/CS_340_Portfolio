@@ -1,168 +1,108 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8">
-      <title>Andrew Eppinger and Joshua Luo - Video Game Database</title>
-      <link rel="stylesheet" href="static/css/add_element.css" type="text/css">
-  </head>
-  <body>
-     <div class="topnav">
-  	<table id="crudTable">
-      <tr>
-        <td><a href="main.html">Catalog</a></td>
-        <td><a href="add_element.html">Add Something</a></td>
-        <td><a href="del_element.html">Delete Something</a></td>
-        <td><a href="update_element.html">Update/Edit Something</a></td>
-    </table>
-  </div>
+body {
+	width: 75%;
+	margin: auto;
+	text-align: center;
+}
 
-    <h1>Add to Database</h1>
-    <h3 id="selHeader">Select what to add:</h3>
-    <table id="selAddEleTable">
-      <tr>
-        <td><button type="button" id="selTitleAdd">Video Game Title</button></td>
-        <td><button type="button" id="selDevAdd">Development Studio</button></td>
-        <td><button type="button" id="selPlatAdd">Platform</button></td>
-        <td><button type="button" id="selFranchiseAdd">Franchise</button></td>
-    </table>
+h1 {
+	border: 1px solid black;
+}
 
-    <br/>
+h2 {
+	text-decoration: underline;
+}
 
-    <span id="addSuccessful">Add successful!</span>
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
 
-    <div id="addTitle">
-      <h2 class="addHeader">Add a Video Game Title</h2>
-      <table class="addTable">
-        <tr>
-          <th>Title:</th>
-          <th>Platforms:</th>
-          <th>Release Date:</th>
-          <th>Genre:</th>
-          <th>Franchise:</th>
-          <th>Developer:</th>
-          <th>ESRB Rating:</th>
-        <tr>
-          <td><input type="text"></td>
-          <td>
-            <input type="checkbox" name="addTitlePlat" value="PS1">PlayStation<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS2">PlayStation 2<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS3">PlayStation 3<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS4">PlayStation 4<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS5">PlayStation 5<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox">Xbox<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox 360">Xbox 360<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox One">Xbox One<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox Series S/X">Xbox Series S/X<br/>
-            <input type="checkbox" name="addTitlePlat" value="N64">Nintendo 64<br/>
-            <input type="checkbox" name="addTitlePlat" value="GameCube">GameCube<br/>
-            <input type="checkbox" name="addTitlePlat" value="Wii">Wii<br/>
-            <input type="checkbox" name="addTitlePlat" value="WiiU">Wii U<br/>
-            <input type="checkbox" name="addTitlePlat" value="Switch">Switch<br/>
-            <input type="checkbox" name="addTitlePlat" value="Windows">Windows<br/>
-          </td>
-          <td><input type="date"></td>
-          <td>
-            <select name="addTitleGenre">
-              <option></option>
-              <option value="fps">First-Person Shooter</option>\
-              <option value="moba">Multiplayer Online Battle Arena</option>
-            </select>
-          </td>
-          <td>
-            <select name="addFranchise">
-              <option></option>
-              <option value="CoD">Call of Duty</option>
-              <option value="Halo">Halo</option>
-            </select>
-          </td>
-          <td>
-            <select name="addDev">
-              <option></option>
-              <option value="activision">Activision</option>
-              <option value="343industries">343 Industries</option>
-            </select>
-          </td>
-          <td>
-            <select name="searchRating">
-              <option></option>
-              <option value="everyone">E - Everyone</option>
-              <option value="teen">T - Teen</option>
-              <option value="mature">M - Mature</option>
-            </select>
-          </td>
-      </table>
-      <button type="button" class="addButton">Add Title</button>
-      </table>
-    </div>
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-    <div id="addDev">
-      <h2 class="addHeader">Add a Development Studio</h2>
-      <table class="addTable">
-        <tr>
-          <th>Developer Name:</th>
-          <th>Country:</th>
-          <th>Founding Date:</th>
-        <tr>
-          <td><input type="text"></td>
-          <td>
-            <select name="addDevCountry">
-              <option></option>
-              <option value="USA">USA</option>
-            </select>
-          </td>
-          <td><input type="date"><br/></td>
-      </table>
-      <button type="button" class="addButton">Add Developer</button>                          
-    </div>
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-    <div id="addPlat">
-      <h2 class="addHeader">Add a Platform</h2>
-      <table class="addTable">
-        <tr>
-          <th>Platform Name:</th>
-          <th>Release Date:</th>
-          <th>Platform Developer:</th>
-          <th>Platform In Production:</th>
-        <tr>
-          <td><input type="text"></td>
-          <td><input type="date"></td>
-          <td>
-            <select name="addPlatform">
-              <option></option>
-              <option value="Microsoft">Microsoft</option>
-              <option value="Microsoft">Sony</option>
-            </select>
-          </td>
-          <td>
-            <input type="radio" name="searchPlatInProduction" value="Yes">Yes<br/>
-            <input type="radio" name="searchPlatInProduction" value="No">No<br/>
-          </td>
-      </table>
-      <button type="button" class="addButton">Add Platform</button>
-    </div>
 
-    <div id="addFranchise">
-      <h2 class="addHeader">Add a Franchise</h2>
-      <table class="addTable">
-        <tr>
-          <th>Franchise Name:</th>
-          <th>Franchise Developer:</th>
-        <tr>
-          <td><input type="text"></td>
-          <td>
-            <select name="addPlatformDev">
-              <option></option>
-              <option value="Microsoft">Activision</option>
-              <option value="Microsoft">343 Industries</option>
-            </select>
-          </td>
-      </table>
-      <button type="button" class="addButton">Add Franchise</button>
-    </div>
+#crudTable {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
 
-    <br/>
-    <br/>
+#crudTable td{
+	width: 20%;
+}
 
-  	<script src="static/js/add_element.js"></script>
-  </body>
-</html>
+#selHeader {
+	width: 90%;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+#selAddEleTable {
+	margin: auto;
+}
+
+#selAddEleTable td {
+	width: 15%;
+	margin: auto;
+}
+
+#addSuccessful {
+	text-align: right;
+	display: none;
+}
+
+.addHeader {
+	margin-top: 0;
+}
+
+.addTable {
+	border-collapse: collapse;
+}
+
+.addTable th {
+	text-align: left;
+}
+
+.addTable td {
+	width: 10%;
+	vertical-align: top;
+	text-align: left;
+	padding: 5px;
+}
+
+#addTitle {
+	display: none;
+	border: 1px solid black;
+}
+
+#addDev {
+	display: none;
+	border: 1px solid black;
+}
+
+#addPlat {
+	display: none;
+	border: 1px solid black;
+}
+
+#addFranchise {
+	display: none;
+	border: 1px solid black;
+}
+
+.addButton {
+	float: right;
+	margin-top: 5px;
+}
