@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from db_connector import connect_to_database, execute_query
 import os
 
 
