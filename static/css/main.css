@@ -35,11 +35,6 @@ h1 {
 	text-decoration: underline;
 }
 
-#toDate {
-	padding-left: 18px;
-
-}
-
 #crudTable {
 	margin: auto;
 	width: 80%;
@@ -64,6 +59,7 @@ h1 {
 }
 
 #filterTable th {
+	padding-top: 5px;
 	width: 15%;
 	text-align: left;
 }

@@ -46,9 +46,8 @@ h2 {
 #selHeader {
 	width: 90%;
 	text-align: left;
-	margin-bottom: -23px;
+	margin-bottom: 0;
 }
-
 
 #selAddEleTable {
 	margin: auto;
@@ -105,6 +104,5 @@ h2 {
 
 .addButton {
 	float: right;
-
+	margin-top: 5px;
 }
-

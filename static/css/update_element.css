@@ -45,22 +45,20 @@ h2 {
 #searchHeader {
 	width: 90%;
 	text-align: left;
-	margin-bottom: -23px;
+	margin-bottom: 0;
+}
 
+.searchHeader {
+	margin-top: 0;
 }
 
 #selUpdateEleTable {
 	margin: auto;
-	margin-right: 65px;
 }
 
 #selUpdateEleTable td {
 	width: 15%;
 	margin: auto;
-}
-
-.toDate {
-	padding-left: 45px;
 }
 
 .searchTable {
@@ -80,6 +78,7 @@ h2 {
 
 .searchButton {
 	float: right;
+	margin-top: 5px;
 }
 
 #updateTitleSearch {
@@ -104,6 +103,10 @@ h2 {
 
 #updateSuccessful {
 	text-align: right;
+	display: none;
+}
+
+#searchResults {
 	display: none;
 }
 
