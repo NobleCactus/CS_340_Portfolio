@@ -100,36 +100,20 @@
   				<th>Franchise</th>
   				<th>Developer</th>
   				<th>ESRB Rating</th>
-  			<tr>
-  				<td>Call of Duty: Black Ops Cold War</td>
-  				<td>
-  					<ul class="platformList">
-  						<li>PlayStation 4</li>
-  						<li>PlayStation 5</li>
-  						<li>Windows</li>
-  						<li>Xbox One</li>
-  						<li>Xbox Series X/S</li>
-  					</ul>
-  				</td>
-				<td>11/13/2020</td>
-  				<td>First-Person Shooter</td>
-  				<td>Call of Duty</td>
-  				<td>Activision</td>
-  				<td>M</td>
-  			<tr>
-  				<td>Halo Infinite</td>
-  				<td>
-  					<ul class="platformList">
-  						<li>Windows</li>
-  						<li>Xbox One</li>
-  						<li>Xbox Series X/S</li>
-  					</ul>
-  				</td>
-  				<td></td>
-  				<td>First-Person Shooter</td>
-  				<td>Halo</td>
-  				<td>343 Industries</td>
-  				<td></td>
+        
+        {% for r in rows %}
+        <tr>
+          <td>{{ r[1] }}</td>
+          <td>
+            Platform List Query Results
+          </td>
+          <td>{{ r[2] }}</td>
+          <td>{{ r[3] }}</td>
+          <td>{{ r[4] }}</td>
+          <td>{{ r[5] }}</td>
+          <td>{{ r[6] }}</td>
+        {% endfor %}
+        
   		</table>
 
    		<script src="static/js/main.js"></script>
