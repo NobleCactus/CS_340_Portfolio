@@ -54,13 +54,6 @@ def add():
 	if request.method == 'GET':
 		return render_template("add_element.j2")
 	else:
-<<<<<<< Updated upstream
-		# get payload from add_element.js
-		# read payload[0] to determine if adding title/dev/platform/franchise
-		# query
-	    	# render (change the indicator for successful/unsuccessful add)
-                Pass
-=======
 		pass
 		# get request payload from POST request
 
@@ -100,7 +93,6 @@ def add():
 
 		# send if sucessful/unsuccessful back to webpage
 
->>>>>>> Stashed changes
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 	db_connection = connect_to_database()
