@@ -32,7 +32,6 @@ h2 {
   color: black;
 }
 
-
 #crudTable {
 	margin: auto;
 	width: 80%;
@@ -56,11 +55,6 @@ h2 {
 #selAddEleTable td {
 	width: 15%;
 	margin: auto;
-}
-
-#addSuccessful {
-	text-align: right;
-	display: none;
 }
 
 .addHeader {
@@ -105,4 +99,16 @@ h2 {
 .addButton {
 	float: right;
 	margin-top: 5px;
+}
+
+.sucessFailMessage {
+	text-align: right;
+	display: none;
+}
+
+.requiredMessage {
+	color: red;
+	font-weight: normal;
+	font-size: 70%;
+	display: none;
 }

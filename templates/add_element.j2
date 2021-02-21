@@ -29,18 +29,19 @@
 
     <br/>
 
-    <span id="addSuccessful">Add successful!</span>
+    <span class="sucessFailMessage" id="addSuccessful">Add successful!</span>
+    <span class="sucessFailMessage" id="addFailed">Add Failed!</span>
 
     <div id="addTitle">
       <h2 class="addHeader">Add a Video Game Title</h2>
       <table class="addTable">
         <tr>
-          <th>Title:</th>
-          <th>Platforms:</th>
-          <th>Release Date:</th>
+          <th><span class="requiredMessage" id="noTitleName">*Required</span><br/>Title:</th>
+          <th><span class="requiredMessage" id="noTitlePlat">*Required</span><br/>Platforms:</th>
+          <th><span class="requiredMessage" id="noTitleDate">*Required</span><br/>Release Date:</th>
           <th>Genre:</th>
           <th>Franchise:</th>
-          <th>Developer:</th>
+          <th><span class="requiredMessage" id="noTitleDev">*Required</span><br/>Developer:</th>
           <th>ESRB Rating:</th>
         <tr>
           <td><input type="text" id="addTitleName"></td>
@@ -102,9 +103,9 @@
       <h2 class="addHeader">Add a Development Studio</h2>
       <table class="addTable">
         <tr>
-          <th>Developer Name:</th>
-          <th>Country:</th>
-          <th>Founding Date:</th>
+          <th><span class="requiredMessage" id="noDevName">*Required</span><br/>Developer Name:</th>
+          <th><span class="requiredMessage" id="noDevCountry">*Required</span><br/>Country:</th>
+          <th><span class="requiredMessage" id="noDevDate">*Required</span><br/>Founding Date:</th>
         <tr>
           <td><input type="text" id="addDevName"></td>
           <td>
@@ -137,8 +138,8 @@
             </select>
           </td>
           <td>
-            <input type="radio" name="searchPlatInProduction" class="addPlatInProd">Yes<br/>
-            <input type="radio" name="searchPlatInProduction" class="addPlatInProd">No<br/>
+            <input type="radio" name="searchPlatInProduction">Yes<br/>
+            <input type="radio" name="searchPlatInProduction">No<br/>
           </td>
       </table>
       <button type="button" class="addButton" id="addPlatButton">Add Platform</button>
@@ -148,8 +149,8 @@
       <h2 class="addHeader">Add a Franchise</h2>
       <table class="addTable">
         <tr>
-          <th>Franchise Name:</th>
-          <th>Franchise Developer:</th>
+          <th><span class="requiredMessage" id="noFranchiseName">*Required</span><br/>Franchise Name:</th>
+          <th><span class="requiredMessage" id="noFranchiseDev">*Required</span><br/>Franchise Developer:</th>
         <tr>
           <td><input type="text" id="addFranchiseName"></td>
           <td>
