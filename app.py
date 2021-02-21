@@ -39,8 +39,8 @@ def add():
 		# get payload from add_element.js
 		# read payload[0] to determine if adding title/dev/platform/franchise
 		# query
-		# render (change the indicator for successful/unsuccessful add)
-
+	    	# render (change the indicator for successful/unsuccessful add)
+                Pass
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 	db_connection = connect_to_database()
