@@ -75,7 +75,7 @@
           <td>
             <select id="titleFranchise">
               <option></option>
-              <option value="CoD">Call of Duty</option>
+              <option value="Call of Duty">Call of Duty</option>
               <option value="Halo">Halo</option>
             </select>
           </td>
@@ -89,9 +89,9 @@
           <td>
             <select id="titleESRB">
               <option></option>
-              <option value="everyone">E - Everyone</option>
-              <option value="teen">T - Teen</option>
-              <option value="mature">M - Mature</option>
+              <option value="E">E - Everyone</option>
+              <option value="T">T - Teen</option>
+              <option value="M">M - Mature</option>
             </select>
           </td>
       </table>
@@ -106,16 +106,16 @@
           <th>Country:</th>
           <th>Founding Date:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="searchDevName"></td>
           <td>
-            <select name="searchDevCountry">
+            <select id="searchDevCountry">
               <option></option>
               <option value="USA">USA</option>
             </select>
           </td>
-          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
+          <td>From:<br/><input type="date" id="searchDevFromDate"><br/>To:<br/><input type="date" id="searchDevToDate"></td>
       </table>
-      <button type="button" class="searchButton">Search</button>                          
+      <button type="button" class="searchButton" id="searchDevButton">Search</button>                          
     </div>
 
     <div id="delPlatSearch">
@@ -127,13 +127,13 @@
           <th>Platform Developer:</th>
           <th>Platform In Production:</th>
         <tr>
-          <td><input type="text"></td>
-          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
+          <td><input type="text" id="searchPlatName"></td>
+          <td>From:<br/><input type="date" id="searchPlatFromDate"><br/>To:<br/><input type="date" id="searchPlatToDate"></td>
           <td>
-            <select name="searchPlatformDev">
+            <select id="searchPlatDev">
               <option></option>
               <option value="Microsoft">Microsoft</option>
-              <option value="Microsoft">Sony</option>
+              <option value="Sony">Sony</option>
             </select>
           </td>
           <td>
@@ -142,7 +142,7 @@
             <input type="radio" name="searchPlatInProduction" value="Any">Any<br/>
           </td>
       </table>
-      <button type="button" class="searchButton">Search</button>
+      <button type="button" class="searchButton" id="searchPlatButton">Search</button>
     </div>
 
     <div id="delFranchiseSearch">
@@ -152,16 +152,16 @@
           <th>Franchise Name:</th>
           <th>Franchise Developer:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="searchFranchiseName"></td>
           <td>
-            <select name="searchPlatformDev">
+            <select id="searchFranchiseDev">
               <option></option>
-              <option value="Microsoft">Activision</option>
-              <option value="Microsoft">343 Industries</option>
+              <option value="Activision">Activision</option>
+              <option value="343 Industries">343 Industries</option>
             </select>
           </td>
       </table>
-      <button type="button" class="searchButton">Search</button>
+      <button type="button" class="searchButton" id="searchFranchiseButton">Search</button>
     </div>
 
     <br/>
