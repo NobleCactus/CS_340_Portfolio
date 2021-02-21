@@ -43,58 +43,58 @@
           <th>Developer:</th>
           <th>ESRB Rating:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="addTitleName"></td>
           <td>
-            <input type="checkbox" name="addTitlePlat" value="PS1">PlayStation<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS2">PlayStation 2<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS3">PlayStation 3<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS4">PlayStation 4<br/>
-            <input type="checkbox" name="addTitlePlat" value="PS5">PlayStation 5<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox">Xbox<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox 360">Xbox 360<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox One">Xbox One<br/>
-            <input type="checkbox" name="addTitlePlat" value="Xbox Series S/X">Xbox Series S/X<br/>
-            <input type="checkbox" name="addTitlePlat" value="N64">Nintendo 64<br/>
-            <input type="checkbox" name="addTitlePlat" value="GameCube">GameCube<br/>
-            <input type="checkbox" name="addTitlePlat" value="Wii">Wii<br/>
-            <input type="checkbox" name="addTitlePlat" value="WiiU">Wii U<br/>
-            <input type="checkbox" name="addTitlePlat" value="Switch">Switch<br/>
-            <input type="checkbox" name="addTitlePlat" value="Windows">Windows<br/>
+            <input type="checkbox" class="addTitlePlat" value="PS1">PlayStation<br/>
+            <input type="checkbox" class="addTitlePlat" value="PS2">PlayStation 2<br/>
+            <input type="checkbox" class="addTitlePlat" value="PS3">PlayStation 3<br/>
+            <input type="checkbox" class="addTitlePlat" value="PS4">PlayStation 4<br/>
+            <input type="checkbox" class="addTitlePlat" value="PS5">PlayStation 5<br/>
+            <input type="checkbox" class="addTitlePlat" value="Xbox">Xbox<br/>
+            <input type="checkbox" class="addTitlePlat" value="Xbox 360">Xbox 360<br/>
+            <input type="checkbox" class="addTitlePlat" value="Xbox One">Xbox One<br/>
+            <input type="checkbox" class="addTitlePlat" value="Xbox Series S/X">Xbox Series S/X<br/>
+            <input type="checkbox" class="addTitlePlat" value="N64">Nintendo 64<br/>
+            <input type="checkbox" class="addTitlePlat" value="GameCube">GameCube<br/>
+            <input type="checkbox" class="addTitlePlat" value="Wii">Wii<br/>
+            <input type="checkbox" class="addTitlePlat" value="WiiU">Wii U<br/>
+            <input type="checkbox" class="addTitlePlat" value="Switch">Switch<br/>
+            <input type="checkbox" class="addTitlePlat" value="Windows">Windows<br/>
           </td>
-          <td><input type="date"></td>
+          <td><input type="date" id="addTitleDate"></td>
           <td>
-            <select name="addTitleGenre">
+            <select id="addTitleGenre">
               <option></option>
               <option value="fps">First-Person Shooter</option>\
               <option value="moba">Multiplayer Online Battle Arena</option>
             </select>
           </td>
           <td>
-            <select name="addFranchise">
-              <option></option>
+            <select id="addTitleFranchise">
+              <option value=""></option>
               <option value="CoD">Call of Duty</option>
               <option value="Halo">Halo</option>
             </select>
           </td>
           <td>
-            <select name="addDev">
-              <option></option>
+            <select id="addTitleDev">
+              <option value=""></option>
               <option value="activision">Activision</option>
               <option value="343industries">343 Industries</option>
             </select>
           </td>
           <td>
-            <select name="searchRating">
-              <option></option>
-              <option value="everyone">E - Everyone</option>
-              <option value="teen">T - Teen</option>
-              <option value="mature">M - Mature</option>
+            <select id="titleESRB">
+              <option value=""></option>
+              <option value="E">E - Everyone</option>
+              <option value="T">T - Teen</option>
+              <option value="M">M - Mature</option>
             </select>
           </td>
         <tr>
           <td colspan="7">*If a platform/franchise/developer isn't present, they must first be added seapartely</td>
       </table>
-      <button type="button" class="addButton">Add Title</button>
+      <button type="button" class="addButton" id="addTitleButton">Add Title</button>
       </table>
     </div>
 
@@ -106,14 +106,14 @@
           <th>Country:</th>
           <th>Founding Date:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="addDevName"></td>
           <td>
-            <select name="addDevCountry">
-              <option></option>
+            <select id="addDevCountry">
+              <option value=""></option>
               <option value="USA">USA</option>
             </select>
           </td>
-          <td><input type="date"><br/></td>
+          <td><input type="date" id="addDevDate"></td>
       </table>
       <button type="button" class="addButton">Add Developer</button>                          
     </div>
@@ -127,21 +127,21 @@
           <th>Platform Developer:</th>
           <th>Platform In Production:</th>
         <tr>
-          <td><input type="text"></td>
-          <td><input type="date"></td>
+          <td><input type="text" id="addPlatName"></td>
+          <td><input type="date" id="addPlatDate"></td>
           <td>
-            <select name="addPlatform">
+            <select id="addPlatDev">
               <option></option>
               <option value="Microsoft">Microsoft</option>
               <option value="Microsoft">Sony</option>
             </select>
           </td>
           <td>
-            <input type="radio" name="searchPlatInProduction" value="Yes">Yes<br/>
-            <input type="radio" name="searchPlatInProduction" value="No">No<br/>
+            <input type="radio" name="searchPlatInProduction" class="addPlatInProd">Yes<br/>
+            <input type="radio" name="searchPlatInProduction" class="addPlatInProd">No<br/>
           </td>
       </table>
-      <button type="button" class="addButton">Add Platform</button>
+      <button type="button" class="addButton" id="addPlatButton">Add Platform</button>
     </div>
 
     <div id="addFranchise">
@@ -151,16 +151,16 @@
           <th>Franchise Name:</th>
           <th>Franchise Developer:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="addFranchiseName"></td>
           <td>
-            <select name="addPlatformDev">
+            <select id="addFranchiseDev">
               <option></option>
               <option value="Microsoft">Activision</option>
               <option value="Microsoft">343 Industries</option>
             </select>
           </td>
       </table>
-      <button type="button" class="addButton">Add Franchise</button>
+      <button type="button" class="addButton" id="addFranchiseButton">Add Franchise</button>
     </div>
 
     <br/>
