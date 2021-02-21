@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
 	document.getElementByid("filterButton").addEventListener('click', function(event){
-		// verify not NULL parameters have values
-
 		var req = new XMLHttpRequest();
 		
 		var payload = {"titleSearch": document.getElementById('titleSearch').value,
