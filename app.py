@@ -44,12 +44,18 @@ def add():
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 	db_connection = connect_to_database()
-	return render_template("del_element.j2")
+	if request.method == 'GET':
+		return render_template("del_element.j2")
+	else:
+		pass
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
 	db_connection = connect_to_database()
-	return render_template("update_element.j2")
+	if request.method == 'GET':
+		return render_template("update_element.j2")
+	else:
+		pass
 
 # Listener
 
