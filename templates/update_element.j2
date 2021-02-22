@@ -41,9 +41,9 @@
           <th>Developer:</th>
           <th>ESRB Rating:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="searchTitleName"></td>
           <td>
-            <select name="searchPlatform">
+            <select id="searchTitlePlat">
               <option></option>
               <option value="PS1">PlayStation</option>
               <option value="PS2">PlayStation 2</option>
@@ -63,39 +63,39 @@
             </select>
           </td>
           <td>
-            From:<br/><input type="date"><br/>To:<br/><input type="date">
+            From:<br/><input type="date" id="searchTitleFromDate"><br/>To:<br/><input type="date" id="searchTitleToDate">
           </td>
           <td>
-            <select name="searchGenre">
+            <select id="searchTitleGenre">
               <option></option>
               <option value="fps">First-Person Shooter</option>\
               <option value="moba">Multiplayer Online Battle Arena</option>
             </select>
           </td>
           <td>
-            <select name="searchFranchise">
+            <select id="searchTitleFranchise">
               <option></option>
-              <option value="CoD">Call of Duty</option>
+              <option value="Call of Duty">Call of Duty</option>
               <option value="Halo">Halo</option>
             </select>
           </td>
           <td>
-            <select name="searchDev">
+            <select id="searchTitleDev">
               <option></option>
               <option value="activision">Activision</option>
               <option value="343industries">343 Industries</option>
             </select>
           </td>
           <td>
-            <select name="searchRating">
+            <select id="searchTitleESRB">
               <option></option>
-              <option value="everyone">E - Everyone</option>
-              <option value="teen">T - Teen</option>
-              <option value="mature">M - Mature</option>
+              <option value="E">E - Everyone</option>
+              <option value="T">T - Teen</option>
+              <option value="M">M - Mature</option>
             </select>
           </td>
       </table>
-      <button type="button" class="searchButton">Search</button>
+      <button type="button" class="searchButton" id="searchTitleButton">Search</button>
     </div>
 
     <div id="updateDevSearch">
@@ -115,7 +115,7 @@
           </td>
           <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
       </table>
-      <button type="button" class="searchButton">Search</button>                          
+      <button type="button" class="searchButton" id="searchDevButton">Search</button>                          
     </div>
 
     <div id="updatePlatSearch">
@@ -127,22 +127,22 @@
           <th>Platform Developer:</th>
           <th>Platform In Production:</th>
         <tr>
-          <td><input type="text"></td>
-          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
+          <td><input type="text" id="searchPlatName"></td>
+          <td>From:<br/><input type="date" id="searchPlatFromDate"><br/>To:<br/><input type="date" id="searchPlatToDate"></td>
           <td>
-            <select name="searchPlatformDev">
+            <select id="searchPlatDev">
               <option></option>
               <option value="Microsoft">Microsoft</option>
-              <option value="Microsoft">Sony</option>
+              <option value="Sony">Sony</option>
             </select>
           </td>
           <td>
-            <input type="radio" name="searchPlatInProduction" value="Yes">Yes<br/>
-            <input type="radio" name="searchPlatInProduction" value="No">No<br/>
-            <input type="radio" name="searchPlatInProduction" value="Any">Any<br/>
+            <input type="radio" name="searchPlatInProduction" class="searchPlatInProd" value="Yes">Yes<br/>
+            <input type="radio" name="searchPlatInProduction" class="searchPlatInProd" value="No">No<br/>
+            <input type="radio" name="searchPlatInProduction" class="searchPlatInProd" value="Any">Any<br/>
           </td>
       </table>
-      <button type="button" class="searchButton">Search</button>
+      <button type="button" class="searchButton" id="searchPlatButton">Search</button>
     </div>
 
     <div id="updateFranchiseSearch">
@@ -152,16 +152,16 @@
           <th>Franchise Name:</th>
           <th>Franchise Developer:</th>
         <tr>
-          <td><input type="text"></td>
+          <td><input type="text" id="searchFranchiseName"></td>
           <td>
-            <select name="searchPlatformDev">
+            <select id="searchFranchiseDev">
               <option></option>
-              <option value="Microsoft">Activision</option>
-              <option value="Microsoft">343 Industries</option>
+              <option value="Activision">Activision</option>
+              <option value="343 Industries">343 Industries</option>
             </select>
           </td>
       </table>
-      <button type="button" class="searchButton">Search</button>
+      <button type="button" class="searchButton" id="searchFranchiseButton">Search</button>
     </div>
 
     <br/>
