@@ -1,4 +1,4 @@
-import PyMySQL as mariadb
+import pymysql as mariadb
 from db_credentials import host, user, passwd, db
 
 def connect_to_database(host = host, user = user, passwd = passwd, db = db):
