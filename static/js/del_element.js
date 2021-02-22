@@ -104,11 +104,21 @@ function bindButtons() {
   });
 
   document.getElementById("searchPlatButton").addEventListener("click", function(event) {
+    var platInProd = Array.from(document.getElementsByClassName("searchPlatInProd"));
+    if (platInProd[0].checked) {
+      platInProd = "Yes";
+    } else if (platInProd[1].checked) {
+      platInProd = "No";
+    } else {
+      platInProd = ""
+    }
+
     var payload = {"action": "searchPlat",
             "platName": document.getElementById('searchPlatName').value,
             "platFromDate": document.getElementById('searchPlatFromDate').value, 
             "platToDate": document.getElementById('searchPlatToDate').value, 
-            "platDev": document.getElementById('searchPlatDev').value};
+            "platDev": document.getElementById('searchPlatDev').value,
+            "platInProd": platInProd};
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
