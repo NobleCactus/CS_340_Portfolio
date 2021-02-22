@@ -110,7 +110,7 @@ function bindButtons() {
     } else if (platInProd[1].checked) {
       platInProd = "No";
     } else {
-      platInProd = ""
+      platInProd = "";
     }
 
     var payload = {"action": "searchPlat",
