@@ -63,6 +63,7 @@ function bindButtons() {
 
         // if query successful,
           // use DOM to dynamically add query result table to webpage
+          // special consideration for how to add a list of platforms
           // reset filter fields?
 
         // if query unsuccessful (shouldn't happen if filter parameters are verified first)
