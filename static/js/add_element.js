@@ -87,7 +87,7 @@ function bindButtons() {
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
 					console.log("RECEIVED AFTER POST REQUEST:");
-					console.log(req);
+					console.log(req.responseText);
 					// POST request successful, check response for query status
 
 					// if query successful

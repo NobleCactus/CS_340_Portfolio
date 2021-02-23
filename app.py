@@ -45,19 +45,20 @@ def root():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-	print("IN THE ADD ROUTE")
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		print("GET REQUESTED")
 		return render_template("add_element.j2")
 	else:
 		print("POST REQUESTED")
 		print(request.get_json())
 		
-		print("TEST RESPONSE JSONIFIED: ")
+		response = {
+			"status": 200,
+			"values": "post response successful"
+		}
 		
 		#return jsonify(test_response)
-		return "RESPONSE FROM SERVER FOR ADD TITLE"
+		return response
 
 		# get request payload from POST request
 
