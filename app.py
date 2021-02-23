@@ -53,8 +53,7 @@ def add():
 	else:
 		print("POST REQUESTED")
 		print(request.get_json())
-		test_response = {status: 200,
-						result: "This is the response text"}
+		
 		print("TEST RESPONSE JSONIFIED: ")
 		print(jsonify(test_response))
 		#return jsonify(test_response)
