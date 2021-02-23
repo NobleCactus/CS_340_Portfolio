@@ -62,12 +62,12 @@ def root():
 		print("FINISHED QUERY: ", query)
 
 		# query DB, get response
-		result = execute_query(db_connection, query).fetchall()
+		#result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
 
 		# return DB tables back to webpage
-		return result
+		return
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
