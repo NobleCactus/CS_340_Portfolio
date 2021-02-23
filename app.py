@@ -10,19 +10,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-	print("IN THE ROOT ROUTE")
 	db_connection = connect_to_database()
-	print("DB CONNECTION ESTABLISHED")
 	if request.method == 'GET':
-		print("IN THE GET REQUEST CODE")
 		# show all Video Game Titles
 		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
-		print("QUERY STRING: ", query)
 		result = execute_query(db_connection, query).fetchall()
-		print("DB RESULT: ", result)
-		print("RENDERING TEMPLATE")
 		return render_template("main.j2", rows=result)
 	else:
 		pass
@@ -51,10 +45,14 @@ def root():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+	print("IN THE ADD ROUTE")
 	db_connection = connect_to_database()
 	if request.method == 'GET':
+		print("GET REQUESTED")
 		return render_template("add_element.j2")
 	else:
+		print("POST REQUESTED")
+		print(request)
 		pass
 		# get request payload from POST request
 

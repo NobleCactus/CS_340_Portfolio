@@ -86,6 +86,7 @@ function bindButtons() {
 
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
+					console.log("POST SUCCESSFUL. GET SERVER RESPONSE HERE AND DO STUFF");
 					// POST request successful, check response for query status
 
 					// if query successful
