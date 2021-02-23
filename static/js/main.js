@@ -13,9 +13,6 @@ function bindButtons() {
 						"developer": document.getElementById('filterDev').value,
 						"esrb": document.getElementById('filterESRB').value};
 
-		console.log("SENDING PAYLOAD: ");
-		console.log(payload);
-
 		req.open('POST', '/', true);
 		req.setRequestHeader('Content-Type', 'application/json');
 

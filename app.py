@@ -19,6 +19,7 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 		return render_template("main.j2", rows=result)
 	else:
+		print("IN THE CATALOG'S POST REQUEST")
 		# get request payload from POST request
 		query_vals = request.get_json()
 		print("REQUEST: ", query_vals)
