@@ -55,7 +55,7 @@ def add():
 		print(request.get_json())
 		
 		print("TEST RESPONSE JSONIFIED: ")
-		print(jsonify(test_response))
+		
 		#return jsonify(test_response)
 		return "RESPONSE FROM SERVER FOR ADD TITLE"
 
