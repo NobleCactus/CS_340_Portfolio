@@ -17,6 +17,10 @@ function bindButtons() {
 		req.setRequestHeader('Content-Type', 'application/json');
 
 		req.addEventListener('load', function(){
+			console.log("RECEIVED AFTER POST REQUEST:");
+			console.log(req);
+
+			/*
 			if (req.status >= 200 && req.status < 400) {
 				// POST request successful, check response for query status
 
@@ -28,7 +32,9 @@ function bindButtons() {
 
 			} else {
 				console.log("Error in network request: " + req.statusText);
-		}});
+			}
+			*/
+		});
 
 		req.send(JSON.stringify(payload));
 	});

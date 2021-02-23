@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from db_connector import connect_to_database, execute_query
 import os
 
@@ -53,7 +53,10 @@ def add():
 	else:
 		print("POST REQUESTED")
 		print(request.get_json())
-		pass
+		test_response = {status: 200,
+						result: "This is the response text"}
+		print("TEST RESPONSE JSONIFIED: ", jsonify(test_response))
+		return jsonify(test_response)
 		# get request payload from POST request
 
 		# build query from request payload, depending on action
