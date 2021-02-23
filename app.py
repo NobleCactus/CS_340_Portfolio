@@ -38,19 +38,19 @@ def root():
 		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID "
 
 		if query_vals["titleSearch"] != "":
-			query += "WHERE t.titleName LIKE %" + payload["titleSearch"] + "% "
+			query += "WHERE t.titleName LIKE %" + query_vals["titleSearch"] + "% "
 		if query_vals["fromDate"] != "":
-			query += "WHERE t.titleRelease >=" + payload["fromDate"] + " "
+			query += "WHERE t.titleRelease >=" + query_vals["fromDate"] + " "
 		if query_vals["toDate"] != "":
-			query += "WHERE t.titleRelease <=" + payload["toDate"] + " "
+			query += "WHERE t.titleRelease <=" + query_vals["toDate"] + " "
 		if query_vals["genre"] != "":
-			query += "WHERE t.titleGenre = " + payload["genre"] + " "
+			query += "WHERE t.titleGenre = " + query_vals["genre"] + " "
 		if query_vals["franchise"] != "":
-			query += "WHERE f.franchiseName = " + payload["franchise"] + " "
+			query += "WHERE f.franchiseName = " + query_vals["franchise"] + " "
 		if query_vals["developer"] != "":
-			query += "WHERE d.developerName = " + payload["developer"] + " "
+			query += "WHERE d.developerName = " + query_vals["developer"] + " "
 		if query_vals["esrb"] != "":
-			query += "WHERE t.titleESRB = " + payload["esrb"]
+			query += "WHERE t.titleESRB = " + query_vals["esrb"]
 
 		print("FINISHED QUERY: ", query)
 
