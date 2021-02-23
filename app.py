@@ -19,10 +19,8 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 		return render_template("main.j2", rows=result)
 	else:
-		print("IN THE CATALOG'S POST REQUEST")
 		# get request payload from POST request
 		query_vals = request.get_json()
-		print("REQUEST: ", query_vals)
 		# query_vals = {
 		#				"titleSearch"
 		#				"filterPlatform"
@@ -35,12 +33,10 @@ def root():
 		# }
 
 		# build query from request payload
-		print("BUILDING QUERY")
 		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 
-		print("QUERY SO FAR: ", query)
 
 		if query_vals["titleSearch"] != "":
 			query += " WHERE t.titleName LIKE %" + query_vals["titleSearch"] + "%"
@@ -59,7 +55,6 @@ def root():
 
 		query += ";"
 
-		print("FINISHED QUERY: ", query)
 
 		# query DB, get response
 		#result = execute_query(db_connection, query).fetchall()
@@ -67,7 +62,7 @@ def root():
 		# make query to TitlesPlatforms, get response
 
 		# return DB tables back to webpage
-		return
+		return {'response': 'QUERY SUCCESSFUL'}
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
