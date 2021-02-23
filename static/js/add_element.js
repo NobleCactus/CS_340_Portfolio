@@ -286,8 +286,6 @@ function bindButtons() {
 					console.log(res);	// to show the elements of what comes back
 
 					// if query successful
-						show add successful message and delayed disappear
-						
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
