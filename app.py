@@ -102,8 +102,8 @@ def add():
 
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
 			for platform in query_vals["titlePlat"]:
-				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = " + '"' + query_vals["titleName"] + "'" + "), "
-				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + '"' + platform + '"' + ")"
+				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = " + "'" + query_vals["titleName"] + "'" + "), "
+				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + "'" + platform + "'" + ")"
 				query += ");"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
