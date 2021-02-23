@@ -21,6 +21,7 @@ def root():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
+		print("REQUEST: ", query_vals)
 		# query_vals = {
 		#				"titleSearch"
 		#				"filterPlatform"
