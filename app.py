@@ -49,9 +49,10 @@ def add():
 	if request.method == 'GET':
 		return render_template("add_element.j2")
 	else:
-		print("POST REQUESTED")
-		print(request.get_json())
-		
+		query_vals = request.get_json()
+
+		print("query_vals['action']: ", query_vals["action"])
+
 		response = {
 			"status": 200,
 			"values": "post response successful"
