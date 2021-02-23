@@ -86,23 +86,18 @@ function bindButtons() {
 
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
-					console.log(req.status);
-					res = JSON.parse(req.responseText);
-
-					console.log(res);
 					// POST request successful, check response for query status
+					res = JSON.parse(req.responseText);
+					console.log(res);	// to show the elements of what comes back
 
 					// if query successful
-						/* show add successful message and delayed disappear
-						
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
 
-						*/
 
-					// if query unsuccessful
+					// if query unsuccessful (find out what is sent for a failed query)
 						/* show add failed message and delayed disappear
 						
 						document.getElementById("addFailed").style.display = "block";
@@ -151,16 +146,14 @@ function bindButtons() {
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
 					// POST request successful, check response for query status
+					res = JSON.parse(req.responseText);
+					console.log(res);	// to show the elements of what comes back
 
 					// if query successful
-						/* show add successful message and delayed disappear
-						
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
-
-						*/
 
 					// if query unsuccessful
 						/* show add failed message and delayed disappear
@@ -235,16 +228,14 @@ function bindButtons() {
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
 					// POST request successful, check response for query status
+					res = JSON.parse(req.responseText);
+					console.log(res);	// to show the elements of what comes back
 
 					// if query successful
-						/* show add successful message and delayed disappear
-						
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
-
-						*/
 
 					// if query unsuccessful
 						/* show add failed message and delayed disappear
@@ -291,16 +282,16 @@ function bindButtons() {
 			req.addEventListener('load', function(){
 				if (req.status >= 200 && req.status < 400) {
 					// POST request successful, check response for query status
+					res = JSON.parse(req.responseText);
+					console.log(res);	// to show the elements of what comes back
 
 					// if query successful
-						/* show add successful message and delayed disappear
+						show add successful message and delayed disappear
 						
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
-
-						*/
 
 					// if query unsuccessful
 						/* show add failed message and delayed disappear
@@ -320,15 +311,5 @@ function bindButtons() {
 			document.getElementById('noFranchiseName').style.display = "none";
 			document.getElementById('noFranchiseDev').style.display = "none";
 		}
-	});
-
-	// delete this once we get db queries working
-	Array.from(document.getElementsByClassName("addButton")).forEach(function(element) {
-		element.addEventListener("click", function(event) {
-			document.getElementById("addSuccessful").style.display = "block";
-			setTimeout(function() {
-				document.getElementById("addSuccessful").style.display = "none"
-			}, 1500);
-		})
 	});
 }

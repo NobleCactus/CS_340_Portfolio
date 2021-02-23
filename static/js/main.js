@@ -19,8 +19,11 @@ function bindButtons() {
 		req.addEventListener('load', function(){
 			if (req.status >= 200 && req.status < 400) {
 				// POST request successful, check response for query status
+				res = JSON.parse(req.responseText);
+				console.log(res);	// to show the elements of what comes back
 
 				// if query successful,
+					// use DOM to clear current table
 					// use DOM to dynamically add query result table to webpage
 					// reset filter fields?
 
@@ -30,7 +33,6 @@ function bindButtons() {
 				console.log("Error in network request: " + req.statusText);
 			}
 		});
-
 		req.send(JSON.stringify(payload));
 	});
 }
