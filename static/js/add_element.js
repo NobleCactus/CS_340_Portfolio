@@ -58,16 +58,16 @@ function bindButtons() {
 			document.getElementById('addTitleDev').value == "" ||
 			title_plat.length == 0) {
 			if (document.getElementById('addTitleName').value == "") {
-				document.getElementById('noName').style.display = "inline";
+				document.getElementById('noTitleName').style.display = "inline";
 			}
 			if (document.getElementById('addTitleDate').value == "") {
-				document.getElementById('noDate').style.display = "inline";
+				document.getElementById('noTitleDate').style.display = "inline";
 			}
 			if (document.getElementById('addTitleDev').value == "") {
-				document.getElementById('noDev').style.display = "inline";
+				document.getElementById('noTitleDev').style.display = "inline";
 			}
 			if (title_plat.length == 0) {
-				document.getElementById('noPlat').style.display = "inline";
+				document.getElementById('noTitlePlat').style.display = "inline";
 			}
 		} else {
 			var req = new XMLHttpRequest();
