@@ -97,19 +97,21 @@ def add():
 			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + "'" + query_vals["titleFranchise"] + "'" + "));"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
-			print('Query Successful')
-			# if query is successful: build query to INSERT into TitlesPlatforms
-			if result:
-				query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
-				for platform in query_vals["titlePlat"]:
-					query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = )"" + query_vals["titleName"] + "), "
-					query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + platform + ")"
-					query += ");"
 
-			 else:
+			# if query is successful: build query to INSERT into TitlesPlatforms
+
+			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
+			for platform in query_vals["titlePlat"]:
+				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = )" + query_vals["titleName"] + "), "
+				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + platform + ")"
+				query += ");"
+			result = execute_query(db_connection, query).fetchall()
+			print(result)
+
+			#else:
 				# send unsuccessful back to webpage, return failed message
 				# Will create an error code to send back that will make an error message pop up
-					return {}
+					#return {}
 
 		# elif query_vals["action"] == "addDev":
 			# query_vals = {
