@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
-	document.getElementByid("filterButton").addEventListener('click', function(event){
+	document.getElementById("filterButton").addEventListener('click', function(event){
 		var req = new XMLHttpRequest();
 		
 		var payload = {"titleSearch": document.getElementById('titleSearch').value,

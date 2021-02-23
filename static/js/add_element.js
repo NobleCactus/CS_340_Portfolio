@@ -119,7 +119,7 @@ function bindButtons() {
 		}
 	});
 
-	document.getElementById("addDevButon").addEventListener('click', function(event){
+	document.getElementById("addDevButton").addEventListener('click', function(event){
 		// verify not NULL parameters have values
 		if (document.getElementById('addDevName').value == "" ||
 			document.getElementById('addDevCountry').value == "" ||
