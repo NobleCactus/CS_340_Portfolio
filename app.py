@@ -75,7 +75,7 @@ def add():
 		# build query from request, depending on action
 		# include if statements to check for empty attributes ("") for those that can be null. If empty, don't add WHERE to query
 
-		 query = ""
+		query = ""
 
 		if query_vals["action"] == "addTitle":
 			# query_vals = {
