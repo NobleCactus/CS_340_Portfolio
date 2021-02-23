@@ -15,7 +15,7 @@ def root():
 		# show all Video Game Titles
 		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
+		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
 		result = execute_query(db_connection, query).fetchall()
 		return render_template("main.j2", rows=result)
 	else:
@@ -33,24 +33,29 @@ def root():
 		# }
 
 		# build query from request payload
+		print("BUILDING QUERY")
 		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID "
+		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
+
+		print("QUERY SO FAR: ", query)
 
 		if query_vals["titleSearch"] != "":
-			query += "WHERE t.titleName LIKE %" + query_vals["titleSearch"] + "% "
+			query += " WHERE t.titleName LIKE %" + query_vals["titleSearch"] + "%"
 		if query_vals["fromDate"] != "":
-			query += "WHERE t.titleRelease >=" + query_vals["fromDate"] + " "
+			query += " WHERE t.titleRelease >=" + query_vals["fromDate"]
 		if query_vals["toDate"] != "":
-			query += "WHERE t.titleRelease <=" + query_vals["toDate"] + " "
+			query += " WHERE t.titleRelease <=" + query_vals["toDate"]
 		if query_vals["genre"] != "":
-			query += "WHERE t.titleGenre = " + query_vals["genre"] + " "
+			query += " WHERE t.titleGenre = " + query_vals["genre"]
 		if query_vals["franchise"] != "":
-			query += "WHERE f.franchiseName = " + query_vals["franchise"] + " "
+			query += " WHERE f.franchiseName = " + query_vals["franchise"]
 		if query_vals["developer"] != "":
-			query += "WHERE d.developerName = " + query_vals["developer"] + " "
+			query += " WHERE d.developerName = " + query_vals["developer"]
 		if query_vals["esrb"] != "":
-			query += "WHERE t.titleESRB = " + query_vals["esrb"]
+			query += " WHERE t.titleESRB = " + query_vals["esrb"]
+
+		query += ";"
 
 		print("FINISHED QUERY: ", query)
 
