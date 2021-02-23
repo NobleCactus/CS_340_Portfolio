@@ -55,8 +55,11 @@ def add():
 		print(request.get_json())
 		test_response = {status: 200,
 						result: "This is the response text"}
-		print("TEST RESPONSE JSONIFIED: ", jsonify(test_response))
-		return jsonify(test_response)
+		print("TEST RESPONSE JSONIFIED: ")
+		print(jsonify(test_response))
+		#return jsonify(test_response)
+		return "RESPONSE FROM SERVER FOR ADD TITLE"
+
 		# get request payload from POST request
 
 		# build query from request payload, depending on action
