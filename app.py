@@ -69,16 +69,15 @@ def add():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-		print(query_vals)
 		# access query_vals values like a dictionary
-		#print("query_vals['action']: ", query_vals["action"])
+		print("query_vals['action']: ", query_vals["action"])
 		
 		# build query from request, depending on action
 		# include if statements to check for empty attributes ("") for those that can be null. If empty, don't add WHERE to query
 
-		# query = ""
+		 query = ""
 
-		# if query_vals["action"] == "addTitle":
+		if query_vals["action"] == "addTitle":
 			# query_vals = {
 			#	"titleName"
 			#	"titlePlat"
@@ -89,14 +88,16 @@ def add():
 			#	"titleESRB"
 			# }
 
-			# query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
-			# query += query_vals["titleName"] + ", "
-			# query += query_vals["titleESRB"] + ", "
-			# query += query_vals["titleGenre"] + ", "
-			# query += query_vals["titleRelease"] + ", "
-			# query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = " + query_vals["titleDev"] + "), "
-			# query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + query_vals["titleFranchise"] + "));"
-
+			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
+			query += query_vals["titleName"] + ", "
+			query += query_vals["titleESRB"] + ", "
+			query += query_vals["titleGenre"] + ", "
+			query += query_vals["titleRelease"] + ", "
+			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = " + query_vals["titleDev"] + "), "
+			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + query_vals["titleFranchise"] + "));"
+			result = execute_query(db_connection, query).fetchall()
+			print(result)
+			print('Query Successful')
 			# if query is successful: build query to INSERT into TitlesPlatforms
 				# query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
 				# for platform in query_vals["titlePlat"]:
