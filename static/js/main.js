@@ -3,15 +3,16 @@ document.addEventListener('DOMContentLoaded', bindButtons);
 function bindButtons() {
 	document.getElementById("filterButton").addEventListener('click', function(event){
 		var req = new XMLHttpRequest();
-		
-		var payload = {"titleSearch": document.getElementById('titleSearch').value,
-						"filterPlatform": document.getElementById('filterPlatform').value, 
-						"fromDate": document.getElementById('fromDate').value, 
-						"toDate": document.getElementById('toDate').value, 
-						"genre": document.getElementById('filterGenre').value, 
-						"franchise": document.getElementById('filterFranchise').value,
-						"developer": document.getElementById('filterDev').value,
-						"esrb": document.getElementById('filterESRB').value};
+
+		var payload = {"action": "searchTitle",
+			            "titleName": document.getElementById('searchTitleName').value,
+			            "titlePlat": document.getElementById('searchTitlePlat').value, 
+			            "titleFromDate": document.getElementById('titleFromDate').value, 
+			            "titleToDate": document.getElementById('titleToDate').value, 
+			            "titleGenre": document.getElementById('titleGenre').value, 
+			            "titleFranchise": document.getElementById('titleFranchise').value,
+			            "titleDev": document.getElementById('titleDev').value,
+			            "titleESRB": document.getElementById('titleESRB').value};
 
 		req.open('POST', '/', true);
 		req.setRequestHeader('Content-Type', 'application/json');
@@ -20,7 +21,7 @@ function bindButtons() {
 			if (req.status >= 200 && req.status < 400) {
 				// POST request successful, check response for query status
 				res = JSON.parse(req.responseText);
-				console.log(res[0]);	// to show the elements of what comes back
+				console.log();	// to show the elements of what comes back
 
 				// if query successful,
 					// use DOM to clear current table

@@ -22,14 +22,13 @@ def root():
 		# get request payload from POST request
 		query_vals = request.get_json()
 		# query_vals = {
-		#				"titleSearch"
-		#				"filterPlatform"
-		#				"fromDate"
-		#				"toDate"
-		#				"genre"
-		#				"franchise"
-		#				"developer"
-		#				"esrb"
+		#	"titleName"
+		#	"titlePlat"
+		#	"titleRelease"
+		#	"titleGenre"
+		#	"titleFranchise"
+		#	"titleDev"
+		#	"titleESRB"
 		# }
 
 		# build query from request payload values
@@ -57,6 +56,7 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
+		# package with result above
 
 		# return DB tables back to webpage
 		return jsonify(result)
@@ -69,7 +69,7 @@ def add():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-		
+
 		# access query_vals values like a dictionary
 		#print("query_vals['action']: ", query_vals["action"])
 		
@@ -79,6 +79,16 @@ def add():
 		# query = ""
 
 		# if query_vals["action"] == "addTitle":
+			# query_vals = {
+			#	"titleName"
+			#	"titlePlat"
+			#	"titleRelease"
+			#	"titleGenre"
+			#	"titleFranchise"
+			#	"titleDev"
+			#	"titleESRB"
+			# }
+
 			# query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
 			# query += query_vals["titleName"] + ", "
 			# query += query_vals["titleESRB"] + ", "
@@ -98,14 +108,32 @@ def add():
 				# send unsuccessful back to webpage, return failed message
 
 		# elif query_vals["action"] == "addDev":
+			# query_vals = {
+			#	"devName"
+			#	"devCountry"
+			#	"devDate"
+			# }
+
 			# query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
 			# query += query_vals["devName"] + query_vals["devCountry"] + query_vals ["devDate"] + ");"
 
 		# elif query_vals["action"] == "addPlat":
+			# query_vals = {
+			#	"platName"
+			#	"platDate"
+			#	"platDev"
+			#	"platInProd"
+			# }
+
 			# query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES ("
 			# query += query_vals["platName"] + query_vals["platDate"] + query_vals[""] + query_vals["platDev"] + query_vals["platInProd"] + ");"
 
 		# elif query_vals["action"] == "addFranchise":
+			# query_vals = {
+			#	"franchiseName"
+			#	"franchiseDev"
+			# }
+
 			# query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
 			# query += query_vals["franchiseName"] + query_vals["franchiseDev"] + ");"
 
@@ -128,41 +156,75 @@ def delete():
 
 		# query = ""
 
-		# if query_vals["action"] == "searchTitle":
-			# query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-			# query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-			# query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
-			# query += "WHERE t.titleName LIKE %" + query_vals["titleName"] + "% "
-			# query += "AND t.titleRelease >=" + query_vals["titleFromDate"] + " "
-			# query += "AND t.titleRelease <=" + query_vals["titleToDate"] + " "
-			# query += "AND t.titleGenre LIKE %" + query_vals["titleGenre"] + "% "
-			# query += "AND f.franchiseName = " + query_vals["titleFranchise"] + " "
-			# query += "AND d.developerName = " + query_vals["titleDev"] + " "
-			# query += "AND t.titleESRB = " + query_vals["titleESRB"]
+		# if query_vals["action"] == "delete":
 
-			# make an array of the paltforms to include in the response
-			# select from TitlesPlatforms query_vals["titlePlat"]
+		# else:
+			# if query_vals["action"] == "searchTitle":
+				# query_vals = {
+				#	"titleName"
+				#	"titlePlat"
+				#	"titleFromDate"
+				#	"titleToDate"
+				#	"titleGenre"
+				#	"titleFranchise"
+				#	"titleDev"
+				#	"titleESRB"
+				# }
 
-		# elif query_vals["action"] == "searchDev":
-			# query = "SELECT * FROM `DevelopmentStudios` "
-			# query += "WHERE developerName LIKE %" + query_vals["devName"] + "% "
-			# query += "AND developerCountry = " + query_vals["devCountry"] + " "
-			# query += "AND developerFounded >= " + query_vals["devFromDate"] + " "
-			# query += "AND developerFounded <= " + query_vals["devToDate"]
+				# query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
+				# query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
+				# query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
+				# query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%"
+				# query += " AND t.titleRelease >=" + query_vals["titleFromDate"]
+				# query += " AND t.titleRelease <=" + query_vals["titleToDate"]
+				# query += " AND t.titleGenre = " + query_vals["titleGenre"]
+				# query += " AND f.franchiseName = " + query_vals["titleFranchise"]
+				# query += " AND d.developerName = " + query_vals["titleDev"]
+				# query += " AND t.titleESRB = " + query_vals["titleESRB"]
 
-		# elif query_vals["action"] == "searchPlat":
-			# query = "SELECT * FROM `Platforms` "
-			# query += "WHERE platformName LIKE %" + query_vals["platName"] + "% "
-			# query += "AND platformRelease >= " + query_vals["platFromDate"] + " "
-			# query += "AND platformRelease >= " + query_vals["platToDate"] + " "
-			# query += "AND platformDeveloper = " + query_vals["platDev"] + " "
-			# query += "AND platformInProduction = " + query_vals["platInProd"]
+				# make an array of the paltforms to include in the response
+				# select from TitlesPlatforms query_vals["titlePlat"]
 
-		# elif query_vals["action"] == "searchFranchise":
-			# query = "SELECT * FROM `Franchises` "
-			# query += "WHERE franchiseName LIKE %" + query_vals["franchiseName"] + "% "
-			# query += "AND franchiseDeveloper = " + query_vals["franchiseDev"]
+			# elif query_vals["action"] == "searchDev":
+				# query_vals = {
+				#	"devName"
+				#	"devCountry"
+				#	"devFromDate"
+				#	"devToDate"
+				# }
 
+				# query = "SELECT * FROM `DevelopmentStudios`"
+				# query += " WHERE developerName LIKE %" + query_vals["devName"] + "%"
+				# query += " AND developerCountry = " + query_vals["devCountry"]
+				# query += " AND developerFounded >= " + query_vals["devFromDate"]
+				# query += " AND developerFounded <= " + query_vals["devToDate"]
+			
+			# elif query_vals["action"] == "searchPlat":
+				# query_vals = {
+				#	"platName"
+				#	"platFromDate"
+				#	"platToDate"
+				#	"platDev"
+				#	"platInProd"
+				# }
+
+				# query = "SELECT * FROM `Platforms`"
+				# query += " WHERE platformName LIKE %" + query_vals["platName"] + "%""
+				# query += " AND platformRelease >= " + query_vals["platFromDate"]
+				# query += " AND platformRelease >= " + query_vals["platToDate"]
+				# query += " AND platformDeveloper = " + query_vals["platDev"]
+				# query += " AND platformInProduction = " + query_vals["platInProd"]
+			# elif query_vals["action"] == "searchFranchise":
+				# query_vals = {
+				#	"franchiseName"
+				#	"franchiseDev"
+				# }
+
+				# query = "SELECT * FROM `Franchises`"
+				# query += " WHERE franchiseName LIKE %" + query_vals["franchiseName"] + "%""
+				# query += " AND franchiseDeveloper = " + query_vals["franchiseDev"]
+		
+		# query += ";"
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
@@ -182,41 +244,50 @@ def update():
 
 		# query = ""
 
-		# if query_vals["action"] == "searchTitle":
-			# query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-			# query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-			# query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
-			# query += "WHERE t.titleName LIKE %" + query_vals["titleName"] + "% "
-			# query += "AND t.titleRelease >=" + query_vals["titleFromDate"] + " "
-			# query += "AND t.titleRelease <=" + query_vals["titleToDate"] + " "
-			# query += "AND t.titleGenre = " + query_vals["titleGenre"] + " "
-			# query += "AND f.franchiseName = " + query_vals["titleFranchise"] + " "
-			# query += "AND d.developerName = " + query_vals["titleDev"] + " "
-			# query += "AND t.titleESRB = " + query_vals["titleESRB"]
+		# if query_vals["action"] == "update":
 
-			# make an array of the paltforms to include in the response
-			# select from TitlesPlatforms query_vals["titlePlat"]
+		# else:
+			# if query_vals["action"] == "searchTitle":
+				# query_vals = {
+				#	"franchiseName"
+				#	"franchiseDev"
+				# }
 
-		# elif query_vals["action"] == "searchDev":
-			# query = "SELECT * FROM `DevelopmentStudios` "
-			# query += "WHERE developerName LIKE %" + query_vals["devName"] + "% "
-			# query += "AND developerCountry = " + query_vals["devCountry"] + " "
-			# query += "AND developerFounded >= " + query_vals["devFromDate"] + " "
-			# query += "AND developerFounded <= " + query_vals["devToDate"]
+				# query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
+				# query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
+				# query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
+				# query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%""
+				# query += " AND t.titleRelease >=" + query_vals["titleFromDate"]
+				# query += " AND t.titleRelease <=" + query_vals["titleToDate"]
+				# query += " AND t.titleGenre = " + query_vals["titleGenre"]
+				# query += " AND f.franchiseName = " + query_vals["titleFranchise"]
+				# query += " AND d.developerName = " + query_vals["titleDev"]
+				# query += " AND t.titleESRB = " + query_vals["titleESRB"]
 
-		# elif query_vals["action"] == "searchPlat":
-			# query = "SELECT * FROM `Platforms` "
-			# query += "WHERE platformName LIKE %" + query_vals["platName"] + "% "
-			# query += "AND platformRelease >= " + query_vals["platFromDate"] + " "
-			# query += "AND platformRelease >= " + query_vals["platToDate"] + " "
-			# query += "AND platformDeveloper = " + query_vals["platDev"] + " "
-			# query += "AND platformInProduction = " + query_vals["platInProd"]
+				# make an array of the paltforms to include in the response
+				# select from TitlesPlatforms query_vals["titlePlat"]
 
-		# elif query_vals["action"] == "searchFranchise":
-			# query = "SELECT * FROM `Franchises` "
-			# query += "WHERE franchiseName LIKE %" + query_vals["franchiseName"] + "% "
-			# query += "AND franchiseDeveloper = " + query_vals["franchiseDev"]
+			# elif query_vals["action"] == "searchDev":
+				# query = "SELECT * FROM `DevelopmentStudios`"
+				# query += " WHERE developerName LIKE %" + query_vals["devName"] + "%"
+				# query += " AND developerCountry = " + query_vals["devCountry"]
+				# query += " AND developerFounded >= " + query_vals["devFromDate"]
+				# query += " AND developerFounded <= " + query_vals["devToDate"]
 
+			# elif query_vals["action"] == "searchPlat":
+				# query = "SELECT * FROM `Platforms`"
+				# query += " WHERE platformName LIKE %" + query_vals["platName"] + "%"
+				# query += " AND platformRelease >= " + query_vals["platFromDate"]
+				# query += " AND platformRelease >= " + query_vals["platToDate"]
+				# query += " AND platformDeveloper = " + query_vals["platDev"]
+				# query += " AND platformInProduction = " + query_vals["platInProd"]
+
+			# elif query_vals["action"] == "searchFranchise":
+				# query = "SELECT * FROM `Franchises`"
+				# query += " WHERE franchiseName LIKE %" + query_vals["franchiseName"] + "%""
+				# query += " AND franchiseDeveloper = " + query_vals["franchiseDev"]
+		
+		# query += ";"
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
