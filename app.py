@@ -69,7 +69,7 @@ def add():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-
+		print(query_vals)
 		# access query_vals values like a dictionary
 		#print("query_vals['action']: ", query_vals["action"])
 		
