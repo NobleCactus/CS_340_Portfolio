@@ -99,14 +99,17 @@ def add():
 			print(result)
 			print('Query Successful')
 			# if query is successful: build query to INSERT into TitlesPlatforms
-				# query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
-				# for platform in query_vals["titlePlat"]:
-					# query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = )"" + query_vals["titleName"] + "), "
-					# query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + platform + ")"
-				# query += ");"
+			if result:
+				query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
+				for platform in query_vals["titlePlat"]:
+					query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = )"" + query_vals["titleName"] + "), "
+					query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + platform + ")"
+					query += ");"
 
-			# else:
+			 else:
 				# send unsuccessful back to webpage, return failed message
+				# Will create an error code to send back that will make an error message pop up
+					return {}
 
 		# elif query_vals["action"] == "addDev":
 			# query_vals = {
