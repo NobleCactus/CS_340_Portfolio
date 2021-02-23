@@ -93,8 +93,8 @@ def add():
 			query += "'" + query_vals["titleESRB"] + "'" + ", "
 			query += "'" + query_vals["titleGenre"] + "'" + ", "
 			query += "'" + query_vals["titleRelease"] + "'" + ", "
-			query += "'" + "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = " + query_vals["titleDev"] + "'" + "), "
-			query += "'" + "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + "'" + query_vals["titleFranchise"] +"'" + "));"
+			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = " + query_vals["titleDev"] + "), "
+			query += "'" + "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + "'" + query_vals["titleFranchise"] + "));"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 			print('Query Successful')
