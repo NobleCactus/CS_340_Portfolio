@@ -32,11 +32,10 @@ def root():
 		#				"esrb"
 		# }
 
-		# build query from request payload
+		# build query from request payload values
 		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
-
 
 		if query_vals["titleSearch"] != "":
 			query += " WHERE t.titleName LIKE %" + query_vals["titleSearch"] + "%"
@@ -52,17 +51,15 @@ def root():
 			query += " WHERE d.developerName = " + query_vals["developer"]
 		if query_vals["esrb"] != "":
 			query += " WHERE t.titleESRB = " + query_vals["esrb"]
-
 		query += ";"
-
 
 		# query DB, get response
 		result = execute_query(db_connection, query).fetchall()
-		print("DB RETURNS: ", result)
+
 		# make query to TitlesPlatforms, get response
 
 		# return DB tables back to webpage
-		return {}
+		return jsonify(result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -115,7 +112,7 @@ def add():
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
-		return
+		return {}
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
@@ -169,7 +166,7 @@ def delete():
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
-		return
+		return {}
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
@@ -223,7 +220,7 @@ def update():
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
-		return
+		return {}
 
 # Listener
 
