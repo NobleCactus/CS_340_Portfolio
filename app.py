@@ -52,7 +52,7 @@ def add():
 		return render_template("add_element.j2")
 	else:
 		print("POST REQUESTED")
-		print(request.form)
+		print(request.get_json())
 		pass
 		# get request payload from POST request
 
