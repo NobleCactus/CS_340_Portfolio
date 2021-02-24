@@ -286,7 +286,7 @@ def build_query_searchTitle(query_vals):
 	no_where = 1
 
 	if query_vals["titleName"] != "":
-		query += " WHERE t.titleName LIKE '%" + query_vals["titleName"] + "%'"
+		query += " WHERE t.titleName LIKE `%" + query_vals["titleName"] + "%`"
 		no_where = 0
 	
 	if query_vals["titleFromDate"] != "":
@@ -295,7 +295,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleRelease >= '" + query_vals["titleFromDate"] + "'"
+		query += "t.titleRelease >= `" + query_vals["titleFromDate"] + "`"
 	
 	if query_vals["titleToDate"] != "":
 		if no_where:
@@ -303,7 +303,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleRelease <= '" + query_vals["titleToDate"] + "'"
+		query += "t.titleRelease <= `" + query_vals["titleToDate"] + "`"
 	
 	if query_vals["titleGenre"] != "":
 		if no_where:
@@ -311,7 +311,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleGenre = '" + query_vals["titleGenre"] + "'"
+		query += "t.titleGenre = `" + query_vals["titleGenre"] + "`"
 	
 	if query_vals["titleFranchiseID"] != "":
 		if no_where:
@@ -319,7 +319,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "f.franchiseID = '" + query_vals["titleFranchiseID"] + "'"
+		query += "f.franchiseID = `" + query_vals["titleFranchiseID"] + "`"
 	
 	if query_vals["titleDevID"] != "":
 		if no_where:
@@ -327,7 +327,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "d.developerID = '" + query_vals["titleDevID"] + "'"
+		query += "d.developerID = `" + query_vals["titleDevID"] + "`"
 	
 	if query_vals["titleESRB"] != "":
 		if no_where:
@@ -335,7 +335,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleESRB = '" + query_vals["titleESRB"] + "'"
+		query += "t.titleESRB = `" + query_vals["titleESRB"] + "`"
 
 	query += ";"
 	return query
