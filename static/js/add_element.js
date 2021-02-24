@@ -177,7 +177,6 @@ function bindButtons() {
 	});
 
 	document.getElementById("addPlatButton").addEventListener('click', function(event){
-			console.log("Test")
 		// verify not NULL parameters have values
 		var inProdCheck = Array.from(document.getElementsByClassName("addPlatInProd"));
 			console.log(inProdCheck)
