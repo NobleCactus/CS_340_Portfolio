@@ -26,29 +26,7 @@ def root():
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
-		print("QUERY BUILT FROM build_query_searchTitle FUNCTION: ", query)
-
-		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
-
-		if query_vals["titleName"] != "":
-			query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%"
-		if query_vals["titleFromDate"] != "":
-			query += " WHERE t.titleRelease >=" + query_vals["titleFromDate"]
-		if query_vals["titleToDate"] != "":
-			query += " WHERE t.titleRelease <=" + query_vals["titleToDate"]
-		if query_vals["titleGenre"] != "":
-			query += " WHERE t.titleGenre = " + query_vals["titleGenre"]
-		if query_vals["titleFranchise"] != "":
-			query += " WHERE f.franchiseName = " + query_vals["titleFranchise"]
-		if query_vals["titleDev"] != "":
-			query += " WHERE d.developerName = " + query_vals["titleDev"]
-		if query_vals["titleESRB"] != "":
-			query += " WHERE t.titleESRB = " + query_vals["titleESRB"]
-		query += ";"
-
-		print("QUERY BUILT FROM ROUTE HANDLER: ", query)
+		print("QUERY: ", query)
 
 		# query DB, get response
 		#result = execute_query(db_connection, query).fetchall()
