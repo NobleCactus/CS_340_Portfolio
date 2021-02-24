@@ -21,7 +21,7 @@ function bindButtons() {
 			if (req.status >= 200 && req.status < 400) {
 				// POST request successful, check response for query status
 				res = JSON.parse(req.responseText);
-				console.log();	// to show the elements of what comes back
+				console.log(res);	// to show the elements of what comes back
 
 				// if query successful,
 					// use DOM to clear current table
