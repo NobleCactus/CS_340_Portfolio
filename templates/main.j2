@@ -108,9 +108,8 @@
   				<th>Developer</th>
   				<th>ESRB Rating</th>
         
-        <div id="searchResultRows">
           {% for t in titles %}
-          <tr>
+          <tr class="searchResultRow">
             <td>{{ t[1] }}</td>
             <td>
               Platform List Query Results
@@ -121,7 +120,6 @@
             <td>{{ t[5] }}</td>
             <td>{{ t[6] }}</td>
           {% endfor %}
-        </div>
 
   		</table>
 

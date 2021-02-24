@@ -26,9 +26,9 @@ function bindButtons() {
 				// use DOM to clear current table
 				// use DOM to dynamically add query result table to webpage
 				// reset filter fields?
-				var searchResultTable = document.getElementById('titlesTable');
+				var searchResultRows = document.getElementsByClassName('searchResultRow');
 				// clear out current elements in the table
-				console.log(searchResultTable.childNodes);
+				console.log(searchResultRows);
 				/*
 				while (searchResultTable.firstChild) {
 					console.log("removing a child:");
