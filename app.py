@@ -19,10 +19,8 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 		return render_template("main.j2", rows=result)
 	else:
-		print("IN CATALOG POST ROUTE")
 		# get request payload from POST request
 		query_vals = request.get_json()
-		print("RECEIVED QUERY VALUES: ", query_vals)
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
@@ -231,22 +229,52 @@ def build_query_searchTitle(query_vals):
 		query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%"
 
 	if query_vals["titleFromDate"] != "":
-		query += " AND t.titleRelease >=" + query_vals["titleFromDate"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += "t.titleRelease >= '" + query_vals["titleFromDate"] + "'"
 
 	if query_vals["titleToDate"] != "":
-		query += " AND t.titleRelease <=" + query_vals["titleToDate"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += " AND t.titleRelease <= '" + query_vals["titleToDate"] + "'"
 
 	if query_vals["titleGenre"] != "":
-		query += " AND t.titleGenre = " + query_vals["titleGenre"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += " AND t.titleGenre = '" + query_vals["titleGenre"] + "'"
 
 	if query_vals["titleFranchise"] != "":
-		query += " AND f.franchiseName = " + query_vals["titleFranchise"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += " AND f.franchiseName = '" + query_vals["titleFranchise"] + "'"
 
 	if query_vals["titleDev"] != "":
-		query += " AND d.developerName = " + query_vals["titleDev"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += " AND d.developerName = '" + query_vals["titleDev"] + "'"
 
 	if query_vals["titleESRB"] != "":
-		query += " AND t.titleESRB = " + query_vals["titleESRB"]
+		if "WHERE" in query:
+			query += " WHERE "
+		else:
+			query += "AND "
+
+		query += " AND t.titleESRB = '" + query_vals["titleESRB"] + "'"
 
 	query += ";"
 	return query
