@@ -33,23 +33,23 @@ def root():
 		print("RECEIVED REQUEST VALUES:", query_vals)
 
 		# build query from request payload values
-		query = build_query_searchTitle(query_vals)
+		query_params = build_query_searchTitle(query_vals)
 
-		print("BUILT QUERY:", query)
+		print("QUERY + PARAMS:", query_params)
 
 		# query DB, get response
 		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITLE NAME INPUT OR DATE_FORMAT
 		# TypeError: not enough arguments for format string
-		result = execute_query(db_connection, query).fetchall()
+		#result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# make query to TitlesPlatforms, get response
-		query_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
+		#query_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
 
 
 		# package with result above
 
 		# return DB tables back to webpage
-		return jsonify(result)
+		return {}#jsonify(result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -235,8 +235,10 @@ def build_query_searchTitle(query_vals):
 	query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 	query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 	no_where = 1
+	params = ()
 	if query_vals["titleName"] != "":
-		query += " WHERE t.titleName LIKE '%" + query_vals["titleName"] + "%'"
+		query += " WHERE t.titleName LIKE %s"
+		params += ("%" + query_vals["titleName"] + "%",)
 		no_where = 0
 	if query_vals["titleFromDate"] != "":
 		if no_where:
@@ -244,45 +246,51 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleRelease >= '" + query_vals["titleFromDate"] + "'"
+		query += "t.titleRelease >= %s"
+		params += (query_vals["titleFromDate"],)
 	if query_vals["titleToDate"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleRelease <= '" + query_vals["titleToDate"] + "'"
+		query += "t.titleRelease <= %s"
+		params += (query_vals["titleToDate"],)
 	if query_vals["titleGenre"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleGenre = '" + query_vals["titleGenre"] + "'"
+		query += "t.titleGenre = %s"
+		params += (query_vals["titleGenre"],)
 	if query_vals["titleFranchiseID"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "f.franchiseID = '" + query_vals["titleFranchiseID"] + "'"
+		query += "f.franchiseID = %s"
+		params += (query_vals["titleFranchiseID"],)
 	if query_vals["titleDevID"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "d.developerID = '" + query_vals["titleDevID"] + "'"
+		query += "d.developerID = %s"
+		params += (query_vals["titleDevID"],)
 	if query_vals["titleESRB"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "t.titleESRB = '" + query_vals["titleESRB"] + "'"
+		query += "t.titleESRB = %s"
+		params += (query_vals["titleESRB"],)
 	query += ";"
 
-	return query
+	return (query, params)
 
 def build_query_searchTitlesPlatforms(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
@@ -379,4 +387,3 @@ def build_query_searchFranchise(query_vals):
 	query += ";"
 
 	return query
-	
