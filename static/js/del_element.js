@@ -54,6 +54,9 @@ function bindButtons() {
             "titleDevID": document.getElementById('titleDevID').value,
             "titleESRB": document.getElementById('titleESRB').value};
 
+    console.log("Search Title Payload:");
+    console.log(payload);
+
     req.open('POST', '/', true);
     req.setRequestHeader('Content-Type', 'application/json');
 
