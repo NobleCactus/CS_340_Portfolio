@@ -269,7 +269,7 @@ def build_query_searchTitle(query_vals):
 			query += " AND "
 		query += "t.titleGenre = '" + query_vals["titleGenre"] + "'"
 	
-	if query_vals["titleFranchise"] != "":
+	if query_vals["titleFranchiseID"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
@@ -277,7 +277,7 @@ def build_query_searchTitle(query_vals):
 			query += " AND "
 		query += "f.franchiseID = '" + query_vals["titleFranchiseID"] + "'"
 	
-	if query_vals["titleDev"] != "":
+	if query_vals["titleDevID"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
