@@ -44,10 +44,12 @@ def root():
 		# query DB, get response
 		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITLE NAME INPUT OR DATE_FORMAT
 		# TypeError: not enough arguments for format string
-
 		result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
+		query_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
+
+
 		# package with result above
 
 		# return DB tables back to webpage
@@ -61,9 +63,7 @@ def add():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-		# access query_vals values like a dictionary
-		print("query_vals['action']: ", query_vals["action"])
-		
+
 		# build query from request, depending on action
 		# include if statements to check for empty attributes ("") for those that can be null. If empty, don't add WHERE to query
 
@@ -85,21 +85,18 @@ def add():
 			query += "'" + query_vals["titleESRB"] + "'" + ", "
 			query += "'" + query_vals["titleGenre"] + "'" + ", "
 			query += "'" + query_vals["titleRelease"] + "'" + ", "
-			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = " +"'"+ query_vals["titleDev"] +"'" + "), "
-			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = " + "'" + query_vals["titleFranchise"] + "'" + "));"
+			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = '" + query_vals["titleDev"] + "'), "
+			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = '" + query_vals["titleFranchise"] + "'));"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
 			# if query is successful: build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
 
-			# Need to make updates to platform names coming from front end, they are not all matching platforms in the DB
-			# (Ex: 'PS5' platform throws a NULL error, because the name in the DB is 'PlayStation 5')
-
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
 			for platform in query_vals["titlePlat"]:
-				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = " + "'" + query_vals["titleName"] + "'" + "), "
-				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = " + "'" + platform + "'" + ")"
-				query += ");"
+				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = '" + query_vals["titleName"] + "'), "
+				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = '" + platform + "')"
+			query += ");"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
@@ -116,7 +113,7 @@ def add():
 			# }
 
 			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
-			query += "'" + query_vals["devName"] + "'" + "," + "'" + query_vals["devCountry"] + "'" + "," + "'" + query_vals ["devDate"] + "'" + ");"
+			query += "'" + query_vals["devName"] + "', '" + query_vals["devCountry"] + "', '" + query_vals ["devDate"] + "');"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
@@ -129,9 +126,10 @@ def add():
 			# }
 
 			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES ("
-			query += "'" + query_vals["platName"] + "'" + "," + "'" + query_vals["platDate"] + "'" + "," + "'" + query_vals["platDev"] + "'" + "," + str(query_vals["platInProd"]) + ");"
+			query += "'" + query_vals["platName"] + "', '" + query_vals["platDate"] + "', '" + query_vals["platDev"] + "', " + str(query_vals["platInProd"]) + ");"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
+
 		# elif query_vals["action"] == "addFranchise":
 			# query_vals = {
 			#	"franchiseName"
@@ -141,10 +139,7 @@ def add():
 			# query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
 			# query += query_vals["franchiseName"] + query_vals["franchiseDev"] + ");"
 
-		# result = execute_query(db_connection, query).fetchall()
-
-		# return result(?)
-		return {}
+		return jsonify(result)
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
