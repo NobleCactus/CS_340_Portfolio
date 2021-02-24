@@ -42,7 +42,7 @@ def root():
 		print("BUILT QUERY:", query)
 
 		# query DB, get response
-		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITEL NAME INPUT
+		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITLE NAME INPUT OR DATE_FORMAT
 		# TypeError: not enough arguments for format string
 
 		result = execute_query(db_connection, query).fetchall()
