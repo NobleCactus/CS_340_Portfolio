@@ -257,7 +257,7 @@ def update():
 # Listener
 
 if __name__ == "__main__":
-	port = int(os.environ.get('PORT', 5678))
+	port = int(os.environ.get('PORT', 4567))
 	#                                 ^^^^
     #              You can replace this number with any valid port
 	app.run(port=port, debug=True)
