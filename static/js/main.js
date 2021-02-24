@@ -25,8 +25,8 @@ function bindButtons() {
 				// clear out current elements in the table
 				var prevTableRows = document.getElementsByClassName('searchResultRow');
 				num_rows = prevTableRows.length
-				for (var i = 0; i < num_rows; i++) {
-					prevTableRows[i].remove();
+				while (prevTableRows[0]) {
+					prevTableRows[0].remove();
 				}
 
 				// add each new row into the search result table
