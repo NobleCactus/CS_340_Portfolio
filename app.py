@@ -42,6 +42,9 @@ def root():
 		print("BUILT QUERY:", query)
 
 		# query DB, get response
+		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITEL NAME INPUT
+		# TypeError: not enough arguments for format string
+
 		result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response

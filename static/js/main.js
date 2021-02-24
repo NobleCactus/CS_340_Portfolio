@@ -23,12 +23,19 @@ function bindButtons() {
 				res = JSON.parse(req.responseText);
 				console.log(res);	// to show the elements of what comes back
 
-				// if query successful,
-					// use DOM to clear current table
-					// use DOM to dynamically add query result table to webpage
-					// reset filter fields?
+				// use DOM to clear current table
+				// use DOM to dynamically add query result table to webpage
+				// reset filter fields?
+				var searchResultTable = document.getElementById('searchResultRows');
+				// clear out current elements in the table
+				while (searchResultTable.firstChild) {
+					searchResultTable.removeChild(searchResultTable.firstChild)
+				}
 
-				// if query unsuccessful (shouldn't happen if filter parameters are verified first)
+				for (var i = 0; i < res.length; i++) {
+					console.log(res[i]);
+				}
+
 
 			} else {
 				console.log("Error in network request: " + req.statusText);
