@@ -43,7 +43,7 @@ function bindButtons() {
 					
 					name_val = document.createElement('td');
 					name_val.textContent = name;
-					new_row.appendChild(name_data);
+					new_row.appendChild(name_val);
 
 					// replace this with unordered list of platforms from TitlesPlatforms query
 					plat_val = document.createElement('td');
