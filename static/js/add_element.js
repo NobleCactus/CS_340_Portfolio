@@ -43,11 +43,11 @@ function bindButtons() {
 
 	document.getElementById("addTitleButton").addEventListener('click', function(event){
 		// get an array of checked platforms
-		var title_plat = new Array();
+		var title_plat_ids = new Array();
 		var i = 0;
-			Array.from(document.getElementsByClassName("addTitlePlat")).forEach(function(element) {
+			Array.from(document.getElementsByClassName("addTitlePlatID")).forEach(function(element) {
 				if (element.checked){
-					title_plat[i] = element.value
+					title_plat_ids[i] = element.value
 					i++;
 				}
 			});
@@ -56,7 +56,7 @@ function bindButtons() {
 		if (document.getElementById('addTitleName').value == "" ||
 			document.getElementById('addTitleDate').value == "" ||
 			document.getElementById('addTitleDev').value == "" ||
-			title_plat.length == 0) {
+			title_plat_ids.length == 0) {
 			if (document.getElementById('addTitleName').value == "") {
 				document.getElementById('noTitleName').style.display = "inline";
 			}
@@ -66,7 +66,7 @@ function bindButtons() {
 			if (document.getElementById('addTitleDev').value == "") {
 				document.getElementById('noTitleDev').style.display = "inline";
 			}
-			if (title_plat.length == 0) {
+			if (title_plat_ids.length == 0) {
 				document.getElementById('noTitlePlat').style.display = "inline";
 			}
 		} else {
@@ -74,7 +74,7 @@ function bindButtons() {
 
 			var payload = {"action": "addTitle",
 							"titleName": document.getElementById('addTitleName').value,
-							"titlePlat": title_plat,
+							"titlePlatIDs": title_plat_ids,
 							"titleRelease": document.getElementById('addTitleDate').value, 
 							"titleGenre": document.getElementById('addTitleGenre').value, 
 							"titleFranchise": document.getElementById('addTitleFranchise').value,

@@ -59,7 +59,19 @@ def root():
 def add():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		return render_template("add_element.j2")
+		# get list of platforms
+		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat = execute_query(db_connection, plat_query).fetchall()
+
+		# get list of franchises
+		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		franchise = execute_query(db_connection, franchise_query).fetchall()
+
+		# get list of developers
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		dev = execute_query(db_connection, dev_query).fetchall()
+
+		return render_template("add_element.j2", platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
@@ -72,7 +84,7 @@ def add():
 		if query_vals["action"] == "addTitle":
 			# query_vals = {
 			#	"titleName"
-			#	"titlePlat"
+			#	"titlePlatIDs"
 			#	"titleRelease"
 			#	"titleGenre"
 			#	"titleFranchise"
@@ -90,12 +102,13 @@ def add():
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
-			# if query is successful: build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
+			# if query is successful (so now there is a titleID)
+			# build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
 
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
-			for platform in query_vals["titlePlat"]:
+			for platformID in query_vals["titlePlatIDs"]:
 				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = '" + query_vals["titleName"] + "'), "
-				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = '" + platform + "')"
+				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = '" + platformID + "')"
 			query += ");"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)

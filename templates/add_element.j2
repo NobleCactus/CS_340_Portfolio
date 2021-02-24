@@ -46,47 +46,54 @@
         <tr>
           <td><input type="text" id="addTitleName"></td>
           <td>
-            <input type="checkbox" class="addTitlePlat" value="PlayStation">PlayStation<br/>
-            <input type="checkbox" class="addTitlePlat" value="PlayStation 2">PlayStation 2<br/>
-            <input type="checkbox" class="addTitlePlat" value="PlayStation 3">PlayStation 3<br/>
-            <input type="checkbox" class="addTitlePlat" value="PlayStation 4">PlayStation 4<br/>
-            <input type="checkbox" class="addTitlePlat" value="PlayStation 5">PlayStation 5<br/>
-            <input type="checkbox" class="addTitlePlat" value="Xbox">Xbox<br/>
-            <input type="checkbox" class="addTitlePlat" value="Xbox 360">Xbox 360<br/>
-            <input type="checkbox" class="addTitlePlat" value="Xbox One">Xbox One<br/>
-            <input type="checkbox" class="addTitlePlat" value="Xbox Series S/X">Xbox Series S/X<br/>
-            <input type="checkbox" class="addTitlePlat" value="Nintendo 64">Nintendo 64<br/>
-            <input type="checkbox" class="addTitlePlat" value="GameCube">GameCube<br/>
-            <input type="checkbox" class="addTitlePlat" value="Wii">Wii<br/>
-            <input type="checkbox" class="addTitlePlat" value="Wii U">Wii U<br/>
-            <input type="checkbox" class="addTitlePlat" value="Switch">Switch<br/>
-            <input type="checkbox" class="addTitlePlat" value="Windows">Windows<br/>
+            {% for plat in platforms %}
+            <input type="checkbox" class="addTitlePlatID" value={{plat[0]}}>{{plat[1]}}<br/>
+            {% endfor %}
           </td>
           <td><input type="date" id="addTitleDate"></td>
           <td>
             <select id="addTitleGenre">
               <option></option>
-              <option value="fps">First-Person Shooter</option>\
-              <option value="moba">Multiplayer Online Battle Arena</option>
+              <option value="Action">Action</option>
+              <option value="Action-Adventure">Action-Adventure</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Battle Royale">Battle Royale</option>
+              <option value="Fighting">Fighting</option>
+              <option value="First-Person Shooter">First-Person Shooter</option>
+              <option value="Massively Multiplayer Online Games">Massively Multiplayer Online Games</option>
+              <option value="Multiplayer Online Battle Arena">Multiplayer Online Battle Arena</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Racing">Racing</option>
+              <option value="Real-Time Strategy">Real-Time Strategy</option>
+              <option value="Role-Playing Games">Role-Playing Games</option>
+              <option value="Sandbox/Open World">Sandbox/Open World</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Sports">Sports</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Survival">Survival</option>
+              <option value="Third-Person Shooter">Third-Person Shooter</option>
+              <option value="Other">Other</option>
             </select>
           </td>
           <td>
             <select id="addTitleFranchise">
-              <option value=""></option>
-              <option value="Call of Duty">Call of Duty</option>
-              <option value="Halo">Halo</option>
+              <option></option>
+              {% for fran in franchises %}
+              <option value={{fran[0]}}>{{fran[1]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
             <select id="addTitleDev">
-              <option value=""></option>
-              <option value="Activision">Activision</option>
-              <option value="343industries">343 Industries</option>
+              <option></option>
+              {% for dev in devs %}
+              <option value={{dev[0]}}>{{dev[1]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
             <select id="titleESRB">
-              <option value=""></option>
+              <option></option>
               <option value="E">E - Everyone</option>
               <option value="T">T - Teen</option>
               <option value="M">M - Mature</option>
@@ -110,7 +117,15 @@
           <td><input type="text" id="addDevName"></td>
           <td>
             <select id="addDevCountry">
-              <option value=""></option>
+              <option></option>
+              <option value="Canada">Canada</option>
+              <option value="France">France</option>
+              <option value="Japan">Japan</option>
+              <option value="Poland">Poland</option>
+              <option value="Russia">Russia</option>
+              <option value="South Korea">South Korea</option>
+              <option value="Sweden">Sweden</option>
+              <option value="UK">UK</option>
               <option value="USA">USA</option>
             </select>
           </td>
@@ -133,7 +148,10 @@
           <td>
             <select id="addPlatDev">
               <option></option>
+              <option value="Atari">Atari</option>
               <option value="Microsoft">Microsoft</option>
+              <option value="Nintendo">Nintendo</option>
+              <option value="Sega">Sega</option>
               <option value="Sony">Sony</option>
             </select>
           </td>
@@ -156,8 +174,9 @@
           <td>
             <select id="addFranchiseDev">
               <option></option>
-              <option value="Activision">Activision</option>
-              <option value="343 Industries">343 Industries</option>
+              {% for dev in devs %}
+              <option value={{dev[0]}}>{{dev[1]}}</option>
+              {% endfor %}
             </select>
           </td>
       </table>
