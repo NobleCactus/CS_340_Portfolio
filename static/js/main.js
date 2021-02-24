@@ -23,9 +23,10 @@ function bindButtons() {
 				res = JSON.parse(req.responseText);
 
 				var prevTableRows = document.getElementsByClassName('searchResultRow');
+
 				// clear out current elements in the table
-				for (var i = 0; i < prevTableRows.length; i++) {
-					prevTableRows[i].remove();
+				while (prevTableRows.firstChild) {
+					prevTableRows.firstChild.remove();
 				}
 
 				// add each new row into the search result table
@@ -52,7 +53,7 @@ function bindButtons() {
 
 					release_val = document.createElement('td');
 					release_val.textContent = release;
-					new_row.appendChild(plat_val);
+					new_row.appendChild(release_val);
 
 					genre_val = document.createElement('td');
 					genre_val.textContent = genre;
