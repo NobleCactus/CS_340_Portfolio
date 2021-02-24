@@ -26,19 +26,56 @@ function bindButtons() {
 				// use DOM to clear current table
 				// use DOM to dynamically add query result table to webpage
 				// reset filter fields?
-				var searchResultRows = document.getElementsByClassName('searchResultRow');
+				var prevTableRows = document.getElementsByClassName('searchResultRow');
 				// clear out current elements in the table
 				console.log(searchResultRows.length);
-				searchResultRows[0].remove();
-				for (var i = 0; i < searchResultRows.length; i++) {
-					console.log(searchResultRows[i]);
+				for (var i = 0; i < prevTableRows.length; i++) {
+					prevTableRows[i].remove();
 				}
 
-				console.log("Response:")
+				searchTable = document.getElementById('titlesTable');
 				for (var i = 0; i < res.length; i++) {
-					console.log(res[i]);
-				}
+					name = res[i][1];
+					release = res[i][2];
+					genre = res[i][3];
+					franchise = res[i][4];
+					dev = res[i][5];
+					esrb = res[i][6];
 
+					new_row = document.createElement('tr');
+					new_row.setAttribute('class', 'searchResultRow');
+					
+					name_val = document.createElement('td');
+					name_val.textContent = name;
+					new_row.appendChild(name_data);
+
+					// replace this with unordered list of platforms from TitlesPlatforms query
+					plat_val = document.createElement('td');
+					plat_val.textContent = "Platform List Query Results";
+					new_row.appendChild(plat_val);
+
+					release_val = document.createElement('td');
+					release_val.textContent = release;
+					new_row.appendChild(plat_val);
+
+					genre_val = document.createElement('td');
+					genre_val.textContent = genre;
+					new_row.appendChild(genre_val);
+
+					franchise_val = document.createElement('td');
+					franchise_val.textContent = franchise;
+					new_row.appendChild(franchise_val);
+
+					dev_val = document.createElement('td');
+					dev_val.textContent = dev;
+					new_row.appendChild(dev_val);
+
+					esrb_val = document.createElement('td');
+					esrb_val.textContent = esrb;
+					new_row.appendChild(esrb_val);
+
+					searchTable.appendChild(new_row);
+				}
 
 			} else {
 				console.log("Error in network request: " + req.statusText);
