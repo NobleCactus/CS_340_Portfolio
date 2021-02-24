@@ -29,6 +29,7 @@ function bindButtons() {
 				var searchResultRows = document.getElementsByClassName('searchResultRow');
 				// clear out current elements in the table
 				console.log(searchResultRows.length);
+				searchResultRows[0].remove();
 				for (var i = 0; i < searchResultRows.length; i++) {
 					console.log(searchResultRows[i]);
 				}
