@@ -225,56 +225,61 @@ def build_query_searchTitle(query_vals):
 	query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 	query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 	
+	no_where = 1
+
 	if query_vals["titleName"] != "":
 		query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%"
+		no_where = 0
+
+
 
 	if query_vals["titleFromDate"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
 		query += "t.titleRelease >= '" + query_vals["titleFromDate"] + "'"
 
 	if query_vals["titleToDate"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
-		query += " AND t.titleRelease <= '" + query_vals["titleToDate"] + "'"
+		query += "t.titleRelease <= '" + query_vals["titleToDate"] + "'"
 
 	if query_vals["titleGenre"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
-		query += " AND t.titleGenre = '" + query_vals["titleGenre"] + "'"
+		query += "t.titleGenre = '" + query_vals["titleGenre"] + "'"
 
 	if query_vals["titleFranchise"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
-		query += " AND f.franchiseName = '" + query_vals["titleFranchise"] + "'"
+		query += "f.franchiseName = '" + query_vals["titleFranchise"] + "'"
 
 	if query_vals["titleDev"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
-		query += " AND d.developerName = '" + query_vals["titleDev"] + "'"
+		query += "d.developerName = '" + query_vals["titleDev"] + "'"
 
 	if query_vals["titleESRB"] != "":
-		if "WHERE" in query:
+		if no_where:
 			query += " WHERE "
 		else:
-			query += "AND "
+			query += " AND "
 
-		query += " AND t.titleESRB = '" + query_vals["titleESRB"] + "'"
+		query += "t.titleESRB = '" + query_vals["titleESRB"] + "'"
 
 	query += ";"
 	return query
