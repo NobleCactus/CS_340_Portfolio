@@ -286,7 +286,8 @@ def build_query_searchTitle(query_vals):
 	no_where = 1
 
 	if query_vals["titleName"] != "":
-		query += " WHERE t.titleName LIKE '%" + query_vals["titleName"] + "%'"
+		#query += " WHERE t.titleName LIKE '%" + query_vals["titleName"] + "%'"
+		query += " WHERE t.titleName = '" + query_vals["titleName"] + "'"
 		no_where = 0
 	
 	if query_vals["titleFromDate"] != "":
