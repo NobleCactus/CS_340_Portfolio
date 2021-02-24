@@ -163,11 +163,11 @@ def delete():
 		dev = execute_query(db_connection, dev_query).fetchall()
 
 		# get list of the platform's developers
-		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
 
 		# get list of the franchise's developers
-		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
 		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
@@ -219,11 +219,11 @@ def update():
 		dev = execute_query(db_connection, dev_query).fetchall()
 
 		# get list of the platform's developers
-		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
 
 		# get list of the franchise's developers
-		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
 		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
