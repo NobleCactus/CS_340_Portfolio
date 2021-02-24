@@ -29,10 +29,12 @@ function bindButtons() {
 				var searchResultTable = document.getElementById('searchResultRows');
 				// clear out current elements in the table
 				while (searchResultTable.firstChild) {
-					searchResultTable.removeChild(searchResultTable.firstChild)
+					console.log("removing a child)")
+					searchResultTable.removeChild(searchResultTable.firstChild);
 				}
 
 				for (var i = 0; i < res.length; i++) {
+					console.log("adding a row:")
 					console.log(res[i]);
 				}
 
