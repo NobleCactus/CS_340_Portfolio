@@ -164,11 +164,13 @@ def delete():
 
 		# get list of the platform's developers
 		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+		platDev = execute_query(db_connection, platDev_query).fetchall()
 
 		# get list of the franchise's developers
-		platDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
-		return render_template("del_element.j2", platforms=plat_query, franchises=franchise_query, devs=dev_query, platDev=platDev_query, franchiseDev=platDev_query)
+		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
@@ -218,11 +220,13 @@ def update():
 
 		# get list of the platform's developers
 		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+		platDev = execute_query(db_connection, platDev_query).fetchall()
 
 		# get list of the franchise's developers
-		platDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
-		return render_template("update_element.j2", platforms=plat_query, franchises=franchise_query, devs=dev_query, platDev=platDev_query, franchiseDev=platDev_query)
+		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
