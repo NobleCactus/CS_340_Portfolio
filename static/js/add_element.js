@@ -179,6 +179,8 @@ function bindButtons() {
 	document.getElementById("addPlatButton").addEventListener('click', function(event){
 		// verify not NULL parameters have values
 		var inProdCheck = Array.from(document.getElementsByClassName("addPlatInProd"));
+			console.log(inProdCheck)
+			console.log(inProdCheck[0])
 			if (inProdCheck[0].checked) {
 				inProdCheck = "Yes";
 			} else if (inProdCheck[1].checked) {
