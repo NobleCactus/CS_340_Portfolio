@@ -68,7 +68,6 @@ def add():
 		if query_vals["action"] == "addTitle":
 			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
 			params = (query_vals["titleName"], query_vals["titleESRB"], query_vals["titleGenre"], query_vals["titleRelease"], query_vals["titleDev"], query_vals["titleFranchise"])
-
 			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
 			query += "%s, %s, %s, %s,"
 			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = %s), "
@@ -97,7 +96,6 @@ def add():
 
 		elif query_vals["action"] == "addDev":
 			# query_vals = { "devName", "devCountry", "devDate"}
-
 			params = (query_vals["devName"], query_vals["devCountry"], query_vals ["devDate"])
 			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES "
 			query += "(%s, %s, %s);"
@@ -106,7 +104,6 @@ def add():
 
 		elif query_vals["action"] == "addPlat":
 			# query_vals = {"platName", "platDate", "platDev", "platInProd"}
-
 			params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], str(query_vals["platInProd"]))
 			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES "
 			query += "(%s, %s, %s, %s);"
@@ -115,7 +112,6 @@ def add():
 
 		elif query_vals["action"] == "addFranchise":
 			# query_vals = {"franchiseName", "franchiseDev"}
-
 			params = (query_vals["franchiseName"], query_vals["franchiseDev"])
 			query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
 			query += "(%s, %s);"
