@@ -18,15 +18,11 @@ def root():
 		table_query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
 		table = execute_query(db_connection, table_query).fetchall()
 
-		# get list of platforms
+		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
-
-		# get list of franchises
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
-
-		# get list of developers
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
@@ -59,15 +55,11 @@ def root():
 def add():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# get list of platforms
+		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
-
-		# get list of franchises
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
-
-		# get list of developers
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
@@ -134,23 +126,15 @@ def add():
 def delete():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# get list of platforms
+		# dynamically populate drop down menu platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
-
-		# get list of franchises
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
-
-		# get list of developers
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
-
-		# get list of the platform's developers
 		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
-
-		# get list of the franchise's developers
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
@@ -190,23 +174,15 @@ def delete():
 def update():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# get list of platforms
+		# dynamically populate drop down menu platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
-
-		# get list of franchises
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
-
-		# get list of developers
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
-
-		# get list of the platform's developers
 		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
-
-		# get list of the franchise's developers
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
@@ -243,12 +219,12 @@ def update():
 		return {}
 
 # Listener
-
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 4567))
 	#                                 ^^^^
     #              You can replace this number with any valid port
 	app.run(port=port, debug=True)
+
 
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
@@ -403,3 +379,4 @@ def build_query_searchFranchise(query_vals):
 	query += ";"
 
 	return query
+	
