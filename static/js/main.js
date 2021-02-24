@@ -22,28 +22,21 @@ function bindButtons() {
 				// POST request successful, check response for query status
 				res = JSON.parse(req.responseText);
 
-				var prevTableRows = document.getElementsByClassName('searchResultRow');
-
 				// clear out current elements in the table
-				while (prevTableRows.firstChild) {
-					prevTableRows.firstChild.remove();
+				var prevTableRows = document.getElementsByClassName('searchResultRow');
+				num_rows = prevTableRows.length
+				for (var i = 0; i < num_rows; i++) {
+					prevTableRows[i].remove();
 				}
 
 				// add each new row into the search result table
 				searchTable = document.getElementById('titlesTable');
 				for (var i = 0; i < res.length; i++) {
-					name = res[i][1];
-					release = res[i][2];
-					genre = res[i][3];
-					franchise = res[i][4];
-					dev = res[i][5];
-					esrb = res[i][6];
-
 					new_row = document.createElement('tr');
 					new_row.setAttribute('class', 'searchResultRow');
 					
 					name_val = document.createElement('td');
-					name_val.textContent = name;
+					name_val.textContent = res[i][1];
 					new_row.appendChild(name_val);
 
 					// replace this with unordered list of platforms from TitlesPlatforms query
@@ -52,23 +45,23 @@ function bindButtons() {
 					new_row.appendChild(plat_val);
 
 					release_val = document.createElement('td');
-					release_val.textContent = release;
+					release_val.textContent = res[i][2];
 					new_row.appendChild(release_val);
 
 					genre_val = document.createElement('td');
-					genre_val.textContent = genre;
+					genre_val.textContent = res[i][3];
 					new_row.appendChild(genre_val);
 
 					franchise_val = document.createElement('td');
-					franchise_val.textContent = franchise;
+					franchise_val.textContent = res[i][4];
 					new_row.appendChild(franchise_val);
 
 					dev_val = document.createElement('td');
-					dev_val.textContent = dev;
+					dev_val.textContent = res[i][5];
 					new_row.appendChild(dev_val);
 
 					esrb_val = document.createElement('td');
-					esrb_val.textContent = esrb;
+					esrb_val.textContent = res[i][6];
 					new_row.appendChild(esrb_val);
 
 					searchTable.appendChild(new_row);
