@@ -19,8 +19,10 @@ def root():
 		result = execute_query(db_connection, query).fetchall()
 		return render_template("main.j2", rows=result)
 	else:
+		print("IN CATALOG POST ROUTE")
 		# get request payload from POST request
 		query_vals = request.get_json()
+		print("RECEIVED QUERY VALUES: ", query_vals)
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
@@ -49,13 +51,14 @@ def root():
 		print("QUERY BUILT FROM ROUTE HANDLER: ", query)
 
 		# query DB, get response
-		result = execute_query(db_connection, query).fetchall()
+		#result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
 		# package with result above
 
 		# return DB tables back to webpage
-		return jsonify(result)
+		#return jsonify(result)
+		return {"RESPONSE": "SUCCESSFUL POST"}
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
