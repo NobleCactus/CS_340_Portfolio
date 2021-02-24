@@ -98,7 +98,10 @@ def add():
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
-			# if query is successful: build query to INSERT into TitlesPlatforms
+			# if query is successful: build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
+
+			# Need to make updates to platform names coming from front end, they are not all matching platforms in the DB
+			# (Ex: 'PS5' platform throws a NULL error, because the name in the DB is 'PlayStation 5')
 
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
 			for platform in query_vals["titlePlat"]:
@@ -113,17 +116,19 @@ def add():
 				# Will create an error code to send back that will make an error message pop up
 					#return {}
 
-		# elif query_vals["action"] == "addDev":
+		elif query_vals["action"] == "addDev":
 			# query_vals = {
 			#	"devName"
 			#	"devCountry"
 			#	"devDate"
 			# }
 
-			# query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
-			# query += query_vals["devName"] + query_vals["devCountry"] + query_vals ["devDate"] + ");"
+			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
+			query += "'" + query_vals["devName"] + "'" + "'" + query_vals["devCountry"] + "'" + query_vals ["devDate"] + "'" + ");"
+			result = execute_query(db_connection, query).fetchall()
+			print(result)
 
-		# elif query_vals["action"] == "addPlat":
+		elif query_vals["action"] == "addPlat":
 			# query_vals = {
 			#	"platName"
 			#	"platDate"
