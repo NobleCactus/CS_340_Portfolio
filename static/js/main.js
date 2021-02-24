@@ -28,7 +28,7 @@ function bindButtons() {
 				// reset filter fields?
 				var searchResultTable = document.getElementById('titlesTable');
 				// clear out current elements in the table
-				console.log(searchResultTable);
+				console.log(searchResultTable.childNodes);
 				/*
 				while (searchResultTable.firstChild) {
 					console.log("removing a child:");
