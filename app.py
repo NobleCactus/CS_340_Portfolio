@@ -43,14 +43,12 @@ def root():
 
 		# query DB, get response
 		result = execute_query(db_connection, query).fetchall()
-		print("RESPONSE FROM DB:", result)
 
 		# make query to TitlesPlatforms, get response
 		# package with result above
 
 		# return DB tables back to webpage
-		#return jsonify(result)
-		return {}
+		return jsonify(result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
