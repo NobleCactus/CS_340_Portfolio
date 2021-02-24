@@ -135,15 +135,11 @@ def add():
 			#	"platDev"
 			#	"platInProd"
 			# }
-			print(query_vals)
-			#query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES ("
-		#	query += "'" + query_vals["platName"] + "'" + "," + "'" + query_vals["platDate"] + "'" + "," + "'" + query_vals[""] + "'" + "," + "'" + query_vals["platDev"] + "'" + "," + "'"
-		#	if query_vals["platInProd"] == "Yes":
-			#	query += "1" + ");"
-			#else:
-			#	query += "0" + ");"
-			#result = execute_query(db_connection, query).fetchall()
-			#print(result)
+
+			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES ("
+			query += "'" + query_vals["platName"] + "'" + "," + "'" + query_vals["platDate"] + "'" + "," + "'" + query_vals["platDev"] + "'" + "," + query_vals["platInProd"] + ");"
+			result = execute_query(db_connection, query).fetchall()
+			print(result)
 		# elif query_vals["action"] == "addFranchise":
 			# query_vals = {
 			#	"franchiseName"
