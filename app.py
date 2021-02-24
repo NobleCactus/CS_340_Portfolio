@@ -296,6 +296,9 @@ def build_query_searchTitle(query_vals):
 	query += ";"
 	return query
 
+def build_query_searchTitlesPlatforms(query_vals):
+	pass
+
 def build_query_searchDev(query_vals):
 	# query_vals = {
 	#	"devName"
