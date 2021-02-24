@@ -165,8 +165,8 @@ def delete():
 
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 		print(result)
-		# return result(?)
-		return {}
+		return jsonify(result)
+
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
