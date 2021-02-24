@@ -124,7 +124,7 @@ def add():
 			# }
 
 			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
-			query += "'" + query_vals["devName"] + "'" + "'" + query_vals["devCountry"] + "'" + query_vals ["devDate"] + "'" + ");"
+			query += "'" + query_vals["devName"] + "'" + "," + "'" + query_vals["devCountry"] + "," + "'" + query_vals ["devDate"] + "'" + ");"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
