@@ -28,12 +28,13 @@ def root():
 
 		# get list of developers
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
-		dev = execute_query(db_connection, franchise_query).fetchall()
+		dev = execute_query(db_connection, dev_query).fetchall()
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
+		print("RECEIVED REQUEST VALUES: ", query_vals)
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
@@ -41,13 +42,14 @@ def root():
 		print("BUILT QUERY: ", query)
 
 		# query DB, get response
-		result = execute_query(db_connection, query).fetchall()
+		#result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
 		# package with result above
 
 		# return DB tables back to webpage
-		return jsonify(result)
+		#return jsonify(result)
+		return {"POST RESULT": "SUCCESSFUL"}
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
