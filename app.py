@@ -139,31 +139,32 @@ def delete():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-
+		print(query_vals["action"])
 		# build query from request payload, depending on action
 		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
 
-		# if query_vals["action"] == "delete":
+		if query_vals["action"] == "delete":
+			pass
 			# build delete query
 
-		# else:
-			# if query_vals["action"] == "searchTitle":
-				# query_params = build_query_searchTitle(query_vals)
+		else:
+			if query_vals["action"] == "searchTitle":
+				query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
 
-			# elif query_vals["action"] == "searchDev":
-				# query_params = build_query_searchDev(query_vals)
+			elif query_vals["action"] == "searchDev":
+				query_params = build_query_searchDev(query_vals)
 
-			# elif query_vals["action"] == "searchPlat":
-				# query_params = build_query_searchPlat(query_vals)
+			elif query_vals["action"] == "searchPlat":
+				query_params = build_query_searchPlat(query_vals)
 
-			# elif query_vals["action"] == "searchFranchise":
-				# query_params = build_query_searchFranchise(query_vals)
+			elif query_vals["action"] == "searchFranchise":
+				query_params = build_query_searchFranchise(query_vals)
 
-		# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-
+		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		print(result)
 		# return result(?)
 		return {}
 
@@ -376,9 +377,9 @@ def build_query_searchPlat(query_vals):
 	return (query, params)
 
 def build_query_searchFranchise(query_vals):
-	# query_parameters = {"franchiseName", "franchiseDev"}
+	query_parameters = {"franchiseName", "franchiseDev"}
 	query = "SELECT * FROM `Franchises`"
-	no_where = 1;
+	no_where = 1
 	params = ()
 	if query_parameters["franchiseName"] != "":
 		query += " WHERE franchiseName LIKE %s"
