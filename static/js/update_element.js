@@ -170,7 +170,7 @@ function bindButtons() {
     req.send(JSON.stringify(payload));
   });
 
-  // delete these after connecting to DB and running queries successfully
+  // run this every time the search table is remade to bind newly made buttons
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       document.getElementById("updateSuccessful").style.display = "block";
@@ -179,6 +179,7 @@ function bindButtons() {
       }, 1500);
     })
   });
+  
   Array.from(document.getElementsByClassName("searchButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       document.getElementById("searchResults").style.display = "block"

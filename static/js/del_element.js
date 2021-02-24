@@ -54,9 +54,6 @@ function bindButtons() {
             "titleDevID": document.getElementById('searchTitleDevID').value,
             "titleESRB": document.getElementById('searchTitleESRB').value};
 
-    console.log("Search Title Payload:");
-    console.log(payload);
-
     req.open('POST', '/', true);
     req.setRequestHeader('Content-Type', 'application/json');
 
@@ -67,7 +64,7 @@ function bindButtons() {
         // if query successful,
           // use DOM to dynamically add query result table to webpage
           // special consideration for how to add a list of platforms
-          // reset filter fields?
+          // bind_delete_buttons();
 
         // if query unsuccessful (shouldn't happen if filter parameters are verified first)
 
@@ -96,7 +93,7 @@ function bindButtons() {
 
         // if query successful,
           // use DOM to dynamically add query result table to webpage
-          // reset filter fields?
+          // bind_delete_buttons();
 
         // if query unsuccessful (shouldn't happen if filter parameters are verified first)
 
@@ -130,7 +127,7 @@ function bindButtons() {
 
         // if query successful,
           // use DOM to dynamically add query result table to webpage
-          // reset filter fields?
+          // bind_delete_buttons();
 
         // if query unsuccessful (shouldn't happen if filter parameters are verified first)
 
@@ -152,7 +149,7 @@ function bindButtons() {
 
         // if query successful,
           // use DOM to dynamically add query result table to webpage
-          // reset filter fields?
+          // bind_delete_buttons();
 
         // if query unsuccessful (shouldn't happen if filter parameters are verified first)
 
@@ -163,21 +160,30 @@ function bindButtons() {
     req.send(JSON.stringify(payload));
   });
 
-  Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
-    element.addEventListener("click", function(event) {
-      console.log(event.target.value);
-    	if (confirm('Are you sure you want to delete this from the database?')) {
-  			document.getElementById("delSuccessful").style.display = "block";
-      		setTimeout(function() {
-        	document.getElementById("delSuccessful").style.display = "none"
-      		}, 1500);
-		  } 
-    })
-  });
+  
+  bind_delete_buttons();
 
+  // 
   Array.from(document.getElementsByClassName("searchButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       document.getElementById("searchResults").style.display = "block"
+    })
+  });
+}
+
+// run this every time the search table is remade to bind newly made buttons
+function bind_delete_buttons() {
+  Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      if (confirm('Are you sure you want to delete this from the database?')) {
+        // POST with button's value, which is the row's ID (event.target.value)
+
+        // if successful:
+        document.getElementById("delSuccessful").style.display = "block";
+          setTimeout(function() {
+          document.getElementById("delSuccessful").style.display = "none"
+          }, 1500);
+      } 
     })
   });
 }
