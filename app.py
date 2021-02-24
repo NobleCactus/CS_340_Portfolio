@@ -40,7 +40,7 @@ def root():
 		# query DB, get response
 		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITLE NAME INPUT OR DATE_FORMAT
 		# TypeError: not enough arguments for format string
-		#result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# make query to TitlesPlatforms, get response
 		#query_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
@@ -49,7 +49,7 @@ def root():
 		# package with result above
 
 		# return DB tables back to webpage
-		return {}#jsonify(result)
+		return jsonify(result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
