@@ -308,7 +308,6 @@ def update():
 
 		# return result(?)
 		return {}
-def add_to_titlesPlatforms():
 
 
 # Listener
