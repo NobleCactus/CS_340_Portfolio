@@ -36,15 +36,11 @@ def root():
 		query_params = build_query_searchTitle(query_vals)
 
 		print("QUERY + PARAMS:", query_params)
-
-		# query DB, get response
-		# QUERY DOESNT WORK WITH % AROUND THE SEARCH TITLE NAME INPUT OR DATE_FORMAT
-		# TypeError: not enough arguments for format string
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# make query to TitlesPlatforms, get response
-		#query_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
-
+		# query_params_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
+		# result = execute_query(db_connection, query_params_titlesPlats[0], query_params_titlesPlats[1]).fetchall()
 
 		# package with result above
 
@@ -71,26 +67,27 @@ def add():
 		# build query from request, depending on action
 		if query_vals["action"] == "addTitle":
 			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
+			params = (query_vals["titleName"], query_vals["titleESRB"], query_vals["titleGenre"], query_vals["titleRelease"], query_vals["titleDev"], query_vals["titleFranchise"])
 
 			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
-			query += "'" + query_vals["titleName"] + "'" + ", "
-			query += "'" + query_vals["titleESRB"] + "'" + ", "
-			query += "'" + query_vals["titleGenre"] + "'" + ", "
-			query += "'" + query_vals["titleRelease"] + "'" + ", "
-			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = '" + query_vals["titleDev"] + "'), "
-			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = '" + query_vals["titleFranchise"] + "'));"
-			result = execute_query(db_connection, query).fetchall()
+			query += "%s, %s, %s, %s,"
+			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = %s), "
+			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = %s));"
+			result = execute_query(db_connection, query, params).fetchall()
 			print(result)
 
 			# if query is successful (so now there is a titleID)
 			# build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
-
+			params = ()
+			for platformID in query_vals["titlePlatIDs"]:
+				params += (query_vals["titleName"],)
+				params += (platformID,)
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
 			for platformID in query_vals["titlePlatIDs"]:
-				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = '" + query_vals["titleName"] + "'), "
-				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = '" + platformID + "')"
+				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), "
+				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = %s)"
 			query += ");"
-			result = execute_query(db_connection, query).fetchall()
+			result = execute_query(db_connection, query, params).fetchall()
 			print(result)
 
 			#else:
@@ -101,24 +98,28 @@ def add():
 		elif query_vals["action"] == "addDev":
 			# query_vals = { "devName", "devCountry", "devDate"}
 
-			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES ("
-			query += "'" + query_vals["devName"] + "', '" + query_vals["devCountry"] + "', '" + query_vals ["devDate"] + "');"
-			result = execute_query(db_connection, query).fetchall()
+			params = (query_vals["devName"], query_vals["devCountry"], query_vals ["devDate"])
+			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES "
+			query += "(%s, %s, %s);"
+			result = execute_query(db_connection, query, params).fetchall()
 			print(result)
 
 		elif query_vals["action"] == "addPlat":
 			# query_vals = {"platName", "platDate", "platDev", "platInProd"}
 
-			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES ("
-			query += "'" + query_vals["platName"] + "', '" + query_vals["platDate"] + "', '" + query_vals["platDev"] + "', " + str(query_vals["platInProd"]) + ");"
+			params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], str(query_vals["platInProd"]))
+			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES "
+			query += "(%s, %s, %s, %s);"
 			result = execute_query(db_connection, query).fetchall()
 			print(result)
 
-		# elif query_vals["action"] == "addFranchise":
+		elif query_vals["action"] == "addFranchise":
 			# query_vals = {"franchiseName", "franchiseDev"}
 
-			# query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
-			# query += query_vals["franchiseName"] + query_vals["franchiseDev"] + ");"
+			params = (query_vals["franchiseName"], query_vals["franchiseDev"])
+			query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
+			query += "(%s, %s);"
+			result = execute_query(db_connection, query).fetchall()
 
 		return jsonify(result)
 
@@ -151,21 +152,21 @@ def delete():
 
 		# else:
 			# if query_vals["action"] == "searchTitle":
-				# query = build_query_searchTitle(query_vals)
+				# query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
 
 			# elif query_vals["action"] == "searchDev":
-				# query = build_query_searchDev(query_vals)
+				# query_params = build_query_searchDev(query_vals)
 
 			# elif query_vals["action"] == "searchPlat":
-				# query = build_query_searchPlat(query_vals)
+				# query_params = build_query_searchPlat(query_vals)
 
 			# elif query_vals["action"] == "searchFranchise":
-				# query = build_query_searchFranchise(query_vals)
+				# query_params = build_query_searchFranchise(query_vals)
 
-		# result = execute_query(db_connection, query).fetchall()
+		# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# return result(?)
 		return {}
@@ -199,21 +200,21 @@ def update():
 
 		# else:
 			# if query_vals["action"] == "searchTitle":
-				# query = build_query_searchTitle(query_vals)
+				# query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
 
 			# elif query_vals["action"] == "searchDev":
-				# query = build_query_searchDev(query_vals)
+				# query_params = build_query_searchDev(query_vals)
 
 			# elif query_vals["action"] == "searchPlat":
-				# query = build_query_searchPlat(query_vals)
+				# query_params = build_query_searchPlat(query_vals)
 
 			# elif query_vals["action"] == "searchFranchise":
-				# query = build_query_searchFranchise(query_vals)
+				# query_params = build_query_searchFranchise(query_vals)
 
-		# result = execute_query(db_connection, query).fetchall()
+		# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# return result(?)
 		return {}
@@ -300,90 +301,104 @@ def build_query_searchDev(query_vals):
 	# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
 
 	query = "SELECT * FROM `DevelopmentStudios`"
-	no_where = 1;
+	no_where = 1
+	params = ()
 	if query_vals["devName"] != "":
-		query += " WHERE developerName LIKE %'" + query_vals["devName"] + "%'"
-
+		query += " WHERE developerName LIKE %s"
+		params += ("%" + query_vals["devName"] + "%",)
+		no_where = 0
 	if query_vals["devCountry"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "developerCountry = '" + query_vals["devCountry"] + "'"
-
+		query += "developerCountry = %s"
+		params += (query_vals["devCountry"],)
 	if query_vals["devFromDate"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "developerFounded >= '" + query_vals["devFromDate"] + "'"
-
+		query += "developerFounded >= %s"
+		params += (query_vals["devFromDate"],)
 	if query_vals["devToDate"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "developerFounded <= '" + query_vals["devToDate"] + "'"
+		query += "developerFounded <= %s"
+		params += (query_vals["devToDate"],)
 	query += ";"
 
-	return query
+	return (query, params)
 
 def build_query_searchPlat(query_vals):
 	# query_vals = {"platName", "platFromDate", "platToDate", "platDev", "platInProd"}
 
 	query = "SELECT * FROM `Platforms`"
-	no_where = 1;
+	no_where = 1
+	params = ()
 	if query_vals["platName"] != "":
-		query += " WHERE platformName LIKE %'" + query_vals["platName"] + "%'"
+		query += " WHERE platformName LIKE %s"
+		params += ("%" + query_vals["platName"] + "%",)
+		no_where = 0
 	if query_vals["platFromDate"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "platformRelease >= '" + query_vals["platFromDate"] + "'"
+		query += "platformRelease >= %s"
+		params += (query_vals["platFromDate"],)
 	if query_vals["platToDate"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "platformRelease >= '" + query_vals["platToDate"] + "'"
+		query += "platformRelease >= %s"
+		params += (query_vals["platToDate"],)
 	if query_vals["platDev"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += " AND platformDeveloper = '" + query_vals["platDev"] + "'"
+		query += " AND platformDeveloper = %s"
+		params += (query_vals["platDev"],)
 	if query_vals["platInProd"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += "platformInProduction = '" + query_vals["platInProd"] + "'"
+		query += "platformInProduction = %s"
+		params += (query_vals["platInProd"],)
 	query += ";"
 
-	return query
+	return (query, params)
 
 def build_query_searchFranchise(query_vals):
 	# query_parameters = {"franchiseName", "franchiseDev"}
 
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1;
+	params = ()
 	if query_parameters["franchiseName"] != "":
-		query += " WHERE franchiseName LIKE %'" + query_vals["franchiseName"] + "%"
+		query += " WHERE franchiseName LIKE %s"
+		params += ("%" + query_vals["franchiseName"] + "%",)
+		no_where = 0
 	if query_parameters["franchiseDev"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
 		else:
 			query += " AND "
-		query += " AND franchiseDeveloper = '" + query_vals["franchiseDev"] + "'"
+		query += " AND franchiseDeveloper = %s"
+		params += (query_vals["franchiseDev"],)
 	query += ";"
 
-	return query
+	return (query, params)
