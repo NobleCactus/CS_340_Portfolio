@@ -101,11 +101,6 @@ h2 {
 	border: 1px solid black;
 }
 
-#updateSuccessful {
-	text-align: right;
-	display: none;
-}
-
 #searchResults {
 	display: none;
 }
@@ -137,4 +132,9 @@ h2 {
 	text-align: left;
 	list-style: none;
 	padding: 0;
+}
+
+.sucessFailMessage {
+	text-align: right;
+	display: none;
 }

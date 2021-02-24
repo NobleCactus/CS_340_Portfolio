@@ -46,12 +46,12 @@ function bindButtons() {
 
     var payload = {"action": "searchTitle",
             "titleName": document.getElementById('searchTitleName').value,
-            "titlePlat": document.getElementById('searchTitlePlat').value, 
+            "titlePlatID": document.getElementById('searchTitlePlatID').value, 
             "titleFromDate": document.getElementById('searchTitleFromDate').value, 
             "titleToDate": document.getElementById('searchTitleToDate').value, 
             "titleGenre": document.getElementById('searchTitleGenre').value, 
-            "titleFranchise": document.getElementById('searchTitleFranchise').value,
-            "titleDev": document.getElementById('searchTitleDev').value,
+            "titleFranchiseID": document.getElementById('searchTitleFranchiseID').value,
+            "titleDevID": document.getElementById('searchTitleDevID').value,
             "titleESRB": document.getElementById('searchTitleESRB').value};
 
     req.open('POST', '/', true);

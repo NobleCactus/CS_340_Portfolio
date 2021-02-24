@@ -150,7 +150,25 @@ def add():
 def delete():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		return render_template("del_element.j2")
+		# get list of platforms
+		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat = execute_query(db_connection, plat_query).fetchall()
+
+		# get list of franchises
+		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		franchise = execute_query(db_connection, franchise_query).fetchall()
+
+		# get list of developers
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		dev = execute_query(db_connection, dev_query).fetchall()
+
+		# get list of the platform's developers
+		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+
+		# get list of the franchise's developers
+		platDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+
+		return render_template("del_element.j2", platforms=plat_query, franchises=franchise_query, devs=dev_query, platDev=platDev_query, franchiseDev=platDev_query)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
@@ -186,7 +204,25 @@ def delete():
 def update():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		return render_template("update_element.j2")
+		# get list of platforms
+		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat = execute_query(db_connection, plat_query).fetchall()
+
+		# get list of franchises
+		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		franchise = execute_query(db_connection, franchise_query).fetchall()
+
+		# get list of developers
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		dev = execute_query(db_connection, dev_query).fetchall()
+
+		# get list of the platform's developers
+		platDev_query = "SELECT platformDeveloper FROM `Platforms`"
+
+		# get list of the franchise's developers
+		platDev_query = "SELECT franchiseDeveloper FROM `Franchises`"
+
+		return render_template("update_element.j2", platforms=plat_query, franchises=franchise_query, devs=dev_query, platDev=platDev_query, franchiseDev=platDev_query)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
@@ -229,12 +265,12 @@ if __name__ == "__main__":
 def build_query_searchTitle(query_vals):
 	# query_vals = {
 	#	"titleName"
-	#	"titlePlat"
+	#	"titlePlatID"
 	#	"titleFromDate"
 	#	"titleToDate"
 	#	"titleGenre"
-	#	"titleFranchise"
-	#	"titleDev"
+	#	"titleFranchiseID"
+	#	"titleDevID"
 	#	"titleESRB" }
 
 	# getting an error trying to format t.titleRelease date

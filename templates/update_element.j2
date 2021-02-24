@@ -2,18 +2,18 @@
 <html>
 	<head>
  		<meta charset="UTF-8">
- 		<title>Andrew Eppigner and Joshua Luo - Video Game Database</title>
+ 		<title>Andrew Eppinger and Joshua Luo - Video Game Database</title>
  		<link rel="stylesheet" href="static/css/update_element.css" type="text/css">
  	</head>
  	<body>
     <div class="topnav">
-		<table id="crudTable">
-      <tr>
-        <td><a href="/">Catalog</a></td>
-        <td><a href="add">Add Something</a></td>
-        <td><a href="delete">Delete Something</a></td>
-        <td><a href="update">Update/Edit Something</a></td>
-    </table>
+  		<table id="crudTable">
+        <tr>
+          <td><a href="/">Catalog</a></td>
+          <td><a href="add">Add Something</a></td>
+          <td><a href="delete">Delete Something</a></td>
+          <td><a href="update">Update/Edit Something</a></td>
+      </table>
     </div>
 
     <h1>Update in Database</h1>
@@ -41,25 +41,15 @@
           <th>Developer:</th>
           <th>ESRB Rating:</th>
         <tr>
-          <td><input type="text" id="searchTitleName"></td>
+          <td>
+            <input type="text" id="searchTitleName">
+          </td>
           <td>
             <select id="searchTitlePlat">
               <option></option>
-              <option value="PlayStation">PlayStation</option>
-              <option value="PlayStation 2">PlayStation 2</option>
-              <option value="PlayStation 3">PlayStation 3</option>
-              <option value="PlayStation 4">PlayStation 4</option>
-              <option value="PlayStation 5">PlayStation 5</option>
-              <option value="Xbox">Xbox</option>
-              <option value="Xbox 360">Xbox 360</option>
-              <option value="Xbox One">Xbox One</option>
-              <option value="Xbox Series S/X">Xbox Series S/X</option>
-              <option value="Nintendo 64">Nintendo 64</option>
-              <option value="GameCube">GameCube</option>
-              <option value="Wii">Wii</option>
-              <option value="Wii U">Wii U</option>
-              <option value="Switch">Switch</option>
-              <option value="Windows">Windows</option>
+              {% for plat in platforms %}
+              <option value={{plat[0]}}>{{plat[1]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
@@ -68,22 +58,41 @@
           <td>
             <select id="searchTitleGenre">
               <option></option>
-              <option value="fps">First-Person Shooter</option>\
-              <option value="moba">Multiplayer Online Battle Arena</option>
+              <option value="Action">Action</option>
+              <option value="Action-Adventure">Action-Adventure</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Battle Royale">Battle Royale</option>
+              <option value="Fighting">Fighting</option>
+              <option value="First-Person Shooter">First-Person Shooter</option>
+              <option value="Massively Multiplayer Online Games">Massively Multiplayer Online Games</option>
+              <option value="Multiplayer Online Battle Arena">Multiplayer Online Battle Arena</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Racing">Racing</option>
+              <option value="Real-Time Strategy">Real-Time Strategy</option>
+              <option value="Role-Playing Games">Role-Playing Games</option>
+              <option value="Sandbox/Open World">Sandbox/Open World</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Sports">Sports</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Survival">Survival</option>
+              <option value="Third-Person Shooter">Third-Person Shooter</option>
+              <option value="Other">Other</option>
             </select>
           </td>
           <td>
             <select id="searchTitleFranchise">
               <option></option>
-              <option value="Call of Duty">Call of Duty</option>
-              <option value="Halo">Halo</option>
+              {% for fran in franchises %}
+              <option value={{fran[0]}}>{{fran[1]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
             <select id="searchTitleDev">
               <option></option>
-              <option value="activision">Activision</option>
-              <option value="343industries">343 Industries</option>
+              {% for dev in devs %}
+              <option value={{dev[0]}}>{{dev[1]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
@@ -106,14 +115,24 @@
           <th>Country:</th>
           <th>Founding Date:</th>
         <tr>
-          <td><input type="text"></td>
+          <td>
+            <input type="text" id="searchDevName">
+          </td>
           <td>
             <select name="searchDevCountry">
               <option></option>
+              <option value="Canada">Canada</option>
+              <option value="France">France</option>
+              <option value="Japan">Japan</option>
+              <option value="Poland">Poland</option>
+              <option value="Russia">Russia</option>
+              <option value="South Korea">South Korea</option>
+              <option value="Sweden">Sweden</option>
+              <option value="UK">UK</option>
               <option value="USA">USA</option>
             </select>
           </td>
-          <td>From:<br/><input type="date"><br/>To:<br/><input type="date"></td>
+          <td>From:<br/><input type="date" id="searchDevFromDate"><br/>To:<br/><input type="date" id="searchDevToDate"></td>
       </table>
       <button type="button" class="searchButton" id="searchDevButton">Search</button>                          
     </div>
@@ -127,13 +146,18 @@
           <th>Platform Developer:</th>
           <th>Platform In Production:</th>
         <tr>
-          <td><input type="text" id="searchPlatName"></td>
-          <td>From:<br/><input type="date" id="searchPlatFromDate"><br/>To:<br/><input type="date" id="searchPlatToDate"></td>
+          <td>
+            <input type="text" id="searchPlatName">
+          </td>
+          <td>
+            From:<br/><input type="date" id="searchPlatFromDate"><br/>To:<br/><input type="date" id="searchPlatToDate">
+          </td>
           <td>
             <select id="searchPlatDev">
               <option></option>
-              <option value="Microsoft">Microsoft</option>
-              <option value="Sony">Sony</option>
+              {% for dev in platDev %}
+              <option value={{dev[0]}}>{{dev[0]}}</option>
+              {% endfor %}
             </select>
           </td>
           <td>
@@ -152,12 +176,15 @@
           <th>Franchise Name:</th>
           <th>Franchise Developer:</th>
         <tr>
-          <td><input type="text" id="searchFranchiseName"></td>
+          <td>
+            <input type="text" id="searchFranchiseName">
+          </td>
           <td>
             <select id="searchFranchiseDev">
               <option></option>
-              <option value="Activision">Activision</option>
-              <option value="343 Industries">343 Industries</option>
+              {% for dev in franchiseDev %}
+              <option value={{dev[0]}}>{{dev[0]}}</option>
+              {% endfor %}
             </select>
           </td>
       </table>
@@ -167,7 +194,9 @@
     <br/>
     <br/>
 
-    <span id="updateSuccessful">Update successful!</span>
+    <span class="successFailMessage" id="updateSuccessful">Update Successful!</span>
+    <span class="successFailMessage" id="updateFailed">Update Failed!</span>
+
     <div id="searchResults">
       <h2 id="searchResHeader">Search Results</h2>
       <table id="searchResultTable">
@@ -182,7 +211,7 @@
           <th>Franchise</th>
           <th>Developer</th>
           <th>ESRB Rating</th>
-          <th>Action</th>
+          <th>Update?</th>
         <tr>
           <td>Call of Duty: Black Ops Cold War</td>
           <td>
@@ -194,31 +223,12 @@
               <li>Xbox Series X/S</li>
             </ul>
           </td>
-        <td>11/13/2020</td>
+          <td>11/13/2020</td>
           <td>First-Person Shooter</td>
           <td>Call of Duty</td>
           <td>Activision</td>
           <td>M</td>
-          <td>
-          <button type="button" class="updateButton">Update</button>
-        </td>
-        <tr>
-          <td>Halo Infinite</td>
-          <td>
-            <ul class="platformList">
-              <li>Windows</li>
-              <li>Xbox One</li>
-              <li>Xbox Series X/S</li>
-            </ul>
-          </td>
-          <td></td>
-          <td>First-Person Shooter</td>
-          <td>Halo</td>
-          <td>343 Industries</td>
-          <td></td>
-          <td>
-          <button type="button" class="updateButton">Update</button>
-        </td>
+          <td><button type="button" class="updateButton">Update</button></td>
       </table>
     </div>
 
