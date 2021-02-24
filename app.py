@@ -42,8 +42,8 @@ def root():
 		print("BUILT QUERY:", query)
 
 		# query DB, get response
-		#result = execute_query(db_connection, query).fetchall()
-		#print("RESPONSE FROM DB:", result)
+		result = execute_query(db_connection, query).fetchall()
+		print("RESPONSE FROM DB:", result)
 
 		# make query to TitlesPlatforms, get response
 		# package with result above
