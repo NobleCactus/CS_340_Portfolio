@@ -275,7 +275,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "f.franchiseName = '" + query_vals["titleFranchise"] + "'"
+		query += "f.franchiseID = '" + query_vals["titleFranchiseID"] + "'"
 	
 	if query_vals["titleDev"] != "":
 		if no_where:
@@ -283,7 +283,7 @@ def build_query_searchTitle(query_vals):
 			no_where = 0
 		else:
 			query += " AND "
-		query += "d.developerName = '" + query_vals["titleDev"] + "'"
+		query += "d.developerID = '" + query_vals["titleDevID"] + "'"
 	
 	if query_vals["titleESRB"] != "":
 		if no_where:

@@ -6,12 +6,12 @@ function bindButtons() {
 
 		var payload = {"action": "searchTitle",
 			            "titleName": document.getElementById('searchTitleName').value,
-			            "titlePlat": document.getElementById('searchTitlePlat').value, 
+			            "titlePlatID": document.getElementById('searchTitlePlat').value, 
 			            "titleFromDate": document.getElementById('titleFromDate').value, 
 			            "titleToDate": document.getElementById('titleToDate').value, 
 			            "titleGenre": document.getElementById('titleGenre').value, 
-			            "titleFranchise": document.getElementById('titleFranchise').value,
-			            "titleDev": document.getElementById('titleDev').value,
+			            "titleFranchiseID": document.getElementById('titleFranchise').value,
+			            "titleDevID": document.getElementById('titleDev').value,
 			            "titleESRB": document.getElementById('titleESRB').value};
 
 		req.open('POST', '/', true);
