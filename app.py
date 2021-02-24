@@ -257,7 +257,7 @@ def update():
 # Listener
 
 if __name__ == "__main__":
-	port = int(os.environ.get('PORT', 4567))
+	port = int(os.environ.get('PORT', 9112))
 	#                                 ^^^^
     #              You can replace this number with any valid port
 	app.run(port=port, debug=True)
@@ -337,6 +337,15 @@ def build_query_searchTitle(query_vals):
 	return query
 
 def build_query_searchTitlesPlatforms(query_vals):
+	# query_vals = {
+	#	"titleName"
+	#	"titlePlatID"
+	#	"titleFromDate"
+	#	"titleToDate"
+	#	"titleGenre"
+	#	"titleFranchiseID"
+	#	"titleDevID"
+	#	"titleESRB" }
 	pass
 
 def build_query_searchDev(query_vals):
@@ -347,19 +356,35 @@ def build_query_searchDev(query_vals):
 	#	"devToDate"
 	# }
 
-	# query = "SELECT * FROM `DevelopmentStudios`"
+	query = "SELECT * FROM `DevelopmentStudios`"
+	no_where = 1;
 
 	if query_vals["devName"] != "":
-		query += " WHERE developerName LIKE %" + query_vals["devName"] + "%"
+		query += " WHERE developerName LIKE %'" + query_vals["devName"] + "%'"
 	
 	if query_vals["devCountry"] != "":
-		query += " AND developerCountry = " + query_vals["devCountry"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "developerCountry = '" + query_vals["devCountry"] + "'"
 	
 	if query_vals["devFromDate"] != "":
-		query += " AND developerFounded >= " + query_vals["devFromDate"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "developerFounded >= '" + query_vals["devFromDate"] + "'"
 	
 	if query_vals["devToDate"] != "":
-		query += " AND developerFounded <= " + query_vals["devToDate"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "developerFounded <= '" + query_vals["devToDate"] + "'"
 
 	query += ";"
 	return query
@@ -374,21 +399,42 @@ def build_query_searchPlat(query_vals):
 	# }
 
 	query = "SELECT * FROM `Platforms`"
+	no_where = 1;
 
 	if query_vals["platName"] != "":
-		query += " WHERE platformName LIKE %" + query_vals["platName"] + "%"
+		query += " WHERE platformName LIKE %'" + query_vals["platName"] + "%'"
 
 	if query_vals["platFromDate"] != "":
-		query += " AND platformRelease >= " + query_vals["platFromDate"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "platformRelease >= '" + query_vals["platFromDate"] + "'"
 
 	if query_vals["platToDate"] != "":
-		query += " AND platformRelease >= " + query_vals["platToDate"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "platformRelease >= '" + query_vals["platToDate"] + "'"
 
 	if query_vals["platDev"] != "":
-		query += " AND platformDeveloper = " + query_vals["platDev"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += " AND platformDeveloper = '" + query_vals["platDev"] + "'"
 
 	if query_vals["platInProd"] != "":
-		query += " AND platformInProduction = " + query_vals["platInProd"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += "platformInProduction = '" + query_vals["platInProd"] + "'"
 
 	query += ";"
 	return query
@@ -400,12 +446,18 @@ def build_query_searchFranchise(query_vals):
 	# }
 
 	query = "SELECT * FROM `Franchises`"
+	no_where = 1;
 
 	if query_parameters["franchiseName"] != "":
-		query += " WHERE franchiseName LIKE %" + query_vals["franchiseName"] + "%"
+		query += " WHERE franchiseName LIKE %'" + query_vals["franchiseName"] + "%"
 
 	if query_parameters["franchiseDev"] != "":
-		query += " AND franchiseDeveloper = " + query_vals["franchiseDev"]
+		if no_where:
+			query += " WHERE "
+			no_where = 0
+		else:
+			query += " AND "
+		query += " AND franchiseDeveloper = '" + query_vals["franchiseDev"] + "'"
 
 	query += ";"
 	return query
