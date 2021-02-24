@@ -235,7 +235,7 @@ def build_query_searchTitle(query_vals):
 	query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 	query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 	no_where = 1
-	params = ('DATE_FORMAT(t.titleRelease, '%Y-%m-%d') AS t.titleRelease')
+	params = ('DATE_FORMAT(t.titleRelease, '%Y-%m-%d') AS titleRelease')
 	if query_vals["titleName"] != "":
 		query += " WHERE t.titleName LIKE %s"
 		params += ("%" + query_vals["titleName"] + "%",)
