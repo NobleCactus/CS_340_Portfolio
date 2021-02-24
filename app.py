@@ -295,7 +295,6 @@ def build_query_searchTitlesPlatforms(query_vals):
 
 def build_query_searchDev(query_vals):
 	# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
-
 	query = "SELECT * FROM `DevelopmentStudios`"
 	no_where = 1
 	params = ()
@@ -333,7 +332,6 @@ def build_query_searchDev(query_vals):
 
 def build_query_searchPlat(query_vals):
 	# query_vals = {"platName", "platFromDate", "platToDate", "platDev", "platInProd"}
-
 	query = "SELECT * FROM `Platforms`"
 	no_where = 1
 	params = ()
@@ -379,7 +377,6 @@ def build_query_searchPlat(query_vals):
 
 def build_query_searchFranchise(query_vals):
 	# query_parameters = {"franchiseName", "franchiseDev"}
-
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1;
 	params = ()
