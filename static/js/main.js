@@ -21,18 +21,14 @@ function bindButtons() {
 			if (req.status >= 200 && req.status < 400) {
 				// POST request successful, check response for query status
 				res = JSON.parse(req.responseText);
-				console.log(res);	// to show the elements of what comes back
 
-				// use DOM to clear current table
-				// use DOM to dynamically add query result table to webpage
-				// reset filter fields?
 				var prevTableRows = document.getElementsByClassName('searchResultRow');
 				// clear out current elements in the table
-				console.log(searchResultRows.length);
 				for (var i = 0; i < prevTableRows.length; i++) {
 					prevTableRows[i].remove();
 				}
 
+				// add each new row into the search result table
 				searchTable = document.getElementById('titlesTable');
 				for (var i = 0; i < res.length; i++) {
 					name = res[i][1];
