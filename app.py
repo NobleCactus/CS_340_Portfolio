@@ -49,7 +49,8 @@ def root():
 		# package with result above
 
 		# return DB tables back to webpage
-		return jsonify(result)
+		#return jsonify(result)
+		return {}
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
