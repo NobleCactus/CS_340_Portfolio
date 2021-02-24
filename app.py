@@ -24,17 +24,15 @@ def root():
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
-		print("QUERY: ", query)
 
 		# query DB, get response
-		#result = execute_query(db_connection, query).fetchall()
+		result = execute_query(db_connection, query).fetchall()
 
 		# make query to TitlesPlatforms, get response
 		# package with result above
 
 		# return DB tables back to webpage
-		#return jsonify(result)
-		return {"RESPONSE": "SUCCESSFUL POST"}
+		return jsonify(result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -218,8 +216,7 @@ def build_query_searchTitle(query_vals):
 	#	"titleGenre"
 	#	"titleFranchise"
 	#	"titleDev"
-	#	"titleESRB"
-	# }
+	#	"titleESRB" }
 
 	query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 	query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
@@ -228,57 +225,55 @@ def build_query_searchTitle(query_vals):
 	no_where = 1
 
 	if query_vals["titleName"] != "":
-		query += " WHERE t.titleName LIKE %" + query_vals["titleName"] + "%"
+		query += " WHERE t.titleName LIKE '%" + query_vals["titleName"] + "%'"
 		no_where = 0
-
-
-
+	
 	if query_vals["titleFromDate"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "t.titleRelease >= '" + query_vals["titleFromDate"] + "'"
-
+	
 	if query_vals["titleToDate"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "t.titleRelease <= '" + query_vals["titleToDate"] + "'"
-
+	
 	if query_vals["titleGenre"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "t.titleGenre = '" + query_vals["titleGenre"] + "'"
-
+	
 	if query_vals["titleFranchise"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "f.franchiseName = '" + query_vals["titleFranchise"] + "'"
-
+	
 	if query_vals["titleDev"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "d.developerName = '" + query_vals["titleDev"] + "'"
-
+	
 	if query_vals["titleESRB"] != "":
 		if no_where:
 			query += " WHERE "
+			no_where = 0
 		else:
 			query += " AND "
-
 		query += "t.titleESRB = '" + query_vals["titleESRB"] + "'"
 
 	query += ";"
