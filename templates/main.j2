@@ -32,22 +32,10 @@
         			<input type="text" id="searchTitleName">
   				<td>
   					<select id="searchTitlePlat">
-  						<option v></option>
-  						<option value="PS1">PlayStation</option>
-  						<option value="PS2">PlayStation 2</option>
-  						<option value="PS3">PlayStation 3</option>
-  						<option value="PS4">PlayStation 4</option>
-  						<option value="PS5">PlayStation 5</option>
-  						<option value="Xbox">Xbox</option>
-  						<option value="Xbox 360">Xbox 360</option>
-  						<option value="Xbox One">Xbox One</option>
-  						<option value="Xbox Series S/X">Xbox Series S/X</option>
-  						<option value="N64">Nintendo 64</option>
-  						<option value="GameCube">GameCube</option>
-  						<option value="Wii">Wii</option>
-  						<option value="WiiU">Wii U</option>
-  						<option value="Switch">Switch</option>
-  						<option value="Windows">Windows</option>
+  						<option></option>
+              {% for plat in platforms %}
+              <option value={{plat[0]}}>{{plat[1]}}</option>
+              {% endfor %}
   					</select>
   				</td>
   				<td>
@@ -56,22 +44,41 @@
   				<td>
   					<select id="titleGenre">
   						<option></option>
-  						<option value="fps">First-Person Shooter</option>\
-  						<option value="moba">Multiplayer Online Battle Arena</option>
+  						<option value="Action">Action</option>
+  						<option value="Action-Adventure">Action-Adventure</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Battle Royale">Battle Royale</option>
+              <option value="Fighting">Fighting</option>
+              <option value="First-Person Shooter">First-Person Shooter</option>
+              <option value="Massively Multiplayer Online Games">Massively Multiplayer Online Games</option>
+              <option value="Multiplayer Online Battle Arena">Multiplayer Online Battle Arena</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Racing">Racing</option>
+              <option value="Real-Time Strategy">Real-Time Strategy</option>
+              <option value="Role-Playing Games">Role-Playing Games</option>
+              <option value="Sandbox/Open World">Sandbox/Open World</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Sports">Sports</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Survival">Survival</option>
+              <option value="Third-Person Shooter">Third-Person Shooter</option>
+              <option value="Other">Other</option>
             </select>
   				</td>
   				<td>
   					<select id="titleFranchise">
   						<option></option>
-  						<option value="Call of Duty">Call of Duty</option>
-  						<option value="Halo">Halo</option>
+              {% for fran in franchises %}
+              <option value={{fran[0]}}>{{fran[1]}}</option>
+              {% endfor %}
             </select>
   				</td>
           <td>
             <select id="titleDev">
               <option></option>
-              <option value="Activision">Activision</option>
-              <option value="343 Industries">343 Industries</option>
+              {% for dev in devs %}
+              <option value={{dev[0]}}>{{dev[1]}}</option>
+              {% endfor %}
             </select>
           </td>
   				<td>
@@ -101,17 +108,17 @@
   				<th>Developer</th>
   				<th>ESRB Rating</th>
         
-        {% for r in rows %}
+        {% for t in titles %}
         <tr>
-          <td>{{ r[1] }}</td>
+          <td>{{ t[1] }}</td>
           <td>
             Platform List Query Results
           </td>
-          <td>{{ r[2] }}</td>
-          <td>{{ r[3] }}</td>
-          <td>{{ r[4] }}</td>
-          <td>{{ r[5] }}</td>
-          <td>{{ r[6] }}</td>
+          <td>{{ t[2] }}</td>
+          <td>{{ t[3] }}</td>
+          <td>{{ t[4] }}</td>
+          <td>{{ t[5] }}</td>
+          <td>{{ t[6] }}</td>
         {% endfor %}
 
   		</table>

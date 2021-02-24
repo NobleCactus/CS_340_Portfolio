@@ -12,18 +12,33 @@ app = Flask(__name__)
 def root():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# show all Video Game Titles
-		query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-		query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
-		result = execute_query(db_connection, query).fetchall()
-		return render_template("main.j2", rows=result)
+		# get all Video Game Titles
+		table_query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
+		table_query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
+		table_query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
+		table = execute_query(db_connection, table_query).fetchall()
+
+		# get list of platforms
+		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat = execute_query(db_connection, plat_query).fetchall()
+
+		# get list of franchises
+		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		franchise = execute_query(db_connection, franchise_query).fetchall()
+
+		# get list of developers
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		dev = execute_query(db_connection, franchise_query).fetchall()
+
+		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
 
 		# build query from request payload values
 		query = build_query_searchTitle(query_vals)
+
+		print("BUILT QUERY: ", query)
 
 		# query DB, get response
 		result = execute_query(db_connection, query).fetchall()
