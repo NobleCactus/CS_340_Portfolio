@@ -151,7 +151,7 @@ def add():
 		# result = execute_query(db_connection, query).fetchall()
 
 		# return result(?)
-		return {}
+			return {}
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
