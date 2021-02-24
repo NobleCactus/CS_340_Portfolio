@@ -162,6 +162,7 @@ function bindButtons() {
 
   Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      console.log(event.target.value);
     	if (confirm('Are you sure you want to delete this from the database?')) {
   			document.getElementById("delSuccessful").style.display = "block";
       		setTimeout(function() {
