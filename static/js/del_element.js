@@ -47,12 +47,12 @@ function bindButtons() {
     var payload = {"action": "searchTitle",
             "titleName": document.getElementById('searchTitleName').value,
             "titlePlatID": document.getElementById('searchTitlePlatID').value, 
-            "titleFromDate": document.getElementById('titleFromDate').value, 
-            "titleToDate": document.getElementById('titleToDate').value, 
-            "titleGenre": document.getElementById('titleGenre').value, 
-            "titleFranchiseID": document.getElementById('titleFranchiseID').value,
-            "titleDevID": document.getElementById('titleDevID').value,
-            "titleESRB": document.getElementById('titleESRB').value};
+            "titleFromDate": document.getElementById('searchTitleFromDate').value, 
+            "titleToDate": document.getElementById('searchTitleToDate').value, 
+            "titleGenre": document.getElementById('searchTitleGenre').value, 
+            "titleFranchiseID": document.getElementById('searchTitleFranchiseID').value,
+            "titleDevID": document.getElementById('searchTitleDevID').value,
+            "titleESRB": document.getElementById('searchTitleESRB').value};
 
     console.log("Search Title Payload:");
     console.log(payload);
