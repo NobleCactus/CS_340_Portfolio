@@ -5,6 +5,6 @@
 # in turn by all the Python code in this codebase to interact with the database
 
 host = 'classmysql.engr.oregonstate.edu'  #DON'T CHANGE ME UNLESS THE INSTRUCTIONS SAY SO
-user = 'cs340_eppingea'
-passwd = 'Oregonstate2022'
-db = 'cs340_eppingea'
+user = 'cs340_luojo'
+passwd = '4773'
+db = 'cs340_luojo'

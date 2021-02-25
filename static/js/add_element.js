@@ -77,8 +77,8 @@ function bindButtons() {
 							"titlePlatIDs": title_plat_ids,
 							"titleRelease": document.getElementById('addTitleDate').value, 
 							"titleGenre": document.getElementById('addTitleGenre').value, 
-							"titleFranchise": document.getElementById('addTitleFranchise').value,
-							"titleDev": document.getElementById('addTitleDev').value,
+							"titleFranchiseID": document.getElementById('addTitleFranchiseID').value,
+							"titleDevID": document.getElementById('addTitleDevID').value,
 							"titleESRB": document.getElementById('titleESRB').value};
 
 			req.open('POST', '/add', true);

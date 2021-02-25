@@ -67,12 +67,31 @@ def add():
 		# build query from request, depending on action
 		if query_vals["action"] == "addTitle":
 			print("IN ADD TITLE ROUTE")
-			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
-			params = (query_vals["titleName"], query_vals["titleESRB"], query_vals["titleGenre"], query_vals["titleRelease"], query_vals["titleDev"], query_vals["titleFranchise"])
-			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
-			query += "%s, %s, %s, %s,"
-			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = %s), "
-			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = %s));"
+			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
+			#params = (query_vals["titleName"], query_vals["titleESRB"], query_vals["titleGenre"], query_vals["titleRelease"], query_vals["titleDev"], query_vals["titleFranchise"])
+			
+			params = (query_vals["titleName"],)
+			if query_vals["titleESRB"] == "" :
+				params += ("NULL",)
+			else:
+				params += (query_vals["titleGenre"],)
+
+			if query_vals["titleGenre"] == "" :
+				params += ("NULL",)
+			else:
+				params += (query_vals["titleGenre"],)
+
+			params += (query_vals["titleRelease"],)
+			params += (query_vals["titleDevID"],)
+
+			if query_vals["titleFranchiseID"] == "" :
+				params += ("NULL",)
+			else:
+				params += (query_vals["titleFranchiseID"],)
+
+
+			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES "
+			query += "(%s, %s, %s, %s, %s, %s);"
 			#result = execute_query(db_connection, query, params).fetchall()
 			#print(result)
 			print("ADD VIDEO GAME TITLE QUERY:", query, params)
@@ -403,4 +422,3 @@ def build_query_searchFranchise(query_vals):
 	print(query)
 
 	return (query, params)
-	
