@@ -30,7 +30,6 @@ function bindButtons() {
 				// add each new row into the search result table
 				searchTable = document.getElementById('titlesTable');
 				for (var i = 0; i < res.length; i++) {
-					console.log("BUILDING ROW" + res[i][1]);
 					new_row = document.createElement('tr');
 					new_row.setAttribute('class', 'searchResultRow');
 					
