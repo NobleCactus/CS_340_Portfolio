@@ -41,12 +41,9 @@ def root():
 		query_params = build_query_searchTitle(query_vals)
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
-		# make query to TitlesPlatforms, get response
-		# query_params_titlesPlats = build_query_searchTitlesPlatforms(query_vals)
-		# result = execute_query(db_connection, query_params_titlesPlats[0], query_params_titlesPlats[1]).fetchall()
-
-		# package with result above
-
+		new_result = add_titles_platforms(db_connection, result)
+		print("@@@ new_result:", new_result)
+		
 		# return DB tables back to webpage
 		return jsonify(result)
 
