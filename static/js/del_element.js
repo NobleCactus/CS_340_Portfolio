@@ -60,8 +60,6 @@ function bindButtons() {
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
         res = JSON.parse(req.responseText);
-        console.log("@@@ Response: ");
-        console.log(res);
 
         // clear out current search result table rows
         var prevTableRows = document.getElementsByClassName('searchResultRow');

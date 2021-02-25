@@ -116,15 +116,6 @@ function bindButtons() {
           name_val.textContent = res[i][1];
           title_tr.appendChild(name_val);
 
-          // add each row into the search result table
-        for (var i = 0; i < res.length; i++) {
-          title_tr = document.createElement('tr');
-          title_tr.setAttribute('class', 'searchResultRow');
-          
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
-
           plat_val = document.createElement('td');
           plat_list = document.createElement('ul');
           plat_list.setAttribute('class', 'platformList');
