@@ -403,3 +403,4 @@ def build_query_searchFranchise(query_vals):
 	print(query)
 
 	return (query, params)
+	
