@@ -396,5 +396,7 @@ def build_query_searchFranchise(query_vals):
 		query += " AND franchiseDeveloper = %s"
 		params += (query_vals["franchiseDev"],)
 	query += ";"
+	print("TROUBLESHOOTING FRANCHISE NAME")
+	print(query)
 
 	return (query, params)
