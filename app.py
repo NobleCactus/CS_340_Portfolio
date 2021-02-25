@@ -185,7 +185,7 @@ def update():
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
-		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
+		return render_template("update_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
