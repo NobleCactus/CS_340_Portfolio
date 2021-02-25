@@ -37,22 +37,15 @@ def root():
 			titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
 			titlesPlats_query += "WHERE t.titleID = %s"
 			titlesPlats_params = (title_info[0])
-			print("@@@titlesPlats_query:", titlesPlats_query)
-			print("@@@titlesPlats_params:", titlesPlats_params)
 			titles_Plats = execute_query(db_connection, titlesPlats_query, titlesPlats_params).fetchall()
 
-			print("@@@titles_Plats:", titles_Plats)
-
-			# form a tuple of all the platforms
+			# form a tuple of all the platforms for a given title
 			plat_tuple = ()
 			for plat in titles_Plats:
 				plat_tuple += (plat[0],)
-			print("@@@plat_tuple:", plat_tuple)
 
-			print("@@@old title_info:", title_info)
 			# add tuple of platforms into the title_info tuple
 			title_info += (plat_tuple,)
-			print("@@@new title_info:", title_info)
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:

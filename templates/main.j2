@@ -111,7 +111,11 @@
         <tr class="searchResultRow">
           <td>{{ t[1] }}</td>
           <td>
-            Platform List Query Results
+            <ul class="platformList">
+              {% for p in t[7] %}
+              <li>p</li>
+              {% endfor %}
+            </ul>
           </td>
           <td>{{ t[2] }}</td>
           <td>{{ t[3] }}</td>
