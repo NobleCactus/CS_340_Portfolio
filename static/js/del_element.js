@@ -116,10 +116,16 @@ function bindButtons() {
           name_val.textContent = res[i][1];
           title_tr.appendChild(name_val);
 
-          // replace this with unordered list of platforms from TitlesPlatforms query
           plat_val = document.createElement('td');
-          plat_val.textContent = "Platform List Query Results";
-          title_tr.appendChild(plat_val);
+          plat_list = document.createElement('ul');
+          plat_list.setAttribute('class', 'platformList');
+          for (var j = 0; j < res[i][7].length; j++) {
+            plat_item = document.createElement('li');
+            plat_item.textContent = res[i][7][j];
+            plat_list.appendChild(plat_item);
+          }
+          plat_val.appendChild(plat_list);
+          new_row.appendChild(plat_val);
 
           release_val = document.createElement('td');
           release_val.textContent = res[i][2];

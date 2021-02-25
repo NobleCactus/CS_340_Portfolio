@@ -117,18 +117,21 @@ def delete():
 		# depending on table, build query and search DB
 		elif query_vals["action"] == "searchTitle":
 			query_params = build_query_searchTitle(query_vals)
-
-			# make an array of the paltforms to include in the response
-			# select from TitlesPlatforms query_vals["titlePlat"]
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+			
+			result = add_plats_to_titles(db_connection, result)
 
 		elif query_vals["action"] == "searchDev":
 			query_params = build_query_searchDev(query_vals)
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+
 		elif query_vals["action"] == "searchPlat":
 			query_params = build_query_searchPlat(query_vals)
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+
 		elif query_vals["action"] == "searchFranchise":
 			query_params = build_query_searchFranchise(query_vals)
-
-		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		return jsonify(result)
 
