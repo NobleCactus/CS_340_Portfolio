@@ -154,7 +154,7 @@ function bindButtons() {
           searchTable.appendChild(title_tr);
         }
 
-        // rebind the new delete butons to trigger delete query
+        // rebind the new delete buttons to trigger delete query
         bind_delete_buttons();
 
       } else {
@@ -240,7 +240,7 @@ function bindButtons() {
           searchTable.appendChild(title_tr);
         }
 
-        // rebind the new delete butons to trigger delete query
+        // rebind the new delete buttons to trigger delete query
         bind_delete_buttons();
 
       } else {
@@ -347,7 +347,7 @@ function bindButtons() {
           searchTable.appendChild(title_tr);
         }
 
-        // rebind the new delete butons to trigger delete query
+        // rebind the new delete buttons to trigger delete query
         bind_delete_buttons();
 
       } else {
@@ -421,7 +421,7 @@ function bindButtons() {
           searchTable.appendChild(title_tr);
         }
 
-        // rebind the new delete butons to trigger delete query
+        // rebind the new delete buttons to trigger delete query
         bind_delete_buttons();
 
       } else {

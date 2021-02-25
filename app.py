@@ -130,7 +130,6 @@ def delete():
 
 		return jsonify(result)
 
-
 @app.route('/update', methods=['GET', 'POST'])
 def update():
 	db_connection = connect_to_database()
@@ -156,33 +155,33 @@ def update():
 		# get request payload from POST request
 		query_vals = request.get_json()
 
-		# build query from request payload, depending on action
-		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
-
-		if query_vals["action"] == "update":
+		# updating an element
+		if query_vals["action"] == "updateTitle":
 			pass
-			# execute update 
+		elif  query_vals["action"] == "updateDev":
+			pass
+		elif  query_vals["action"] == "updatePlat":			
+			pass
+		elif  query_vals["action"] == "updateFranchise":
+			pass
 
-		# search DB
-		else:
-			if query_vals["action"] == "searchTitle":
-				query_params = build_query_searchTitle(query_vals)
+		# depending on the table, build query and search DB
+		elif query_vals["action"] == "searchTitle":
+			query_params = build_query_searchTitle(query_vals)
 
-				# make an array of the paltforms to include in the response
-				# select from TitlesPlatforms query_vals["titlePlat"]
+			# make an array of the paltforms to include in the response
+			# select from TitlesPlatforms query_vals["titlePlat"]
 
-			elif query_vals["action"] == "searchDev":
-				query_params = build_query_searchDev(query_vals)
+		elif query_vals["action"] == "searchDev":
+			query_params = build_query_searchDev(query_vals)
+		elif query_vals["action"] == "searchPlat":
+			query_params = build_query_searchPlat(query_vals)
+		elif query_vals["action"] == "searchFranchise":
+			query_params = build_query_searchFranchise(query_vals)
 
-			elif query_vals["action"] == "searchPlat":
-				query_params = build_query_searchPlat(query_vals)
+		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
-			elif query_vals["action"] == "searchFranchise":
-				query_params = build_query_searchFranchise(query_vals)
-
-			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-
-			return jsonify(result)
+		return jsonify(result)
 
 # Listener
 if __name__ == "__main__":
