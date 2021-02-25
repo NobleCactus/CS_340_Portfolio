@@ -118,7 +118,6 @@ def delete():
 		elif query_vals["action"] == "searchTitle":
 			query_params = build_query_searchTitle(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-			
 			result = add_plats_to_titles(db_connection, result)
 
 		elif query_vals["action"] == "searchDev":
