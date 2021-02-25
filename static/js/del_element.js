@@ -148,6 +148,7 @@ function bindButtons() {
           del_button.setAttribute('type', 'button');
           del_button.setAttribute('class', 'delButton');
           del_button.setAttribute('value', res[i][0]);
+          del_button.textContent = "Delete"
           button_td.appendChild(del_button);
           title_tr.appendChild(button_td);
 
