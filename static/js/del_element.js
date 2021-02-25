@@ -60,7 +60,6 @@ function bindButtons() {
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
         res = JSON.parse(req.responseText);
-        console.log(res)
 
         // clear out current search result table rows
         var prevTableRows = document.getElementsByClassName('searchResultRow');
@@ -166,7 +165,6 @@ function bindButtons() {
   });
 
   document.getElementById("searchDevButton").addEventListener("click", function(event) {
-
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchDev",
@@ -183,7 +181,6 @@ function bindButtons() {
         res = JSON.parse(req.responseText);
         console.log(res);
 
-        /*
         // clear out current search result table rows
         var prevTableRows = document.getElementsByClassName('searchResultRow');
         while (prevTableRows[0]) {
@@ -197,31 +194,15 @@ function bindButtons() {
         header_tr.setAttribute('class', 'searchResultRow');
         
         header_td = document.createElement('th');
-        header_td.textContent = 'Title'
+        header_td.textContent = 'Name'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
-        header_td.textContent = 'Platforms'
+        header_td.textContent = 'Country'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
-        header_td.innerHTML = 'Release Date<br/>(North America)'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Genre'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Franchise'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'ESRB Rating'
+        header_td.innerHTML = 'Date Founded'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
@@ -239,30 +220,13 @@ function bindButtons() {
           name_val.textContent = res[i][1];
           title_tr.appendChild(name_val);
 
-          // replace this with unordered list of platforms from TitlesPlatforms query
-          plat_val = document.createElement('td');
-          plat_val.textContent = "Platform List Query Results";
-          title_tr.appendChild(plat_val);
+          country_val = document.createElement('td');
+          country_val.textContent = res[i][2];
+          title_tr.appendChild(country_val);
 
-          release_val = document.createElement('td');
-          release_val.textContent = res[i][2];
-          title_tr.appendChild(release_val);
-
-          genre_val = document.createElement('td');
-          genre_val.textContent = res[i][3];
-          title_tr.appendChild(genre_val);
-
-          franchise_val = document.createElement('td');
-          franchise_val.textContent = res[i][4];
-          title_tr.appendChild(franchise_val);
-
-          dev_val = document.createElement('td');
-          dev_val.textContent = res[i][5];
-          title_tr.appendChild(dev_val);
-
-          esrb_val = document.createElement('td');
-          esrb_val.textContent = res[i][6];
-          title_tr.appendChild(esrb_val);
+          founded_val = document.createElement('td');
+          founded_val.textContent = res[i][3];
+          title_tr.appendChild(founded_val);
 
           // add delete button
           button_td = document.createElement('td');
@@ -279,7 +243,7 @@ function bindButtons() {
 
         // rebind the new delete butons to trigger delete query
         bind_delete_buttons();
-        */
+
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
@@ -288,7 +252,6 @@ function bindButtons() {
   });
 
   document.getElementById("searchPlatButton").addEventListener("click", function(event) {
-    
     var req = new XMLHttpRequest();
 
     var platInProd = Array.from(document.getElementsByClassName("searchPlatInProd"));
