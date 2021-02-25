@@ -236,16 +236,21 @@ def execute_addTitle(db_connection, query_vals):
 	
 	# error in INSERTing a Title
 	except:
+		print("ERROR IN INSERTING TITLE")
 		return {"result": "0"}
 	
 	# Title successfully added, now add TitlesPlats
 	else:
+		print("INSERTING TITLESPLATFORMS")
 		for platformID in query_vals["titlePlatIDs"]:
 			params = (query_vals["titleName"], platformID)
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID)"
-			query += " VALUES ((SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), %s));"
+			query += " VALUES ((SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), %s);"
+			print("TITLESPLATS QUERY:", query)
+			print("TITLESPLATS PARAMS:", params)
 			execute_query(db_connection, query, params)
 
+	print("SUCCESSFUL ADDING TITLE")
 	return {"result:": "1"}
 
 def build_query_searchTitle(query_vals):
