@@ -127,7 +127,7 @@ function bindButtons() {
             plat_list.appendChild(plat_item);
           }
           plat_val.appendChild(plat_list);
-          new_row.appendChild(plat_val);
+          title_tr.appendChild(plat_val);
 
           release_val = document.createElement('td');
           release_val.textContent = res[i][2];
