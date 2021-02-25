@@ -29,6 +29,7 @@ def root():
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName;"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
+		new_table = ()
 		# for each title going in the table
 		for title_info in table:
 			# get all the platforms for a given titleID
@@ -46,8 +47,9 @@ def root():
 
 			# add tuple of platforms into the title_info tuple
 			title_info += (plat_tuple,)
+			new_table += (title_info,)
 
-		print("@@@TABLE WITH PLATS:", table)
+		print("@@@new_table:", new_table)
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
