@@ -47,6 +47,8 @@ def root():
 			# add tuple of platforms into the title_info tuple
 			title_info += (plat_tuple,)
 
+		print("@@@TABLE WITH PLATS:", table)
+
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
