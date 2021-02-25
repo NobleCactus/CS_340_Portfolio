@@ -20,7 +20,7 @@ def root():
 		table = execute_query(db_connection, table_query).fetchall()
 
 		# add the list of platforms for each title
-		new_table = add_titles_platforms(quer_vals, table)
+		new_table = add_titles_platforms(table)
 
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName;"
