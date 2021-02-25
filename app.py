@@ -29,17 +29,30 @@ def root():
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName;"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
-		titlesPlats_query = "SELECT t.titleName as Title, p.platformName as Platform FROM `TitlesPlatforms` as tp "
-		titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
-		titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
-		titlesPlats_query += "ORDER BY t.titleName;"
-		titles_Plats = execute_query(db_connection, titlesPlats_query).fetchall()
-		
-		print("@@@Titles:", table)
-		print("@@@titlesPlats:", titles_Plats)
-		print("@@@titlesPlats_query[0]:", titles_Plats[0])
+		# for each title going in the table
+		for title_info in table:
+			# get all the platforms for a given titleID
+			titlesPlats_query = "SELECT p.platformName as Platform FROM `TitlesPlatforms` as tp "
+			titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
+			titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
+			titlesPlats_query += "WHERE t.titleID = %s"
+			titlesPlats_params = (title_info[0])
+			print("@@@titlesPlats_query:", titlesPlats_query)
+			print("@@@titlesPlats_params:", titlesPlats_params)
+			titles_Plats = execute_query(db_connection, titlesPlats_query, titlesPlats_params).fetchall()
 
+			print("@@@titles_Plats:", titles_Plats)
 
+			# form a tuple of all the platforms
+			plat_tuple = ()
+			for plat in titles_Plats:
+				plat_tuple += (plat[0],)
+			print("@@@plat_tuple:", plat_tuple)
+
+			print("@@@old title_info:", title_info)
+			# add tuple of platforms into the title_info tuple
+			title_info += (plat_tuple,)
+			print("@@@new title_info:", title_info)
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
