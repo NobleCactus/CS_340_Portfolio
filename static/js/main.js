@@ -20,6 +20,7 @@ function bindButtons() {
 		req.addEventListener('load', function(){
 			if (req.status >= 200 && req.status < 400) {
 				res = JSON.parse(req.responseText);
+				console.log(res);
 
 				// clear out current elements in the search result table
 				var prevTableRows = document.getElementsByClassName('searchResultRow');
@@ -30,6 +31,7 @@ function bindButtons() {
 				// add each new row into the search result table
 				searchTable = document.getElementById('titlesTable');
 				for (var i = 0; i < res.length; i++) {
+					console.log("BUILDING ROW" + res[i][1]);
 					new_row = document.createElement('tr');
 					new_row.setAttribute('class', 'searchResultRow');
 					
