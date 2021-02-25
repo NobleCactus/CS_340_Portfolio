@@ -105,6 +105,8 @@ function bindButtons() {
   });
 
   document.getElementById("searchPlatButton").addEventListener("click", function(event) {
+    var req = new XMLHttpRequest();
+
     var platInProd = Array.from(document.getElementsByClassName("searchPlatInProd"));
     if (platInProd[0].checked) {
       platInProd = "Yes";
@@ -139,6 +141,7 @@ function bindButtons() {
   });
 
   document.getElementById("searchFranchiseButton").addEventListener("click", function(event) {
+    var req = new XMLHttpRequest();
     var payload = {"action": "searchFranchise",
             "franchiseName": document.getElementById('searchFranchiseName').value,
             "franchiseDev": document.getElementById('searchFranchiseDev').value};
