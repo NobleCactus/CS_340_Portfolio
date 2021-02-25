@@ -20,7 +20,7 @@ def root():
 		table = execute_query(db_connection, table_query).fetchall()
 
 		# add the list of platforms for each title
-		new_table = add_titles_platforms(table)
+		new_table = add_titles_platforms(db_connection, table)
 
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName;"
@@ -342,7 +342,7 @@ def build_query_searchTitle(query_vals):
 
 	return (query, params)
 
-def add_titles_platforms(titles_result):
+def add_titles_platforms(db_connection, titles_result):
 	new_title_res = ()
 	# for each title going in the table
 	for title_info in titles_result:
