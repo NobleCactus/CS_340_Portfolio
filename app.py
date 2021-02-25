@@ -34,7 +34,7 @@ def root():
 		titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
 		titlesPlats_query += "ORDER BY t.titleName;"
 		titles_Plats = execute_query(db_connection, titlesPlats_query).fetchall()
-		prtin("@@@titlesPlats:", titles_Plats)
+		print("@@@titlesPlats:", titles_Plats)
 		print("@@@titlesPlats_query[0]:", titles_Plats[0])
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
