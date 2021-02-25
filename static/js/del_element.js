@@ -162,6 +162,7 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
+    console.log("SENDING TITLE SEARCH PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
@@ -284,10 +285,12 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
+    console.log("SENDING SEARCH DEV PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
   document.getElementById("searchPlatButton").addEventListener("click", function(event) {
+    
     var req = new XMLHttpRequest();
 
     var platInProd = Array.from(document.getElementsByClassName("searchPlatInProd"));

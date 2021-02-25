@@ -99,6 +99,7 @@ def delete():
 
 		return render_template("del_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
+		print("IN DELETE POST REQUEST ROUTE HANDLER")
 		# get request payload from POST request
 		query_vals = request.get_json()
 
