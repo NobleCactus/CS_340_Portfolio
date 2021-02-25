@@ -19,6 +19,9 @@ def root():
 		table_query += "ORDER BY t.titleName;"
 		table = execute_query(db_connection, table_query).fetchall()
 
+		# add the list of platforms for each title
+		new_table = add_titles_platforms(quer_vals, table)
+
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName;"
 		plat = execute_query(db_connection, plat_query).fetchall()
@@ -28,26 +31,6 @@ def root():
 		
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName;"
 		dev = execute_query(db_connection, dev_query).fetchall()
-
-		new_table = ()
-		# for each title going in the table
-		for title_info in table:
-			# get all the platforms for a given titleID
-			titlesPlats_query = "SELECT p.platformName as Platform FROM `TitlesPlatforms` as tp "
-			titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
-			titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
-			titlesPlats_query += "WHERE t.titleID = %s"
-			titlesPlats_params = (title_info[0])
-			titles_Plats = execute_query(db_connection, titlesPlats_query, titlesPlats_params).fetchall()
-
-			# form a tuple of all the platforms for a given title
-			plat_tuple = ()
-			for plat in titles_Plats:
-				plat_tuple += (plat[0],)
-
-			# add tuple of platforms into the title_info tuple
-			title_info += (plat_tuple,)
-			new_table += (title_info,)
 
 		return render_template("main.j2", titles=new_table, platforms=plat, franchises=franchise, devs=dev)
 	else:
@@ -293,7 +276,6 @@ def execute_addFranchise(db_connection, query_vals):
 	else:
 		return {"result": 1}
 
-
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
 
@@ -360,9 +342,28 @@ def build_query_searchTitle(query_vals):
 
 	return (query, params)
 
-def build_query_searchTitlesPlatforms(query_vals):
-	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
-	pass
+def add_titles_platforms(titles_result):
+	new_title_res = ()
+	# for each title going in the table
+	for title_info in titles_result:
+		# get all the platforms for a given titleID
+		titlesPlats_query = "SELECT p.platformName as Platform FROM `TitlesPlatforms` as tp "
+		titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
+		titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
+		titlesPlats_query += "WHERE t.titleID = %s"
+		titlesPlats_params = (title_info[0])
+		titles_Plats = execute_query(db_connection, titlesPlats_query, titlesPlats_params).fetchall()
+
+		# form a tuple of all the platforms for a given title
+		plat_tuple = ()
+		for plat in titles_Plats:
+			plat_tuple += (plat[0],)
+
+		# add tuple of platforms into the new title_info tuple
+		new_title = title_info + (plat_tuple,)
+		new_title_res += (new_title,)
+
+	return new_title_res
 
 def build_query_searchDev(query_vals):
 	# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
