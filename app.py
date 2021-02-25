@@ -20,7 +20,7 @@ def root():
 		table = execute_query(db_connection, table_query).fetchall()
 
 		# add the list of platforms for each title
-		new_table = add_titles_platforms(db_connection, table)
+		new_table = add_plats_to_titles(db_connection, table)
 
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
 		plat_query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName;"
@@ -41,11 +41,10 @@ def root():
 		query_params = build_query_searchTitle(query_vals)
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
-		new_result = add_titles_platforms(db_connection, result)
-		print("@@@ new_result:", new_result)
+		new_result = add_plats_to_titles(db_connection, result)
 		
 		# return DB tables back to webpage
-		return jsonify(result)
+		return jsonify(new_result)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -335,11 +334,11 @@ def build_query_searchTitle(query_vals):
 			query += " AND "
 		query += "t.titleESRB = %s"
 		params += (query_vals["titleESRB"],)
-	query += ";"
+	query += " ORDER BY t.titleName;"
 
 	return (query, params)
 
-def add_titles_platforms(db_connection, titles_result):
+def add_plats_to_titles(db_connection, titles_result):
 	new_title_res = ()
 	# for each title going in the table
 	for title_info in titles_result:
@@ -395,7 +394,7 @@ def build_query_searchDev(query_vals):
 			query += " AND "
 		query += "developerFounded <= %s"
 		params += (query_vals["devToDate"],)
-	query += ";"
+	query += " ORDER BY devName;"
 
 	return (query, params)
 
@@ -440,7 +439,7 @@ def build_query_searchPlat(query_vals):
 			query += " AND "
 		query += "platformInProduction = %s"
 		params += (query_vals["platInProd"],)
-	query += ";"
+	query += " ORDER BY platName;"
 
 	return (query, params)
 
@@ -461,8 +460,6 @@ def build_query_searchFranchise(query_vals):
 			query += " AND "
 		query += " AND franchiseDeveloper = %s"
 		params += (query_vals["franchiseDev"],)
-	query += ";"
-	print("TROUBLESHOOTING FRANCHISE NAME")
-	print(query)
+	query += " ORDER BY franchiseName;"
 
 	return (query, params)
