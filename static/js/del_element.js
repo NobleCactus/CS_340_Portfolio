@@ -61,13 +61,101 @@ function bindButtons() {
       if (req.status >= 200 && req.status < 400) {
         res = JSON.parse(req.responseText);
         console.log(res)
-        
-        // if query successful,
-          // use DOM to dynamically add query result table to webpage
-          // special consideration for how to add a list of platforms
-          // bind_delete_buttons();
 
-        // if query unsuccessful (shouldn't happen if filter parameters are verified first)
+        // clear out current search result table rows
+        var prevTableRows = document.getElementsByClassName('searchResultRow');
+        while (prevTableRows[0]) {
+          prevTableRows[0].remove();
+        }
+
+        searchTable = document.getElementById("searchResultTable")
+        
+        // add appropriate header rows for Titles table
+        header_tr = document.createElement('tr');
+        header_tr.setAttribute('class', 'searchResultRow');
+        
+        header_td = document.createElement('th');
+        header_td.textContent = 'Title'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Platforms'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.innerHTML = 'Release Date<br/>(North America)'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Genre'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Franchise'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Developer'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'ESRB Rating'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Delete?'
+        header_tr.appendChild(header_td);
+
+        searchTable.appendChild(header_tr);
+
+        // add each row into the search result table
+        for (var i = 0; i < res.length; i++) {
+          title_tr = document.createElement('tr');
+          title_tr.setAttribute('class', 'searchResultRow');
+          
+          name_val = document.createElement('td');
+          name_val.textContent = res[i][1];
+          title_tr.appendChild(name_val);
+
+          // replace this with unordered list of platforms from TitlesPlatforms query
+          plat_val = document.createElement('td');
+          plat_val.textContent = "Platform List Query Results";
+          title_tr.appendChild(plat_val);
+
+          release_val = document.createElement('td');
+          release_val.textContent = res[i][2];
+          title_tr.appendChild(release_val);
+
+          genre_val = document.createElement('td');
+          genre_val.textContent = res[i][3];
+          title_tr.appendChild(genre_val);
+
+          franchise_val = document.createElement('td');
+          franchise_val.textContent = res[i][4];
+          title_tr.appendChild(franchise_val);
+
+          dev_val = document.createElement('td');
+          dev_val.textContent = res[i][5];
+          title_tr.appendChild(dev_val);
+
+          esrb_val = document.createElement('td');
+          esrb_val.textContent = res[i][6];
+          title_tr.appendChild(esrb_val);
+
+          // add delete button
+          button_td = document.createElement('td');
+          del_button = document.createElement('button');
+          del_button.setAttribute('type', 'button');
+          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('value', res[i][0]);
+          button_td.appendChild(del_button);
+          title_tr.appendChild(button_td);
+
+          searchTable.appendChild(title_tr);
+        }
+
+        // rebind the new delete butons to trigger delete query
+        bind_delete_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
