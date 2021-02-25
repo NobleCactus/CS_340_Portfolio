@@ -70,14 +70,14 @@ def add():
 			print("QUERY STRING:", query_params[0])
 			print("QUERY PARAMS:", query_params[1])
 			
-			# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 			
 			#else:
 				# send unsuccessful back to webpage, return failed message
 				# Will create an error code to send back that will make an error message pop up
 					#return {}
 
-			return {"POST": "SUCCESSFUL"}
+			return jsonify(result)
 
 		elif query_vals["action"] == "addDev":
 			# query_vals = { "devName", "devCountry", "devDate"}
