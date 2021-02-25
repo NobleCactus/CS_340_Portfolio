@@ -49,8 +49,6 @@ def root():
 			title_info += (plat_tuple,)
 			new_table += (title_info,)
 
-		print("@@@new_table:", new_table)
-
 		return render_template("main.j2", titles=new_table, platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
