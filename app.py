@@ -251,7 +251,7 @@ def execute_addTitle(db_connection, query_vals):
 			execute_query(db_connection, query, params)
 
 	print("SUCCESSFUL ADDING TITLE")
-	return {"result:": 1}
+	return {"result": 1}
 
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
