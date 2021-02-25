@@ -15,16 +15,27 @@ def root():
 		# get all Video Game Titles
 		table_query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 		table_query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		table_query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
+		table_query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID "
+		table_query += "ORDER BY t.titleName;"
 		table = execute_query(db_connection, table_query).fetchall()
 
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
-		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat_query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName;"
 		plat = execute_query(db_connection, plat_query).fetchall()
-		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		
+		franchise_query = "SELECT franchiseID, franchiseName FROM `Franchises` ORDER BY franchiseName;"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
-		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName;"
 		dev = execute_query(db_connection, dev_query).fetchall()
+
+		titlesPlats_query = "SELECT t.titleName as Title, p.platformName as Platform FROM `TitlesPlatforms` as tp "
+		titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
+		titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
+		titlesPlats_query += "ORDER BY t.titleName;"
+		titles_Plats = execute_query(db_connection, titlesPlats_query).fetchall()
+		prtin("@@@titlesPlats:", titles_Plats)
+		print("@@@titlesPlats_query[0]:", titles_Plats[0])
 
 		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
 	else:
