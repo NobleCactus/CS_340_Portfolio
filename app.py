@@ -143,30 +143,30 @@ def delete():
 		# build query from request payload, depending on action
 		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
 
-		if query_vals["action"] == "delete":
-			pass
+		#if query_vals["action"] == "delete":
+			#pass
 			# build delete query
 
-		else:
-			if query_vals["action"] == "searchTitle":
-				query_params = build_query_searchTitle(query_vals)
+		#else:
+		if query_vals["action"] == "searchTitle":
+			query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
 
-			elif query_vals["action"] == "searchDev":
-				query_params = build_query_searchDev(query_vals)
+		elif query_vals["action"] == "searchDev":
+			query_params = build_query_searchDev(query_vals)
 
-			elif query_vals["action"] == "searchPlat":
-				query_params = build_query_searchPlat(query_vals)
+		elif query_vals["action"] == "searchPlat":
+			query_params = build_query_searchPlat(query_vals)
 
-			elif query_vals["action"] == "searchFranchise":
-				query_params = build_query_searchFranchise(query_vals)
-
-		res = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-		print(res)
+		elif query_vals["action"] == "searchFranchise":
+			query_params = build_query_searchFranchise(query_vals)
 		print("printed from del search request")
-		return jsonify(res)
+		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		print(result)
+
+		return jsonify(result)
 
 
 @app.route('/update', methods=['GET', 'POST'])
