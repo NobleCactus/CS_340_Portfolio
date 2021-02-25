@@ -66,14 +66,16 @@ def add():
 
 		# build query from request, depending on action
 		if query_vals["action"] == "addTitle":
+			print("IN ADD TITLE ROUTE")
 			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
 			params = (query_vals["titleName"], query_vals["titleESRB"], query_vals["titleGenre"], query_vals["titleRelease"], query_vals["titleDev"], query_vals["titleFranchise"])
 			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES ("
 			query += "%s, %s, %s, %s,"
 			query += "(SELECT developerID FROM `DevelopmentStudios` WHERE developerName = %s), "
 			query += "(SELECT franchiseID FROM `Franchises` WHERE franchiseName = %s));"
-			result = execute_query(db_connection, query, params).fetchall()
-			print(result)
+			#result = execute_query(db_connection, query, params).fetchall()
+			#print(result)
+			print("ADD VIDEO GAME TITLE QUERY:", query, params)
 
 			# if query is successful (so now there is a titleID)
 			# build query to INSERT into TitlesPlatforms. Still need to figure out the if condition
@@ -86,9 +88,10 @@ def add():
 				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), "
 				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = %s)"
 			query += ");"
-			result = execute_query(db_connection, query, params).fetchall()
-			print(result)
-
+			#result = execute_query(db_connection, query, params).fetchall()
+			#print(result)
+			print("ADD TITLES PLATFORMS QUERY:", query, params)
+			return {"RESPONSE": "POST SUCCESFUL?"}
 			#else:
 				# send unsuccessful back to webpage, return failed message
 				# Will create an error code to send back that will make an error message pop up
