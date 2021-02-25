@@ -66,46 +66,18 @@ def add():
 
 		# build query from request, depending on action
 		if query_vals["action"] == "addTitle":
-			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
-			params = (query_vals["titleName"],)
-			if query_vals["titleESRB"] == "" :
-				params += (NULL,)
-			else:
-				params += (query_vals["titleGenre"],)
-
-			if query_vals["titleGenre"] == "" :
-				params += (NULL,)
-			else:
-				params += (query_vals["titleGenre"],)
-			params += (query_vals["titleRelease"],)
-			params += (query_vals["titleDevID"],)
-			if query_vals["titleFranchiseID"] == "" :
-				params += (NULL,)
-			else:
-				params += (query_vals["titleFranchiseID"],)
-
-			query = "INSERT INTO `VideoGameTitles` (titleName, titleESRB, titleGenre, titleRelease, titleDeveloperID, titleFranchiseID) VALUES "
-			query += "(%s, %s, %s, %s, %s, %s);"
-			#result = execute_query(db_connection, query, params).fetchall()
-			#print(result)
-			print("ADD VIDEO GAME TITLE QUERY:", query, params)
-
-			for platformID in query_vals["titlePlatIDs"]:
-				params = ()
-				params += (query_vals["titleName"],)
-				params += (platformID,)
-				query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
-				query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), "
-				query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = %s));"
-				#result = execute_query(db_connection, query, params).fetchall()
-				#print(result)
-				print("ADD TITLES PLATFORMS QUERY:", query, params)
-
-			return {"RESPONSE": "POST SUCCESFUL?"}
+			query_params = build_query_addTitle(query_vals)
+			print("QUERY STRING:", query_params[0])
+			print("QUERY PARAMS:", query_params[1])
+			
+			# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+			
 			#else:
 				# send unsuccessful back to webpage, return failed message
 				# Will create an error code to send back that will make an error message pop up
 					#return {}
+
+			return {"POST": "SUCCESSFUL"}
 
 		elif query_vals["action"] == "addDev":
 			# query_vals = { "devName", "devCountry", "devDate"}
@@ -238,6 +210,45 @@ if __name__ == "__main__":
     #              You can replace this number with any valid port
 	app.run(port=port, debug=True)
 
+
+def build_query_addTitle(query_vals):
+	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
+	params = (query_vals["titleName"], query_vals["titleRelease"], query_vals["titleDevID"])
+	query = "INSERT INTO `VideoGameTitles` (titleName, titleRelease, titleDeveloperID"
+	values = " VALUES (%s, %s, %s"
+
+	if query_vals["titleESRB"] != "" :
+		params += (query_vals["titleESRB"],)
+		query += ", titleESRB"
+		values += ", %s"
+
+	if query_vals["titleGenre"] != "" :
+		params += (query_vals["titleGenre"],)
+		query += ", titleGenre"
+		values += ", %s"
+
+	if query_vals["titleFranchiseID"] != "" :
+		params += (query_vals["titleFranchiseID"],)
+		query += ", titleFranchiseID"
+		values += ", %s"
+
+	values += ");"
+	query += ")" + values
+	
+	return (query, params)
+
+def build_query_addTitlesPlats(query_vals):
+	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
+	for platformID in query_vals["titlePlatIDs"]:
+		params = ()
+		params += (query_vals["titleName"],)
+		params += (platformID,)
+		query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES ("
+		query += "(SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), "
+		query += "(SELECT p.platformID FROM Platforms AS p WHERE p.platformName = %s));"
+
+
+	return {"RESPONSE": "POST SUCCESFUL?"}
 
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
