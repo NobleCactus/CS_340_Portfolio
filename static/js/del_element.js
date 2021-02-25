@@ -161,7 +161,7 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-
+    console.log("SENDING SEARCH TITLE PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
@@ -180,7 +180,7 @@ function bindButtons() {
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
         res = JSON.parse(req.responseText);
-        console.log(res)
+        console.log(res);
 
         /*
         // clear out current search result table rows
@@ -282,7 +282,7 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-
+    console.log("SENDING SEARCH TITLE PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
