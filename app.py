@@ -69,18 +69,18 @@ def add():
 			# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
 			params = (query_vals["titleName"],)
 			if query_vals["titleESRB"] == "" :
-				params += (None,)
+				params += (NULL,)
 			else:
 				params += (query_vals["titleGenre"],)
 
 			if query_vals["titleGenre"] == "" :
-				params += (None,)
+				params += (NULL,)
 			else:
 				params += (query_vals["titleGenre"],)
 			params += (query_vals["titleRelease"],)
 			params += (query_vals["titleDevID"],)
 			if query_vals["titleFranchiseID"] == "" :
-				params += (None,)
+				params += (NULL,)
 			else:
 				params += (query_vals["titleFranchiseID"],)
 
