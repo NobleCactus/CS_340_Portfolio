@@ -327,7 +327,11 @@ function bindButtons() {
           title_tr.appendChild(dev_val);
 
           inProd_val = document.createElement('td');
-          inProd_val.textContent = res[i][4];
+          if (res[i][4]) {
+            inProd_val.textContent = "Y"
+          } else {
+            inProd_val.textContent = "N"
+          }
           title_tr.appendChild(inProd_val);
 
           // add delete button
