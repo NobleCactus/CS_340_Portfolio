@@ -55,7 +55,7 @@ function bindButtons() {
 		// verify not NULL parameters have values
 		if (document.getElementById('addTitleName').value == "" ||
 			document.getElementById('addTitleDate').value == "" ||
-			document.getElementById('addTitleDev').value == "" ||
+			document.getElementById('addTitleDevID').value == "" ||
 			title_plat_ids.length == 0) {
 			if (document.getElementById('addTitleName').value == "") {
 				document.getElementById('noTitleName').style.display = "inline";
