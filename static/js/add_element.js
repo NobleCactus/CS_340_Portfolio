@@ -88,29 +88,30 @@ function bindButtons() {
 				if (req.status >= 200 && req.status < 400) {
 					// POST request successful, check response for query status
 					res = JSON.parse(req.responseText);
+					console.log("RESPONSE:")
 					console.log(res);	// to show the elements of what comes back
 
-					// if query successful
+					// successful query
+					if (res["result"]):
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
 
-
-					// if query unsuccessful (find out what is sent for a failed query)
-						/* show add failed message and delayed disappear
-						
+					// failed query
+					else:
 						document.getElementById("addFailed").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addFailed").style.display = "none"
 						}, 1500);
 
-						*/
 				} else {
 					console.log("Error in network request: " + req.statusText);
 			}});
+
 			req.send(JSON.stringify(payload));
 
+			// reset required error messages
 			document.getElementById('noTitleName').style.display = "none";
 			document.getElementById('noTitleDate').style.display = "none";
 			document.getElementById('noTitleDev').style.display = "none";
