@@ -42,6 +42,7 @@ function bindButtons() {
   });
 
   document.getElementById("searchTitleButton").addEventListener("click", function(event) {
+    console.log("CLICKED TITLE SEARCH BUTTON");
     var req = new XMLHttpRequest();
     
     var payload = {"action": "searchTitle",
@@ -161,11 +162,12 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-    console.log("SENDING SEARCH TITLE PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
   document.getElementById("searchDevButton").addEventListener("click", function(event) {
+    console.log("CLICKED DEV SEARCH BUTTON");
+
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchDev",
@@ -282,7 +284,6 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-    console.log("SENDING SEARCH TITLE PAYLOAD");
     req.send(JSON.stringify(payload));
   });
 
