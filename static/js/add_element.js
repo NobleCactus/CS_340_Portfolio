@@ -63,7 +63,7 @@ function bindButtons() {
 			if (document.getElementById('addTitleDate').value == "") {
 				document.getElementById('noTitleDate').style.display = "inline";
 			}
-			if (document.getElementById('addTitleDev').value == "") {
+			if (document.getElementById('addTitleDevID').value == "") {
 				document.getElementById('noTitleDev').style.display = "inline";
 			}
 			if (title_plat_ids.length == 0) {
