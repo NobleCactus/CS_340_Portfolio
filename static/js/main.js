@@ -40,7 +40,7 @@ function bindButtons() {
 					plat_val = document.createElement('td');
 					plat_list = document.createElement('ul');
 					plat_list.setAttribute('class', 'platformList');
-					for (var j = 0; i < res[i][7].length; j++) {}
+					for (var j = 0; i < res[i][7].length; j++) {
 						plat_item = document.createElement('li');
 						plat_item.textContent = res[i][7][j];
 						plat_list.appendChild(plat_item);
