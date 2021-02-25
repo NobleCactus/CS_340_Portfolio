@@ -14,8 +14,8 @@ def root():
 	if request.method == 'GET':
 		# get all Video Game Titles
 		table_query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-		table_query += "JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		table_query += "JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
+		table_query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
+		table_query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID;"
 		table = execute_query(db_connection, table_query).fetchall()
 
 		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
