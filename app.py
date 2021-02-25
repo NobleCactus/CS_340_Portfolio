@@ -30,12 +30,9 @@ def root():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-		print("RECEIVED REQUEST VALUES:", query_vals)
 
-		# build query from request payload values
+		# build query and search DB
 		query_params = build_query_searchTitle(query_vals)
-
-		print("QUERY + PARAMS:", query_params)
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# make query to TitlesPlatforms, get response
@@ -51,45 +48,32 @@ def root():
 def add():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# dynamically populate drop down menu platforms/franchises/devs with corresponding table values
+		# get platforms/franchises/devs with corresponding table values to dynamically populate drop down menu
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
+		
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
+		
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
 		return render_template("add_element.j2", platforms=plat, franchises=franchise, devs=dev)
+	
+	# POST request
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
 
-		# build query from request, depending on action
+		# depending on action, INSERT into appropriate table
 		if query_vals["action"] == "addTitle":
-			return execute_addTitle(db_connection, query_vals)
-
+			result = execute_addTitle(db_connection, query_vals)
 		elif query_vals["action"] == "addDev":
-			# query_vals = { "devName", "devCountry", "devDate"}
-			params = (query_vals["devName"], query_vals["devCountry"], query_vals ["devDate"])
-			query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES "
-			query += "(%s, %s, %s);"
-			result = execute_query(db_connection, query, params).fetchall()
-			print(result)
-
+			result = execute_addDev(db_connection, query_vals)
 		elif query_vals["action"] == "addPlat":
-			# query_vals = {"platName", "platDate", "platDev", "platInProd"}
-			params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], str(query_vals["platInProd"]))
-			query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES "
-			query += "(%s, %s, %s, %s);"
-			result = execute_query(db_connection, query).fetchall()
-			print(result)
-
+			result = execute_addPlat(db_connection, query_vals)
 		elif query_vals["action"] == "addFranchise":
-			# query_vals = {"franchiseName", "franchiseDev"}
-			params = (query_vals["franchiseName"], query_vals["franchiseDev"])
-			query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ("
-			query += "(%s, %s);"
-			result = execute_query(db_connection, query).fetchall()
+			result = execute_addFranchise(db_connection, query_vals)
 
 		return jsonify(result)
 
@@ -97,15 +81,19 @@ def add():
 def delete():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# dynamically populate drop down menu platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values
+		# get platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values to dynamically populate drop down menu
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
+		
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
+		
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
+		
 		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
+		
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
@@ -113,32 +101,32 @@ def delete():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-		print(query_vals["action"])
-		# build query from request payload, depending on action
-		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
 
-		#if query_vals["action"] == "delete":
-			#pass
-			# build delete query
-
-		#else:
-		if query_vals["action"] == "searchTitle":
+		# deleting an element
+		if query_vals["action"] == "deleteTitle":
+			pass
+		elif query_vals["action"] == "deleteDev":
+			pass
+		elif query_vals["action"] == "deletePlat":
+			pass
+		elif query_vals["action"] == "deleteFranchise":
+			pass
+		
+		# depending on table, build query and search DB
+		elif query_vals["action"] == "searchTitle":
 			query_params = build_query_searchTitle(query_vals)
 
-				# make an array of the paltforms to include in the response
-				# select from TitlesPlatforms query_vals["titlePlat"]
+			# make an array of the paltforms to include in the response
+			# select from TitlesPlatforms query_vals["titlePlat"]
 
 		elif query_vals["action"] == "searchDev":
 			query_params = build_query_searchDev(query_vals)
-
 		elif query_vals["action"] == "searchPlat":
 			query_params = build_query_searchPlat(query_vals)
-
 		elif query_vals["action"] == "searchFranchise":
 			query_params = build_query_searchFranchise(query_vals)
-		print("printed from del search request")
+
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-		print(result)
 
 		return jsonify(result)
 
@@ -147,15 +135,19 @@ def delete():
 def update():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
-		# dynamically populate drop down menu platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values
+		# get platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values to dynamically populate drop down menu
 		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
 		plat = execute_query(db_connection, plat_query).fetchall()
+		
 		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
+		
 		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
 		dev = execute_query(db_connection, dev_query).fetchall()
+		
 		platDev_query = "SELECT platformDeveloper FROM `Platforms` GROUP BY platformDeveloper"
 		platDev = execute_query(db_connection, platDev_query).fetchall()
+		
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
 
@@ -168,9 +160,10 @@ def update():
 		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
 
 		if query_vals["action"] == "update":
-			#build update query
 			pass
+			# execute update 
 
+		# search DB
 		else:
 			if query_vals["action"] == "searchTitle":
 				query_params = build_query_searchTitle(query_vals)
@@ -187,10 +180,9 @@ def update():
 			elif query_vals["action"] == "searchFranchise":
 				query_params = build_query_searchFranchise(query_vals)
 
-		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-		print(result)
+			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
-		return jsonify(result)
+			return jsonify(result)
 
 # Listener
 if __name__ == "__main__":
@@ -203,12 +195,10 @@ if __name__ == "__main__":
 def execute_addTitle(db_connection, query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
 	
-	print("IN FUNCTION TO ADD TITLE")
-
+	# build query and parameters
 	params = (query_vals["titleName"], query_vals["titleRelease"], query_vals["titleDevID"])
 	query = "INSERT INTO `VideoGameTitles` (titleName, titleRelease, titleDeveloperID"
 	values = " VALUES (%s, %s, %s"
-
 	if query_vals["titleESRB"] != "" :
 		params += (query_vals["titleESRB"],)
 		query += ", titleESRB"
@@ -223,35 +213,64 @@ def execute_addTitle(db_connection, query_vals):
 		params += (query_vals["titleFranchiseID"],)
 		query += ", titleFranchiseID"
 		values += ", %s"
-
 	values += ");"
 	query += ")" + values
 
-	print("INSERT TITLE QUERY:", query)
-	print("INSERT TITLE PARAMS:", params)
-
 	try:
-		print("TRYING TO EXECUTE INSERT TITLE QUERY")
 		execute_query(db_connection, query, params)
-	
-	# error in INSERTing a Title
 	except:
-		print("ERROR IN INSERTING TITLE")
 		return {"result": 0}
-	
-	# Title successfully added, now add TitlesPlats
 	else:
-		print("INSERTING TITLESPLATFORMS")
 		for platformID in query_vals["titlePlatIDs"]:
 			params = (query_vals["titleName"], platformID)
 			query = "INSERT INTO `TitlesPlatforms` (titleID, platformID)"
 			query += " VALUES ((SELECT t.titleID FROM VideoGameTitles AS t WHERE t.titleName = %s), %s);"
-			print("TITLESPLATS QUERY:", query)
-			print("TITLESPLATS PARAMS:", params)
 			execute_query(db_connection, query, params)
-
-	print("SUCCESSFUL ADDING TITLE")
+	
 	return {"result": 1}
+
+def execute_addDev(db_connection, query_vals):
+	# query_vals = { "devName", "devCountry", "devDate"}
+
+	# build query
+	params = (query_vals["devName"], query_vals["devCountry"], query_vals ["devDate"])
+	query = "INSERT INTO `DevelopmentStudios` (developerName, developerCountry, developerFounded) VALUES (%s, %s, %s);"
+	
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_addPlat(db_connection, query_vals):
+	# query_vals = {"platName", "platDate", "platDev", "platInProd"}
+
+	# build query
+	params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], str(query_vals["platInProd"]))
+	query = "INSERT INTO `Platforms` (platformName, platformRelease, platformDeveloper, platformInProduction) VALUES (%s, %s, %s, %s);"
+	
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_addFranchise(db_connection, query_vals):
+	# query_vals = {"franchiseName", "franchiseDev"}
+
+	# build query
+	params = (query_vals["franchiseName"], query_vals["franchiseDev"])
+	query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES (%s, %s);"
+	
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
 
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}

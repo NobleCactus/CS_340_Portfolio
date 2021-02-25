@@ -59,8 +59,8 @@ function bindButtons() {
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
-        // POST request successful, check response for query status
-
+        res = JSON.parse(req.responseText);
+        console.log(res)
         // if query successful,
           // use DOM to dynamically add query result table to webpage
           // special consideration for how to add a list of platforms

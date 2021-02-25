@@ -19,7 +19,6 @@ function bindButtons() {
 
 		req.addEventListener('load', function(){
 			if (req.status >= 200 && req.status < 400) {
-				// POST request successful, check response for query status
 				res = JSON.parse(req.responseText);
 
 				// clear out current elements in the table
