@@ -122,6 +122,8 @@ function bindButtons() {
             "platToDate": document.getElementById('searchPlatToDate').value, 
             "platDev": document.getElementById('searchPlatDev').value,
             "platInProd": platInProd};
+    req.open('POST', '/', true);
+    req.setRequestHeader('Content-Type', 'application/json');            
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
@@ -145,6 +147,8 @@ function bindButtons() {
     var payload = {"action": "searchFranchise",
             "franchiseName": document.getElementById('searchFranchiseName').value,
             "franchiseDev": document.getElementById('searchFranchiseDev').value};
+    req.open('POST', '/', true);
+    req.setRequestHeader('Content-Type', 'application/json');
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
