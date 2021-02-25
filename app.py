@@ -193,29 +193,30 @@ def update():
 		# build query from request payload, depending on action
 		# include if statements to check for empty attributes (""). If empty, don't add WHERE to query
 
-		# if query_vals["action"] == "update":
-			# build update query
+		if query_vals["action"] == "update":
+			#build update query
+			pass
 
-		# else:
-			# if query_vals["action"] == "searchTitle":
-				# query_params = build_query_searchTitle(query_vals)
+		else:
+			if query_vals["action"] == "searchTitle":
+				query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
 
-			# elif query_vals["action"] == "searchDev":
-				# query_params = build_query_searchDev(query_vals)
+			elif query_vals["action"] == "searchDev":
+				query_params = build_query_searchDev(query_vals)
 
-			# elif query_vals["action"] == "searchPlat":
-				# query_params = build_query_searchPlat(query_vals)
+			elif query_vals["action"] == "searchPlat":
+				query_params = build_query_searchPlat(query_vals)
 
-			# elif query_vals["action"] == "searchFranchise":
-				# query_params = build_query_searchFranchise(query_vals)
+			elif query_vals["action"] == "searchFranchise":
+				query_params = build_query_searchFranchise(query_vals)
 
-		# result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		print(result)
 
-		# return result(?)
-		return {}
+		return jsonify(result)
 
 # Listener
 if __name__ == "__main__":
@@ -382,11 +383,11 @@ def build_query_searchFranchise(query_vals):
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1
 	params = ()
-	if query_parameters["franchiseName"] != "":
+	if query_vals["franchiseName"] != "":
 		query += " WHERE franchiseName LIKE %s"
 		params += ("%" + query_vals["franchiseName"] + "%",)
 		no_where = 0
-	if query_parameters["franchiseDev"] != "":
+	if query_vals["franchiseDev"] != "":
 		if no_where:
 			query += " WHERE "
 			no_where = 0
