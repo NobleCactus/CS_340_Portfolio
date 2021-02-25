@@ -447,7 +447,7 @@ function bind_update_buttons() {
     element.addEventListener("click", function(event) {
       // make the row's attributes edit-able
 
-      // POST to /update with parameters
+      // POST to /update with parameters: row's ID (event.target.value)
 
       //if successful
       document.getElementById("updateSuccessful").style.display = "block";

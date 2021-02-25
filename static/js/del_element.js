@@ -454,6 +454,12 @@ function bind_delete_buttons() {
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
           }, 1500);
+
+        // not successful
+        document.getElementById("updateFailed").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("updateFailed").style.display = "none"
+        }, 1500);
       } 
     })
   });
