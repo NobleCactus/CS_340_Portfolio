@@ -193,7 +193,7 @@ function bindButtons() {
         header_tr.setAttribute('class', 'searchResultRow');
         
         header_td = document.createElement('th');
-        header_td.textContent = 'Name'
+        header_td.textContent = 'Developer Studio'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
@@ -288,7 +288,7 @@ function bindButtons() {
         header_tr.setAttribute('class', 'searchResultRow');
         
         header_td = document.createElement('th');
-        header_td.textContent = 'Name'
+        header_td.textContent = 'Platform'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
