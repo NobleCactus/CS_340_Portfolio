@@ -112,7 +112,9 @@
           <td>{{ t[1] }}</td>
           <td>
             <ul class="platformList">
-              <li>{{ t[7] }}</li>
+              {% for p in t[7] %}
+              <li>{{ p }}</li>
+              {% endfor %}
             </ul>
           </td>
           <td>{{ t[2] }}</td>

@@ -51,7 +51,7 @@ def root():
 
 		print("@@@new_table:", new_table)
 
-		return render_template("main.j2", titles=table, platforms=plat, franchises=franchise, devs=dev)
+		return render_template("main.j2", titles=new_table, platforms=plat, franchises=franchise, devs=dev)
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
