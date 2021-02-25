@@ -39,8 +39,8 @@ function bindButtons() {
 
 
 					plat_val = document.createElement('td');
-					plat_val.setAttribute('class', 'platformList');
 					plat_list = document.createElement('ul');
+					plat_list.setAttribute('class', 'platformList');
 					
 					// for loop this for each platform for each title
 					plat_item = document.createElement('li');
