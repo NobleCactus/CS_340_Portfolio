@@ -42,7 +42,6 @@ function bindButtons() {
   });
 
   document.getElementById("searchTitleButton").addEventListener("click", function(event) {
-    console.log("CLICKED TITLE SEARCH BUTTON");
     var req = new XMLHttpRequest();
     
     var payload = {"action": "searchTitle",
@@ -55,7 +54,7 @@ function bindButtons() {
             "titleDevID": document.getElementById('searchTitleDevID').value,
             "titleESRB": document.getElementById('searchTitleESRB').value};
 
-    req.open('POST', '/', true);
+    req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
 
     req.addEventListener('load', function(){
@@ -162,12 +161,11 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-    console.log("SENDING TITLE SEARCH PAYLOAD");
+
     req.send(JSON.stringify(payload));
   });
 
   document.getElementById("searchDevButton").addEventListener("click", function(event) {
-    console.log("CLICKED DEV SEARCH BUTTON");
 
     var req = new XMLHttpRequest();
 
@@ -177,7 +175,7 @@ function bindButtons() {
             "devFromDate": document.getElementById('searchDevFromDate').value, 
             "devToDate": document.getElementById('searchDevToDate').value};
 
-    req.open('POST', '/', true);
+    req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
 
     req.addEventListener('load', function(){
@@ -285,7 +283,7 @@ function bindButtons() {
       } else {
         console.log("Error in network request: " + req.statusText);
     }});
-    console.log("SENDING SEARCH DEV PAYLOAD");
+
     req.send(JSON.stringify(payload));
   });
 
@@ -308,7 +306,7 @@ function bindButtons() {
             "platToDate": document.getElementById('searchPlatToDate').value, 
             "platDev": document.getElementById('searchPlatDev').value,
             "platInProd": platInProd};
-    req.open('POST', '/', true);
+    req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');            
 
     req.addEventListener('load', function(){
@@ -333,7 +331,7 @@ function bindButtons() {
     var payload = {"action": "searchFranchise",
             "franchiseName": document.getElementById('searchFranchiseName').value,
             "franchiseDev": document.getElementById('searchFranchiseDev').value};
-    req.open('POST', '/', true);
+    req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
 
     req.addEventListener('load', function(){
