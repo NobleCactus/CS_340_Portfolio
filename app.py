@@ -149,42 +149,7 @@ def delete():
 
 		else:
 			if query_vals["action"] == "searchTitle":
-
-				# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
-				query = "SELECT * FROM `DevelopmentStudios`"
-				no_where = 1
-				params = ()
-				if query_vals["devName"] != "":
-					query += " WHERE developerName LIKE %s"
-					params += ("%" + query_vals["devName"] + "%",)
-					no_where = 0
-				if query_vals["devCountry"] != "":
-					if no_where:
-						query += " WHERE "
-						no_where = 0
-					else:
-						query += " AND "
-					query += "developerCountry = %s"
-					params += (query_vals["devCountry"],)
-				if query_vals["devFromDate"] != "":
-					if no_where:
-						query += " WHERE "
-						no_where = 0
-					else:
-						query += " AND "
-					query += "developerFounded >= %s"
-					params += (query_vals["devFromDate"],)
-				if query_vals["devToDate"] != "":
-					if no_where:
-						query += " WHERE "
-						no_where = 0
-					else:
-						query += " AND "
-					query += "developerFounded <= %s"
-					params += (query_vals["devToDate"],)
-				query += ";"
-				query_params = (query,params)
-				#query_params = build_query_searchTitle(query_vals)
+				query_params = build_query_searchTitle(query_vals)
 
 				# make an array of the paltforms to include in the response
 				# select from TitlesPlatforms query_vals["titlePlat"]
@@ -198,9 +163,10 @@ def delete():
 			elif query_vals["action"] == "searchFranchise":
 				query_params = build_query_searchFranchise(query_vals)
 
-		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-		print(result)
-		return jsonify(result)
+		res = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		print(res)
+		print("printed from del search request")
+		return jsonify(res)
 
 
 @app.route('/update', methods=['GET', 'POST'])
