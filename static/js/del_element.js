@@ -179,7 +179,6 @@ function bindButtons() {
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
         res = JSON.parse(req.responseText);
-        console.log(res);
 
         // clear out current search result table rows
         var prevTableRows = document.getElementsByClassName('searchResultRow');
@@ -202,7 +201,7 @@ function bindButtons() {
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
-        header_td.innerHTML = 'Date Founded'
+        header_td.textContent = 'Date Founded'
         header_tr.appendChild(header_td);
 
         header_td = document.createElement('th');
@@ -274,13 +273,78 @@ function bindButtons() {
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
-        // POST request successful, check response for query status
+        res = JSON.parse(req.responseText);
 
-        // if query successful,
-          // use DOM to dynamically add query result table to webpage
-          // bind_delete_buttons();
+        // clear out current search result table rows
+        var prevTableRows = document.getElementsByClassName('searchResultRow');
+        while (prevTableRows[0]) {
+          prevTableRows[0].remove();
+        }
 
-        // if query unsuccessful (shouldn't happen if filter parameters are verified first)
+        searchTable = document.getElementById("searchResultTable")
+        
+        // add appropriate header rows for Titles table
+        header_tr = document.createElement('tr');
+        header_tr.setAttribute('class', 'searchResultRow');
+        
+        header_td = document.createElement('th');
+        header_td.textContent = 'Name'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.innerHTML = 'Release Date<br/>(North America)'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Developer'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'In Production'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Delete?'
+        header_tr.appendChild(header_td);
+
+        searchTable.appendChild(header_tr);
+
+        // add each row into the search result table
+        for (var i = 0; i < res.length; i++) {
+          title_tr = document.createElement('tr');
+          title_tr.setAttribute('class', 'searchResultRow');
+          
+          name_val = document.createElement('td');
+          name_val.textContent = res[i][1];
+          title_tr.appendChild(name_val);
+
+          release_val = document.createElement('td');
+          release_val.textContent = res[i][2];
+          title_tr.appendChild(release_val);
+
+          dev_val = document.createElement('td');
+          dev_val.textContent = res[i][3];
+          title_tr.appendChild(dev_val);
+
+          inProd_val = document.createElement('td');
+          inProd_val.textContent = res[i][4];
+          title_tr.appendChild(inProd_val);
+
+          // add delete button
+          button_td = document.createElement('td');
+          del_button = document.createElement('button');
+          del_button.setAttribute('type', 'button');
+          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('value', res[i][0]);
+          del_button.textContent = "Delete"
+          button_td.appendChild(del_button);
+          title_tr.appendChild(button_td);
+
+          searchTable.appendChild(title_tr);
+        }
+
+        // rebind the new delete butons to trigger delete query
+        bind_delete_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
@@ -299,13 +363,62 @@ function bindButtons() {
 
     req.addEventListener('load', function(){
       if (req.status >= 200 && req.status < 400) {
-        // POST request successful, check response for query status
+        res = JSON.parse(req.responseText);
 
-        // if query successful,
-          // use DOM to dynamically add query result table to webpage
-          // bind_delete_buttons();
+        // clear out current search result table rows
+        var prevTableRows = document.getElementsByClassName('searchResultRow');
+        while (prevTableRows[0]) {
+          prevTableRows[0].remove();
+        }
 
-        // if query unsuccessful (shouldn't happen if filter parameters are verified first)
+        searchTable = document.getElementById("searchResultTable")
+        
+        // add appropriate header rows for Titles table
+        header_tr = document.createElement('tr');
+        header_tr.setAttribute('class', 'searchResultRow');
+        
+        header_td = document.createElement('th');
+        header_td.textContent = 'Franchise'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.innerHTML = 'Developer'
+        header_tr.appendChild(header_td);
+
+        header_td = document.createElement('th');
+        header_td.textContent = 'Delete?'
+        header_tr.appendChild(header_td);
+
+        searchTable.appendChild(header_tr);
+
+        // add each row into the search result table
+        for (var i = 0; i < res.length; i++) {
+          title_tr = document.createElement('tr');
+          title_tr.setAttribute('class', 'searchResultRow');
+          
+          name_val = document.createElement('td');
+          name_val.textContent = res[i][1];
+          title_tr.appendChild(name_val);
+
+          dev_val = document.createElement('td');
+          dev_val.textContent = res[i][2];
+          title_tr.appendChild(dev_val);
+
+          // add delete button
+          button_td = document.createElement('td');
+          del_button = document.createElement('button');
+          del_button.setAttribute('type', 'button');
+          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('value', res[i][0]);
+          del_button.textContent = "Delete"
+          button_td.appendChild(del_button);
+          title_tr.appendChild(button_td);
+
+          searchTable.appendChild(title_tr);
+        }
+
+        // rebind the new delete butons to trigger delete query
+        bind_delete_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
