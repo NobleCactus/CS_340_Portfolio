@@ -92,14 +92,14 @@ function bindButtons() {
 					console.log(res);	// to show the elements of what comes back
 
 					// successful query
-					if (res["result"]):
+					if (res["result"]) {}
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
 						}, 1500);
 
 					// failed query
-					else:
+					} else:
 						document.getElementById("addFailed").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addFailed").style.display = "none"
