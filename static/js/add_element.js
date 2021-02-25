@@ -92,7 +92,7 @@ function bindButtons() {
 					console.log(res);	// to show the elements of what comes back
 
 					// successful query
-					if (res["result"]) {
+					if (res["result"] == "1") {
 						document.getElementById("addSuccessful").style.display = "block";
 						setTimeout(function() {
 							document.getElementById("addSuccessful").style.display = "none"
