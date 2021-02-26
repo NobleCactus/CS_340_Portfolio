@@ -369,7 +369,6 @@ def add_plats_to_titles(db_connection, titles_result):
 
 def build_query_searchDev(query_vals):
 	# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
-	print("@@@ BUILDING QUERY")
 	query = "SELECT * FROM `DevelopmentStudios`"
 	no_where = 1
 	params = ()
@@ -401,7 +400,7 @@ def build_query_searchDev(query_vals):
 			query += " AND "
 		query += "developerFounded <= %s"
 		params += (query_vals["devToDate"],)
-	query += " ORDER BY devName;"
+	query += " ORDER BY developerName;"
 
 	return (query, params)
 
@@ -446,7 +445,7 @@ def build_query_searchPlat(query_vals):
 			query += " AND "
 		query += "platformInProduction = %s"
 		params += (query_vals["platInProd"],)
-	query += " ORDER BY platName;"
+	query += " ORDER BY platformName;"
 
 	return (query, params)
 
