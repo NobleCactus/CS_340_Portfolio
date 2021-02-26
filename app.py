@@ -449,6 +449,12 @@ def build_query_searchFranchise(query_vals):
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1
 	params = ()
+	print("Franchise Name Troubleshooting")
+
+	print(query_vals["franchiseName"])
+
+	print("Franchise Name Troubleshooting")
+
 	if query_vals["franchiseName"] != "":
 		query += " WHERE franchiseName LIKE %s"
 		params += ("%" + query_vals["franchiseName"] + "%",)
