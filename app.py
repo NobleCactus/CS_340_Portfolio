@@ -279,7 +279,7 @@ def build_query_searchTitle(query_vals):
 	# getting an error trying to format t.titleRelease date
 	# DATE_FORMAT(t.titleRelease, '%Y-%m-%d') AS t.titleRelease
 	query = "SELECT DISTINCT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-	query += "LEFT JOIN TitlesPlatforms AS tpl ON t.titleID = tpl.titleID"
+	query += "LEFT JOIN TitlesPlatforms AS tpl ON t.titleID = tpl.titleID "
 	query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 	query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 	no_where = 1
