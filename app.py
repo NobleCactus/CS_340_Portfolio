@@ -264,7 +264,7 @@ def execute_addFranchise(db_connection, query_vals):
 
 	# build query
 	params = (query_vals["franchiseName"], query_vals["franchiseDev"])
-	query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ((SELECT franchiseName FROM `Franchises` WHERE franchiseID = %s), %s);"
+	query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES (%s, (SELECT developerName FROM `DevelopmentStudios` WHERE developerID = %s));"
 	
 	try:
 		result = execute_query(db_connection, query, params)
