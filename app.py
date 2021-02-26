@@ -264,7 +264,7 @@ def execute_addFranchise(db_connection, query_vals):
 
 	# build query
 	params = (query_vals["franchiseName"], query_vals["franchiseDev"])
-	query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES (%s, %s);"
+	query = "INSERT INTO `Franchises` (franchiseName, franchiseDeveloper) VALUES ((SELECT franchiseName FROM `Franchises` WHERE franchiseID = %s), %s);"
 	
 	try:
 		result = execute_query(db_connection, query, params)
@@ -449,12 +449,6 @@ def build_query_searchFranchise(query_vals):
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1
 	params = ()
-	print("Franchise Name Troubleshooting")
-
-	print(query_vals["franchiseName"])
-
-	print("Franchise Name Troubleshooting")
-
 	if query_vals["franchiseName"] != "":
 		query += " WHERE franchiseName LIKE %s"
 		params += ("%" + query_vals["franchiseName"] + "%",)
