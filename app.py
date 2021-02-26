@@ -283,8 +283,8 @@ def build_query_searchTitle(query_vals):
 	query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
 	query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID"
 	no_where = 1
-
 	params = ()
+	print(query_vals)
 	if query_vals["titleName"] != "":
 		query += " WHERE t.titleName LIKE %s"
 		params += ("%" + query_vals["titleName"] + "%",)
