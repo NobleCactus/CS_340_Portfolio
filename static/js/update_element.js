@@ -420,7 +420,7 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list cell_elements[1]
-        platform_elements = res["Plats"]
+        platform_elements = res["Plats"];
         td_cell = document.createElement('td');
 
 
@@ -466,8 +466,9 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[3]);
 
         // franchise cell_elements[4]
-        franchise_elements = res["Franchises"]
-        td_cell = document.createElement('td')
+        franchise_elements = res["Franchises"];
+        console.log(res["Franchises"]);
+        td_cell = document.createElement('td');
         update_franchise = document.createElement('select');
         franchise_option = document.createElement('option');
         update_franchise.appendChild(franchise_option);
@@ -475,6 +476,7 @@ function bind_update_buttons() {
           franchise_option = document.createElement('option');
           franchise_option.value = franchise_elements[i][0];
           franchise_option.textContent = franchise_elements[i][1];
+          
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
@@ -489,8 +491,8 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[4]);
 
         // dev cell_elements[5]
-        dev_elements = res["Devs"]
-        td_cell = document.createElement('td')
+        dev_elements = res["Devs"];
+        td_cell = document.createElement('td');
         update_dev = document.createElement('select');
         dev_option = document.createElement('option');
         update_dev.appendChild(dev_option);
