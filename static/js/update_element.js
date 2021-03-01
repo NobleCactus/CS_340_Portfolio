@@ -616,7 +616,8 @@ function bind_update_buttons() {
           // default selection is original value
           if (cell_elements[6] != "") {
             var index = 1;
-            console.log(update_esrb.childNodes[index]);
+            console.log(cell_elements[6].textContent);
+            console.log(update_esrb.childNodes[index].value);
             while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
               index++;
             }
