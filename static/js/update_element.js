@@ -465,13 +465,13 @@ function bind_update_buttons() {
       event.target.nextElementSibling.style.display = "inline";
 
       // make the row's attributes edit-able
-      var row_elements = event.target.parentNode.parentNode.childNodes;
+      var row_element = event.target.parentNode.parentNode;
 
       // name row_elements[0]
       update_name = document.createElement('input');
       update_name.type = "text";
       update_name.value = row_elements[0];
-      row_elements.replaceChild(update_name, row_elements[0]);
+      row_element.replaceChild(update_name, row_element.childNodes[0]);
 
       // platform list row_elements[1]
 
