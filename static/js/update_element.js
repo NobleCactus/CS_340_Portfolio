@@ -481,7 +481,7 @@ function bind_update_buttons() {
           // set default selection to original value
         if (cell_elements[4] != "") {
           var index = 1;
-          console.log(update_franchise.childNodes[index]);
+          console.log(update_franchise.childNodes[index].value);
           while (cell_elements[4].textContent != update_franchise.childNodes[index].value) {
             index++;
           }
