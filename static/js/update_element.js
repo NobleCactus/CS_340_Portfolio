@@ -561,7 +561,27 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[4]);
 
         // dev cell_elements[5]
-
+        dev_elements = res["Devs"]
+        td_cell = document.createElement('td')
+        update_dev = document.createElement('select');
+        dev_option = document.createElement('option');
+        update_dev.appendChild(dev_option);
+        for (var i = 0; i < dev_elements.length; i++) {
+          dev_option = document.createElement('option');
+          dev_option.value = dev_elements[i];
+          dev_option.textContent = dev_elements[i];
+          update_dev.appendChild(dev_option);
+        }
+        td_cell.appendChild(update_dev);
+          // set default selection to original value
+        if (cell_elements[5] != "") {
+          var index = 1;
+          while (cell_elements[5].textContent != update_dev.childNodes[index].value) {
+            index++;
+          }
+          update_dev.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[5]);
 
         // ESRB options
         esrb_values = ["E", "T", "M"];
