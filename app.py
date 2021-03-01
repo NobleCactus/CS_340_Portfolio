@@ -188,12 +188,9 @@ def update():
 			query = "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName"
 			dev_result = execute_query(db_connection, query).fetchall();
 
-			return {"PlatID": plat_result[0],
-					"PlatName": plat_result[1],
-					"FranchiseID": franchise_result[0],
-					"FranchiseName": franchise_result[1],
-					"DevID": dev_result[0],
-					"DevName": dev_result[1]}
+			return {"Plats": plat_result,
+					"Franchises": franchise_result,
+					"Devs": dev_result}
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
