@@ -177,7 +177,7 @@ function bindButtons() {
 
         for (var i = 0; i < header_elements.length; i++) {
           header_th = document.createElement('th');
-          header_th.text_content = header_elements[i];
+          header_th.textContent = header_elements[i];
           header_tr.appendChild(header_th);
         }
 
