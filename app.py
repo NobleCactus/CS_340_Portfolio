@@ -183,6 +183,8 @@ def update():
 		elif query_vals["action"] == "searchFranchise":
 			query_params = build_query_searchFranchise(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		elif query_vals["action"] == "updateTitleElements":
+			return {"updateTitleElements": "SUCCESSFUL"};
 
 		return jsonify(result)
 

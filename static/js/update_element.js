@@ -460,231 +460,227 @@ function bind_update_buttons() {
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      // change displayed button to Save Changes
-      event.target.style.display = "none";
-      event.target.nextElementSibling.style.display = "inline";
+      // get list of platforms, franchises, and devs
+      var req = new XMLHttpRequest();
+      payload = {"action": "updateTitleElements"};
+      req.open('POST', '/update', true);
+      req.setRequestHeader('Content-Type', 'application/json');
 
-      // make the row's attributes edit-able
-      var row_element = event.target.parentNode.parentNode;
-      var cell_elements = row_element.childNodes;
+      req.addEventListener('load', function(){
+        if (req.status >= 200 && req.status < 400) {
+          res = JSON.parse(req.responseText);
+          console.log("res");
+          // change displayed button to Save Changes
+          event.target.style.display = "none";
+          event.target.nextElementSibling.style.display = "inline";
 
-      // name cell_elements[0]
-      td_cell = document.createElement('td');
-      update_name = document.createElement('input');
-      update_name.type = "text";
-      update_name.value = row_element.childNodes[0].textContent;
-      td_cell.appendChild(update_name);
-      row_element.replaceChild(td_cell, cell_elements[0]);
+          // make the row's attributes edit-able
+          var row_element = event.target.parentNode.parentNode;
+          var cell_elements = row_element.childNodes;
 
-      // platform list cell_elements[1]
+          // name cell_elements[0]
+          td_cell = document.createElement('td');
+          update_name = document.createElement('input');
+          update_name.type = "text";
+          update_name.value = row_element.childNodes[0].textContent;
+          td_cell.appendChild(update_name);
+          row_element.replaceChild(td_cell, cell_elements[0]);
 
-      // release date cell_elements[2]
-      td_cell = document.createElement('td');
-      update_date = document.createElement('input');
-      update_date.type = "date";
+          // platform list cell_elements[1]
 
-      // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
-      update_date.defaultValue = "1993-10-26";
-      // otherwise, we have to use this and buil up the date string
-      console.log(cell_elements[2].textContent.split(" "));
+          // release date cell_elements[2]
+          td_cell = document.createElement('td');
+          update_date = document.createElement('input');
+          update_date.type = "date";
 
-      td_cell.appendChild(update_date);
-      row_element.replaceChild(td_cell, cell_elements[2]);
+          // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
+          update_date.defaultValue = "1993-10-26";
+          // otherwise, we have to use this and buil up the date string
+          console.log(cell_elements[2].textContent.split(" "));
 
-      // genre cell_elements[3]
-      td_cell = document.createElement('td');
-      update_genre = document.createElement('select');
-      genre_element = document.createElement('option');
-      update_genre.appendChild(genre_element);
+          td_cell.appendChild(update_date);
+          row_element.replaceChild(td_cell, cell_elements[2]);
 
-      genre_element = document.createElement('option');
-      genre_element.value = "Action";
-      genre_element.textContent = "Action";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
+          // genre cell_elements[3]
+          td_cell = document.createElement('td');
+          update_genre = document.createElement('select');
+          genre_element = document.createElement('option');
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Action";
+          genre_element.textContent = "Action";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Action-Adventure";
+          genre_element.textContent = "Action-Adventure";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Adventure";
+          genre_element.textContent = "Adventure";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Battle Royale";
+          genre_element.textContent = "Battle Royale";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Fighting";
+          genre_element.textContent = "Fighting";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "First-Person Shooter";
+          genre_element.textContent = "First-Person Shooter";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Massively Multiplayer Online Games";
+          genre_element.textContent = "Massively Multiplayer Online Games";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Multiplayer Online Battle Arena";
+          genre_element.textContent = "Multiplayer Online Battle Arena";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Platformer";
+          genre_element.textContent = "Platformer";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Racing";
+          genre_element.textContent = "Racing";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Real-Time Strategy";
+          genre_element.textContent = "Real-Time Strategy";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Role-Playing Games";
+          genre_element.textContent = "Role-Playing Games";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Sandbox/Open World";
+          genre_element.textContent = "Sandbox/Open World";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Simulation";
+          genre_element.textContent = "Simulation";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Sports";
+          genre_element.textContent = "Sports";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Strategy";
+          genre_element.textContent = "Strategy";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Survival";
+          genre_element.textContent = "Survival";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Third-Person Shooter";
+          genre_element.textContent = "Third-Person Shooter";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          genre_element = document.createElement('option');
+          genre_element.value = "Other";
+          genre_element.textContent = "Other";
+          if (cell_elements[3].textContent == genre_element.value) {
+            genre_element.selected = true;
+          }
+          update_genre.appendChild(genre_element);
+          td_cell.appendChild(update_genre);
+          row_element.replaceChild(td_cell, cell_elements[3]);
 
-      genre_element = document.createElement('option');
-      genre_element.value = "Action-Adventure";
-      genre_element.textContent = "Action-Adventure";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
+          // franchise cell_elements[4]
 
-      genre_element = document.createElement('option');
-      genre_element.value = "Adventure";
-      genre_element.textContent = "Adventure";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
+          // dev cell_elements[5]
 
-      genre_element = document.createElement('option');
-      genre_element.value = "Battle Royale";
-      genre_element.textContent = "Battle Royale";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Fighting";
-      genre_element.textContent = "Fighting";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "First-Person Shooter";
-      genre_element.textContent = "First-Person Shooter";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Massively Multiplayer Online Games";
-      genre_element.textContent = "Massively Multiplayer Online Games";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Multiplayer Online Battle Arena";
-      genre_element.textContent = "Multiplayer Online Battle Arena";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Platformer";
-      genre_element.textContent = "Platformer";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Racing";
-      genre_element.textContent = "Racing";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Real-Time Strategy";
-      genre_element.textContent = "Real-Time Strategy";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Role-Playing Games";
-      genre_element.textContent = "Role-Playing Games";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Sandbox/Open World";
-      genre_element.textContent = "Sandbox/Open World";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Simulation";
-      genre_element.textContent = "Simulation";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Sports";
-      genre_element.textContent = "Sports";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Strategy";
-      genre_element.textContent = "Strategy";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Survival";
-      genre_element.textContent = "Survival";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Third-Person Shooter";
-      genre_element.textContent = "Third-Person Shooter";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-
-      genre_element = document.createElement('option');
-      genre_element.value = "Other";
-      genre_element.textContent = "Other";
-      if (cell_elements[3].textContent == genre_element.value) {
-        genre_element.selected = true;
-      }
-      update_genre.appendChild(genre_element);
-      td_cell.appendChild(update_genre);
-      row_element.replaceChild(td_cell, cell_elements[3]);
-
-      // franchise cell_elements[4]
-
-      // dev cell_elements[5]
-
-      // esrb cell_elements[6]
-      td_cell = document.createElement('td');
-      update_esrb = document.createElement('select');
-      esrb_element = document.createElement('option');
-      update_esrb.appendChild(esrb_element);
-      esrb_element = document.createElement('option');
-      esrb_element.value = "E";
-      esrb_element.textContent = "E - Everyone";
-      if (cell_elements[6].textContent == esrb_element.value) {
-        esrb_element.selected = true;
-      }
-      update_esrb.appendChild(esrb_element);
-      esrb_element = document.createElement('option');
-      esrb_element.value = "T";
-      esrb_element.textContent = "T - Teen";
-      if (cell_elements[6].textContent == esrb_element.value) {
-        esrb_element.selected = true;
-      }
-      update_esrb.appendChild(esrb_element);
-      esrb_element = document.createElement('option');
-      esrb_element.value = "M";
-      esrb_element.textContent = "M - Mature";
-      if (cell_elements[6].textContent == esrb_element.value) {
-        esrb_element.selected = true;
-      }
-      update_esrb.appendChild(esrb_element);
-      td_cell.appendChild(update_esrb);
-      row_element.replaceChild(td_cell, cell_elements[6]);
+          // esrb cell_elements[6]
+          td_cell = document.createElement('td');
+          update_esrb = document.createElement('select');
+          esrb_element = document.createElement('option');
+          update_esrb.appendChild(esrb_element);
+          esrb_element = document.createElement('option');
+          esrb_element.value = "E";
+          esrb_element.textContent = "E - Everyone";
+          if (cell_elements[6].textContent == esrb_element.value) {
+            esrb_element.selected = true;
+          }
+          update_esrb.appendChild(esrb_element);
+          esrb_element = document.createElement('option');
+          esrb_element.value = "T";
+          esrb_element.textContent = "T - Teen";
+          if (cell_elements[6].textContent == esrb_element.value) {
+            esrb_element.selected = true;
+          }
+          update_esrb.appendChild(esrb_element);
+          esrb_element = document.createElement('option');
+          esrb_element.value = "M";
+          esrb_element.textContent = "M - Mature";
+          if (cell_elements[6].textContent == esrb_element.value) {
+            esrb_element.selected = true;
+          }
+          update_esrb.appendChild(esrb_element);
+          td_cell.appendChild(update_esrb);
+          row_element.replaceChild(td_cell, cell_elements[6]);
+        } else {
+          console.log("Error in network request: " + req.statusText);
+        }
+        req.send(JSON.stringify(payload));
     });
   });
+}
 
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
