@@ -487,8 +487,6 @@ function bind_update_buttons() {
       // dev cell_elements[5]
 
       // esrb cell_elements[6]
-      console.log(cell_elements[6].textContent);
-      
       td_cell = document.createElement('td');
       update_esrb = document.createElement('select');
       
@@ -498,7 +496,7 @@ function bind_update_buttons() {
       esrb_element = document.createElement('option');
       esrb_element.value = "E";
       esrb_element.textContent = "E - Everyone";
-      if (cell_elements[6].value == esrb_element.value) {
+      if (cell_elements[6].textContent == esrb_element.value) {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
@@ -506,7 +504,7 @@ function bind_update_buttons() {
       esrb_element = document.createElement('option');
       esrb_element.value = "T";
       esrb_element.textContent = "T - Teen";
-      if (cell_elements[6].value == esrb_element.value) {
+      if (cell_elements[6].textContent == esrb_element.value) {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
@@ -514,7 +512,7 @@ function bind_update_buttons() {
       esrb_element = document.createElement('option');
       esrb_element.value = "M";
       esrb_element.textContent = "M - Mature";
-      if (cell_elements[6].value == esrb_element.value) {
+      if (cell_elements[6].textContent == esrb_element.value) {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
