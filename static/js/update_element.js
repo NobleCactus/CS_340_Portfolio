@@ -504,7 +504,7 @@ function bind_update_buttons() {
           // set default selection to original value
         if (cell_elements[5] != "") {
           var index = 1;
-          while (cell_elements[5].textContent != update_dev.childNodes[index].value) {
+          while (cell_elements[5].textContent != update_dev.childNodes[index].textContent) {
             index++;
           }
           update_dev.childNodes[index].selected = true;
