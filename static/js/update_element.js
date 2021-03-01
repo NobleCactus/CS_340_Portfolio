@@ -153,8 +153,17 @@ function bindButtons() {
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
           update_button.setAttribute('value', res[i][0]);
-          update_button.textContent = "Update/Edit"
+          update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
+          title_tr.appendChild(button_td);
+
+          // add save button
+          button_td = document.createElement('td');
+          save_button = document.createElement('button');
+          save_button.setAttribute('type', 'button');
+          save_button.setAttribute('class', 'saveButton');
+          save_button.textContent = "Save Changes";
+          button_td.appendChild(save_button);
           title_tr.appendChild(button_td);
 
           searchTable.appendChild(title_tr);

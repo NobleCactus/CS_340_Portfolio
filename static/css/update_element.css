@@ -138,3 +138,7 @@ h2 {
 	text-align: right;
 	display: none;
 }
+
+.saveButton {
+	display: none;
+}
