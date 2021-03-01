@@ -260,17 +260,11 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
-
-          release_val = document.createElement('td');
-          release_val.textContent = res[i][2];
-          title_tr.appendChild(release_val);
-
-          dev_val = document.createElement('td');
-          dev_val.textContent = res[i][3];
-          title_tr.appendChild(dev_val);
+          for (var j = 1; j < 4; j++) {
+            td_cell = document.createElement('td');
+            td_cell.textContent = res[i][j];
+            title_tr.appendChild(td_cell);
+          }
 
           inProd_val = document.createElement('td');
           if (res[i][4]) {
