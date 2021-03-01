@@ -269,25 +269,19 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
-
-          release_val = document.createElement('td');
-          release_val.textContent = res[i][2];
-          title_tr.appendChild(release_val);
-
-          dev_val = document.createElement('td');
-          dev_val.textContent = res[i][3];
-          title_tr.appendChild(dev_val);
-
-          inProd_val = document.createElement('td');
-          if (res[i][4]) {
-            inProd_val.textContent = "Y"
-          } else {
-            inProd_val.textContent = "N"
+          for (var j = 1; j < 4; j++) {
+            td_cell = document.createElement('td');
+            td_cell.textContent = res[i][j];
+            title_tr.appendChild(td_cell);
           }
-          title_tr.appendChild(inProd_val);
+
+          td_cell = document.createElement('td');
+          if (res[i][4]) {
+            td_cell.textContent = "Y"
+          } else {
+            td_cell.textContent = "N"
+          }
+          title_tr.appendChild(td_cell);
 
           // add update button
           button_td = document.createElement('td');
