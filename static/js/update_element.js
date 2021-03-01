@@ -496,16 +496,25 @@ function bind_update_buttons() {
       esrb_element = document.createElement('option');
       esrb_element.value = "E";
       esrb_element.textContent = "E - Everyone";
+      if (cell_elements[6].value == esrb_element.value) {
+        esrb_element.selected = true;
+      }
       update_esrb.appendChild(esrb_element);
 
       esrb_element = document.createElement('option');
       esrb_element.value = "T";
       esrb_element.textContent = "T - Teen";
+      if (cell_elements[6].value == esrb_element.value) {
+        esrb_element.selected = true;
+      }
       update_esrb.appendChild(esrb_element);
 
       esrb_element = document.createElement('option');
       esrb_element.value = "M";
       esrb_element.textContent = "M - Mature";
+      if (cell_elements[6].value == esrb_element.value) {
+        esrb_element.selected = true;
+      }
       update_esrb.appendChild(esrb_element);
 
       td_cell.appendChild(update_esrb);
