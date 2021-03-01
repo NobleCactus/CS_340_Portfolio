@@ -466,7 +466,10 @@ function bind_update_buttons() {
 
       // make the row's attributes edit-able
       var row = event.target.parentNode.parentNode.childNodes;
-      console.log(row);
+
+      for (var i = 0; i < 7; i++) {
+        console.log(row[i]);
+      }
 
     });
   });
