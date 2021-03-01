@@ -90,7 +90,7 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
 
-          // title cells
+          // title name cells
           td_cell = document.createElement('td');
           td_cell.textContent = res[i][1];
           title_tr.appendChild(td_cell);
