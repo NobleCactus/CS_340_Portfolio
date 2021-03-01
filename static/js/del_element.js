@@ -45,14 +45,14 @@ function bindButtons() {
     var req = new XMLHttpRequest();
     
     var payload = {"action": "searchTitle",
-            "titleName": document.getElementById('searchTitleName').value,
-            "titlePlatID": document.getElementById('searchTitlePlatID').value, 
-            "titleFromDate": document.getElementById('searchTitleFromDate').value, 
-            "titleToDate": document.getElementById('searchTitleToDate').value, 
-            "titleGenre": document.getElementById('searchTitleGenre').value, 
-            "titleFranchiseID": document.getElementById('searchTitleFranchiseID').value,
-            "titleDevID": document.getElementById('searchTitleDevID').value,
-            "titleESRB": document.getElementById('searchTitleESRB').value};
+                    "titleName": document.getElementById('searchTitleName').value,
+                    "titlePlatID": document.getElementById('searchTitlePlatID').value, 
+                    "titleFromDate": document.getElementById('searchTitleFromDate').value, 
+                    "titleToDate": document.getElementById('searchTitleToDate').value, 
+                    "titleGenre": document.getElementById('searchTitleGenre').value, 
+                    "titleFranchiseID": document.getElementById('searchTitleFranchiseID').value,
+                    "titleDevID": document.getElementById('searchTitleDevID').value,
+                    "titleESRB": document.getElementById('searchTitleESRB').value};
 
     req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
@@ -66,7 +66,6 @@ function bindButtons() {
         while (prevTableRows[0]) {
           prevTableRows[0].remove();
         }
-
         searchTable = document.getElementById("searchResultTable")
         
         // add appropriate header rows for Titles table
@@ -74,7 +73,7 @@ function bindButtons() {
         header_tr.setAttribute('class', 'searchResultRow');
         
         header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre",
-                          "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
+                            "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
         for (var i = 0; i < header_elements.length; i++) {
           header_td = document.createElement('th');
           if (i != 2) {
@@ -150,10 +149,10 @@ function bindButtons() {
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchDev",
-            "devName": document.getElementById('searchDevName').value,
-            "devCountry": document.getElementById('searchDevCountry').value, 
-            "devFromDate": document.getElementById('searchDevFromDate').value, 
-            "devToDate": document.getElementById('searchDevToDate').value};
+                    "devName": document.getElementById('searchDevName').value,
+                    "devCountry": document.getElementById('searchDevCountry').value, 
+                    "devFromDate": document.getElementById('searchDevFromDate').value, 
+                    "devToDate": document.getElementById('searchDevToDate').value};
 
     req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
@@ -167,29 +166,17 @@ function bindButtons() {
         while (prevTableRows[0]) {
           prevTableRows[0].remove();
         }
-
         searchTable = document.getElementById("searchResultTable")
         
         // add appropriate header rows for Titles table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
-        
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer Studio'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Country'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Date Founded'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Delete?'
-        header_tr.appendChild(header_td);
-
+        header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_th = document.createElement('th');
+          header_th.textContent = header_elements[i];
+          header_tr.appendChild(header_th);
+        }
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table
