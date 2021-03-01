@@ -553,7 +553,7 @@ function bind_update_buttons() {
           // set default selection to original value
         if (cell_elements[4] != "") {
           var index = 1;
-          while (cell_elements[4].textContent != update_genre.childNodes[index].value) {
+          while (cell_elements[4].textContent != update_franchise.childNodes[index].value) {
             index++;
           }
           update_franchise.childNodes[index].selected = true;
