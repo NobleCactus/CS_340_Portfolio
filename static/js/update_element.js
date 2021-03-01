@@ -501,86 +501,21 @@ function bind_update_buttons() {
           row_element.replaceChild(td_cell, cell_elements[2]);
 
           // genre cell_elements[3]
+          genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
+                            "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
+                            "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
+                            "Strategy", "Survival", "Third-Person Shooter", "Other"];
           td_cell = document.createElement('td');
           update_genre = document.createElement('select');
-          genre_element = document.createElement('option');
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Action";
-          genre_element.textContent = "Action";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Action-Adventure";
-          genre_element.textContent = "Action-Adventure";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Adventure";
-          genre_element.textContent = "Adventure";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Battle Royale";
-          genre_element.textContent = "Battle Royale";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Fighting";
-          genre_element.textContent = "Fighting";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "First-Person Shooter";
-          genre_element.textContent = "First-Person Shooter";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Massively Multiplayer Online Games";
-          genre_element.textContent = "Massively Multiplayer Online Games";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Multiplayer Online Battle Arena";
-          genre_element.textContent = "Multiplayer Online Battle Arena";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Platformer";
-          genre_element.textContent = "Platformer";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Racing";
-          genre_element.textContent = "Racing";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Real-Time Strategy";
-          genre_element.textContent = "Real-Time Strategy";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Role-Playing Games";
-          genre_element.textContent = "Role-Playing Games";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Sandbox/Open World";
-          genre_element.textContent = "Sandbox/Open World";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Simulation";
-          genre_element.textContent = "Simulation";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Sports";
-          genre_element.textContent = "Sports";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Strategy";
-          genre_element.textContent = "Strategy";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Survival";
-          genre_element.textContent = "Survival";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Third-Person Shooter";
-          genre_element.textContent = "Third-Person Shooter";
-          update_genre.appendChild(genre_element);
-          genre_element = document.createElement('option');
-          genre_element.value = "Other";
-          genre_element.textContent = "Other";
-          update_genre.appendChild(genre_element);
+          genre_option = document.createElement('option');
+          update_genre.appendChild(genre_option);
+
+          for (var i = 0; i < genre_elements.length; i++) {
+            genre_option = document.createElement('option');
+            genre_option.value = genre_elements[i];
+            genre_option.textContent = genre_elements[i];
+            update_genre.appendChild(genre_option);
+          }
           td_cell.appendChild(update_genre);
 
           // default selection is original value
@@ -603,19 +538,17 @@ function bind_update_buttons() {
           esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
           td_cell = document.createElement('td');
           update_esrb = document.createElement('select');
-          esrb_element = document.createElement('option');
-          update_esrb.appendChild(esrb_element);
+          esrb_option = document.createElement('option');
+          update_esrb.appendChild(esrb_option);
 
           for (var i = 0; i < esrb_values.length; i++) {
-            esrb_element = document.createElement('option');
-            esrb_element.value = esrb_values[i];
-            esrb_element.textContent = esrb_texts[i];
-            update_esrb.appendChild(esrb_element);
+            esrb_option = document.createElement('option');
+            esrb_option.value = esrb_values[i];
+            esrb_option.textContent = esrb_texts[i];
+            update_esrb.appendChild(esrb_option);
           }
-
           td_cell.appendChild(update_esrb);
-
-          // default selection is original value
+            // set default selection to original value
           if (cell_elements[6] != "") {
             var index = 1;
             while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
@@ -623,7 +556,6 @@ function bind_update_buttons() {
             }
             update_esrb.childNodes[index].selected = true;
           }
-
           row_element.replaceChild(td_cell, cell_elements[6]);
         } else {
           console.log("Error in network request: " + req.statusText);
