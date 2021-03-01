@@ -178,7 +178,7 @@ def update():
 		elif query_vals["action"] == "updateTitleElements":
 			# query for list of all platforms
 			query = "SELECT platformName FROM `Platforms`"
-			result = execute_query(query);
+			result = execute_query(db_connection, query);
 
 			# query for list of all franchises
 
