@@ -247,7 +247,7 @@ function bindButtons() {
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
           update_button.setAttribute('value', res[i][0]);
-          update_button.textContent = "Update/Edit"
+          update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
           title_tr.appendChild(button_td);
 
@@ -355,7 +355,7 @@ function bindButtons() {
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
           update_button.setAttribute('value', res[i][0]);
-          update_button.textContent = "Update/Edit"
+          update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
           title_tr.appendChild(button_td);
 
@@ -450,7 +450,7 @@ function bindButtons() {
   
   Array.from(document.getElementsByClassName("searchButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      document.getElementById("searchResults").style.display = "block"
+      document.getElementById("searchResults").style.display = "block";
     })
   });
 }
@@ -461,8 +461,7 @@ function bind_update_buttons() {
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       event.target.style.display = "none";
-      console.log(event.target.nextSibling);
-      console.log(event.target.nextElementSibling);
+      event.target.nextElementSibling.style.display = "block";
 
       // make the row's attributes edit-able
       var row = event.target.parentNode.parentNode;
@@ -475,18 +474,19 @@ function bind_update_buttons() {
     element.addEventListener("click", function(event) {
       //if successful
       // make the cells not editable
+      // change displayed button to Update/Edit
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
       setTimeout(function() {
-        document.getElementById("updateSuccessful").style.display = "none"
+        document.getElementById("updateSuccessful").style.display = "none";
       }, 1500);
 
       // not successful
       // show update failed message
       document.getElementById("updateFailed").style.display = "block";
       setTimeout(function() {
-        document.getElementById("updateFailed").style.display = "none"
+        document.getElementById("updateFailed").style.display = "none";
       }, 1500);
     })
   });
