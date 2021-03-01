@@ -456,8 +456,6 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_genre);
           // set default selection to original value
-          console.log(cell_elements[3]);
-          console.log(update_genre.childNodes);
         if (cell_elements[3] != "") {
           var index = 1;
           while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
@@ -478,13 +476,14 @@ function bind_update_buttons() {
           franchise_option = document.createElement('option');
           franchise_option.value = franchise_elements[i][0];
           franchise_option.textContent = franchise_elements[i][1];
-          
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
           // set default selection to original value
         if (cell_elements[4] != "") {
           var index = 1;
+          console.log(cell_elements[4].textContent);
+          console.log(update_franchise.childNodes);
           while (cell_elements[4].textContent != update_franchise.childNodes[index].value) {
             index++;
           }
