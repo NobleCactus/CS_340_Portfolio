@@ -139,6 +139,10 @@ h2 {
 	display: none;
 }
 
+.searchResultRow {
+	text-align: center;
+}
+
 .saveButton {
 	display: none;
 }

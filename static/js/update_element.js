@@ -462,7 +462,6 @@ function bind_update_buttons() {
     element.addEventListener("click", function(event) {
       // change displayed button to Save Changes
       event.target.style.display = "none";
-      event.target.nextElementSibling.style.textAlign = "center";
       event.target.nextElementSibling.style.display = "block";
 
 
