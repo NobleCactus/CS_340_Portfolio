@@ -158,7 +158,6 @@ function bindButtons() {
 
           // save button
           save_button = document.createElement('button');
-          save_button.style.margin = "auto";
           save_button.setAttribute('type', 'button');
           save_button.setAttribute('class', 'saveButton');
           save_button.textContent = "Save Changes";
@@ -465,9 +464,9 @@ function bind_update_buttons() {
       event.target.style.display = "none";
       event.target.nextElementSibling.style.display = "block";
 
-
       // make the row's attributes edit-able
-      var row = event.target.parentNode.parentNode;
+      var row = event.target.parentNode.parentNode.childNodes;
+      console.log(row);
 
     });
   });
@@ -478,6 +477,8 @@ function bind_update_buttons() {
       //if successful
       // make the cells not editable
       // change displayed button to Update/Edit
+      event.target.style.display = "none";
+      event.target.previousElementSibling.style.display = "block";
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
