@@ -466,26 +466,27 @@ function bind_update_buttons() {
 
       // make the row's attributes edit-able
       var row_element = event.target.parentNode.parentNode;
+      var cell_elements = row_element.childNodes;
 
-      // name row_element.childNodes[0]
+      // name cell_elements[0]
       update_name = document.createElement('input');
       update_name.type = "text";
       update_name.value = row_element.childNodes[0].value;
-      row_element.replaceChild(update_name, row_element.childNodes[0]);
+      row_element.replaceChild(update_name, cell_elements[0]);
 
-      // platform list row_element.childNodes[1]
+      // platform list cell_elements[1]
 
-      // release date row_element.childNodes[2]
+      // release date cell_elements[2]
 
-      // genre row_element.childNodes[3]
+      // genre cell_elements[3]
 
-      // franchise row_element.childNodes[4]
+      // franchise cell_elements[4]
 
-      // dev row_element.childNodes[5]
+      // dev cell_elements[5]
 
-      // esrb row_element.childNodes[6]
+      // esrb cell_elements[6]
 
-      // buttons row_element.childNodes[7]
+      // buttons cell_elements[7]
 
     });
   });
