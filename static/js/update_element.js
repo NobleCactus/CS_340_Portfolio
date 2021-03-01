@@ -475,13 +475,13 @@ function bind_update_buttons() {
           franchise_option = document.createElement('option');
           franchise_option.value = franchise_elements[i][0];
           franchise_option.textContent = franchise_elements[i][1];
-          console.log(franchise_option.value);
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
           // set default selection to original value
         if (cell_elements[4] != "") {
           var index = 1;
+          console.log(update_franchise.childNodes[index]);
           while (cell_elements[4].textContent != update_franchise.childNodes[index].value) {
             index++;
           }
