@@ -85,43 +85,6 @@ function bindButtons() {
         }
         searchTable.appendChild(header_tr);
 
-        /*
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Title'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Platforms'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.innerHTML = 'Release Date<br/>(North America)'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Genre'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Franchise'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'ESRB Rating'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Update/Edit?'
-        header_tr.appendChild(header_td);
-
-        searchTable.appendChild(header_tr);
-        */
-
         // add each row into the search result table
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
@@ -167,14 +130,14 @@ function bindButtons() {
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
-          update_button.setAttribute('value', res[i][0]);
           update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
 
-          // save button
+          // save button, has a value of the ID of the title
           save_button = document.createElement('button');
           save_button.setAttribute('type', 'button');
           save_button.setAttribute('class', 'saveButton');
+          save_button.setAttribute('value', 'titleID' + res[i][0]);
           save_button.textContent = "Save Changes";
           button_td.appendChild(save_button);
           

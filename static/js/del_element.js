@@ -73,38 +73,16 @@ function bindButtons() {
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
-        header_td = document.createElement('th');
-        header_td.textContent = 'Title'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Platforms'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.innerHTML = 'Release Date<br/>(North America)'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Genre'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Franchise'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'ESRB Rating'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Delete?'
-        header_tr.appendChild(header_td);
-
+        header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre", "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_td = document.createElement('th');
+          if (i != 2) {
+            header_td.textContent = header_elements[i];
+          } else {
+            header_td.innerHTML = header_elements[i];
+          }
+          header_tr.appendChild(header_td);
+        }
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table
