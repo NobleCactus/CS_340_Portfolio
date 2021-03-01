@@ -467,25 +467,25 @@ function bind_update_buttons() {
       // make the row's attributes edit-able
       var row_element = event.target.parentNode.parentNode;
 
-      // name row_elements[0]
+      // name row_element.childNodes[0]
       update_name = document.createElement('input');
       update_name.type = "text";
       update_name.value = row_element.childNodes[0];
       row_element.replaceChild(update_name, row_element.childNodes[0]);
 
-      // platform list row_elements[1]
+      // platform list row_element.childNodes[1]
 
-      // release date row_elements[2]
+      // release date row_element.childNodes[2]
 
-      // genre row_elements[3]
+      // genre row_element.childNodes[3]
 
-      // franchise row_elements[4]
+      // franchise row_element.childNodes[4]
 
-      // dev row_elements[5]
+      // dev row_element.childNodes[5]
 
-      // esrb row_elements[6]
+      // esrb row_element.childNodes[6]
 
-      // buttons row_elements[7]
+      // buttons row_element.childNodes[7]
 
     });
   });
