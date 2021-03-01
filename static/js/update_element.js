@@ -470,7 +470,7 @@ function bind_update_buttons() {
       // name row_element.childNodes[0]
       update_name = document.createElement('input');
       update_name.type = "text";
-      update_name.value = row_element.childNodes[0];
+      update_name.value = row_element.childNodes[0].value;
       row_element.replaceChild(update_name, row_element.childNodes[0]);
 
       // platform list row_element.childNodes[1]
