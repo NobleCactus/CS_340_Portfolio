@@ -421,10 +421,8 @@ function bind_update_buttons() {
 
         // platform list cell_elements[1]
         plat_elements = res["Plats"];
-        console.log(plat_elements);
-        console.log(plat_elements[0]);
-        console.log(plat_elements[0][0]);
         td_cell = document.createElement('td');
+        td_cell.style.textAlign = "left";
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.value = plat_elements[0][0];
