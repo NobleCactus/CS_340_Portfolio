@@ -72,7 +72,21 @@ function bindButtons() {
         // add appropriate header rows for Titles table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
-        
+
+        header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre", "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_td = document.createElement('th');
+          if (i != 2) {
+            header_td.textContent = header_elements[i];
+          } else {
+            header_td.innerHTML = header_elements[i];
+          }
+          header_tr.appendChild(header_td);
+        }
+        searchTable.appendChild(header_tr);
+
+        /*
+
         header_td = document.createElement('th');
         header_td.textContent = 'Title'
         header_tr.appendChild(header_td);
@@ -106,6 +120,7 @@ function bindButtons() {
         header_tr.appendChild(header_td);
 
         searchTable.appendChild(header_tr);
+        */
 
         // add each row into the search result table
         for (var i = 0; i < res.length; i++) {
@@ -466,7 +481,6 @@ function bind_update_buttons() {
   req.addEventListener('load', function(){
     if (req.status >= 200 && req.status < 400) {
       res = JSON.parse(req.responseText);
-      console.log(res);
     } else {
         console.log("Error in network request: " + req.statusText);
     }
