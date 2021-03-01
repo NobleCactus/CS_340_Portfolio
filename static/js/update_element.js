@@ -503,7 +503,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Action-Adventure";
@@ -511,7 +511,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Adventure";
@@ -519,7 +519,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Battle Royale";
@@ -527,7 +527,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Fighting";
@@ -535,7 +535,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "First-Person Shooter";
@@ -543,7 +543,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Massively Multiplayer Online Games";
@@ -551,7 +551,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Multiplayer Online Battle Arena";
@@ -559,7 +559,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Platformer";
@@ -567,7 +567,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Racing";
@@ -575,7 +575,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Real-Time Strategy";
@@ -583,7 +583,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Role-Playing Games";
@@ -591,7 +591,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Sandbox/Open World";
@@ -599,7 +599,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Simulation";
@@ -607,7 +607,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Sports";
@@ -615,7 +615,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Strategy";
@@ -623,7 +623,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Survival";
@@ -631,7 +631,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Third-Person Shooter";
@@ -639,7 +639,7 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
+      update_genre.appendChild(genre_element);
 
       genre_element = document.createElement('option');
       genre_element.value = "Other";
@@ -647,8 +647,8 @@ function bind_update_buttons() {
       if (cell_elements[3].textContent == genre_element.value) {
         genre_element.selected = true;
       }
-      update_esrb.appendChild(genre_element);
-      td_cell.appendChild(update_esrb);
+      update_genre.appendChild(genre_element);
+      td_cell.appendChild(update_genre);
       row_element.replaceChild(td_cell, cell_elements[3]);
 
       // franchise cell_elements[4]
