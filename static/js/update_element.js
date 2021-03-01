@@ -546,7 +546,7 @@ function bind_update_buttons() {
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
           franchise_option.value = franchise_elements[i];
-          franchise_option.textContent = franchise_element[i];
+          franchise_option.textContent = franchise_elements[i];
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
