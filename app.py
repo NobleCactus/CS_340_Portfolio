@@ -185,7 +185,7 @@ def update():
 			franchise_result = execute_query(db_connection, query).fetchall();
 
 			# query for list of all developers
-			query = "SELECT developerName FROM `DeveloperStudios`"
+			query = "SELECT developerName FROM `DevelopementStudios`"
 			dev_result = execute_query(db_connection, query).fetchall();
 
 			return {"Plats": plat_result,
