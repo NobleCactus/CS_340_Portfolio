@@ -456,6 +456,8 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_genre);
           // set default selection to original value
+          console.log(cell_elements[3]);
+          console.log(update_genre.childNodes);
         if (cell_elements[3] != "") {
           var index = 1;
           while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
