@@ -678,8 +678,8 @@ function bind_update_buttons() {
         } else {
           console.log("Error in network request: " + req.statusText);
         }
-        req.send(JSON.stringify(payload));
       });
+      req.send(JSON.stringify(payload));
     });
   });
 
