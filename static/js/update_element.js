@@ -184,17 +184,12 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
-
-          country_val = document.createElement('td');
-          country_val.textContent = res[i][2];
-          title_tr.appendChild(country_val);
-
-          founded_val = document.createElement('td');
-          founded_val.textContent = res[i][3];
-          title_tr.appendChild(founded_val);
+          // name, country, date founded cells
+          for (var j = 1; j < 4; j++) {
+            td_cell = document.createElement('td');
+            td_cell.textContent = res[i][j];
+            title_tr.appendChild(td_cell);
+          }
 
           // add update button
           button_td = document.createElement('td');
