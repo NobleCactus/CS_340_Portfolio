@@ -423,19 +423,20 @@ function bind_update_buttons() {
         plat_elements = res["Plats"];
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
-        td_cell.textContent = plat_elements[0][1];
+
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
-        plat_option.value = plat_elements[0][0];
+        plat_option.setAttribute("value", plat_elements[0][0]);
         plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
+
         for (var i = 1; i < plat_elements.length; i++) {
           break_tag = document.createElement("br");
           td_cell.appendChild(break_tag);
 
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
-          plat_option.value = plat_elements[i][0];
+          plat_option.setAttribute("value", plat_elements[i][0]);
           plat_option.textContent = plat_elements[i][1];
           td_cell.appendChild(plat_option);
         }
@@ -492,7 +493,7 @@ function bind_update_buttons() {
         update_franchise.appendChild(franchise_option);
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
-          franchise_option.value = franchise_elements[i][0];
+          franchise_option.setAttribute("value", franchise_elements[i][0]);
           franchise_option.textContent = franchise_elements[i][1];
           update_franchise.appendChild(franchise_option);
         }
@@ -515,7 +516,7 @@ function bind_update_buttons() {
         update_dev.appendChild(dev_option);
         for (var i = 0; i < dev_elements.length; i++) {
           dev_option = document.createElement('option');
-          dev_option.value = dev_elements[i][0];
+          dev_option.setAttribute("value", dev_elements[i][0]);
           dev_option.textContent = dev_elements[i][1];
           update_dev.appendChild(dev_option);
         }
