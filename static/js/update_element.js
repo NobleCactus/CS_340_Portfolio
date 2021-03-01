@@ -423,7 +423,7 @@ function bind_update_buttons() {
         plat_elements = res["Plats"];
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
-        td_cell.textContent = "TEST";
+        td_cell.textContent = plat_elements[0][1];
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.value = plat_elements[0][0];
