@@ -469,6 +469,7 @@ function bind_update_buttons() {
       req.addEventListener('load', function(){
         if (req.status >= 200 && req.status < 400) {
           res = JSON.parse(req.responseText);
+          console.log(res);
           // change displayed button to Save Changes
           event.target.style.display = "none";
           event.target.nextElementSibling.style.display = "inline";
@@ -501,7 +502,7 @@ function bind_update_buttons() {
           td_cell.appendChild(update_date);
           row_element.replaceChild(td_cell, cell_elements[2]);
           //*****
-          
+
           // genre options
           genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
                             "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
