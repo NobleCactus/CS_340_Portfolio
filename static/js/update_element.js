@@ -474,6 +474,7 @@ function bind_update_buttons() {
         update_franchise.appendChild(franchise_option);
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
+          console.log(franchise_elements[i]);
           franchise_option.value = franchise_elements[i][0];
           franchise_option.textContent = franchise_elements[i][1];
           update_franchise.appendChild(franchise_option);
@@ -482,8 +483,6 @@ function bind_update_buttons() {
           // set default selection to original value
         if (cell_elements[4] != "") {
           var index = 1;
-          console.log(cell_elements[4].textContent);
-          console.log(update_franchise.childNodes);
           while (cell_elements[4].textContent != update_franchise.childNodes[index].value) {
             index++;
           }
