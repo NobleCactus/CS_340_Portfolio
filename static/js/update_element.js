@@ -472,7 +472,7 @@ function bind_update_buttons() {
         console.log("Error in network request: " + req.statusText);
     }
   });
-  
+
   req.send(JSON.stringify(payload));
 
   // update/edit buttons make cells editable and show the "Save Changes" button instead
@@ -495,6 +495,7 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list cell_elements[1]
+
 
         //*****
         // release date selection
@@ -538,7 +539,27 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[3]);
 
         // franchise cell_elements[4]
-
+        franchise_elements = res["Franchises"]
+        td_cell = document.createELement('td')
+        update_franchise = document.createElement('select');
+        franchise_option = document.createElement('option');
+        update_franchise.appendChild(franchise_option);
+        for (var i = 0; i < franchise_elements.length; i++) {
+          franchise_option = document.createElement('option');
+          franchise_option.value = franchise_elements[i];
+          franchise_option.textContent = franchise_element[i];
+          update_franchise.appendChild(franchise_option);
+        }
+        td_cell.appendChild(update_franchise);
+          // set default selection to original value
+        if (cell_elements[4] != "") {
+          var index = 1;
+          while (cell_elements[4]4.textContent != update_genre.childNodes[index].value) {
+            index++;
+          }
+          update_franchise.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[4]);
 
         // dev cell_elements[5]
 
