@@ -457,6 +457,7 @@ function bindButtons() {
 
 // run this every time the search table is remade to bind newly made buttons
 function bind_update_buttons() {
+  console.log("BINDING UPDATE BUTTONS");
   // get list of platforms, franchises, and devs
   var req = new XMLHttpRequest();
   payload = {"action": "updateTitleElements"};
@@ -471,6 +472,8 @@ function bind_update_buttons() {
         console.log("Error in network request: " + req.statusText);
     }
   });
+  
+  req.send(JSON.stringify(payload));
 
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
