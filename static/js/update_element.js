@@ -261,9 +261,9 @@ function bindButtons() {
         for (var i = 0; i < header_elements.length; i++) {
           header_th = document.createElement('th');
           if (i != 1) {
-            header_td.textContent = header_elements[i];
+            header_th.textContent = header_elements[i];
           } else {
-            header_td.innerHTML = header_elements[i];
+            header_th.innerHTML = header_elements[i];
           }
           header_tr.appendChil(header_td);
         }
