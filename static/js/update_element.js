@@ -482,12 +482,13 @@ function bind_update_buttons() {
       td_cell = document.createElement('td');
       update_date = document.createElement('input');
       update_date.type = "date";
+
       update_date.defaultValue = "1993-10-26";
 
-      console.log(cell_elements[2].textContent);
+      console.log(cell_elements[2].textContent.split(" "));
 
       td_cell.appendChild(update_date);
-      row_element.replaceChild(update_date, cell_elements[2]);
+      row_element.replaceChild(td_cell, cell_elements[2]);
 
       // genre cell_elements[3]
 
