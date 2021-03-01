@@ -457,19 +457,36 @@ function bindButtons() {
 
 // run this every time the search table is remade to bind newly made buttons
 function bind_update_buttons() {
+  // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // make the row's attributes edit-able
+      console.log("EVENT.TARGET:");
+      console.log(event.target)
+      var row = event.target.parentElement;
 
-      // POST to /update with parameters: row's ID (event.target.value)
+      console.log("ROW:")
+      console.log(row)
 
+      console.log("ROW.PARENTELEMENT:")
+      console.log(row.parentelement)
+    });
+  });
+
+  // executes UPDATE query with inputs
+  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
       //if successful
+      // make the cells not editable
+
+      // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
       setTimeout(function() {
         document.getElementById("updateSuccessful").style.display = "none"
       }, 1500);
 
       // not successful
+      // show update failed message
       document.getElementById("updateFailed").style.display = "block";
       setTimeout(function() {
         document.getElementById("updateFailed").style.display = "none"
