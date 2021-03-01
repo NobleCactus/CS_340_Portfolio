@@ -460,8 +460,11 @@ function bind_update_buttons() {
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // change displayed button to Save Changes
       event.target.style.display = "none";
+      event.target.nextElementSibling.style.textAlign = "center";
       event.target.nextElementSibling.style.display = "block";
+
 
       // make the row's attributes edit-able
       var row = event.target.parentNode.parentNode;
