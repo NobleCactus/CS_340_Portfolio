@@ -420,9 +420,9 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list cell_elements[1]
-        platform_elements = res["Plats"];
+        plat_elements = res["Plats"];
         td_cell = document.createElement('td');
-
+        console.log(plat_elements);
 
         //*****
         // release date selection
