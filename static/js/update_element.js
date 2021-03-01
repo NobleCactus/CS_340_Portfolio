@@ -469,11 +469,12 @@ function bind_update_buttons() {
       var cell_elements = row_element.childNodes;
 
       // name cell_elements[0]
+      td_cell = = document.createElement('td');
       update_name = document.createElement('input');
       update_name.type = "text";
-      update_name.margin= "1%";
       update_name.value = row_element.childNodes[0].textContent;
-      row_element.replaceChild(update_name, cell_elements[0]);
+      td_cell.appendChild(update_name);
+      row_element.replaceChild(td_cell, cell_elements[0]);
 
       // platform list cell_elements[1]
 
