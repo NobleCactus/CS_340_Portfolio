@@ -136,7 +136,6 @@ def delete():
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
-	print("@@@ IN UPDATE ROUTE")
 	db_connection = connect_to_database()
 	if request.method == 'GET':
 		# get platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values to dynamically populate drop down menu
@@ -160,18 +159,8 @@ def update():
 		# get request payload from POST request
 		query_vals = request.get_json()
 
-		# updating an element
-		if query_vals["action"] == "updateTitle":
-			pass
-		elif  query_vals["action"] == "updateDev":
-			pass
-		elif  query_vals["action"] == "updatePlat":			
-			pass
-		elif  query_vals["action"] == "updateFranchise":
-			pass
-
 		# depending on the table, build query and search DB
-		elif query_vals["action"] == "searchTitle":
+		if query_vals["action"] == "searchTitle":
 			query_params = build_query_searchTitle(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 			result = add_plats_to_titles(db_connection, result)
@@ -184,9 +173,20 @@ def update():
 		elif query_vals["action"] == "searchFranchise":
 			query_params = build_query_searchFranchise(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
+		
+		# populating drop down menu elements for updating
 		elif query_vals["action"] == "updateTitleElements":
-			print("@@@ IN updateTitleElements")
 			return {"updateTitleElements": "SUCCESSFUL"}
+
+		# updating an element
+		elif query_vals["action"] == "updateTitle":
+			pass
+		elif  query_vals["action"] == "updateDev":
+			pass
+		elif  query_vals["action"] == "updatePlat":			
+			pass
+		elif  query_vals["action"] == "updateFranchise":
+			pass
 
 		return jsonify(result)
 

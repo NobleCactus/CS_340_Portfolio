@@ -460,7 +460,6 @@ function bind_update_buttons() {
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      console.log("UPDATE BUTTON CLICKED");
       // get list of platforms, franchises, and devs
       var req = new XMLHttpRequest();
       payload = {"action": "updateTitleElements"};
@@ -470,7 +469,6 @@ function bind_update_buttons() {
       req.addEventListener('load', function(){
         if (req.status >= 200 && req.status < 400) {
           res = JSON.parse(req.responseText);
-          console.log("res");
           // change displayed button to Save Changes
           event.target.style.display = "none";
           event.target.nextElementSibling.style.display = "inline";
@@ -655,25 +653,26 @@ function bind_update_buttons() {
           esrb_element = document.createElement('option');
           esrb_element.value = "E";
           esrb_element.textContent = "E - Everyone";
-          if (cell_elements[6].textContent == esrb_element.value) {
-            esrb_element.selected = true;
-          }
           update_esrb.appendChild(esrb_element);
           esrb_element = document.createElement('option');
           esrb_element.value = "T";
           esrb_element.textContent = "T - Teen";
-          if (cell_elements[6].textContent == esrb_element.value) {
-            esrb_element.selected = true;
-          }
           update_esrb.appendChild(esrb_element);
           esrb_element = document.createElement('option');
           esrb_element.value = "M";
           esrb_element.textContent = "M - Mature";
-          if (cell_elements[6].textContent == esrb_element.value) {
-            esrb_element.selected = true;
-          }
           update_esrb.appendChild(esrb_element);
           td_cell.appendChild(update_esrb);
+
+          // default selection is original value
+          if (cell_elements[6] != "") {
+            var index = 1;
+            while (cell_elements[6].textContent != update_esrb.childNodes[i].value){
+              index++;
+            }
+            update_esrb.childNodes[i].selected = true;
+          }
+
           row_element.replaceChild(td_cell, cell_elements[6]);
         } else {
           console.log("Error in network request: " + req.statusText);
