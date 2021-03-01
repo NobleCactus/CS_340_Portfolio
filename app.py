@@ -185,7 +185,7 @@ def update():
 			# query for list of all developers
 
 			# return {platforms: (list), franchises: (list), developers (list)}
-			return jsonify({"Platforms": result})
+			return {"Platforms": result}
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
