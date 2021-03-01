@@ -607,6 +607,8 @@ function bind_update_buttons() {
           update_esrb.appendChild(esrb_element);
 
           for (var i = 0; i < esrb_values.length; i++) {
+            console.log(esrb_values[i]);
+            console.log(esrb_texts[i]);
             esrb_element = document.createElement('option');
             esrb_element.value = esrb_values[i];
             esrb_element.textContent = esrb_texts[i];
@@ -616,8 +618,6 @@ function bind_update_buttons() {
           // default selection is original value
           if (cell_elements[6] != "") {
             var index = 1;
-            console.log(cell_elements[6].textContent);
-            console.log(update_esrb.childNodes[index].value);
             while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
               index++;
             }
