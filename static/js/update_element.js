@@ -437,10 +437,11 @@ function bind_update_buttons() {
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
           plat_option.setAttribute("value", plat_elements[i][0]);
-
+          plat_option.innerText = plat_elements[i][1];
+          
           td_cell.appendChild(plat_option);
 
-          plat_option.innerText = plat_elements[i][1];
+          
         }
           // set default selections to original values
         //plat_option.setAttribute("checked", true);
