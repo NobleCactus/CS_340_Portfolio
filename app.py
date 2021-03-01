@@ -177,20 +177,23 @@ def update():
 		# populating drop down menu elements for updating
 		elif query_vals["action"] == "updateTitleElements":
 			# query for list of all platforms
-			query = "SELECT platformName FROM `Platforms` ORDER BY platformName"
+			query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName"
 			plat_result = execute_query(db_connection, query).fetchall();
 
 			# query for list of all franchises
-			query = "SELECT franchiseName FROM `Franchises` ORDER BY franchiseName"
+			query = "SELECT franchiseID, franchiseName FROM `Franchises` ORDER BY franchiseName"
 			franchise_result = execute_query(db_connection, query).fetchall();
 
 			# query for list of all developers
-			query = "SELECT developerName FROM `DevelopmentStudios` ORDER BY developerName"
+			query = "SELECT developerID, developerName FROM `DevelopmentStudios` ORDER BY developerName"
 			dev_result = execute_query(db_connection, query).fetchall();
 
-			return {"Plats": plat_result,
-					"Franchises": franchise_result,
-					"Devs": dev_result}
+			return {"PlatID": plat_result[0],
+					"PlatName": plat_result[1],
+					"FranchiseID": franchise_result[0],
+					"FranchiseName": franchise_result[1],
+					"DevID": dev_result[0],
+					"DevName": dev_result[1]}
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":

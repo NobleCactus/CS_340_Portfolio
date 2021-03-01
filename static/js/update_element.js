@@ -276,6 +276,7 @@ function bindButtons() {
             title_tr.appendChild(td_cell);
           }
 
+          // in production cell
           td_cell = document.createElement('td');
           if (res[i][4]) {
             td_cell.textContent = "Y"
@@ -393,14 +394,14 @@ function bind_update_buttons() {
   req.addEventListener('load', function(){
     if (req.status >= 200 && req.status < 400) {
       res = JSON.parse(req.responseText);
+      console.log(res);
     } else {
         console.log("Error in network request: " + req.statusText);
     }
   });
-
   req.send(JSON.stringify(payload));
 
-  // update/edit buttons make cells editable and show the "Save Changes" button instead
+  // clicking update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
         // change displayed button to Save Changes
@@ -420,7 +421,8 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list cell_elements[1]
-
+        td_cell = document.createElement('td');
+        plat_elements =
 
         //*****
         // release date selection
