@@ -457,7 +457,6 @@ function bindButtons() {
 
 // run this every time the search table is remade to bind newly made buttons
 function bind_update_buttons() {
-  console.log("BINDING UPDATE BUTTONS");
   // get list of platforms, franchises, and devs
   var req = new XMLHttpRequest();
   payload = {"action": "updateTitleElements"};
@@ -540,7 +539,7 @@ function bind_update_buttons() {
 
         // franchise cell_elements[4]
         franchise_elements = res["Franchises"]
-        td_cell = document.createELement('td')
+        td_cell = document.createElement('td')
         update_franchise = document.createElement('select');
         franchise_option = document.createElement('option');
         update_franchise.appendChild(franchise_option);
