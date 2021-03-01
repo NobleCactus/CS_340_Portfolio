@@ -427,7 +427,7 @@ function bind_update_buttons() {
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.setAttribute("value", plat_elements[0][0]);
-        plat_option.textContent = plat_elements[0][1];
+        plat_option.innerText = plat_elements[0][1];
         td_cell.appendChild(plat_option);
 
         for (var i = 1; i < plat_elements.length; i++) {
@@ -437,12 +437,13 @@ function bind_update_buttons() {
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
           plat_option.setAttribute("value", plat_elements[i][0]);
-          plat_option.setAttribute("checked", true);
+
           td_cell.appendChild(plat_option);
 
-          plat_option.textContent = plat_elements[i][1];
+          plat_option.innerText = plat_elements[i][1];
         }
           // set default selections to original values
+        //plat_option.setAttribute("checked", true);
 
         row_element.replaceChild(td_cell, cell_elements[1]);
 
