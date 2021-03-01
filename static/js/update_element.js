@@ -265,7 +265,7 @@ function bindButtons() {
           } else {
             header_th.innerHTML = header_elements[i];
           }
-          header_tr.appendChil(header_td);
+          header_tr.appendChil(header_th);
         }
 
         searchTable.appendChild(header_tr);
