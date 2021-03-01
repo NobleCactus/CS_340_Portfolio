@@ -267,7 +267,6 @@ function bindButtons() {
           }
           header_tr.appendChild(header_th);
         }
-
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table
@@ -343,19 +342,12 @@ function bindButtons() {
         // add appropriate header rows for Titles table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
-        
-        header_td = document.createElement('th');
-        header_td.textContent = 'Franchise'
+        header_elements = ["Franchise", "Developer", "Update/Edit?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_td = document.createElement('th');
+        header_td.textContent = header_elements[i]
         header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.innerHTML = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Update/Edit?'
-        header_tr.appendChild(header_td);
-
+        }
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table

@@ -73,7 +73,7 @@ function bindButtons() {
         header_tr.setAttribute('class', 'searchResultRow');
         
         header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre",
-                            "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
+                            "Franchise", "Developer", "ESRB Rating", "Delete"];
         for (var i = 0; i < header_elements.length; i++) {
           header_td = document.createElement('th');
           if (i != 2) {
@@ -171,7 +171,7 @@ function bindButtons() {
         // add appropriate header rows for Titles table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
-        header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"];
+        header_elements = ["Developer Studio", "Country", "Date Founded", "Delete?"];
         for (var i = 0; i < header_elements.length; i++) {
           header_th = document.createElement('th');
           header_th.textContent = header_elements[i];
@@ -256,26 +256,16 @@ function bindButtons() {
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
-        header_td = document.createElement('th');
-        header_td.textContent = 'Platform'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.innerHTML = 'Release Date<br/>(North America)'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'In Production'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Delete?'
-        header_tr.appendChild(header_td);
-
+        header_elements = ["Platform", "Release Date<br/>(North America)", "Developer", "In Prduction", "Delete?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_th = document.createElement('th');
+          if (i != 1) {
+            header_th.textContent = header_elements[i];
+          } else {
+            header_th.innerHTML = header_elements[i];
+          }
+          header_tr.appendChild(header_th);
+        }
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table
