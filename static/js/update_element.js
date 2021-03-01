@@ -487,7 +487,7 @@ function bind_update_buttons() {
       console.log(cell_elements[2].textContent);
 
       td_cell.appendChild(update_date);
-      row_element.replaceChild(update_date, cell_elementsp[2]);
+      row_element.replaceChild(update_date, cell_elements[2]);
 
       // genre cell_elements[3]
 
