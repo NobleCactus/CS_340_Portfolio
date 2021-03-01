@@ -469,7 +469,7 @@ function bind_update_buttons() {
       var cell_elements = row_element.childNodes;
 
       // name cell_elements[0]
-      td_cell = = document.createElement('td');
+      td_cell = document.createElement('td');
       update_name = document.createElement('input');
       update_name.type = "text";
       update_name.value = row_element.childNodes[0].textContent;
