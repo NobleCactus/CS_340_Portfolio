@@ -173,21 +173,13 @@ function bindButtons() {
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
-        header_td = document.createElement('th');
-        header_td.textContent = 'Developer Studio'
-        header_tr.appendChild(header_td);
+        header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"]
 
-        header_td = document.createElement('th');
-        header_td.textContent = 'Country'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Date Founded'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Update/Edit?'
-        header_tr.appendChild(header_td);
+        for (var i = 0; i < header_elements.length; i++) {
+          header_td = document.createElement('th');
+          header_td.text_content = header_elements[i];
+          header_tr.appendChild(header_td);
+        }
 
         searchTable.appendChild(header_tr);
 

@@ -73,7 +73,8 @@ function bindButtons() {
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
-        header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre", "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
+        header_elements = ["Title", "Platforms", "Release Date<br/>(North America)", "Genre",
+                          "Franchise", "Developer", "ESRB Rating", "Update/Edit?"];
         for (var i = 0; i < header_elements.length; i++) {
           header_td = document.createElement('th');
           if (i != 2) {
