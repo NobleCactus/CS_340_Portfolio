@@ -260,12 +260,14 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
+          // name, release, dev cells
           for (var j = 1; j < 4; j++) {
             td_cell = document.createElement('td');
             td_cell.textContent = res[i][j];
             title_tr.appendChild(td_cell);
           }
 
+          // in production cell
           inProd_val = document.createElement('td');
           if (res[i][4]) {
             inProd_val.textContent = "Y"
@@ -333,13 +335,12 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
-
-          dev_val = document.createElement('td');
-          dev_val.textContent = res[i][2];
-          title_tr.appendChild(dev_val);
+          // name, developer cells
+          for (var j = 1; j < 3; j++) {
+            td_cell = document.createElement('td');
+            td_cell.textContent = res[i][j];
+            title_tr.appendChild(td_cell);
+          }
 
           // add delete button
           button_td = document.createElement('td');

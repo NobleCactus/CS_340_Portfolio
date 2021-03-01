@@ -269,6 +269,7 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
+          // name, release, dev cells
           for (var j = 1; j < 4; j++) {
             td_cell = document.createElement('td');
             td_cell.textContent = res[i][j];
@@ -344,6 +345,7 @@ function bindButtons() {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
           
+          // name, developer cells
           for (var j = 1; j < 3; j++) {
             td_cell = document.createElement('td');
             td_cell.textContent = res[i][j];
