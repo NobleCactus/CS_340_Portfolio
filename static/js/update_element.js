@@ -471,7 +471,7 @@ function bind_update_buttons() {
       // name cell_elements[0]
       update_name = document.createElement('input');
       update_name.type = "text";
-      update_name.margin= "auto";
+      update_name.margin= "1%";
       update_name.value = row_element.childNodes[0].textContent;
       row_element.replaceChild(update_name, cell_elements[0]);
 
