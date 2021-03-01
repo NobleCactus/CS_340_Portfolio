@@ -613,8 +613,6 @@ function bind_update_buttons() {
             update_esrb.appendChild(esrb_element);
           }
 
-          td_cell.appendChild(update_esrb);
-
           // default selection is original value
           if (cell_elements[6] != "") {
             var index = 1;
