@@ -610,9 +610,10 @@ function bind_update_buttons() {
             esrb_element = document.createElement('option');
             esrb_element.value = esrb_values[i];
             esrb_element.textContent = esrb_texts[i];
-            console.log(esrb_element);
             update_esrb.appendChild(esrb_element);
           }
+
+          td_cell.appendChild(update_esrb);
 
           // default selection is original value
           if (cell_elements[6] != "") {
