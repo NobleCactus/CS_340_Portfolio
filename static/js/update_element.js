@@ -436,7 +436,7 @@ function bind_update_buttons() {
           plat_option.textContent = plat_elements[i][1];
           td_cell.appendChild(plat_option);
         }
-        
+        row_element.replaceChild(td_cell, cell_elements[1]);
 
         //*****
         // release date selection
