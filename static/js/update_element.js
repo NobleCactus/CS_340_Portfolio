@@ -606,7 +606,7 @@ function bind_update_buttons() {
           esrb_element = document.createElement('option');
           update_esrb.appendChild(esrb_element);
 
-          for (var i = 0; i < option_value.length; i++) {
+          for (var i = 0; i < option_values.length; i++) {
             esrb_element = document.createElement('option');
             esrb_element.value = option_value[i];
             esrb_element.textContent = option_text[i];
