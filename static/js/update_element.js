@@ -423,11 +423,11 @@ function bind_update_buttons() {
         plat_elements = res["Plats"];
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
+        td_cell.textContent = "TEST";
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
-        plat_option.value = plat_elements[0][0].toString();
-        plat_option.textContent = plat_elements[0][1].toString();
-        console.log(plat_option);
+        plat_option.value = plat_elements[0][0];
+        plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
         for (var i = 1; i < plat_elements.length; i++) {
           break_tag = document.createElement("br");
