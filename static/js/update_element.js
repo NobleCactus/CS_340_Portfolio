@@ -639,6 +639,16 @@ function bind_update_buttons() {
           }
           update_genre.appendChild(genre_element);
           td_cell.appendChild(update_genre);
+
+          // default selection is original value
+          if (cell_elements[3] != "") {
+            var index = 1;
+            while (cell_elements[3].textContent != update_genre.childNodes[index].value){
+              index++;
+            }
+            update_genre.childNodes[index].selected = true;
+          }
+
           row_element.replaceChild(td_cell, cell_elements[3]);
 
           // franchise cell_elements[4]
