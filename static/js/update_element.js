@@ -149,6 +149,7 @@ function bindButtons() {
 
           // update button
           button_td = document.createElement('td');
+          button_td.style.margin = "auto";
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
