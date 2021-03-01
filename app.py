@@ -178,14 +178,21 @@ def update():
 		elif query_vals["action"] == "updateTitleElements":
 			# query for list of all platforms
 			query = "SELECT platformName FROM `Platforms`"
-			result = execute_query(db_connection, query).fetchall();
+			plat_result = execute_query(db_connection, query).fetchall();
 
 			# query for list of all franchises
+			query = "SELECT franchiseName FROM `Franchises`"
+			franchise_result = execute_query(db_connection, query).fetchall();
 
 			# query for list of all developers
+			query = "SELECT developerName FROM `Developers`"
+			dev_result = execute_query(db_connection, query).fetchall();
 
 			# return {platforms: (list), franchises: (list), developers (list)}
-			return {"Platforms": result}
+
+			return {"Plats": plat_result,
+					"Franchises": franchise_result,
+					"Devs": dev_result}
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
