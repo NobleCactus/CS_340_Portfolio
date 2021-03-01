@@ -177,13 +177,15 @@ def update():
 		# populating drop down menu elements for updating
 		elif query_vals["action"] == "updateTitleElements":
 			# query for list of all platforms
+			query = "SELECT platformName FROM `Platforms`"
+			result = execute_query(query);
 
 			# query for list of all franchises
 
 			# query for list of all developers
 
 			# return {platforms: (list), franchises: (list), developers (list)}
-			return {"updateTitleElements": "SUCCESSFUL"}
+			return jsonify({"Platforms": result})
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
