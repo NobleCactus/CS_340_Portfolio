@@ -173,12 +173,12 @@ function bindButtons() {
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
-        header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"]
+        header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"];
 
         for (var i = 0; i < header_elements.length; i++) {
-          header_td = document.createElement('th');
-          header_td.text_content = header_elements[i];
-          header_tr.appendChild(header_td);
+          header_th = document.createElement('th');
+          header_th.text_content = header_elements[i];
+          header_tr.appendChild(header_th);
         }
 
         searchTable.appendChild(header_tr);
