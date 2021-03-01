@@ -667,10 +667,10 @@ function bind_update_buttons() {
           // default selection is original value
           if (cell_elements[6] != "") {
             var index = 1;
-            while (cell_elements[6].textContent != update_esrb.childNodes[i].value){
+            while (cell_elements[6].textContent != update_esrb.childNodes[index].value){
               index++;
             }
-            update_esrb.childNodes[i].selected = true;
+            update_esrb.childNodes[index].selected = true;
           }
 
           row_element.replaceChild(td_cell, cell_elements[6]);
