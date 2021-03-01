@@ -487,6 +487,29 @@ function bind_update_buttons() {
       // dev cell_elements[5]
 
       // esrb cell_elements[6]
+      td_cell = document.createElement('td');
+      update_esrb = document.createElement('select');
+      
+      esrb_element = document.createElement('option');
+      update_esrb.appendChild(esrb_element);
+      
+      esrb_element = document.createElement('option');
+      esrb_element.value = "E";
+      esrb_element.textContent = "E - Everyone";
+      update_esrb.appendChild(esrb_element);
+
+      esrb_element = document.createElement('option');
+      esrb_element.value = "T";
+      esrb_element.textContent = "T - Teen";
+      update_esrb.appendChild(esrb_element);
+
+      esrb_element = document.createElement('option');
+      esrb_element.value = "M";
+      esrb_element.textContent = "M - Mature";
+      update_esrb.appendChild(esrb_element);
+
+      td_cell.appendChild(update_esrb);
+      row_element.replaceChild(td_cell, cell_elements[6]);
 
       // buttons cell_elements[7]
 
