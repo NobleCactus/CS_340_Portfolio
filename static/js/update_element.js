@@ -168,7 +168,7 @@ function bindButtons() {
         }
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Developer Studios table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         header_elements = ["Developer Studio", "Country", "Date Founded", "Update/Edit?"];
@@ -253,7 +253,7 @@ function bindButtons() {
 
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Platforms table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
@@ -339,7 +339,7 @@ function bindButtons() {
 
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Franchises table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         header_elements = ["Franchise", "Developer", "Update/Edit?"];

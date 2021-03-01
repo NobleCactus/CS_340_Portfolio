@@ -114,14 +114,6 @@ function bindButtons() {
             title_tr.appendChild(td_cell);
           }
 
-          // update button
-          button_td = document.createElement('td');
-          update_button = document.createElement('button');
-          update_button.setAttribute('type', 'button');
-          update_button.setAttribute('class', 'updateButton');
-          update_button.textContent = "Update/Edit";
-          button_td.appendChild(update_button);
-
           // add delete button
           button_td = document.createElement('td');
           del_button = document.createElement('button');
@@ -168,7 +160,7 @@ function bindButtons() {
         }
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Developer Studios table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         header_elements = ["Developer Studio", "Country", "Date Founded", "Delete?"];
@@ -252,7 +244,7 @@ function bindButtons() {
 
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Platforms table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
         
@@ -336,22 +328,15 @@ function bindButtons() {
 
         searchTable = document.getElementById("searchResultTable")
         
-        // add appropriate header rows for Titles table
+        // add appropriate header rows for Franchises table
         header_tr = document.createElement('tr');
         header_tr.setAttribute('class', 'searchResultRow');
-        
-        header_td = document.createElement('th');
-        header_td.textContent = 'Franchise'
+        header_elements = ["Franchise", "Developer", "Delete?"];
+        for (var i = 0; i < header_elements.length; i++) {
+          header_td = document.createElement('th');
+        header_td.textContent = header_elements[i]
         header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.innerHTML = 'Developer'
-        header_tr.appendChild(header_td);
-
-        header_td = document.createElement('th');
-        header_td.textContent = 'Delete?'
-        header_tr.appendChild(header_td);
-
+        }
         searchTable.appendChild(header_tr);
 
         // add each row into the search result table
