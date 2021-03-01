@@ -678,9 +678,8 @@ function bind_update_buttons() {
           console.log("Error in network request: " + req.statusText);
         }
         req.send(JSON.stringify(payload));
-    });
+    })
   });
-}
 
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
