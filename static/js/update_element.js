@@ -586,7 +586,7 @@ function bind_update_buttons() {
           // default selection is original value
           if (cell_elements[3] != "") {
             var index = 1;
-            while (cell_elements[3].textContent != update_genre.childNodes[index].value){
+            while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
               index++;
             }
             update_genre.childNodes[index].selected = true;
@@ -599,28 +599,26 @@ function bind_update_buttons() {
           // dev cell_elements[5]
 
           // esrb cell_elements[6]
+          option_values = ("E", "T", "M");
+          option_text = ("E - Everyone", "T - Teen", "M - Mature")
           td_cell = document.createElement('td');
           update_esrb = document.createElement('select');
           esrb_element = document.createElement('option');
           update_esrb.appendChild(esrb_element);
-          esrb_element = document.createElement('option');
-          esrb_element.value = "E";
-          esrb_element.textContent = "E - Everyone";
-          update_esrb.appendChild(esrb_element);
-          esrb_element = document.createElement('option');
-          esrb_element.value = "T";
-          esrb_element.textContent = "T - Teen";
-          update_esrb.appendChild(esrb_element);
-          esrb_element = document.createElement('option');
-          esrb_element.value = "M";
-          esrb_element.textContent = "M - Mature";
-          update_esrb.appendChild(esrb_element);
+
+          for (var i = 0; i < option_value.length; i++) {
+            esrb_element = document.createElement('option');
+            esrb_element.value = option_value[i];
+            esrb_element.textContent = option_text[i];
+            update_esrb.appendChild(esrb_element);
+          }
+
           td_cell.appendChild(update_esrb);
 
           // default selection is original value
           if (cell_elements[6] != "") {
             var index = 1;
-            while (cell_elements[6].textContent != update_esrb.childNodes[index].value){
+            while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
               index++;
             }
             update_esrb.childNodes[index].selected = true;
