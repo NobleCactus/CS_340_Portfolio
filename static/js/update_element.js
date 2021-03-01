@@ -479,6 +479,11 @@ function bind_update_buttons() {
       // platform list cell_elements[1]
 
       // release date cell_elements[2]
+      td_cell = document.createElement('td');
+      update_date = document.createElement('input');
+      update_date.type = "date";
+      update_date.defaultValue = "1993-10-26";
+      console.log(date cell_elements[2]);
 
       // genre cell_elements[3]
 
@@ -489,10 +494,8 @@ function bind_update_buttons() {
       // esrb cell_elements[6]
       td_cell = document.createElement('td');
       update_esrb = document.createElement('select');
-      
       esrb_element = document.createElement('option');
       update_esrb.appendChild(esrb_element);
-      
       esrb_element = document.createElement('option');
       esrb_element.value = "E";
       esrb_element.textContent = "E - Everyone";
@@ -500,7 +503,6 @@ function bind_update_buttons() {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
-
       esrb_element = document.createElement('option');
       esrb_element.value = "T";
       esrb_element.textContent = "T - Teen";
@@ -508,7 +510,6 @@ function bind_update_buttons() {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
-
       esrb_element = document.createElement('option');
       esrb_element.value = "M";
       esrb_element.textContent = "M - Mature";
@@ -516,14 +517,8 @@ function bind_update_buttons() {
         esrb_element.selected = true;
       }
       update_esrb.appendChild(esrb_element);
-
       td_cell.appendChild(update_esrb);
       row_element.replaceChild(td_cell, cell_elements[6]);
-
-
-
-      // buttons cell_elements[7]
-
     });
   });
 
