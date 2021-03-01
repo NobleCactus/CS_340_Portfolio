@@ -520,6 +520,8 @@ function bind_update_buttons() {
       td_cell.appendChild(update_esrb);
       row_element.replaceChild(td_cell, cell_elements[6]);
 
+      console.log(cell_elements[6].value);
+
       // buttons cell_elements[7]
 
     });
