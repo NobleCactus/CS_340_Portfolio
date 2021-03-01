@@ -457,112 +457,112 @@ function bindButtons() {
 
 // run this every time the search table is remade to bind newly made buttons
 function bind_update_buttons() {
+  // get list of platforms, franchises, and devs
+  var req = new XMLHttpRequest();
+  payload = {"action": "updateTitleElements"};
+  req.open('POST', '/update', true);
+  req.setRequestHeader('Content-Type', 'application/json');
+
+  req.addEventListener('load', function(){
+    if (req.status >= 200 && req.status < 400) {
+      res = JSON.parse(req.responseText);
+      console.log(res);
+    } else {
+        console.log("Error in network request: " + req.statusText);
+    }
+  });
+
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      // get list of platforms, franchises, and devs
-      var req = new XMLHttpRequest();
-      payload = {"action": "updateTitleElements"};
-      req.open('POST', '/update', true);
-      req.setRequestHeader('Content-Type', 'application/json');
+        // change displayed button to Save Changes
+        event.target.style.display = "none";
+        event.target.nextElementSibling.style.display = "inline";
 
-      req.addEventListener('load', function(){
-        if (req.status >= 200 && req.status < 400) {
-          res = JSON.parse(req.responseText);
-          console.log(res);
-          // change displayed button to Save Changes
-          event.target.style.display = "none";
-          event.target.nextElementSibling.style.display = "inline";
+        // make the row's attributes edit-able
+        var row_element = event.target.parentNode.parentNode;
+        var cell_elements = row_element.childNodes;
 
-          // make the row's attributes edit-able
-          var row_element = event.target.parentNode.parentNode;
-          var cell_elements = row_element.childNodes;
+        // name text input
+        td_cell = document.createElement('td');
+        update_name = document.createElement('input');
+        update_name.type = "text";
+        update_name.value = row_element.childNodes[0].textContent;
+        td_cell.appendChild(update_name);
+        row_element.replaceChild(td_cell, cell_elements[0]);
 
-          // name text input
-          td_cell = document.createElement('td');
-          update_name = document.createElement('input');
-          update_name.type = "text";
-          update_name.value = row_element.childNodes[0].textContent;
-          td_cell.appendChild(update_name);
-          row_element.replaceChild(td_cell, cell_elements[0]);
+        // platform list cell_elements[1]
 
-          // platform list cell_elements[1]
+        //*****
+        // release date selection
+        td_cell = document.createElement('td');
+        update_date = document.createElement('input');
+        update_date.type = "date";
 
-          //*****
-          // release date selection
-          td_cell = document.createElement('td');
-          update_date = document.createElement('input');
-          update_date.type = "date";
+        // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
+        update_date.defaultValue = "1993-10-26";
+        // otherwise, we have to use this and buil up the date string
+        console.log(cell_elements[2].textContent.split(" "));
 
-          // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
-          update_date.defaultValue = "1993-10-26";
-          // otherwise, we have to use this and buil up the date string
-          console.log(cell_elements[2].textContent.split(" "));
+        td_cell.appendChild(update_date);
+        row_element.replaceChild(td_cell, cell_elements[2]);
+        //*****
 
-          td_cell.appendChild(update_date);
-          row_element.replaceChild(td_cell, cell_elements[2]);
-          //*****
-
-          // genre options
-          genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
-                            "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
-                            "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
-                            "Strategy", "Survival", "Third-Person Shooter", "Other"];
-          td_cell = document.createElement('td');
-          update_genre = document.createElement('select');
+        // genre options
+        genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
+                          "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
+                          "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
+                          "Strategy", "Survival", "Third-Person Shooter", "Other"];
+        td_cell = document.createElement('td');
+        update_genre = document.createElement('select');
+        genre_option = document.createElement('option');
+        update_genre.appendChild(genre_option);
+        for (var i = 0; i < genre_elements.length; i++) {
           genre_option = document.createElement('option');
+          genre_option.value = genre_elements[i];
+          genre_option.textContent = genre_elements[i];
           update_genre.appendChild(genre_option);
-          for (var i = 0; i < genre_elements.length; i++) {
-            genre_option = document.createElement('option');
-            genre_option.value = genre_elements[i];
-            genre_option.textContent = genre_elements[i];
-            update_genre.appendChild(genre_option);
-          }
-          td_cell.appendChild(update_genre);
-            // set default selection to original value
-          if (cell_elements[3] != "") {
-            var index = 1;
-            while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
-              index++;
-            }
-            update_genre.childNodes[index].selected = true;
-          }
-          row_element.replaceChild(td_cell, cell_elements[3]);
-
-          // franchise cell_elements[4]
-
-
-          // dev cell_elements[5]
-
-
-          // ESRB options
-          esrb_values = ["E", "T", "M"];
-          esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
-          td_cell = document.createElement('td');
-          update_esrb = document.createElement('select');
-          esrb_option = document.createElement('option');
-          update_esrb.appendChild(esrb_option);
-          for (var i = 0; i < esrb_values.length; i++) {
-            esrb_option = document.createElement('option');
-            esrb_option.value = esrb_values[i];
-            esrb_option.textContent = esrb_texts[i];
-            update_esrb.appendChild(esrb_option);
-          }
-          td_cell.appendChild(update_esrb);
-            // set default selection to original value
-          if (cell_elements[6] != "") {
-            var index = 1;
-            while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
-              index++;
-            }
-            update_esrb.childNodes[index].selected = true;
-          }
-          row_element.replaceChild(td_cell, cell_elements[6]);
-        } else {
-          console.log("Error in network request: " + req.statusText);
         }
-      });
-      req.send(JSON.stringify(payload));
+        td_cell.appendChild(update_genre);
+          // set default selection to original value
+        if (cell_elements[3] != "") {
+          var index = 1;
+          while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
+            index++;
+          }
+          update_genre.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[3]);
+
+        // franchise cell_elements[4]
+
+
+        // dev cell_elements[5]
+
+
+        // ESRB options
+        esrb_values = ["E", "T", "M"];
+        esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
+        td_cell = document.createElement('td');
+        update_esrb = document.createElement('select');
+        esrb_option = document.createElement('option');
+        update_esrb.appendChild(esrb_option);
+        for (var i = 0; i < esrb_values.length; i++) {
+          esrb_option = document.createElement('option');
+          esrb_option.value = esrb_values[i];
+          esrb_option.textContent = esrb_texts[i];
+          update_esrb.appendChild(esrb_option);
+        }
+        td_cell.appendChild(update_esrb);
+          // set default selection to original value
+        if (cell_elements[6] != "") {
+          var index = 1;
+          while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
+            index++;
+          }
+          update_esrb.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[6]);
     });
   });
 
