@@ -465,11 +465,11 @@ function bind_update_buttons() {
       console.log(event.target)
       var row = event.target.parentElement;
 
-      console.log("ROW:")
-      console.log(row)
+      console.log("ROW:");
+      console.log(row);
 
-      console.log("ROW.PARENTELEMENT:")
-      console.log(row.parentelement)
+      console.log("ROW.PARENTELEMENT:");
+      console.log(row.parentNode);
     });
   });
 
