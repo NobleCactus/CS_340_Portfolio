@@ -462,7 +462,7 @@ function bind_update_buttons() {
     element.addEventListener("click", function(event) {
       // change displayed button to Save Changes
       event.target.style.display = "none";
-      event.target.nextElementSibling.style.display = "block";
+      event.target.nextElementSibling.style.display = "inline";
 
       // make the row's attributes edit-able
       var row = event.target.parentNode.parentNode.childNodes;
@@ -478,7 +478,7 @@ function bind_update_buttons() {
       // make the cells not editable
       // change displayed button to Update/Edit
       event.target.style.display = "none";
-      event.target.previousElementSibling.style.display = "block";
+      event.target.previousElementSibling.style.display = "inline";
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
