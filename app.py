@@ -136,6 +136,7 @@ def delete():
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
+	print("@@@ IN UPDATE ROUTE")
 	db_connection = connect_to_database()
 	if request.method == 'GET':
 		# get platforms/franchises/devs/platformDevs/franchiseDevs with corresponding table values to dynamically populate drop down menu
@@ -184,7 +185,8 @@ def update():
 			query_params = build_query_searchFranchise(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 		elif query_vals["action"] == "updateTitleElements":
-			return {"updateTitleElements": "SUCCESSFUL"};
+			print("@@@ IN updateTitleElements")
+			return {"updateTitleElements": "SUCCESSFUL"}
 
 		return jsonify(result)
 

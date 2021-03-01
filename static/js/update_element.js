@@ -460,6 +460,7 @@ function bind_update_buttons() {
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      console.log("UPDATE BUTTON CLICKED");
       // get list of platforms, franchises, and devs
       var req = new XMLHttpRequest();
       payload = {"action": "updateTitleElements"};
