@@ -465,11 +465,27 @@ function bind_update_buttons() {
       event.target.nextElementSibling.style.display = "inline";
 
       // make the row's attributes edit-able
-      var row = event.target.parentNode.parentNode.childNodes;
+      var row_elements = event.target.parentNode.parentNode.childNodes;
 
-      for (var i = 0; i < 7; i++) {
-        console.log(row[i]);
-      }
+      // name row_elements[0]
+      update_name = document.createElement('input');
+      update_name.type = "text";
+      upate_name.value = row_elements[0];
+      row_elements.replaceChild(update_name, row_elements[0]);
+
+      // platform list row_elements[1]
+
+      // release date row_elements[2]
+
+      // genre row_elements[3]
+
+      // franchise row_elements[4]
+
+      // dev row_elements[5]
+
+      // esrb row_elements[6]
+
+      // buttons row_elements[7]
 
     });
   });
