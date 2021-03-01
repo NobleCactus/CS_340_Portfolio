@@ -89,12 +89,14 @@ function bindButtons() {
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
-          
-          name_val = document.createElement('td');
-          name_val.textContent = res[i][1];
-          title_tr.appendChild(name_val);
 
-          plat_val = document.createElement('td');
+          // title cells
+          td_cell = document.createElement('td');
+          td_cell.textContent = res[i][1];
+          title_tr.appendChild(td_cell);
+
+          // platforms cells
+          td_cell = document.createElement('td');
           plat_list = document.createElement('ul');
           plat_list.setAttribute('class', 'platformList');
           for (var j = 0; j < res[i][7].length; j++) {
@@ -102,28 +104,15 @@ function bindButtons() {
             plat_item.textContent = res[i][7][j];
             plat_list.appendChild(plat_item);
           }
-          plat_val.appendChild(plat_list);
-          title_tr.appendChild(plat_val);
+          td_cell.appendChild(plat_list);
+          title_tr.appendChild(td_cell);
 
-          release_val = document.createElement('td');
-          release_val.textContent = res[i][2];
-          title_tr.appendChild(release_val);
-
-          genre_val = document.createElement('td');
-          genre_val.textContent = res[i][3];
-          title_tr.appendChild(genre_val);
-
-          franchise_val = document.createElement('td');
-          franchise_val.textContent = res[i][4];
-          title_tr.appendChild(franchise_val);
-
-          dev_val = document.createElement('td');
-          dev_val.textContent = res[i][5];
-          title_tr.appendChild(dev_val);
-
-          esrb_val = document.createElement('td');
-          esrb_val.textContent = res[i][6];
-          title_tr.appendChild(esrb_val);
+          // genre, franchise, dev, esrb cells
+          for (var j = 2; j < 7; j++) {
+            td_cell = document.createElement('td');
+            td_cell.textContent = res[i][j]
+            title_tr.appendChild(td_cell);
+          }
 
           // update button
           button_td = document.createElement('td');
