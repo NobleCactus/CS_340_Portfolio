@@ -425,8 +425,8 @@ function bind_update_buttons() {
         td_cell.style.textAlign = "left";
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
-        plat_option.value = plat_elements[0][0];
-        plat_option.textContent = plat_elements[0][1];
+        plat_option.value = plat_elements[0][0].toString();
+        plat_option.textContent = plat_elements[0][1].toString();
         console.log(plat_option);
         td_cell.appendChild(plat_option);
         for (var i = 1; i < plat_elements.length; i++) {
