@@ -467,16 +467,15 @@ function bind_update_buttons() {
 
         // franchise cell_elements[4]
         franchise_elements = res["Franchises"];
-        console.log(res["Franchises"]);
         td_cell = document.createElement('td');
         update_franchise = document.createElement('select');
         franchise_option = document.createElement('option');
         update_franchise.appendChild(franchise_option);
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
-          console.log(franchise_elements[i]);
           franchise_option.value = franchise_elements[i][0];
           franchise_option.textContent = franchise_elements[i][1];
+          console.log(franchise_option.value);
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
