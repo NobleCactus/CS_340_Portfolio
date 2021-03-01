@@ -487,6 +487,8 @@ function bind_update_buttons() {
       // dev cell_elements[5]
 
       // esrb cell_elements[6]
+      console.log(cell_elements[6].textContent);
+      
       td_cell = document.createElement('td');
       update_esrb = document.createElement('select');
       
@@ -520,7 +522,7 @@ function bind_update_buttons() {
       td_cell.appendChild(update_esrb);
       row_element.replaceChild(td_cell, cell_elements[6]);
 
-      console.log(cell_elements[6].textContent);
+
 
       // buttons cell_elements[7]
 
