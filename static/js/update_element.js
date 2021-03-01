@@ -460,16 +460,13 @@ function bind_update_buttons() {
   // update/edit buttons make cells editable and show the "Save Changes" button instead
   Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      event.target.style.display = "none";
+      console.log(event.target.nextSibling);
+      console.log(event.target.nextElementSibling);
+
       // make the row's attributes edit-able
-      console.log("EVENT.TARGET:");
-      console.log(event.target)
-      var row = event.target.parentElement;
+      var row = event.target.parentNode.parentNode;
 
-      console.log("ROW:");
-      console.log(row);
-
-      console.log("ROW.PARENTELEMENT:");
-      console.log(row.parentNode);
     });
   });
 
