@@ -394,7 +394,6 @@ function bind_update_buttons() {
   req.addEventListener('load', function(){
     if (req.status >= 200 && req.status < 400) {
       res = JSON.parse(req.responseText);
-      console.log(res);
     } else {
         console.log("Error in network request: " + req.statusText);
     }
@@ -421,8 +420,9 @@ function bind_update_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list cell_elements[1]
+        platform_elements = res["Plats"]
         td_cell = document.createElement('td');
-        plat_elements =
+
 
         //*****
         // release date selection
@@ -473,8 +473,8 @@ function bind_update_buttons() {
         update_franchise.appendChild(franchise_option);
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
-          franchise_option.value = franchise_elements[i];
-          franchise_option.textContent = franchise_elements[i];
+          franchise_option.value = franchise_elements[i][0];
+          franchise_option.textContent = franchise_elements[i][1];
           update_franchise.appendChild(franchise_option);
         }
         td_cell.appendChild(update_franchise);
@@ -496,8 +496,8 @@ function bind_update_buttons() {
         update_dev.appendChild(dev_option);
         for (var i = 0; i < dev_elements.length; i++) {
           dev_option = document.createElement('option');
-          dev_option.value = dev_elements[i];
-          dev_option.textContent = dev_elements[i];
+          dev_option.value = dev_elements[i][0];
+          dev_option.textContent = dev_elements[i][1];
           update_dev.appendChild(dev_option);
         }
         td_cell.appendChild(update_dev);
