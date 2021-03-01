@@ -149,7 +149,6 @@ function bindButtons() {
 
           // update button
           button_td = document.createElement('td');
-          button_td.style.margin = "auto";
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
           update_button.setAttribute('class', 'updateButton');
@@ -159,6 +158,7 @@ function bindButtons() {
 
           // save button
           save_button = document.createElement('button');
+          save_button.style.margin = "auto";
           save_button.setAttribute('type', 'button');
           save_button.setAttribute('class', 'saveButton');
           save_button.textContent = "Save Changes";
