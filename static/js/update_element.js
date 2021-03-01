@@ -477,7 +477,7 @@ function bind_update_buttons() {
           var row_element = event.target.parentNode.parentNode;
           var cell_elements = row_element.childNodes;
 
-          // name cell_elements[0]
+          // name text input
           td_cell = document.createElement('td');
           update_name = document.createElement('input');
           update_name.type = "text";
@@ -487,7 +487,8 @@ function bind_update_buttons() {
 
           // platform list cell_elements[1]
 
-          // release date cell_elements[2]
+          //*****
+          // release date selection
           td_cell = document.createElement('td');
           update_date = document.createElement('input');
           update_date.type = "date";
@@ -499,8 +500,9 @@ function bind_update_buttons() {
 
           td_cell.appendChild(update_date);
           row_element.replaceChild(td_cell, cell_elements[2]);
-
-          // genre cell_elements[3]
+          //*****
+          
+          // genre options
           genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
                             "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
                             "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
@@ -509,7 +511,6 @@ function bind_update_buttons() {
           update_genre = document.createElement('select');
           genre_option = document.createElement('option');
           update_genre.appendChild(genre_option);
-
           for (var i = 0; i < genre_elements.length; i++) {
             genre_option = document.createElement('option');
             genre_option.value = genre_elements[i];
@@ -517,8 +518,7 @@ function bind_update_buttons() {
             update_genre.appendChild(genre_option);
           }
           td_cell.appendChild(update_genre);
-
-          // default selection is original value
+            // set default selection to original value
           if (cell_elements[3] != "") {
             var index = 1;
             while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
@@ -526,21 +526,21 @@ function bind_update_buttons() {
             }
             update_genre.childNodes[index].selected = true;
           }
-
           row_element.replaceChild(td_cell, cell_elements[3]);
 
           // franchise cell_elements[4]
 
+
           // dev cell_elements[5]
 
-          // esrb cell_elements[6]
+
+          // ESRB options
           esrb_values = ["E", "T", "M"];
           esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
           td_cell = document.createElement('td');
           update_esrb = document.createElement('select');
           esrb_option = document.createElement('option');
           update_esrb.appendChild(esrb_option);
-
           for (var i = 0; i < esrb_values.length; i++) {
             esrb_option = document.createElement('option');
             esrb_option.value = esrb_values[i];

@@ -176,6 +176,13 @@ def update():
 		
 		# populating drop down menu elements for updating
 		elif query_vals["action"] == "updateTitleElements":
+			# query for list of all platforms
+
+			# query for list of all franchises
+
+			# query for list of all developers
+
+			# return {platforms: (list), franchises: (list), developers (list)}
 			return {"updateTitleElements": "SUCCESSFUL"}
 
 		# updating an element
