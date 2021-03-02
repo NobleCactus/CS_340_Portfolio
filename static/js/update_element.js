@@ -424,9 +424,10 @@ function bind_update_buttons() {
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
 
-        plat_option = document.createElement("input");
-        plat_option.setAttribute("type", "checkbox");
-        plat_option.setAttribute("value", plat_elements[0][0]);
+        //plat_option = document.createElement("input");
+        //plat_option.setAttribute("type", "checkbox");
+        //plat_option.setAttribute("value", plat_elements[0][0]);
+        plat_option = document.createElement('div');
         plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
 
@@ -434,11 +435,11 @@ function bind_update_buttons() {
           break_tag = document.createElement("br");
           td_cell.appendChild(break_tag);
 
-          plat_option = document.createElement("input");
-          plat_option.setAttribute("type", "checkbox");
-          plat_option.setAttribute("value", plat_elements[i][0]);
+          //plat_option = document.createElement("input");
+          //plat_option.setAttribute("type", "checkbox");
+          //plat_option.setAttribute("value", plat_elements[i][0]);
+          plat_option = document.createElement('div');
           plat_option.textContent = plat_elements[i][1];
-          plat_option.setAttribute("checked", true);
           td_cell.appendChild(plat_option);
         }
           // set default selections to original values
