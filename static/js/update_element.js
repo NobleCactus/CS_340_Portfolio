@@ -549,11 +549,9 @@ function bind_updateTitle_buttons() {
         }
         td_cell.appendChild(update_dev);
           // set default selection to original value
-        if (cell_elements[5].textContent != "") {
-          var index = 0;
-          while (cell_elements[5].textContent != update_dev.childNodes[index].textContent) {
-            index++;
-          }
+        var index = 0;
+        while (cell_elements[5].textContent != update_dev.childNodes[index].textContent) {
+          index++;
           update_dev.childNodes[index].selected = true;
         }
         row_element.replaceChild(td_cell, cell_elements[5]);
@@ -646,13 +644,11 @@ function bind_updateDev_buttons() {
         }
         td_cell.appendChild(update_country);
           // set default selection to original value
-        if (cell_elements[1].textContent != "") {
-          var index = 0;
-          while (cell_elements[1].textContent != update_country.childNodes[index].value) {
-            index++;
-          }
-          update_country.childNodes[index].selected = true;
+        var index = 0;
+        while (cell_elements[1].textContent != update_country.childNodes[index].value) {
+          index++;
         }
+        update_country.childNodes[index].selected = true;
         row_element.replaceChild(td_cell, cell_elements[1]);
 
         //***
@@ -747,13 +743,11 @@ function bind_updatePlat_buttons() {
         }
         td_cell.appendChild(update_dev);
           // set default selection to original value
-        if (cell_elements[2].textContent != "") {
-          var index = 0;
-          while (cell_elements[2].textContent != update_dev.childNodes[index].value) {
-            index++;
-          }
-          update_dev.childNodes[index].selected = true;
+        var index = 0;
+        while (cell_elements[2].textContent != update_dev.childNodes[index].value) {
+          index++;
         }
+        update_dev.childNodes[index].selected = true;
         row_element.replaceChild(td_cell, cell_elements[2]);
 
         // in production input
@@ -768,14 +762,11 @@ function bind_updatePlat_buttons() {
         }
         td_cell.appendChild(update_inProd);
           // set default selection to original value
-        if (cell_elements[3].textContent != "") {
-          var index = 0;
-          console.log(update_inProd.childNodes[index].textContent);
-          while (cell_elements[3].textContent != update_inProd.childNodes[index].textContent) {
-            index++;
-          }
-          update_inProd.childNodes[index].selected = true;
+        var index = 0;
+        while (cell_elements[3].textContent != update_inProd.childNodes[index].textContent) {
+          index++;
         }
+        update_inProd.childNodes[index].selected = true;
         row_element.replaceChild(td_cell, cell_elements[3]);
     });
   });
@@ -859,7 +850,7 @@ function bind_updateFranchise_buttons() {
           index++;
         }
         update_dev.childNodes[index].selected = true;
-        
+
         row_element.replaceChild(td_cell, cell_elements[1]);
     });
   });
