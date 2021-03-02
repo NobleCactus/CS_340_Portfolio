@@ -548,7 +548,7 @@ def execute_update_title(query_vals):
 	params += (query_vals["titleID"],)
 
 	try:
-		execute_query(db_connection, query_params[0], query_params[1]);
+		execute_query(db_connection, query, params);
 	except:
 		return {"result": 0}
 	else:
