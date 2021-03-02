@@ -587,14 +587,15 @@ function bind_updateTitle_buttons() {
     element.addEventListener("click", function(event) {
       // get input values
       titleID = event.target.value
-      console.log(titleID);
+      titleRow = event.target.parentNode.parentNode
+      console.log(titleRow);
       // try query
 
       //if successful
       // make the cells not editable
       // change displayed button to Update/Edit
-      event.target.style.display = "none";
-      event.target.previousElementSibling.style.display = "inline";
+      //event.target.style.display = "none";
+      //event.target.previousElementSibling.style.display = "inline";
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
@@ -679,8 +680,8 @@ function bind_updateDev_buttons() {
       //if successful
       // make the cells not editable
       // change displayed button to Update/Edit
-      event.target.style.display = "none";
-      event.target.previousElementSibling.style.display = "inline";
+      //event.target.style.display = "none";
+      //event.target.previousElementSibling.style.display = "inline";
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
