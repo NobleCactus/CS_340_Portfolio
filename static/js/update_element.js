@@ -606,13 +606,14 @@ function bind_updateTitle_buttons() {
                       "titleFranchise": title_attributes[4].firstChild.value,
                       "titleDev": title_attributes[5].firstChild.value,
                       "titleESRB": title_attributes[6].firstChild.value};
-                      
+
       req.open('POST', '/update', true);
       req.setRequestHeader('Content-Type', 'application/json');
 
       req.addEventListener('load', function(){
         if (req.status >= 200 && req.status < 400) {
           res = JSON.parse(req.responseText);
+          console.log(res);
         } else {
             console.log("Error in network request: " + req.statusText);
         }
