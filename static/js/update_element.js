@@ -663,7 +663,7 @@ function bind_updateTitle_buttons() {
             while (title_attributes[4].firstChild.value != franchise_items[index].value) {
               index++;
             }
-            td_cell.textContent = franchise_list[index].textContent;
+            td_cell.textContent = franchise_items[index].textContent;
             row_element.replaceChild(td_cell, cell_elements[4]);
 
             // updated dev
