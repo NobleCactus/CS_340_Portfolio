@@ -297,7 +297,7 @@ def execute_delTitle(db_connection, query_vals):
 	#Build query
 
 	params = (query_vals["ButtonVal"])
-	query = "DELETE * FROM VideoGameTitles WHERE titleID = %s"
+	query = "DELETE FROM VideoGameTitles WHERE titleID = %s"
 	try:
 		result = execute_query(db_connection, query, params)
 	except:
