@@ -385,20 +385,10 @@ function bind_delete_buttons() {
         // POST with button's value, which is the row's ID (event.target.value)
           var req = new XMLHttpRequest();
           var payload = {"action": "deleteTitle",
-                    "titleName": document.getElementById('searchTitleName').event.target.value,
-                    "titlePlatID": document.getElementById('searchTitlePlatID').event.target.value, 
-                    "titleFromDate": document.getElementById('searchTitleFromDate').event.target.value, 
-                    "titleToDate": document.getElementById('searchTitleToDate').event.target.value, 
-                    "titleGenre": document.getElementById('searchTitleGenre').event.target.value, 
-                    "titleFranchiseID": document.getElementById('searchTitleFranchiseID').event.target.value,
-                    "titleDevID": document.getElementById('searchTitleDevID').event.target.value,
-                    "titleESRB": document.getElementById('searchTitleESRB').event.target.value};
+                    "ButtonVal": event.target.value};
 
     req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
-    req.addEventListener('load', function(){
-      if (req.status >= 200 && req.status < 400) {
-        res = JSON.parse(req.responseText);}}
         // if successful:
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
