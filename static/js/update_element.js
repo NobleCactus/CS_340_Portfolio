@@ -743,10 +743,8 @@ function bind_updatePlat_buttons() {
         dev_elements = ["Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
         td_cell = document.createElement('td');
         var update_dev = document.createElement('select');
-        var dev_option = document.createElement('option');
-        update_dev.appendChild(dev_option);
         for (var i = 0; i < dev_elements.length; i++) {
-          dev_option = document.createElement('option');
+          var dev_option = document.createElement('option');
           dev_option.setAttribute("value", dev_elements[i]);
           dev_option.textContent = dev_elements[i];
           update_dev.appendChild(dev_option);
@@ -763,13 +761,11 @@ function bind_updatePlat_buttons() {
         row_element.replaceChild(td_cell, cell_elements[2]);
 
         // in production input
-        inProd_elements = ["", "Y", "N"];
+        inProd_elements = ["Y", "N"];
         td_cell = document.createElement('td');
         var update_inProd = document.createElement('select');
-        var inProd_option = document.createElement('option');
-        update_inProd.appendChild(inProd_option);
         for (var i = 0; i < inProd_elements.length; i++) {
-          inProd_option = document.createElement('option');
+          var inProd_option = document.createElement('option');
           inProd_option.setAttribute("value", inProd_elements[i]);
           inProd_option.textContent = inProd_elements[i];
           update_inProd.appendChild(inProd_option);
@@ -779,7 +775,7 @@ function bind_updatePlat_buttons() {
         if (cell_elements[2].textContent != "") {
           var index = 1;
           console.log(update_inProd.childNodes[index]);
-          while (cell_elements[2].textContent != update_inProd.childNodes[index].textContent) {
+          while (cell_elements[2].textContent != update_inProd.childNodes[index].value) {
             index++;
           }
           update_inProd.childNodes[index].selected = true;
