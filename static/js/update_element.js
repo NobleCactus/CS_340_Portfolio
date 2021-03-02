@@ -431,8 +431,8 @@ function bind_update_buttons() {
         td_cell.appendChild(plat_option);
 
         for (var i = 1; i < plat_elements.length; i++) {
-          break_tag = document.createElement("br");
-          td_cell.appendChild(break_tag);
+          //break_tag = document.createElement("br");
+          //td_cell.appendChild(break_tag);
 
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
