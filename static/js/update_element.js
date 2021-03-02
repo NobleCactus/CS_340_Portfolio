@@ -445,8 +445,6 @@ function bind_updateTitle_buttons() {
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
 
-        console.log(plat_elements);
-
           //*** platform names isn't showing on webpage, but it is in the HTML ***
         var plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
@@ -628,7 +626,7 @@ function bind_updateTitle_buttons() {
             
             // name text input
             var td_cell = document.createElement('td');
-            console.log(cell_elements[0].textContent);
+            console.log(cell_elements[0]);
             td_cell.textContent = cell_elements[0].textContent;
             row_element.replaceChild(td_cell, cell_elements[0]);
 
