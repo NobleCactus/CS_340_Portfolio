@@ -123,11 +123,12 @@ function bindButtons() {
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
           title_tr.appendChild(button_td);
-          del_button.addEventListener('click', function { alert("Test"); })
+
           searchTable.appendChild(title_tr);
         }
 
         // rebind the new delete buttons to trigger delete query
+        
         bind_delete_buttons();
 
       } else {
