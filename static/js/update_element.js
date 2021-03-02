@@ -627,44 +627,24 @@ function bind_updateTitle_buttons() {
             var row_element = event.target.parentNode.parentNode;
             var cell_elements = row_element.childNodes;
             
-            // name text input
+            // updated title name
             var td_cell = document.createElement('td');
             td_cell.textContent = payload["titleName"];
             row_element.replaceChild(td_cell, cell_elements[0]);
 
-            /*
-            // platform list options
-            var plat_elements = res["Plats"];
+            // updated platform list
             td_cell = document.createElement('td');
-            td_cell.style.textAlign = "left";
-
-              //*** platform names isn't showing on webpage, but it is in the HTML ***
-            var plat_option = document.createElement("input");
-            plat_option.setAttribute("type", "checkbox");
-            plat_option.setAttribute("value", plat_elements[0][0]);
-            plat_option.textContent = plat_elements[0][1];
-            td_cell.appendChild(plat_option);
-            for (var i = 1; i < plat_elements.length; i++) {
-              var break_tag = document.createElement("br");
-              td_cell.appendChild(break_tag);
-
-              plat_option = document.createElement("input");
-              plat_option.setAttribute("type", "checkbox");
-              plat_option.setAttribute("value", plat_elements[i][0]);
-              plat_option.textContent = plat_elements[i][1];
-              td_cell.appendChild(plat_option);
+            var plat_list_tag = document.createElement('ul');
+            plat_list_tag.setAttribute("class", "platformList");
+            for (var i = 0; i < plat_list.length; i++) {
+              list_item = document.createElement('li');
+              list_item.textContent = plat_list[i];
+              plat_list_tag.appendChild(list_item);
             }
-              // set default selections to original values
-            var curr_plats = cell_elements[1].childNodes[0].childNodes;
-            for (var i = 0; i < curr_plats.length; i++) {
-              var index = 0;
-              while (curr_plats[i].textContent != td_cell.childNodes[index].textContent) {
-                index++;
-              }
-              td_cell.childNodes[index].setAttribute("checked", true);
-            }
+            td_cell.appendChild(plat_list_tag);
+            row_element.replaceChild(td_cell, cell_element[1]);
 
-            row_element.replaceChild(td_cell, cell_elements[1]);
+            /*
 
             //***
             // release date selection
