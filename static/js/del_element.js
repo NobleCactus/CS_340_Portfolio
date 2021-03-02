@@ -127,7 +127,18 @@ function bindButtons() {
           searchTable.appendChild(title_tr);
         }
 
+
+        
+
         // rebind the new delete buttons to trigger delete query
+         document.getElementsByClassName("delButton").addEventListener("click", function(event) {
+          alert("Hello World!"); });
+
+
+
+
+
+
         bind_delete_buttons();
 
       } else {
