@@ -623,11 +623,10 @@ function bind_updateTitle_buttons() {
             // make the cells not editable
             var row_element = event.target.parentNode.parentNode;
             var cell_elements = row_element.childNodes;
-
-            console.log(cell_elements);
             
             // name text input
             var td_cell = document.createElement('td');
+            console.log(cell_elements[0].textContent);
             td_cell.textContent = cell_elements[0].textContent;
             row_element.replaceChild(td_cell, cell_elements[0]);
 
