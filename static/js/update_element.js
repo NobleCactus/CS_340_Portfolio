@@ -776,20 +776,54 @@ function bind_updateDev_buttons() {
                       "devCountry": dev_attributes[1].firstChild.value,
                       "devDate": dev_attributes[2].firstChild.value}
 
-      console.log(payload);
+      req.open('POST', '/update', true);
+      req.setRequestHeader('Content-Type', 'application/json');
 
-      // show update successful message
-      document.getElementById("updateSuccessful").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateSuccessful").style.display = "none";
-      }, 1500);
+      req.addEventListener('load', function(){
+        if (req.status >= 200 && req.status < 400) {
+          res = JSON.parse(req.responseText);
 
-      // show update failed message
-      document.getElementById("updateFailed").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateFailed").style.display = "none";
-      }, 1500);
+          if (res["result"]) {
+            // change displayed button to Update/Edit
+            event.target.style.display = "none";
+            event.target.previousElementSibling.style.display = "inline";
+
+            // make the cells not editable, displaying updated values
+            var row_element = event.target.parentNode.parentNode;
+            var cell_elements = row_element.childNodes;
+
+            // updated title name
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["devName"];
+            row_element.replaceChild(td_cell, cell_elements[0]);
+
+            // updated country
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["devCountry"];
+            row_element.replaceChild(td_cell, cell_elements[1]);
+
+            // updated founding date
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["devDate"];
+            row_element.replaceChild(td_cell, cell_elements[2]);
+
+            // show update successful message
+            document.getElementById("updateSuccessful").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateSuccessful").style.display = "none";
+            }, 1500);
+          } else {
+            // show update failed message
+            document.getElementById("updateFailed").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateFailed").style.display = "none";
+            }, 1500);
+          }
+        } else {
+            console.log("Error in network request: " + req.statusText);
+        }
     });
+    req.send(JSON.stringify(payload));
   });
 }
 

@@ -204,7 +204,7 @@ def update():
 		elif query_vals["action"] == "updateTitle":
 			return execute_update_title(db_connection, query_vals)
 		elif  query_vals["action"] == "updateDev":
-			pass
+			return execute_update_dev(db_connection, query_vals)
 		elif  query_vals["action"] == "updatePlat":			
 			pass
 		elif  query_vals["action"] == "updateFranchise":
@@ -490,7 +490,7 @@ def build_query_searchPlat(query_vals):
 	return (query, params)
 
 def build_query_searchFranchise(query_vals):
-	# query_parameters = {"franchiseName", "franchiseDev"}
+	# query_vals = {"franchiseName", "franchiseDev"}
 	query = "SELECT * FROM `Franchises`"
 	no_where = 1
 	params = ()
@@ -511,7 +511,7 @@ def build_query_searchFranchise(query_vals):
 	return (query, params)
 
 def execute_update_title(db_connection, query_vals):
-	# query_parameters = {"titleID", "titleName", titlePlats, "titleRelease", "titleGenre", 
+	# query_vals = {"titleID", "titleName", titlePlats, "titleRelease", "titleGenre", 
 	#						"titleFranchiseID", "titleDevID", "titleESRB"}
 	query = "UPDATE `VideoGameTitles` SET "	
 	query += "titleName = %s, "
@@ -562,4 +562,23 @@ def execute_update_title(db_connection, query_vals):
 		for platID in query_vals["titlePlats"]:
 			execute_query(db_connection, query, (query_vals["titleID"], platID))
 
+		return {"result": 1}
+
+def execute_update_dev(db_connection, query_vals):
+	# query_vals = {"devID", "devName", "devCountry", "devDate"}
+
+	query = "UPDATE `DevelopmentStudios` SET "	
+	query += "developerName = %s, "
+	query += "developerCountry = %s, "
+	query += "titleGenre = %s, "
+	query += "developerFounded = %s, "
+	query += "WHERE titleID = %s;"
+
+	params = (query_vals["devName"], query_vals["devCountry"], query_vals["devDate"], query_vals["devID"])
+
+	try:
+		execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
 		return {"result": 1}
