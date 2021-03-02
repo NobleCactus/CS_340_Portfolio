@@ -597,8 +597,6 @@ function bind_updateTitle_buttons() {
         }
       }
 
-      console.log();
-
       var payload = {"action": "updateTitle",
                       "titleID": titleID,
                       "titleName": title_attributes[0].firstChild.value,
@@ -608,9 +606,18 @@ function bind_updateTitle_buttons() {
                       "titleFranchise": title_attributes[4].firstChild.value,
                       "titleDev": title_attributes[5].firstChild.value,
                       "titleESRB": title_attributes[6].firstChild.value};
+                      
+      req.open('POST', '/update', true);
+      req.setRequestHeader('Content-Type', 'application/json');
 
-      console.log(payload);
-      // try query
+      req.addEventListener('load', function(){
+        if (req.status >= 200 && req.status < 400) {
+          res = JSON.parse(req.responseText);
+        } else {
+            console.log("Error in network request: " + req.statusText);
+        }
+      });
+      req.send(JSON.stringify(payload));
 
       //if successful
       // make the cells not editable

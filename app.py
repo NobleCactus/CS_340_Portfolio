@@ -202,7 +202,8 @@ def update():
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
-			pass
+			print("@@@REQUEST VALS:", query_vals);
+			return {"REQUEST:": "SUCCESSFULL"}
 		elif  query_vals["action"] == "updateDev":
 			pass
 		elif  query_vals["action"] == "updatePlat":			
