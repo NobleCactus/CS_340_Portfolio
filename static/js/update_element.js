@@ -658,6 +658,11 @@ function bind_updateTitle_buttons() {
 
             // updated franchise
             td_cell = document.createElement('td');
+            var franchise_list = title_attributes[4].firstChild.childNodes;
+            var sel_franchise;
+            var index = 0;
+            console.log(franchise_list);
+
             td_cell.textContent = title_attributes[4].firstChild.textContent;
             row_element.replaceChild(td_cell, cell_elements[4]);
 
