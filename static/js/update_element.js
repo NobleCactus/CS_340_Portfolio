@@ -659,14 +659,11 @@ function bind_updateTitle_buttons() {
             // updated franchise
             td_cell = document.createElement('td');
             var franchise_list = title_attributes[4].firstChild.childNodes;
-            var sel_franchise;
             var index = 0;
-            for (var i = 0; i < franchise_list.length; i++) {
-              console.log(franchise_list[i].textContent);
+            while (title_attributes[4].firstChild.value != franchise_list[index].value) {
+              index++;
             }
-            console.log(franchise_list);
-
-            td_cell.textContent = title_attributes[4].firstChild.textContent;
+            td_cell.textContent = franchise_list[index].textContent;
             row_element.replaceChild(td_cell, cell_elements[4]);
 
             // updated dev
