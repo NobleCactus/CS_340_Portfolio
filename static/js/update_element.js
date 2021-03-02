@@ -433,26 +433,26 @@ function bind_updateTitle_buttons() {
         var cell_elements = row_element.childNodes;
 
         // name text input
-        td_cell = document.createElement('td');
-        update_name = document.createElement('input');
-        update_name.type = "text";
-        update_name.setAttribute("value",row_element.childNodes[0].textContent);
+        var td_cell = document.createElement('td');
+        var update_name = document.createElement('input');
+        update_name.setAttribute("type", "text");
+        update_name.setAttribute("value", row_element.childNodes[0].textContent);
         td_cell.appendChild(update_name);
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // platform list options
-        plat_elements = res["Plats"];
+        var plat_elements = res["Plats"];
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
 
-        //*** text isn't showing on webpage ***
-        plat_option = document.createElement("input");
+          //*** platform names isn't showing on webpage, but it is in the HTML ***
+        var plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.setAttribute("value", plat_elements[0][0]);
         plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
         for (var i = 1; i < plat_elements.length; i++) {
-          break_tag = document.createElement("br");
+          var break_tag = document.createElement("br");
           td_cell.appendChild(break_tag);
 
           plat_option = document.createElement("input");
@@ -462,7 +462,7 @@ function bind_updateTitle_buttons() {
           td_cell.appendChild(plat_option);
         }
           // set default selections to original values
-        curr_plats = cell_elements[1].childNodes[0].childNodes;
+        var curr_plats = cell_elements[1].childNodes[0].childNodes;
         for (var i = 0; i < curr_plats.length; i++) {
           var index = 0;
           while (curr_plats[i].textContent != td_cell.childNodes[index].textContent) {
@@ -476,7 +476,7 @@ function bind_updateTitle_buttons() {
         //***
         // release date selection
         td_cell = document.createElement('td');
-        update_date = document.createElement('input');
+        var update_date = document.createElement('input');
         update_date.setAttribute("type", "date");
 
         // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
@@ -489,17 +489,17 @@ function bind_updateTitle_buttons() {
         //***
 
         // genre options
-        genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
-                          "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
-                          "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
-                          "Strategy", "Survival", "Third-Person Shooter", "Other"];
+        var genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
+                              "Massively Multiplayer Online Games", "Multiplayer Online Battle Arena", "Platformer", "Racing",
+                              "Real-Time Strategy", "Role-Playing Games", "Sandbox/Open World", "Simulation", "Sports",
+                              "Strategy", "Survival", "Third-Person Shooter", "Other"];
         td_cell = document.createElement('td');
-        update_genre = document.createElement('select');
-        genre_option = document.createElement('option');
+        var update_genre = document.createElement('select');
+        var genre_option = document.createElement('option');
         update_genre.appendChild(genre_option);
         for (var i = 0; i < genre_elements.length; i++) {
           genre_option = document.createElement('option');
-          genre_option.setAttribute("value",genre_elements[i]);
+          genre_option.setAttribute("value", genre_elements[i]);
           genre_option.textContent = genre_elements[i];
           update_genre.appendChild(genre_option);
         }
@@ -515,10 +515,10 @@ function bind_updateTitle_buttons() {
         row_element.replaceChild(td_cell, cell_elements[3]);
 
         // franchise options
-        franchise_elements = res["Franchises"];
+        var franchise_elements = res["Franchises"];
         td_cell = document.createElement('td');
-        update_franchise = document.createElement('select');
-        franchise_option = document.createElement('option');
+        var update_franchise = document.createElement('select');
+        var franchise_option = document.createElement('option');
         update_franchise.appendChild(franchise_option);
         for (var i = 0; i < franchise_elements.length; i++) {
           franchise_option = document.createElement('option');
@@ -538,10 +538,10 @@ function bind_updateTitle_buttons() {
         row_element.replaceChild(td_cell, cell_elements[4]);
 
         // developer options
-        dev_elements = res["Devs"];
+        var dev_elements = res["Devs"];
         td_cell = document.createElement('td');
-        update_dev = document.createElement('select');
-        dev_option = document.createElement('option');
+        var update_dev = document.createElement('select');
+        var dev_option = document.createElement('option');
         update_dev.appendChild(dev_option);
         for (var i = 0; i < dev_elements.length; i++) {
           dev_option = document.createElement('option');
@@ -561,15 +561,15 @@ function bind_updateTitle_buttons() {
         row_element.replaceChild(td_cell, cell_elements[5]);
 
         // ESRB options
-        esrb_values = ["E", "T", "M"];
-        esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
+        var esrb_values = ["E", "T", "M"];
+        var esrb_texts = ["E - Everyone", "T - Teen", "M - Mature"];
         td_cell = document.createElement('td');
-        update_esrb = document.createElement('select');
-        esrb_option = document.createElement('option');
+        var update_esrb = document.createElement('select');
+        var esrb_option = document.createElement('option');
         update_esrb.appendChild(esrb_option);
         for (var i = 0; i < esrb_values.length; i++) {
           esrb_option = document.createElement('option');
-          esrb_option.setAttribute("value",esrb_values[i]);
+          esrb_option.setAttribute("value", esrb_values[i]);
           esrb_option.textContent = esrb_texts[i];
           update_esrb.appendChild(esrb_option);
         }
@@ -627,7 +627,12 @@ function bind_updateDev_buttons() {
         var cell_elements = row_element.childNodes;
 
         // name text input
-
+        var td_cell = document.createElement('td');
+        var update_name = document.createElement('input');
+        update_name.setAttribute("type", "text");
+        update_name.setAttribute("value", row_element.childNodes[0].textContent);
+        td_cell.appendChild(update_name);
+        row_element.replaceChild(td_cell, cell_elements[0]);
 
         // country input
         country_elements = ["Australia", "Canada", "China", "Finland", "France", "German", "Italy",
