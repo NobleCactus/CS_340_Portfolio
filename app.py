@@ -202,15 +202,7 @@ def update():
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
-			query_params = build_query_update_title(query_vals)
-			
-
-			try:
-				update_title_res = execute_query(db_connection, query_params[0], query_params[1]).fetchall();
-			except:
-				return {"result": 0}
-			else:
-				return {"result": 1}
+			return execute_update_title(query_vals)
 		elif  query_vals["action"] == "updateDev":
 			pass
 		elif  query_vals["action"] == "updatePlat":			
@@ -518,8 +510,8 @@ def build_query_searchFranchise(query_vals):
 
 	return (query, params)
 
-def build_query_update_title(query_vals):
-	# query_parameters = {"titleID", "titleName", "titleRelease", "titleGenre", 
+def execute_update_title(query_vals):
+	# query_parameters = {"titleID", "titleName", titlePlats, "titleRelease", "titleGenre", 
 	#						"titleFranchiseID", "titleDevID", "titleESRB"}
 	query = "UPDATE `VideoGameTitles` SET "	
 	query += "titleName = %s, "
@@ -555,4 +547,10 @@ def build_query_update_title(query_vals):
 
 	params += (query_vals["titleID"],)
 
-	return (query, params)
+	try:
+		execute_query(db_connection, query_params[0], query_params[1]);
+	except:
+		return {"result": 0}
+	else:
+		# update TitlesPlatforms table with list from query_vals["titlePlats"]
+		return {"result": 1}
