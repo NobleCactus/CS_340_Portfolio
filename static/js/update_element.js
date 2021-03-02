@@ -481,7 +481,7 @@ function bind_updateTitle_buttons() {
 
         // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
         update_date.defaultValue = "1993-10-26";
-        // otherwise, we have to use this and buil up the date string
+        // otherwise, we have to use this and build up the date string
         //console.log(cell_elements[2].textContent.split(" "));
 
         td_cell.appendChild(update_date);
@@ -659,8 +659,20 @@ function bind_updateDev_buttons() {
         }
         row_element.replaceChild(td_cell, cell_elements[1]);
 
-        // date founded input
+        //***
+        // date founded selection
+        td_cell = document.createElement('td');
+        var update_date = document.createElement('input');
+        update_date.setAttribute("type", "date");
 
+        // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
+        update_date.defaultValue = "1993-10-26";
+        // otherwise, we have to use this and build up the date string
+        //console.log(cell_elements[2].textContent.split(" "));
+
+        td_cell.appendChild(update_date);
+        row_element.replaceChild(td_cell, cell_elements[2]);
+        //***
     });
   });
 
