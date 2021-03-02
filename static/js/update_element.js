@@ -650,14 +650,14 @@ function bind_updateDev_buttons() {
         }
         td_cell.appendChild(update_country);
           // set default selection to original value
-        if (cell_elements[2].textContent != "") {
+        if (cell_elements[1].textContent != "") {
           var index = 1;
-          while (cell_elements[2].textContent != update_country.childNodes[index].value) {
+          while (cell_elements[1].textContent != update_country.childNodes[index].value) {
             index++;
           }
           update_country.childNodes[index].selected = true;
         }
-        row_element.replaceChild(td_cell, cell_elements[2]);
+        row_element.replaceChild(td_cell, cell_elements[1]);
 
         // date founded input
 
