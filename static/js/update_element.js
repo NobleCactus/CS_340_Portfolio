@@ -507,7 +507,7 @@ function bind_updateTitle_buttons() {
           // set default selection to original value
         if (cell_elements[3].textContent != "") {
           var index = 1;
-          while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
+          while (cell_elements[3].textContent != update_genre.childNodes[index].textContent) {
             index++;
           }
           update_genre.childNodes[index].selected = true;
@@ -586,7 +586,8 @@ function bind_updateTitle_buttons() {
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // get input values
-      console.log(event.target);
+      titleID = event.target.value
+      console.log(titleID);
       // try query
 
       //if successful
