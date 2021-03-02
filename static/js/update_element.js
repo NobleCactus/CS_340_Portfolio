@@ -661,6 +661,9 @@ function bind_updateTitle_buttons() {
             var franchise_list = title_attributes[4].firstChild.childNodes;
             var sel_franchise;
             var index = 0;
+            for (var i = 0; i < franchise_list.length; i++) {
+              console.log(franchise_list[i].textContent);
+            }
             console.log(franchise_list);
 
             td_cell.textContent = title_attributes[4].firstChild.textContent;
