@@ -550,7 +550,7 @@ function bind_updateTitle_buttons() {
         td_cell.appendChild(update_dev);
           // set default selection to original value
         if (cell_elements[5].textContent != "") {
-          var index = 1;
+          var index = 0;
           while (cell_elements[5].textContent != update_dev.childNodes[index].textContent) {
             index++;
           }
@@ -810,6 +810,21 @@ function bind_updatePlat_buttons() {
 
 // run this every time a Franchise search is made
 function bind_updateFranchise_buttons() {
+  // get list of  devs
+  var req = new XMLHttpRequest();
+  payload = {"action": "updateFranchiseElements"};
+  req.open('POST', '/update', true);
+  req.setRequestHeader('Content-Type', 'application/json');
+
+  req.addEventListener('load', function(){
+    if (req.status >= 200 && req.status < 400) {
+      res = JSON.parse(req.responseText);
+    } else {
+        console.log("Error in network request: " + req.statusText);
+    }
+  });
+  req.send(JSON.stringify(payload));
+
   Array.from(document.getElementsByClassName("updateFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
         // change displayed button to Save Changes
@@ -829,7 +844,23 @@ function bind_updateFranchise_buttons() {
         row_element.replaceChild(td_cell, cell_elements[0]);
 
         // developer input
-
+        var dev_elements = res["Devs"];
+        td_cell = document.createElement('td');
+        var update_dev = document.createElement('select');
+        for (var i = 0; i < dev_elements.length; i++) {
+          var dev_option = document.createElement('option');
+          dev_option.textContent = dev_elements[i][0];
+          update_dev.appendChild(dev_option);
+        }
+        td_cell.appendChild(update_dev);
+          // set default selection to original value
+        var index = 0;
+        while (cell_elements[1].textContent != update_dev.childNodes[index].textContent) {
+          index++;
+        }
+        update_dev.childNodes[index].selected = true;
+        
+        row_element.replaceChild(td_cell, cell_elements[1]);
     });
   });
 

@@ -174,7 +174,7 @@ def update():
 			query_params = build_query_searchFranchise(query_vals)
 			result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 		
-		# populating drop down menu elements for updating
+		# populating drop down menu elements for updating titles
 		elif query_vals["action"] == "updateTitleElements":
 			# query for list of all platforms
 			query = "SELECT platformID, platformName FROM `Platforms` ORDER BY platformName"
@@ -190,7 +190,15 @@ def update():
 
 			return {"Plats": plat_result,
 					"Franchises": franchise_result,
-					"Devs": dev_result}
+					"Devs": dev_result};
+		
+		# populating drop down menu elements for updating franchises
+		elif query_vals["action"] == "updateFranchiseElements":
+			# query for list of all developers
+			query = "SELECT developerName FROM `DevelopmentStudios` ORDER BY developerName"
+			dev_result = execute_query(db_connection, query).fetchall();
+
+			return {"Devs": dev_result};
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
