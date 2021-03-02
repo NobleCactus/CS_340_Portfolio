@@ -717,14 +717,73 @@ function bind_updatePlat_buttons() {
         var cell_elements = row_element.childNodes;
 
         // name text input
+        var td_cell = document.createElement('td');
+        var update_name = document.createElement('input');
+        update_name.setAttribute("type", "text");
+        update_name.setAttribute("value", row_element.childNodes[0].textContent);
+        td_cell.appendChild(update_name);
+        row_element.replaceChild(td_cell, cell_elements[0]);
 
-        // release date input
+        //***
+        // release date selection
+        td_cell = document.createElement('td');
+        var update_date = document.createElement('input');
+        update_date.setAttribute("type", "date");
+
+        // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
+        update_date.defaultValue = "1993-10-26";
+        // otherwise, we have to use this and build up the date string
+        //console.log(cell_elements[1].textContent.split(" "));
+
+        td_cell.appendChild(update_date);
+        row_element.replaceChild(td_cell, cell_elements[1]);
+        //***
 
         // developer input
         dev_elements = ["Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
+        td_cell = document.createElement('td');
+        var update_dev = document.createElement('select');
+        var dev_option = document.createElement('option');
+        update_dev.appendChild(dev_option);
+        for (var i = 0; i < dev_elements.length; i++) {
+          dev_option = document.createElement('option');
+          dev_option.setAttribute("value", dev_elements[i]);
+          dev_option.textContent = dev_elements[i];
+          update_dev.appendChild(dev_option);
+        }
+        td_cell.appendChild(update_dev);
+          // set default selection to original value
+        if (cell_elements[2].textContent != "") {
+          var index = 1;
+          while (cell_elements[2].textContent != update_dev.childNodes[index].value) {
+            index++;
+          }
+          update_dev.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[2]);
 
         // in production input
-
+        inProd_elements = ["", "Y", "N"];
+        td_cell = document.createElement('td');
+        var update_inProd = document.createElement('select');
+        var inProd_option = document.createElement('option');
+        update_inProd.appendChild(inProd_option);
+        for (var i = 0; i < inProd_elements.length; i++) {
+          inProd_option = document.createElement('option');
+          inProd_option.setAttribute("value", inProd_elements[i]);
+          inProd_option.textContent = inProd_elements[i];
+          update_inProd.appendChild(inProd_option);
+        }
+        td_cell.appendChild(update_inProd);
+          // set default selection to original value
+        if (cell_elements[2].textContent != "") {
+          var index = 1;
+          while (cell_elements[2].textContent != update_inProd.childNodes[index].value) {
+            index++;
+          }
+          update_inProd.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[2]);
     });
   });
 
