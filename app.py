@@ -202,7 +202,10 @@ def update():
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
-			print("@@@REQUEST VALS:", query_vals);
+			query_params = build_query_update_title(query_vals)
+			print("@@@QUERY_PARAMS:", query_params)
+
+			#update_title_res = execute_query(db_connection, query_params[0], query_params[1]).fetchall();
 			return {"REQUEST:": "SUCCESSFULL"}
 		elif  query_vals["action"] == "updateDev":
 			pass
@@ -508,5 +511,47 @@ def build_query_searchFranchise(query_vals):
 		query += " AND franchiseDeveloper = %s"
 		params += (query_vals["franchiseDev"],)
 	query += " ORDER BY franchiseName;"
+
+	return (query, params)
+
+def build_query_update_title(query_vals):
+	# query_parameters = {"titleID", "titleName", "titleRelease", "titleGenre", 
+	#						"titleFranchiseID", "titleDevID", "titleESRB"}
+	query = "UPDATE `VideoGameTitles` SET"	
+	query += "titleName = %s, "
+	query += "titleRelease = %s, "
+	query += "titleGenre = %s, "
+	query += "titleFranchiseID = %s, "
+	query += "titleDeveloperID = %s, "
+	query += "titleESRB = %s, "
+	query += "WHERE titleID = %s;"
+
+	params = ()
+	params += (query_vals["titleName"],)
+	params += (query_vals["titleRelease"],)
+
+	if query_vals["titleGenre"] != "" {
+		params += (query_vals["titleGenre"],)
+	} else {
+		# *** find how to input NULL (can't use string "NULL", can't use none)
+		params += (None,)
+	}
+
+	if query_vals["titleFranchiseID"] != "":
+		
+	else {
+		# *** find how to input NULL (can't use string "NULL", can't use none)
+		# because franchiseID is an FK, can't have an empty ID
+		params += (None,)
+	}
+
+	params += (query_vals["titleDevID"],)
+	
+	if query_vals["titleESRB"] != "":
+		params += (query_vals["titleESRB"],)
+	else {
+	# *** find how to input NULL (can't use string "NULL", can't use none)
+		params += (None,)
+	}
 
 	return (query, params)

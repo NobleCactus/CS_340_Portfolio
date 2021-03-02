@@ -603,8 +603,8 @@ function bind_updateTitle_buttons() {
                       "titlePlats": plat_list,
                       "titleRelease": title_attributes[2].firstChild.value,
                       "titleGenre": title_attributes[3].firstChild.value,
-                      "titleFranchise": title_attributes[4].firstChild.value,
-                      "titleDev": title_attributes[5].firstChild.value,
+                      "titleFranchiseID": title_attributes[4].firstChild.value,
+                      "titleDevID": title_attributes[5].firstChild.value,
                       "titleESRB": title_attributes[6].firstChild.value};
 
       req.open('POST', '/update', true);
