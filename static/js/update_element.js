@@ -589,18 +589,20 @@ function bind_updateTitle_buttons() {
       titleID = event.target.value
       title_attributes = event.target.parentNode.parentNode.childNodes
 
+      // make a list of all checked platforms
       var plat_list = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
         if (title_attributes[1].childNodes[i].checked) {
           plat_list.push(title_attributes[1].childNodes[i].value)
         }
       }
-      console.log(plat_list);
+
+      console.log(title_attributes[3].firstChild.value);
 
       var payload = {"action": "updateTitle",
                       "titleID": titleID,
                       "titleName": title_attributes[0].firstChild.value,
-                      "titlePlats": "",
+                      "titlePlats": plat_list,
                       "titleRelease": title_attributes[2].firstChild.value,
                       "titleGenre": "",
                       "titleFranchise": "",
