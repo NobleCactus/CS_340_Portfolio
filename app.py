@@ -552,5 +552,19 @@ def execute_update_title(db_connection, query_vals):
 	except:
 		return {"result": 0}
 	else:
-		# update TitlesPlatforms table with list from query_vals["titlePlats"]
+		# update TitlesPlatforms table with query_vals["titleID"] and list from query_vals["titlePlats"]
+		# delete existing pairs
+		query = "DELETE FROM `TitlesPlatforms` WHERE titldID = %s;"
+		print("@@@ DELETE QUERY:", query)
+		print("@@@ DELETE PARAM:", (query_vals["titleID"],))
+		#execute_query(db_connection, query, (query_vals["titleID"],))
+
+		query = "INSERT INTO `TitlesPlatforms` (titleID, platformID) VALUES (%s, %s);"
+		print("@@@ INSERT QUERY:", query)
+		for platID in query_vals["titlePlats"]:
+			print("@@@ INSERT PARAM:", (platID,))
+		#	execute_query(db_connection, query, (platID,))
+
+		# add ID/PlatID pairs
+
 		return {"result": 1}
