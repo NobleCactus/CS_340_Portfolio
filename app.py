@@ -530,7 +530,7 @@ def build_query_update_title(query_vals):
 	params += (query_vals["titleName"],)
 	params += (query_vals["titleRelease"],)
 
-	if query_vals["titleGenre"] != "" {
+	if query_vals["titleGenre"] != "":
 		params += (query_vals["titleGenre"],)
 	} else {
 		# *** find how to input NULL (can't use string "NULL", can't use none)
