@@ -774,6 +774,7 @@ function bind_updatePlat_buttons() {
           // set default selection to original value
         if (cell_elements[3].textContent != "") {
           var index = 1;
+          console.log(update_inProd.childNodes[index].textContent);
           while (cell_elements[3].textContent != update_inProd.childNodes[index].textContent) {
             index++;
           }
