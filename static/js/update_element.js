@@ -597,17 +597,17 @@ function bind_updateTitle_buttons() {
         }
       }
 
-      console.log(title_attributes[3].firstChild.value);
+      console.log();
 
       var payload = {"action": "updateTitle",
                       "titleID": titleID,
                       "titleName": title_attributes[0].firstChild.value,
                       "titlePlats": plat_list,
                       "titleRelease": title_attributes[2].firstChild.value,
-                      "titleGenre": "",
-                      "titleFranchise": "",
-                      "titleDev": "",
-                      "titleESRB": ""};
+                      "titleGenre": title_attributes[3].firstChild.value,
+                      "titleFranchise": title_attributes[4].firstChild.value,
+                      "titleDev": title_attributes[5].firstChild.value,
+                      "titleESRB": title_attributes[6].firstChild.value};
 
       console.log(payload);
       // try query
