@@ -586,6 +586,8 @@ function bind_updateTitle_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      var req = new XMLHttpRequest();
+
       // get input values
       titleID = event.target.value
       title_attributes = event.target.parentNode.parentNode.childNodes
@@ -621,7 +623,7 @@ function bind_updateTitle_buttons() {
             event.target.style.display = "none";
             event.target.previousElementSibling.style.display = "inline";
 
-            // make the cells not editable
+            // make the cells not editable, displaying updated values
             var row_element = event.target.parentNode.parentNode;
             var cell_elements = row_element.childNodes;
             
