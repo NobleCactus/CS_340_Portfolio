@@ -681,6 +681,7 @@ function bind_updateTitle_buttons() {
             td_cell.textContent = title_attributes[6].firstChild.value;
             row_element.replaceChild(td_cell, cell_elements[6]);
 
+            // show update successful message
             document.getElementById("updateSuccessful").style.display = "block";
             setTimeout(function() {
               document.getElementById("updateSuccessful").style.display = "none";
@@ -725,7 +726,7 @@ function bind_updateDev_buttons() {
         // country input
         country_elements = ["Australia", "Canada", "China", "Finland", "France", "German", "Italy",
                             "Japan", "Netherlands", "Poland", "Russia", "South Korea", "Spain",
-                            "Sweden", "UK", "USA"];
+                            "Sweden", "UK", "USA", "Other"];
         td_cell = document.createElement('td');
         var update_country = document.createElement('select');
         for (var i = 0; i < country_elements.length; i++) {
@@ -763,14 +764,19 @@ function bind_updateDev_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveDevButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      // get input values
-      // try query
+      var req = new XMLHttpRequest();
 
-      //if successful
-      // make the cells not editable
-      // change displayed button to Update/Edit
-      //event.target.style.display = "none";
-      //event.target.previousElementSibling.style.display = "inline";
+      // get input values
+      devID = event.target.value
+      dev_attributes = event.target.parentNode.parentNode.childNodes
+
+      var payload = {"action": "updateDev",
+                      "devID": devID,
+                      "devName": title_attributes[0].firstChild.value,
+                      "devCountry": title_attributes[1].firstChild.value,
+                      "devDate": title_attributes[2].firstChild.value}
+
+      console.log(payload);
 
       // show update successful message
       document.getElementById("updateSuccessful").style.display = "block";
@@ -778,7 +784,6 @@ function bind_updateDev_buttons() {
         document.getElementById("updateSuccessful").style.display = "none";
       }, 1500);
 
-      // not successful
       // show update failed message
       document.getElementById("updateFailed").style.display = "block";
       setTimeout(function() {
