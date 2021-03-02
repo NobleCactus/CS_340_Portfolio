@@ -118,15 +118,15 @@ function bindButtons() {
           button_td = document.createElement('td');
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
-          update_button.setAttribute('class', 'updateButton');
+          update_button.setAttribute('class', 'updateTitleButton');
           update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
 
           // save button, has a value of the ID of the title
           save_button = document.createElement('button');
           save_button.setAttribute('type', 'button');
-          save_button.setAttribute('class', 'saveButton');
-          save_button.setAttribute('value', 'titleID' + res[i][0]);
+          save_button.setAttribute('class', 'saveTitleButton');
+          save_button.setAttribute('value', res[i][0]);
           save_button.textContent = "Save Changes";
           button_td.appendChild(save_button);
           
@@ -136,7 +136,7 @@ function bindButtons() {
         }
 
         // rebind the new update buttons to trigger update query
-        bind_update_buttons();
+        bind_updateTitle_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
@@ -191,21 +191,28 @@ function bindButtons() {
             title_tr.appendChild(td_cell);
           }
 
-          // add update button
+          // update button
           button_td = document.createElement('td');
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
-          update_button.setAttribute('class', 'updateButton');
-          update_button.setAttribute('value', res[i][0]);
+          update_button.setAttribute('class', 'updateDevButton');
           update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
           title_tr.appendChild(button_td);
+
+          // save button, has a value of the ID of the dev
+          save_button = document.createElement('button');
+          save_button.setAttribute('type', 'button');
+          save_button.setAttribute('class', 'saveDevButton');
+          save_button.setAttribute('value', res[i][0]);
+          save_button.textContent = "Save Changes";
+          button_td.appendChild(save_button);
 
           searchTable.appendChild(title_tr);
         }
 
         // rebind the new update buttons to trigger update query
-        bind_update_buttons();
+        bind_updateDev_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
@@ -289,17 +296,24 @@ function bindButtons() {
           button_td = document.createElement('td');
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
-          update_button.setAttribute('class', 'updateButton');
-          update_button.setAttribute('value', res[i][0]);
+          update_button.setAttribute('class', 'updatePlatButton');
           update_button.textContent = "Update/Edit";
           button_td.appendChild(update_button);
           title_tr.appendChild(button_td);
+
+          // save button, has a value of the ID of the dev
+          save_button = document.createElement('button');
+          save_button.setAttribute('type', 'button');
+          save_button.setAttribute('class', 'savePlatButton');
+          save_button.setAttribute('value', res[i][0]);
+          save_button.textContent = "Save Changes";
+          button_td.appendChild(save_button);
 
           searchTable.appendChild(title_tr);
         }
 
         // rebind the new update buttons to trigger update query
-        bind_update_buttons();
+        bind_updatePlat_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
@@ -357,17 +371,24 @@ function bindButtons() {
           button_td = document.createElement('td');
           update_button = document.createElement('button');
           update_button.setAttribute('type', 'button');
-          update_button.setAttribute('class', 'updateButton');
-          update_button.setAttribute('value', res[i][0]);
+          update_button.setAttribute('class', 'updateFranchiseButton');
           update_button.textContent = "Update/Edit"
           button_td.appendChild(update_button);
           title_tr.appendChild(button_td);
+
+          // save button, has a value of the ID of the dev
+          save_button = document.createElement('button');
+          save_button.setAttribute('type', 'button');
+          save_button.setAttribute('class', 'saveFranchiseButton');
+          save_button.setAttribute('value', res[i][0]);
+          save_button.textContent = "Save Changes";
+          button_td.appendChild(save_button);
 
           searchTable.appendChild(title_tr);
         }
 
         // rebind the new update buttons to trigger update query
-        bind_update_buttons();
+        bind_updateFranchise_buttons();
 
       } else {
         console.log("Error in network request: " + req.statusText);
@@ -383,8 +404,8 @@ function bindButtons() {
   });
 }
 
-// run this every time the search table is remade to bind newly made buttons
-function bind_update_buttons() {
+// run this every time a Title search is made
+function bind_updateTitle_buttons() {
   // get list of platforms, franchises, and devs
   var req = new XMLHttpRequest();
   payload = {"action": "updateTitleElements"};
@@ -401,7 +422,7 @@ function bind_update_buttons() {
   req.send(JSON.stringify(payload));
 
   // clicking update/edit buttons make cells editable and show the "Save Changes" button instead
-  Array.from(document.getElementsByClassName("updateButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("updateTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
         // change displayed button to Save Changes
         event.target.style.display = "none";
@@ -419,12 +440,12 @@ function bind_update_buttons() {
         td_cell.appendChild(update_name);
         row_element.replaceChild(td_cell, cell_elements[0]);
 
-        // platform list cell_elements[1]
+        // platform list options
         plat_elements = res["Plats"];
         td_cell = document.createElement('td');
         td_cell.style.textAlign = "left";
 
-        //*** text isn't showing on webpage
+        //*** text isn't showing on webpage ***
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.setAttribute("value", plat_elements[0][0]);
@@ -452,20 +473,20 @@ function bind_update_buttons() {
 
         row_element.replaceChild(td_cell, cell_elements[1]);
 
-        //*****
+        //***
         // release date selection
         td_cell = document.createElement('td');
         update_date = document.createElement('input');
         update_date.setAttribute("type", "date");
 
-        // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
+        // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
         update_date.defaultValue = "1993-10-26";
         // otherwise, we have to use this and buil up the date string
         //console.log(cell_elements[2].textContent.split(" "));
 
         td_cell.appendChild(update_date);
         row_element.replaceChild(td_cell, cell_elements[2]);
-        //*****
+        //***
 
         // genre options
         genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
@@ -493,7 +514,7 @@ function bind_update_buttons() {
         }
         row_element.replaceChild(td_cell, cell_elements[3]);
 
-        // franchise cell_elements[4]
+        // franchise options
         franchise_elements = res["Franchises"];
         td_cell = document.createElement('td');
         update_franchise = document.createElement('select');
@@ -516,7 +537,7 @@ function bind_update_buttons() {
         }
         row_element.replaceChild(td_cell, cell_elements[4]);
 
-        // dev cell_elements[5]
+        // developer options
         dev_elements = res["Devs"];
         td_cell = document.createElement('td');
         update_dev = document.createElement('select');
@@ -568,6 +589,9 @@ function bind_update_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // get input values
+      // try query
+
       //if successful
       // make the cells not editable
       // change displayed button to Update/Edit
@@ -586,6 +610,155 @@ function bind_update_buttons() {
       setTimeout(function() {
         document.getElementById("updateFailed").style.display = "none";
       }, 1500);
-    })
+    });
+  });
+}
+
+// run this every time a Deveveloper search is made
+function bind_updateDev_buttons() {
+  Array.from(document.getElementsByClassName("updateDevButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+        // change displayed button to Save Changes
+        event.target.style.display = "none";
+        event.target.nextElementSibling.style.display = "inline";
+
+        // make the row's attributes edit-able
+        var row_element = event.target.parentNode.parentNode;
+        var cell_elements = row_element.childNodes;
+
+        // name text input
+
+
+        // country input
+        country_elements = ["Australia", "Canada", "China", "Finland", "France", "German", "Italy",
+                            "Japan", "Netherlands", "Poland", "Russia", "South Korea", "Spain",
+                            "Sweden", "UK", "USA"];
+
+        // date founded input
+
+    });
+  });
+
+  // executes UPDATE query with inputs
+  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      // get input values
+      // try query
+
+      //if successful
+      // make the cells not editable
+      // change displayed button to Update/Edit
+      event.target.style.display = "none";
+      event.target.previousElementSibling.style.display = "inline";
+
+      // show update successful message
+      document.getElementById("updateSuccessful").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateSuccessful").style.display = "none";
+      }, 1500);
+
+      // not successful
+      // show update failed message
+      document.getElementById("updateFailed").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateFailed").style.display = "none";
+      }, 1500);
+    });
+  });
+}
+
+// run this every time a Platform search is made
+function bind_updatePlat_buttons() {
+  Array.from(document.getElementsByClassName("updateDevButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+        // change displayed button to Save Changes
+        event.target.style.display = "none";
+        event.target.nextElementSibling.style.display = "inline";
+
+        // make the row's attributes edit-able
+        var row_element = event.target.parentNode.parentNode;
+        var cell_elements = row_element.childNodes;
+
+        // name text input
+
+        // release date input
+
+        // developer input
+        dev_elements = ["Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
+
+        // in production input
+
+    });
+  });
+
+  // executes UPDATE query with inputs
+  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      // get input values
+      // try query
+
+      //if successful
+      // make the cells not editable
+      // change displayed button to Update/Edit
+      event.target.style.display = "none";
+      event.target.previousElementSibling.style.display = "inline";
+
+      // show update successful message
+      document.getElementById("updateSuccessful").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateSuccessful").style.display = "none";
+      }, 1500);
+
+      // not successful
+      // show update failed message
+      document.getElementById("updateFailed").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateFailed").style.display = "none";
+      }, 1500);
+    });
+  });
+}
+
+// run this every time a Franchise search is made
+function bind_updateFranchise_buttons() {
+  Array.from(document.getElementsByClassName("updateDevButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+        // change displayed button to Save Changes
+        event.target.style.display = "none";
+        event.target.nextElementSibling.style.display = "inline";
+
+        // make the row's attributes edit-able
+        var row_element = event.target.parentNode.parentNode;
+        var cell_elements = row_element.childNodes;
+
+        // name text input
+
+        // developer input
+
+    });
+  });
+
+  // executes UPDATE query with inputs
+  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      //if successful
+      // make the cells not editable
+      // change displayed button to Update/Edit
+      event.target.style.display = "none";
+      event.target.previousElementSibling.style.display = "inline";
+
+      // show update successful message
+      document.getElementById("updateSuccessful").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateSuccessful").style.display = "none";
+      }, 1500);
+
+      // not successful
+      // show update failed message
+      document.getElementById("updateFailed").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("updateFailed").style.display = "none";
+      }, 1500);
+    });
   });
 }

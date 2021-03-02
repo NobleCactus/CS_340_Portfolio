@@ -143,6 +143,18 @@ h2 {
 	text-align: center;
 }
 
-.saveButton {
+.saveTitleButton {
+	display: none;
+}
+
+.saveDevButton {
+	display: none;
+}
+
+.savePlatButton {
+	display: none;
+}
+
+.saveFranchiseButton {
 	display: none;
 }
