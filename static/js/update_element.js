@@ -426,6 +426,7 @@ function bind_update_buttons() {
 
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
+        console.log(plat_elements[0][1]);
         plat_option.textContent = plat_elements[0][1];
         //plat_option.setAttribute("value", plat_elements[0][0]);
         
