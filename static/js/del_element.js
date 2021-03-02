@@ -383,12 +383,11 @@ function bind_delete_buttons() {
     element.addEventListener("click", function(event) {
       if (confirm('Are you sure you want to delete this from the database?')) {
         // POST with button's value, which is the row's ID (event.target.value)
-          var req = new XMLHttpRequest();
-          var payload = {"action": "deleteTitle",
-                    "ButtonVal": event.target.value};
-
-    req.open('POST', '/delete', true);
-    req.setRequestHeader('Content-Type', 'application/json');
+        var req = new XMLHttpRequest();
+        var payload = {"action": "deleteTitle",
+                      "ButtonVal": event.target.value};
+        req.open('POST', '/delete', true);
+        req.setRequestHeader('Content-Type', 'application/json');
         // if successful:
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
