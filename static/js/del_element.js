@@ -396,6 +396,9 @@ function bind_delete_buttons() {
 
     req.open('POST', '/delete', true);
     req.setRequestHeader('Content-Type', 'application/json');
+    req.addEventListener('load', function(){
+      if (req.status >= 200 && req.status < 400) {
+        res = JSON.parse(req.responseText);}}
         // if successful:
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
