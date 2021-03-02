@@ -587,8 +587,10 @@ function bind_updateTitle_buttons() {
     element.addEventListener("click", function(event) {
       // get input values
       titleID = event.target.value
-      titleRow = event.target.parentNode.parentNode
-      console.log(titleRow);
+      title_attributes = event.target.parentNode.parentNode.childNodes
+      for (var i = 0; i < title_attributes.length - 1; i++) {
+        console.log(title_attributes[i]);
+      }
       // try query
 
       //if successful
