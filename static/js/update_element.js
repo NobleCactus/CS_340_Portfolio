@@ -428,7 +428,7 @@ function bind_updateTitle_buttons() {
         event.target.style.display = "none";
         event.target.nextElementSibling.style.display = "inline";
 
-        // make the row's attributes edit-able
+        // make the row's attributes editable
         var row_element = event.target.parentNode.parentNode;
         var cell_elements = row_element.childNodes;
 
@@ -630,8 +630,7 @@ function bind_updateTitle_buttons() {
             
             // name text input
             var td_cell = document.createElement('td');
-            console.log(cell_elements[0]);
-            td_cell.textContent = cell_elements[0].value;
+            td_cell.textContent = payload["titleName"];
             row_element.replaceChild(td_cell, cell_elements[0]);
 
             /*
