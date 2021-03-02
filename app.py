@@ -554,7 +554,7 @@ def execute_update_title(db_connection, query_vals):
 	else:
 		# update TitlesPlatforms table with query_vals["titleID"] and list from query_vals["titlePlats"]
 		# delete existing pairs
-		query = "DELETE FROM `TitlesPlatforms` WHERE titldID = %s;"
+		query = "DELETE FROM `TitlesPlatforms` WHERE titleID = %s;"
 		execute_query(db_connection, query, (query_vals["titleID"],))
 
 		# add ID/PlatID pairs
