@@ -638,6 +638,26 @@ function bind_updateDev_buttons() {
         country_elements = ["Australia", "Canada", "China", "Finland", "France", "German", "Italy",
                             "Japan", "Netherlands", "Poland", "Russia", "South Korea", "Spain",
                             "Sweden", "UK", "USA"];
+        td_cell = document.createElement('td');
+        var update_country = document.createElement('select');
+        var country_option = document.createElement('option');
+        update_country.appendChild(country_option);
+        for (var i = 0; i < country_elements.length; i++) {
+          country_option = document.createElement('option');
+          country_option.setAttribute("value", country_elements[i]);
+          country_option.textContent = country_elements[i];
+          update_country.appendChild(country_option);
+        }
+        td_cell.appendChild(update_country);
+          // set default selection to original value
+        if (cell_elements[2].textContent != "") {
+          var index = 1;
+          while (cell_elements[2].textContent != update_country.childNodes[index].value) {
+            index++;
+          }
+          update_country.childNodes[index].selected = true;
+        }
+        row_element.replaceChild(td_cell, cell_elements[2]);
 
         // date founded input
 
