@@ -772,9 +772,9 @@ function bind_updateDev_buttons() {
 
       var payload = {"action": "updateDev",
                       "devID": devID,
-                      "devName": title_attributes[0].firstChild.value,
-                      "devCountry": title_attributes[1].firstChild.value,
-                      "devDate": title_attributes[2].firstChild.value}
+                      "devName": dev_attributes[0].firstChild.value,
+                      "devCountry": dev_attributes[1].firstChild.value,
+                      "devDate": dev_attributes[2].firstChild.value}
 
       console.log(payload);
 
