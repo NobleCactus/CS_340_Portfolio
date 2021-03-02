@@ -202,7 +202,7 @@ def update():
 
 		# updating an element
 		elif query_vals["action"] == "updateTitle":
-			return execute_update_title(query_vals)
+			return execute_update_title(db_connection, query_vals)
 		elif  query_vals["action"] == "updateDev":
 			pass
 		elif  query_vals["action"] == "updatePlat":			
@@ -510,7 +510,7 @@ def build_query_searchFranchise(query_vals):
 
 	return (query, params)
 
-def execute_update_title(query_vals):
+def execute_update_title(db_connection, query_vals):
 	# query_parameters = {"titleID", "titleName", titlePlats, "titleRelease", "titleGenre", 
 	#						"titleFranchiseID", "titleDevID", "titleESRB"}
 	query = "UPDATE `VideoGameTitles` SET "	
@@ -548,7 +548,7 @@ def execute_update_title(query_vals):
 	params += (query_vals["titleID"],)
 
 	try:
-		execute_query(db_connection, query, params);
+		execute_query(db_connection, query, params)
 	except:
 		return {"result": 0}
 	else:
