@@ -128,11 +128,11 @@ function bindButtons() {
         }
 
 
-        
+
 
         // rebind the new delete buttons to trigger delete query
-         document.getElementsByClassName("delButton").addEventListener("click", function(event) {
-          alert("Hello World!"); });
+         document.getElementsByClassName("delButton").addEventListener("click", function() {
+          alert("This is a test"); });
 
 
 
