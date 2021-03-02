@@ -626,6 +626,7 @@ function bind_updateTitle_buttons() {
             
             // name text input
             var td_cell = document.createElement('td');
+            console.log(cell_elements[0].value);
             td_cell.textContent = cell_elements[0].value;
             row_element.replaceChild(td_cell, cell_elements[0]);
 
