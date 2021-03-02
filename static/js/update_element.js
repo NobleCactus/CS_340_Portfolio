@@ -442,7 +442,6 @@ function bind_update_buttons() {
         }
           // set default selections to original values
         //plat_option.setAttribute("checked", true);
-        console.log(cell_elements[1]);
 
         row_element.replaceChild(td_cell, cell_elements[1]);
 
@@ -455,7 +454,7 @@ function bind_update_buttons() {
         // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
         update_date.defaultValue = "1993-10-26";
         // otherwise, we have to use this and buil up the date string
-        console.log(cell_elements[2].textContent.split(" "));
+        //console.log(cell_elements[2].textContent.split(" "));
 
         td_cell.appendChild(update_date);
         row_element.replaceChild(td_cell, cell_elements[2]);
@@ -478,6 +477,7 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_genre);
           // set default selection to original value
+          console.log(cell_elements[3]);
         if (cell_elements[3] != "") {
           var index = 1;
           while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
