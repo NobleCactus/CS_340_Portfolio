@@ -642,7 +642,7 @@ function bind_updateTitle_buttons() {
               plat_list_tag.appendChild(list_item);
             }
             td_cell.appendChild(plat_list_tag);
-            row_element.replaceChild(td_cell, cell_element[1]);
+            row_element.replaceChild(td_cell, cell_elements[1]);
 
             /*
 
