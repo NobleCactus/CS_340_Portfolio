@@ -448,6 +448,7 @@ function bind_updateTitle_buttons() {
           //*** platform names isn't showing on webpage, but it is in the HTML ***
         var plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
+        plat_option.setAttribute("name", "platform list");
         plat_option.setAttribute("value", plat_elements[0][0]);
         plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
@@ -457,6 +458,7 @@ function bind_updateTitle_buttons() {
 
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
+          plat_option.setAttribute("name", "platform list");
           plat_option.setAttribute("value", plat_elements[i][0]);
           plat_option.textContent = plat_elements[i][1];
           td_cell.appendChild(plat_option);
