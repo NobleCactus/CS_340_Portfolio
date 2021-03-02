@@ -588,9 +588,20 @@ function bind_updateTitle_buttons() {
       // get input values
       titleID = event.target.value
       title_attributes = event.target.parentNode.parentNode.childNodes
-      for (var i = 0; i < title_attributes.length - 1; i++) {
+      for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
         console.log(title_attributes[i]);
       }
+
+      var payload = {"action": "updateTitle",
+                      "titleName": title_attributes[0].value,
+                      "titlePlats": "",
+                      "titleRelease": title_attributes[2].value,
+                      "titleGenre": "",
+                      "titleFranchise": "",
+                      "titleDev": "",
+                      "titleESRB": ""};
+
+      console.log(payload);
       // try query
 
       //if successful
