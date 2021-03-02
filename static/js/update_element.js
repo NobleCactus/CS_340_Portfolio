@@ -589,9 +589,13 @@ function bind_updateTitle_buttons() {
       titleID = event.target.value
       title_attributes = event.target.parentNode.parentNode.childNodes
 
+      var plat_list = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
-        console.log(title_attributes[1].childNodes[i]);
+        if (title_attributes[1].childNodes[i].checked) {
+          plat_list.push(title_attributes[1].childNodes[i].value)
+        }
       }
+      console.log(plat_list);
 
       var payload = {"action": "updateTitle",
                       "titleID": titleID,
