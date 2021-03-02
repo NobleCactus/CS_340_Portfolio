@@ -614,34 +614,26 @@ function bind_updateTitle_buttons() {
         if (req.status >= 200 && req.status < 400) {
           res = JSON.parse(req.responseText);
           if (res["result"]) {
-            console.log("UPDATE SUCCESS");
+            // make the cells not editable
+            // change displayed button to Update/Edit
+            //event.target.style.display = "none";
+            //event.target.previousElementSibling.style.display = "inline";
+
+            document.getElementById("updateSuccessful").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateSuccessful").style.display = "none";
+            }, 1500);
           } else {
-            console.log("UPDATE FAILED");
+            document.getElementById("updateFailed").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateFailed").style.display = "none";
+            }, 1500);
           }
         } else {
             console.log("Error in network request: " + req.statusText);
         }
       });
       req.send(JSON.stringify(payload));
-
-      //if successful
-      // make the cells not editable
-      // change displayed button to Update/Edit
-      //event.target.style.display = "none";
-      //event.target.previousElementSibling.style.display = "inline";
-
-      // show update successful message
-      document.getElementById("updateSuccessful").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateSuccessful").style.display = "none";
-      }, 1500);
-
-      // not successful
-      // show update failed message
-      document.getElementById("updateFailed").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateFailed").style.display = "none";
-      }, 1500);
     });
   });
 }
