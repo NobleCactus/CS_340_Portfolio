@@ -517,13 +517,13 @@ def build_query_searchFranchise(query_vals):
 def build_query_update_title(query_vals):
 	# query_parameters = {"titleID", "titleName", "titleRelease", "titleGenre", 
 	#						"titleFranchiseID", "titleDevID", "titleESRB"}
-	query = "UPDATE `VideoGameTitles` SET"	
+	query = "UPDATE `VideoGameTitles` SET "	
 	query += "titleName = %s, "
 	query += "titleRelease = %s, "
 	query += "titleGenre = %s, "
 	query += "titleFranchiseID = %s, "
 	query += "titleDeveloperID = %s, "
-	query += "titleESRB = %s, "
+	query += "titleESRB = %s "
 	query += "WHERE titleID = %s;"
 
 	params = (query_vals["titleName"], query_vals["titleRelease"])
@@ -548,5 +548,7 @@ def build_query_update_title(query_vals):
 	else:
 	# *** find how to input NULL (can't use string "NULL", can't use none)
 		params += (None,)
+
+	params += (query_vals["titleID"],)
 
 	return (query, params)
