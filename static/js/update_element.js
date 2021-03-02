@@ -415,7 +415,7 @@ function bind_update_buttons() {
         td_cell = document.createElement('td');
         update_name = document.createElement('input');
         update_name.type = "text";
-        update_name.value = row_element.childNodes[0].textContent;
+        update_name.setAttribute("value",row_element.childNodes[0].textContent);
         td_cell.appendChild(update_name);
         row_element.replaceChild(td_cell, cell_elements[0]);
 
@@ -427,7 +427,7 @@ function bind_update_buttons() {
         plat_option = document.createElement("input");
         plat_option.setAttribute("type", "checkbox");
         plat_option.setAttribute("value", plat_elements[0][0]);
-        plat_option.innerText = plat_elements[0][1];
+        plat_option.textContent = plat_elements[0][1];
         td_cell.appendChild(plat_option);
 
         for (var i = 1; i < plat_elements.length; i++) {
@@ -437,11 +437,8 @@ function bind_update_buttons() {
           plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
           plat_option.setAttribute("value", plat_elements[i][0]);
-          plat_option.innerText = plat_elements[i][1];
-          
+          plat_option.textContent = plat_elements[i][1];
           td_cell.appendChild(plat_option);
-
-          
         }
           // set default selections to original values
         //plat_option.setAttribute("checked", true);
@@ -452,7 +449,7 @@ function bind_update_buttons() {
         // release date selection
         td_cell = document.createElement('td');
         update_date = document.createElement('input');
-        update_date.type = "date";
+        update_date.setAttribute("type", "date");
 
         // if we can get the search to display the date correctly, we can fill this with "cell_elements[2].textContent"
         update_date.defaultValue = "1993-10-26";
@@ -474,7 +471,7 @@ function bind_update_buttons() {
         update_genre.appendChild(genre_option);
         for (var i = 0; i < genre_elements.length; i++) {
           genre_option = document.createElement('option');
-          genre_option.value = genre_elements[i];
+          genre_option.setAttribute("value",genre_elements[i]);
           genre_option.textContent = genre_elements[i];
           update_genre.appendChild(genre_option);
         }
@@ -544,7 +541,7 @@ function bind_update_buttons() {
         update_esrb.appendChild(esrb_option);
         for (var i = 0; i < esrb_values.length; i++) {
           esrb_option = document.createElement('option');
-          esrb_option.value = esrb_values[i];
+          esrb_option.setAttribute("value",esrb_values[i]);
           esrb_option.textContent = esrb_texts[i];
           update_esrb.appendChild(esrb_option);
         }
