@@ -441,7 +441,7 @@ function bind_update_buttons() {
           td_cell.appendChild(plat_option);
         }
           // set default selections to original values
-        curr_plats = cell_elements[1].childNodes.childNodes;
+        curr_plats = cell_elements[1].childNodes[0].childNodes;
         console.log(curr_plats);
         //plat_option.setAttribute("checked", true);
 
