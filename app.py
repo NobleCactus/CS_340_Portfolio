@@ -526,32 +526,27 @@ def build_query_update_title(query_vals):
 	query += "titleESRB = %s, "
 	query += "WHERE titleID = %s;"
 
-	params = ()
-	params += (query_vals["titleName"],)
-	params += (query_vals["titleRelease"],)
+	params = (query_vals["titleName"], query_vals["titleRelease"])
 
 	if query_vals["titleGenre"] != "":
 		params += (query_vals["titleGenre"],)
-	} else {
+	else :
 		# *** find how to input NULL (can't use string "NULL", can't use none)
 		params += (None,)
-	}
 
 	if query_vals["titleFranchiseID"] != "":
-		
-	else {
+		params += (query_vals["titleFranchiseID"],)
+	else:
 		# *** find how to input NULL (can't use string "NULL", can't use none)
 		# because franchiseID is an FK, can't have an empty ID
 		params += (None,)
-	}
 
 	params += (query_vals["titleDevID"],)
 	
 	if query_vals["titleESRB"] != "":
 		params += (query_vals["titleESRB"],)
-	else {
+	else:
 	# *** find how to input NULL (can't use string "NULL", can't use none)
 		params += (None,)
-	}
 
 	return (query, params)
