@@ -442,8 +442,13 @@ function bind_update_buttons() {
         }
           // set default selections to original values
         curr_plats = cell_elements[1].childNodes[0].childNodes;
-        console.log(curr_plats);
-        //plat_option.setAttribute("checked", true);
+        for (var i = 0; i < curr_plats.length; i++) {
+          var index = 0;
+          while (curr_plats[i].textContent != td_cell.childNodes[index].textContent) {
+            index++;
+          }
+          td_cell.childNodes[index].setAttribute("checked", true);
+        }
 
         row_element.replaceChild(td_cell, cell_elements[1]);
 
