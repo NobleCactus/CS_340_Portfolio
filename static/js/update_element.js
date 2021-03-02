@@ -587,7 +587,7 @@ function bind_updateTitle_buttons() {
   });
 
   // executes UPDATE query with inputs
-  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // get input values
       // try query
@@ -677,7 +677,7 @@ function bind_updateDev_buttons() {
   });
 
   // executes UPDATE query with inputs
-  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("saveDevButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // get input values
       // try query
@@ -706,7 +706,7 @@ function bind_updateDev_buttons() {
 
 // run this every time a Platform search is made
 function bind_updatePlat_buttons() {
-  Array.from(document.getElementsByClassName("updateDevButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("updatePlatButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
         // change displayed button to Save Changes
         event.target.style.display = "none";
@@ -788,7 +788,7 @@ function bind_updatePlat_buttons() {
   });
 
   // executes UPDATE query with inputs
-  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("savePlatButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // get input values
       // try query
@@ -817,7 +817,7 @@ function bind_updatePlat_buttons() {
 
 // run this every time a Franchise search is made
 function bind_updateFranchise_buttons() {
-  Array.from(document.getElementsByClassName("updateDevButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("updateFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
         // change displayed button to Save Changes
         event.target.style.display = "none";
@@ -835,7 +835,7 @@ function bind_updateFranchise_buttons() {
   });
 
   // executes UPDATE query with inputs
-  Array.from(document.getElementsByClassName("saveButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("saveFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       //if successful
       // make the cells not editable
