@@ -103,9 +103,11 @@ def delete():
 	else:
 		# get request payload from POST request
 		query_vals = request.get_json()
-
+		print(query_vals)
 		# deleting an element
 		if query_vals["action"] == "deleteTitle":
+			#query = 'DELETE * FROM VideoGameTitles WHERE '
+			#query +=
 			pass
 		elif query_vals["action"] == "deleteDev":
 			pass
