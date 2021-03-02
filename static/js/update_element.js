@@ -594,9 +594,11 @@ function bind_updateTitle_buttons() {
 
       // make a list of all checked platforms
       var plat_list = [];
+      var plat_name = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
         if (title_attributes[1].childNodes[i].checked) {
           plat_list.push(title_attributes[1].childNodes[i].value)
+          plat_name.push(title_attributes[1].childNodes[i].textContent)
         }
       }
 
@@ -636,9 +638,9 @@ function bind_updateTitle_buttons() {
             td_cell = document.createElement('td');
             var plat_list_tag = document.createElement('ul');
             plat_list_tag.setAttribute("class", "platformList");
-            for (var i = 0; i < plat_list.length; i++) {
+            for (var i = 0; i < plat_name.length; i++) {
               list_item = document.createElement('li');
-              list_item.textContent = plat_list[i];
+              list_item.textContent = plat_name[i];
               plat_list_tag.appendChild(list_item);
             }
             td_cell.appendChild(plat_list_tag);
