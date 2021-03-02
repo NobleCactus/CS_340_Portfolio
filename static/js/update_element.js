@@ -441,6 +441,8 @@ function bind_update_buttons() {
           td_cell.appendChild(plat_option);
         }
           // set default selections to original values
+        curr_plats = cell_elements[1].childNodes;
+        console.log(curr_plats);
         //plat_option.setAttribute("checked", true);
 
         row_element.replaceChild(td_cell, cell_elements[1]);
@@ -477,8 +479,7 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_genre);
           // set default selection to original value
-          console.log(cell_elements[3]);
-        if (cell_elements[3] != "") {
+        if (cell_elements[3].textContent != "") {
           var index = 1;
           while (cell_elements[3].textContent != update_genre.childNodes[index].value) {
             index++;
@@ -501,7 +502,7 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_franchise);
           // set default selection to original value
-        if (cell_elements[4] != "") {
+        if (cell_elements[4].textContent != "") {
           var index = 1;
           while (cell_elements[4].textContent != update_franchise.childNodes[index].textContent) {
             index++;
@@ -524,7 +525,7 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_dev);
           // set default selection to original value
-        if (cell_elements[5] != "") {
+        if (cell_elements[5].textContent != "") {
           var index = 1;
           while (cell_elements[5].textContent != update_dev.childNodes[index].textContent) {
             index++;
@@ -548,7 +549,7 @@ function bind_update_buttons() {
         }
         td_cell.appendChild(update_esrb);
           // set default selection to original value
-        if (cell_elements[6] != "") {
+        if (cell_elements[6].textContent != "") {
           var index = 1;
           while (cell_elements[6].textContent != update_esrb.childNodes[index].value) {
             index++;
