@@ -586,6 +586,7 @@ function bind_updateTitle_buttons() {
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // get input values
+      console.log(event.target);
       // try query
 
       //if successful
