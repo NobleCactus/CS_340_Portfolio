@@ -658,9 +658,9 @@ function bind_updateTitle_buttons() {
 
             // updated franchise
             td_cell = document.createElement('td');
-            var franchise_list = title_attributes[4].firstChild.childNodes;
+            var franchise_items = title_attributes[4].firstChild.childNodes;
             var index = 0;
-            while (title_attributes[4].firstChild.value != franchise_list[index].value) {
+            while (title_attributes[4].firstChild.value != franchise_items[index].value) {
               index++;
             }
             td_cell.textContent = franchise_list[index].textContent;
@@ -668,7 +668,12 @@ function bind_updateTitle_buttons() {
 
             // updated dev
             td_cell = document.createElement('td');
-            td_cell.textContent = title_attributes[5].firstChild.textContent;
+            var dev_items = title_attributes[5].firstChild.childNodes;
+            var index = 0;
+            while (title_attributes[5].firstChild.value != dev_items[index].value) {
+              index++;
+            }
+            td_cell.textContent = dev_items[index].textContent;
             row_element.replaceChild(td_cell, cell_elements[5]);
 
             // updated ESRB
