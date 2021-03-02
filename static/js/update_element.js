@@ -646,6 +646,31 @@ function bind_updateTitle_buttons() {
             td_cell.appendChild(plat_list_tag);
             row_element.replaceChild(td_cell, cell_elements[1]);
 
+            // updated release date
+            td_cell = document.createElement('td');
+            td_cell.textContent = payload["titleRelease"];
+            row_element.replaceChild(td_cell, cell_elements[2]);
+
+            // updated genre
+            td_cell = document.createElement('td');
+            td_cell.textContent = payload["titleGenre"];
+            row_element.replaceChild(td_cell, cell_elements[3]);
+
+            // updated franchise
+            td_cell = document.createElement('td');
+            td_cell.textContent = title_attributes[4].firstChild.textContent;
+            row_element.replaceChild(td_cell, cell_elements[4]);
+
+            // updated dev
+            td_cell = document.createElement('td');
+            td_cell.textContent = title_attributes[5].firstChild.textContent;
+            row_element.replaceChild(td_cell, cell_elements[5]);
+
+            // updated ESRB
+            td_cell = document.createElement('td');
+            td_cell.textContent = title_attributes[6].firstChild.value;
+            row_element.replaceChild(td_cell, cell_elements[6]);
+
             /*
 
             //***
