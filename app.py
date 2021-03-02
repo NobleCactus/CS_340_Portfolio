@@ -208,10 +208,9 @@ def update():
 			try:
 				update_title_res = execute_query(db_connection, query_params[0], query_params[1]).fetchall();
 			except:
-				return {"REQUEST:": "FAILED"}
+				return {"result": 0}
 			else:
-				print("@@@@QUERY RETURN:", update_title_res)
-				return {"REQUEST:": "SUCCESSFULL"}
+				return {"result": 1}
 		elif  query_vals["action"] == "updateDev":
 			pass
 		elif  query_vals["action"] == "updatePlat":			

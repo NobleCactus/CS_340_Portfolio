@@ -613,7 +613,11 @@ function bind_updateTitle_buttons() {
       req.addEventListener('load', function(){
         if (req.status >= 200 && req.status < 400) {
           res = JSON.parse(req.responseText);
-          console.log(res);
+          if (res["result"]) {
+            console.log("UPDATE SUCCESS");
+          } else {
+            console.log("UPDATE FAILED");
+          }
         } else {
             console.log("Error in network request: " + req.statusText);
         }
