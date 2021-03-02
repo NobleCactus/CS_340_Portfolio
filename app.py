@@ -570,8 +570,7 @@ def execute_update_dev(db_connection, query_vals):
 	query = "UPDATE `DevelopmentStudios` SET "	
 	query += "developerName = %s, "
 	query += "developerCountry = %s, "
-	query += "titleGenre = %s, "
-	query += "developerFounded = %s, "
+	query += "developerFounded = %s "
 	query += "WHERE titleID = %s;"
 
 	params = (query_vals["devName"], query_vals["devCountry"], query_vals["devDate"], query_vals["devID"])
