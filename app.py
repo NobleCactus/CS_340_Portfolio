@@ -566,12 +566,11 @@ def execute_update_title(db_connection, query_vals):
 
 def execute_update_dev(db_connection, query_vals):
 	# query_vals = {"devID", "devName", "devCountry", "devDate"}
-
 	query = "UPDATE `DevelopmentStudios` SET "	
 	query += "developerName = %s, "
 	query += "developerCountry = %s, "
 	query += "developerFounded = %s "
-	query += "WHERE titleID = %s;"
+	query += "WHERE developerID = %s;"
 
 	params = (query_vals["devName"], query_vals["devCountry"], query_vals["devDate"], query_vals["devID"])
 
