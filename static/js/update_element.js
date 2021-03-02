@@ -772,16 +772,14 @@ function bind_updatePlat_buttons() {
         }
         td_cell.appendChild(update_inProd);
           // set default selection to original value
-        if (cell_elements[2].textContent != "") {
+        if (cell_elements[3].textContent != "") {
           var index = 1;
-          console.log(cell_elements[2].textContent);
-          console.log(update_inProd.childNodes[index].textContent);
-          while (cell_elements[2].textContent != update_inProd.childNodes[index].textContent) {
+          while (cell_elements[3].textContent != update_inProd.childNodes[index].value) {
             index++;
           }
           update_inProd.childNodes[index].selected = true;
         }
-        row_element.replaceChild(td_cell, cell_elements[2]);
+        row_element.replaceChild(td_cell, cell_elements[3]);
     });
   });
 
