@@ -541,10 +541,8 @@ function bind_updateTitle_buttons() {
         var dev_elements = res["Devs"];
         td_cell = document.createElement('td');
         var update_dev = document.createElement('select');
-        var dev_option = document.createElement('option');
-        update_dev.appendChild(dev_option);
         for (var i = 0; i < dev_elements.length; i++) {
-          dev_option = document.createElement('option');
+          var dev_option = document.createElement('option');
           dev_option.setAttribute("value", dev_elements[i][0]);
           dev_option.textContent = dev_elements[i][1];
           update_dev.appendChild(dev_option);
@@ -640,10 +638,8 @@ function bind_updateDev_buttons() {
                             "Sweden", "UK", "USA"];
         td_cell = document.createElement('td');
         var update_country = document.createElement('select');
-        var country_option = document.createElement('option');
-        update_country.appendChild(country_option);
         for (var i = 0; i < country_elements.length; i++) {
-          country_option = document.createElement('option');
+          var country_option = document.createElement('option');
           country_option.setAttribute("value", country_elements[i]);
           country_option.textContent = country_elements[i];
           update_country.appendChild(country_option);
@@ -651,7 +647,7 @@ function bind_updateDev_buttons() {
         td_cell.appendChild(update_country);
           // set default selection to original value
         if (cell_elements[1].textContent != "") {
-          var index = 1;
+          var index = 0;
           while (cell_elements[1].textContent != update_country.childNodes[index].value) {
             index++;
           }
@@ -825,6 +821,12 @@ function bind_updateFranchise_buttons() {
         var cell_elements = row_element.childNodes;
 
         // name text input
+        var td_cell = document.createElement('td');
+        var update_name = document.createElement('input');
+        update_name.setAttribute("type", "text");
+        update_name.setAttribute("value", row_element.childNodes[0].textContent);
+        td_cell.appendChild(update_name);
+        row_element.replaceChild(td_cell, cell_elements[0]);
 
         // developer input
 
