@@ -128,7 +128,7 @@ function bindButtons() {
         }
 
         // rebind the new delete buttons to trigger delete query
-        
+
         bind_delete_buttons();
 
       } else {
@@ -383,7 +383,19 @@ function bind_delete_buttons() {
     element.addEventListener("click", function(event) {
       if (confirm('Are you sure you want to delete this from the database?')) {
         // POST with button's value, which is the row's ID (event.target.value)
+          var req = new XMLHttpRequest();
+          var payload = {"action": "deleteTitle",
+                    "titleName": document.getElementById('searchTitleName').event.target.value,
+                    "titlePlatID": document.getElementById('searchTitlePlatID').event.target.value, 
+                    "titleFromDate": document.getElementById('searchTitleFromDate').event.target.value, 
+                    "titleToDate": document.getElementById('searchTitleToDate').event.target.value, 
+                    "titleGenre": document.getElementById('searchTitleGenre').event.target.value, 
+                    "titleFranchiseID": document.getElementById('searchTitleFranchiseID').event.target.value,
+                    "titleDevID": document.getElementById('searchTitleDevID').event.target.value,
+                    "titleESRB": document.getElementById('searchTitleESRB').event.target.value};
 
+    req.open('POST', '/delete', true);
+    req.setRequestHeader('Content-Type', 'application/json');
         // if successful:
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
