@@ -893,7 +893,7 @@ function bind_updatePlat_buttons() {
 
       var inProd_val;
 
-      if (plat_attributes[3].firstChild.value) == "Y" {
+      if (plat_attributes[3].firstChild.value == "Y") {
         inProd_val = 1;
       } else {
         inProd_val = 0;
