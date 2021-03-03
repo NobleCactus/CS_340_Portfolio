@@ -897,6 +897,8 @@ function bind_updatePlat_buttons() {
                       "platDate": plat_attributes[1].firstChild.value,
                       "platInProd": plat_attributes[2].firstChild.value}
 
+      console.log(payload);
+
       req.open('POST', '/update', true);
       req.setRequestHeader('Content-Type', 'application/json');
 
