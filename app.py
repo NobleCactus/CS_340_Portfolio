@@ -629,7 +629,7 @@ def execute_update_plat(db_connection, query_vals):
 	query += "platformName = %s, "
 	query += "platformRelease = %s, "
 	query += "platformDeveloper = %s, "
-	query += "platformInProduction = %s, "
+	query += "platformInProduction = %s "
 	query += "WHERE platformID = %s"
 
 	params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], query_vals["platInProd"], query_vals["platID"],)
