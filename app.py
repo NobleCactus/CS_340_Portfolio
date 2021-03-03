@@ -451,7 +451,7 @@ def add_plats_to_titles(db_connection, titles_result):
 
 def build_query_searchDev(query_vals):
 	# query_vals = {"devName", "devCountry", "devFromDate", "devToDate"}
-	query = "SELECT * FROM `DevelopmentStudios`"
+	query = "SELECT developerID, developerName, developerCountry, DATE_FORMAT(developerFounded, '%%Y-%%m-%%d') FROM `DevelopmentStudios`"
 	no_where = 1
 	params = ()
 	if query_vals["devName"] != "":
