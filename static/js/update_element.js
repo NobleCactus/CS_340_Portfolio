@@ -474,7 +474,7 @@ function bind_updateTitle_buttons() {
           td_cell = document.createElement('td');
           var update_date = document.createElement('input');
           update_date.setAttribute("type", "date");
-          update_date.defaultValue = cell_elements[2].value;
+          update_date.defaultValue = cell_elements[2].textContent;
 
           td_cell.appendChild(update_date);
           row_element.replaceChild(td_cell, cell_elements[2]);
