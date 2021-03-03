@@ -119,7 +119,6 @@ function bindButtons() {
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
           del_button.setAttribute('class', 'delButton');
-          del_button.setAttribute('class', 'deleteTitle');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -190,7 +189,6 @@ function bindButtons() {
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
           del_button.setAttribute('class', 'delButton');
-          del_button.setAttribute('class', 'deleteDev');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
