@@ -640,3 +640,19 @@ def execute_update_plat(db_connection, query_vals):
 		return {"result": 0}
 	else:
 		return {"result": 1}
+
+def execute_update_franchise(db_connection, query_vals):
+	# query_vals = {"franchiseID", "franchiseName", "franchiseDev"}
+	query = "UPDATE `Franchises` SET "
+	query += "franchiseName = %s, "
+	query += "franchiseDev = %s "
+	query += "WHERE franchiseID = %s"
+
+	params = (query_vals["franchiseName"], query_vals["franchiseDev"], query_vals["franchiseID"])
+
+	try:
+		execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}

@@ -1022,24 +1022,60 @@ function bind_updateFranchise_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      //if successful
-      // make the cells not editable
-      // change displayed button to Update/Edit
-      event.target.style.display = "none";
-      event.target.previousElementSibling.style.display = "inline";
+      var req = new XMLHttpRequest();
 
-      // show update successful message
-      document.getElementById("updateSuccessful").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateSuccessful").style.display = "none";
-      }, 1500);
+      // get input values
+      var franchiseID = event.target.value
+      var franchise_attributes = event.target.parentNode.parentNode.childNodes
 
-      // not successful
-      // show update failed message
-      document.getElementById("updateFailed").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateFailed").style.display = "none";
-      }, 1500);
+      var payload = {"action": "updateFranchise",
+                      "franchiseID": franchiseID,
+                      "franchiseName": franchise_attributes[0].firstChild.value,
+                      "franchiseDev": franchise_attributes[1].firstChild.value}
+
+      req.open('POST', '/update', true);
+      req.setRequestHeader('Content-Type', 'application/json');
+
+      req.addEventListener('load', function(){
+        if (req.status >= 200 && req.status < 400) {
+          res = JSON.parse(req.responseText);
+
+          if (res["result"]) {
+            // change displayed button to Update/Edit
+            event.target.style.display = "none";
+            event.target.previousElementSibling.style.display = "inline";
+
+            // make the cells not editable, displaying updated values
+            var row_element = event.target.parentNode.parentNode;
+            var cell_elements = row_element.childNodes;
+
+            // updated franchise name
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["franchiseName"];
+            row_element.replaceChild(td_cell, cell_elements[0]);
+
+            // updated franchise developer
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["franchiseDeveloper"];
+            row_element.replaceChild(td_cell, cell_elements[0]);
+
+            // show update successful message
+            document.getElementById("updateSuccessful").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateSuccessful").style.display = "none";
+            }, 1500);
+          } else {
+            // show update failed message
+            document.getElementById("updateFailed").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateFailed").style.display = "none";
+            }, 1500);
+          }
+        } else {
+          console.log("Error in network request: " + req.statusText);
+        }
+      });
+      req.send(JSON.stringify(payload));
     });
   });
 }
