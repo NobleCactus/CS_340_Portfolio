@@ -895,7 +895,8 @@ function bind_updatePlat_buttons() {
                       "platID": platID,
                       "platName": plat_attributes[0].firstChild.value,
                       "platDate": plat_attributes[1].firstChild.value,
-                      "platInProd": plat_attributes[2].firstChild.value}
+                      "platDev": plat_attributes[2].firstChild.value,
+                      "platInProd": plat_attributes[3].firstChild.value}
 
       console.log(payload);
 
@@ -925,10 +926,15 @@ function bind_updatePlat_buttons() {
             td_cell.textContent = payload["platDate"];
             row_element.replaceChild(td_cell, cell_elements[1]);
 
+            // update platform dev
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["platDev"];
+            row_element.replaceChild(td_cell, cell_elements[2]);
+
             // update platform in production
             var td_cell = document.createElement('td');
             td_cell.textContent = payload["platInProd"];
-            row_element.replaceChild(td_cell, cell_elements[2]);
+            row_element.replaceChild(td_cell, cell_elements[3]);
 
             // show update successful message
             document.getElementById("updateSuccessful").style.display = "block";
