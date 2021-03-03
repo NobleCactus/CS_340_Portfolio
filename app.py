@@ -645,7 +645,7 @@ def execute_update_franchise(db_connection, query_vals):
 	# query_vals = {"franchiseID", "franchiseName", "franchiseDev"}
 	query = "UPDATE `Franchises` SET "
 	query += "franchiseName = %s, "
-	query += "franchiseDev = %s "
+	query += "franchiseDeveloper = %s "
 	query += "WHERE franchiseID = %s"
 
 	params = (query_vals["franchiseName"], query_vals["franchiseDev"], query_vals["franchiseID"])
