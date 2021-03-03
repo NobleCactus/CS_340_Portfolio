@@ -488,7 +488,7 @@ def build_query_searchDev(query_vals):
 
 def build_query_searchPlat(query_vals):
 	# query_vals = {"platName", "platFromDate", "platToDate", "platDev", "platInProd"}
-	query = "SELECT * FROM `Platforms`"
+	query = "SELECT platformID, platformName, DATE_FORMAT(platformRelease, '%%Y-%%m-%%d'), platformDeveloper, platformInProduction FROM `Platforms`"
 	no_where = 1
 	params = ()
 	if query_vals["platName"] != "":
