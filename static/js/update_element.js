@@ -939,7 +939,7 @@ function bind_updatePlat_buttons() {
 
             // update platform in production
             var td_cell = document.createElement('td');
-            td_cell.textContent = payload["platInProd"];
+            td_cell.textContent = plat_attributes[3].firstChild.value;
             row_element.replaceChild(td_cell, cell_elements[3]);
 
             // show update successful message
