@@ -208,7 +208,7 @@ def update():
 		elif  query_vals["action"] == "updatePlat":			
 			return execute_update_plat(db_connection, query_vals)
 		elif  query_vals["action"] == "updateFranchise":
-			pass
+			return execute_update_franchise(db_connection, query_vals)
 
 		return jsonify(result)
 
