@@ -965,23 +965,23 @@ function bind_updatePlat_buttons() {
 
 // run this every time a Franchise search is made
 function bind_updateFranchise_buttons() {
-  // get list of  devs
-  var req = new XMLHttpRequest();
-  payload = {"action": "updateFranchiseElements"};
-  req.open('POST', '/update', true);
-  req.setRequestHeader('Content-Type', 'application/json');
-
-  req.addEventListener('load', function(){
-    if (req.status >= 200 && req.status < 400) {
-      res = JSON.parse(req.responseText);
-    } else {
-        console.log("Error in network request: " + req.statusText);
-    }
-  });
-  req.send(JSON.stringify(payload));
-
   Array.from(document.getElementsByClassName("updateFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+        // get list of  devs
+        var req = new XMLHttpRequest();
+        payload = {"action": "updateFranchiseElements"};
+        req.open('POST', '/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+
+        req.addEventListener('load', function(){
+          if (req.status >= 200 && req.status < 400) {
+            res = JSON.parse(req.responseText);
+          } else {
+              console.log("Error in network request: " + req.statusText);
+          }
+        });
+        req.send(JSON.stringify(payload));
+
         // change displayed button to Save Changes
         event.target.style.display = "none";
         event.target.nextElementSibling.style.display = "inline";
