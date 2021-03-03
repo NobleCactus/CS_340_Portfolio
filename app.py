@@ -110,7 +110,7 @@ def delete():
 		elif query_vals["action"] == "deleteDev":
 			result = execute_delDevStudio(db_connection,query_vals)
 		elif query_vals["action"] == "deletePlat":
-			pass
+			result = execute_delPlat(db_connection,query_vals)
 		elif query_vals["action"] == "deleteFranchise":
 			pass
 		
@@ -320,6 +320,34 @@ def execute_delDevStudio(db_connection, query_vals):
 
 	params = (query_vals["ButtonVal"])
 	query = "DELETE FROM DevelopmentStudios WHERE developerID = %s"
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_delPlat(db_connection, query_vals):
+	#query_vals = {"ButtonVal"}
+
+	#Build query
+
+	params = (query_vals["ButtonVal"])
+	query = "DELETE FROM Platforms WHERE platformID = %s"
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_delFranchise(db_connection, query_vals):
+	#query_vals = {"ButtonVal"}
+
+	#Build query
+
+	params = (query_vals["ButtonVal"])
+	query = "DELETE FROM Franchises WHERE franchiseID = %s"
 	try:
 		result = execute_query(db_connection, query, params)
 	except:
