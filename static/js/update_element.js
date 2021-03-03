@@ -469,16 +469,13 @@ function bind_updateTitle_buttons() {
 
           row_element.replaceChild(td_cell, cell_elements[1]);
 
-          //***
           // release date selection
           td_cell = document.createElement('td');
           var update_date = document.createElement('input');
           update_date.setAttribute("type", "date");
           update_date.defaultValue = cell_elements[2].textContent;
-
           td_cell.appendChild(update_date);
           row_element.replaceChild(td_cell, cell_elements[2]);
-          //***
 
           // genre options
           var genre_elements = ["Action", "Action-Adventure", "Adventure", "Battle Royale", "Fighting", "First-Person Shooter",
@@ -740,20 +737,13 @@ function bind_updateDev_buttons() {
         update_country.childNodes[index].selected = true;
         row_element.replaceChild(td_cell, cell_elements[1]);
 
-        //***
         // date founded selection
         td_cell = document.createElement('td');
         var update_date = document.createElement('input');
         update_date.setAttribute("type", "date");
-
-        // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
-        update_date.defaultValue = "1993-10-26";
-        // otherwise, we have to use this and build up the date string
-        //console.log(cell_elements[2].textContent.split(" "));
-
+        update_date.defaultValue = cell_elements[2].textContent;
         td_cell.appendChild(update_date);
         row_element.replaceChild(td_cell, cell_elements[2]);
-        //***
     });
   });
 
@@ -844,20 +834,13 @@ function bind_updatePlat_buttons() {
         td_cell.appendChild(update_name);
         row_element.replaceChild(td_cell, cell_elements[0]);
 
-        //***
         // release date selection
         td_cell = document.createElement('td');
         var update_date = document.createElement('input');
         update_date.setAttribute("type", "date");
-
-        // if we can get the search to display the date as yyyy-mm-dd, we can fill this with "cell_elements[2].textContent"
-        update_date.defaultValue = "1993-10-26";
-        // otherwise, we have to use this and build up the date string
-        //console.log(cell_elements[1].textContent.split(" "));
-
+        update_date.defaultValue = cell_elements[1].textContent;
         td_cell.appendChild(update_date);
         row_element.replaceChild(td_cell, cell_elements[1]);
-        //***
 
         // developer input
         dev_elements = ["Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
