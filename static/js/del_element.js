@@ -118,7 +118,7 @@ function bindButtons() {
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'titleDelButton');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -183,12 +183,12 @@ function bindButtons() {
             td_cell.textContent = res[i][j];
             title_tr.appendChild(td_cell);
           }
-
+  
           // add delete button
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'devDelButton');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -281,7 +281,7 @@ function bindButtons() {
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'platDelButton');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -347,7 +347,7 @@ function bindButtons() {
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'franchiseDelButton');
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -379,13 +379,88 @@ function bindButtons() {
 
 // run this every time the search table is remade to bind newly made buttons
 function bind_delete_buttons() {
-  Array.from(document.getElementsByClassName("delButton")).forEach(function(element) {
+  Array.from(document.getElementsByClassName("titleDelButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       if (confirm('Are you sure you want to delete this from the database?')) {
         // POST with button's value, which is the row's ID (event.target.value)
         var req = new XMLHttpRequest();
-        var payload = {"action": "delTest",
-                      "ButtonVal": "Try"
+        var payload = {"action": "deleteTitle",
+                      "ButtonVal": event.target.value
+                      };
+        req.open('POST', '/delete', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.send(JSON.stringify(payload));
+        // if successful:
+        document.getElementById("delSuccessful").style.display = "block";
+          setTimeout(function() {
+          document.getElementById("delSuccessful").style.display = "none"
+          }, 1500);
+
+        // not successful
+        document.getElementById("updateFailed").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("updateFailed").style.display = "none"
+        }, 1500);
+      } 
+    })
+  });
+  Array.from(document.getElementsByClassName("devDelButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      if (confirm('Are you sure you want to delete this from the database?')) {
+        // POST with button's value, which is the row's ID (event.target.value)
+        var req = new XMLHttpRequest();
+        var payload = {"action": "deleteDev",
+                      "ButtonVal": event.target.value
+                      };
+        req.open('POST', '/delete', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.send(JSON.stringify(payload));
+        // if successful:
+        document.getElementById("delSuccessful").style.display = "block";
+          setTimeout(function() {
+          document.getElementById("delSuccessful").style.display = "none"
+          }, 1500);
+
+        // not successful
+        document.getElementById("updateFailed").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("updateFailed").style.display = "none"
+        }, 1500);
+      } 
+    })
+  });
+  Array.from(document.getElementsByClassName("platDelButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      if (confirm('Are you sure you want to delete this from the database?')) {
+        // POST with button's value, which is the row's ID (event.target.value)
+        var req = new XMLHttpRequest();
+        var payload = {"action": "deletePlat",
+                      "ButtonVal": event.target.value
+                      };
+        req.open('POST', '/delete', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.send(JSON.stringify(payload));
+        // if successful:
+        document.getElementById("delSuccessful").style.display = "block";
+          setTimeout(function() {
+          document.getElementById("delSuccessful").style.display = "none"
+          }, 1500);
+
+        // not successful
+        document.getElementById("updateFailed").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("updateFailed").style.display = "none"
+        }, 1500);
+      } 
+    })
+  });
+  Array.from(document.getElementsByClassName("franchiseDelButton")).forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      if (confirm('Are you sure you want to delete this from the database?')) {
+        // POST with button's value, which is the row's ID (event.target.value)
+        var req = new XMLHttpRequest();
+        var payload = {"action": "deleteFranchise",
+                      "ButtonVal": event.target.value
                       };
         req.open('POST', '/delete', true);
         req.setRequestHeader('Content-Type', 'application/json');
