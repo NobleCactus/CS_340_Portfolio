@@ -624,14 +624,15 @@ def execute_update_dev(db_connection, query_vals):
 		return {"result": 1}
 
 def execute_update_plat(db_connection, query_vals):
-	# query_vals = {"platID", "platName", "platDate", "platInProd"}
+	# query_vals = {"platID", "platName", "platDate", "platDev" "platInProd"}
 	query = "UPDATE `Platforms` SET "
 	query += "platformName = %s, "
 	query += "platformRelease = %s, "
 	query += "platformDeveloper = %s, "
+	query += "platformInProduction = %s, "
 	query += "WHERE platformID = %s"
 
-	params = (query_vals["platName"], query_vals["platDate"], query_vals["platInProd"], query_vals["platID"],)
+	params = (query_vals["platName"], query_vals["platDate"], query_vals["platDev"], query_vals["platInProd"], query_vals["platID"],)
 
 	try:
 		execute_query(db_connection, query, params)
