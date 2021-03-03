@@ -582,8 +582,8 @@ function bind_updateTitle_buttons() {
       var req = new XMLHttpRequest();
 
       // get input values
-      titleID = event.target.value
-      title_attributes = event.target.parentNode.parentNode.childNodes
+      var titleID = event.target.value
+      var title_attributes = event.target.parentNode.parentNode.childNodes
 
       // make a list of all checked platforms
       var plat_list = [];
@@ -753,8 +753,8 @@ function bind_updateDev_buttons() {
       var req = new XMLHttpRequest();
 
       // get input values
-      devID = event.target.value
-      dev_attributes = event.target.parentNode.parentNode.childNodes
+      var devID = event.target.value
+      var dev_attributes = event.target.parentNode.parentNode.childNodes
 
       var payload = {"action": "updateDev",
                       "devID": devID,
@@ -888,17 +888,23 @@ function bind_updatePlat_buttons() {
       var req = new XMLHttpRequest();
 
       // get input values
-      platID = event.target.value
-      plat_attributes = event.target.parentNode.parentNode.childNodes
+      var platID = event.target.value
+      var plat_attributes = event.target.parentNode.parentNode.childNodes
+
+      var inProd_val;
+
+      if (plat_attributes[3].firstChild.value) == "Y" {
+        inProd_val = 1;
+      } else {
+        inProd_val = 0;
+      }
 
       var payload = {"action": "updatePlat",
                       "platID": platID,
                       "platName": plat_attributes[0].firstChild.value,
                       "platDate": plat_attributes[1].firstChild.value,
                       "platDev": plat_attributes[2].firstChild.value,
-                      "platInProd": plat_attributes[3].firstChild.value}
-
-      console.log(payload);
+                      "platInProd": inProd_val}
 
       req.open('POST', '/update', true);
       req.setRequestHeader('Content-Type', 'application/json');
