@@ -976,46 +976,47 @@ function bind_updateFranchise_buttons() {
         req.addEventListener('load', function(){
           if (req.status >= 200 && req.status < 400) {
             res = JSON.parse(req.responseText);
+
+            // change displayed button to Save Changes
+            event.target.style.display = "none";
+            event.target.nextElementSibling.style.display = "inline";
+
+            // make the row's attributes edit-able
+            var row_element = event.target.parentNode.parentNode;
+            var cell_elements = row_element.childNodes;
+
+            // name text input
+            var td_cell = document.createElement('td');
+            var update_name = document.createElement('input');
+            update_name.setAttribute("type", "text");
+            update_name.setAttribute("value", row_element.childNodes[0].textContent);
+            td_cell.appendChild(update_name);
+            row_element.replaceChild(td_cell, cell_elements[0]);
+
+            // developer input
+            var dev_elements = res["Devs"];
+            td_cell = document.createElement('td');
+            var update_dev = document.createElement('select');
+            for (var i = 0; i < dev_elements.length; i++) {
+              var dev_option = document.createElement('option');
+              dev_option.textContent = dev_elements[i][0];
+              update_dev.appendChild(dev_option);
+            }
+            td_cell.appendChild(update_dev);
+              // set default selection to original value
+            var index = 0;
+            while (cell_elements[1].textContent != update_dev.childNodes[index].textContent) {
+              index++;
+            }
+            update_dev.childNodes[index].selected = true;
+
+            row_element.replaceChild(td_cell, cell_elements[1]);
+
           } else {
               console.log("Error in network request: " + req.statusText);
           }
         });
         req.send(JSON.stringify(payload));
-
-        // change displayed button to Save Changes
-        event.target.style.display = "none";
-        event.target.nextElementSibling.style.display = "inline";
-
-        // make the row's attributes edit-able
-        var row_element = event.target.parentNode.parentNode;
-        var cell_elements = row_element.childNodes;
-
-        // name text input
-        var td_cell = document.createElement('td');
-        var update_name = document.createElement('input');
-        update_name.setAttribute("type", "text");
-        update_name.setAttribute("value", row_element.childNodes[0].textContent);
-        td_cell.appendChild(update_name);
-        row_element.replaceChild(td_cell, cell_elements[0]);
-
-        // developer input
-        var dev_elements = res["Devs"];
-        td_cell = document.createElement('td');
-        var update_dev = document.createElement('select');
-        for (var i = 0; i < dev_elements.length; i++) {
-          var dev_option = document.createElement('option');
-          dev_option.textContent = dev_elements[i][0];
-          update_dev.appendChild(dev_option);
-        }
-        td_cell.appendChild(update_dev);
-          // set default selection to original value
-        var index = 0;
-        while (cell_elements[1].textContent != update_dev.childNodes[index].textContent) {
-          index++;
-        }
-        update_dev.childNodes[index].selected = true;
-
-        row_element.replaceChild(td_cell, cell_elements[1]);
     });
   });
 
