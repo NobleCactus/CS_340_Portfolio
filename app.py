@@ -108,7 +108,7 @@ def delete():
 		if query_vals["action"] == "deleteTitle":
 			result = execute_delTitle(db_connection,query_vals)
 		elif query_vals["action"] == "deleteDev":
-			pass
+			result = execute_delDevStudio(db_connection,query_vals)
 		elif query_vals["action"] == "deletePlat":
 			pass
 		elif query_vals["action"] == "deleteFranchise":
@@ -306,6 +306,20 @@ def execute_delTitle(db_connection, query_vals):
 
 	params = (query_vals["ButtonVal"])
 	query = "DELETE FROM VideoGameTitles WHERE titleID = %s"
+	try:
+		result = execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_delDevStudio(db_connection, query_vals):
+	#query_vals = {"ButtonVal"}
+
+	#Build query
+
+	params = (query_vals["ButtonVal"])
+	query = "DELETE FROM DevelopmentStudios WHERE titleID = %s"
 	try:
 		result = execute_query(db_connection, query, params)
 	except:
