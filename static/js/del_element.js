@@ -386,8 +386,8 @@ function bind_delete_buttons() {
       if (confirm('Are you sure you want to delete this from the database?')) {
         // POST with button's value, which is the row's ID (event.target.value)
         var req = new XMLHttpRequest();
-        var payload = {"action": event.target.class,
-                      "ButtonVal": event.target.value
+        var payload = {"action": "delTest",
+                      "ButtonVal": 1
                       };
         req.open('POST', '/delete', true);
         req.setRequestHeader('Content-Type', 'application/json');
