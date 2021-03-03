@@ -319,7 +319,7 @@ def execute_delDevStudio(db_connection, query_vals):
 	#Build query
 
 	params = (query_vals["ButtonVal"])
-	query = "DELETE FROM DevelopmentStudios WHERE titleID = %s"
+	query = "DELETE FROM DevelopmentStudios WHERE developerID = %s"
 	try:
 		result = execute_query(db_connection, query, params)
 	except:
