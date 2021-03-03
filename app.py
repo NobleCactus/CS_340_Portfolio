@@ -206,7 +206,7 @@ def update():
 		elif  query_vals["action"] == "updateDev":
 			return execute_update_dev(db_connection, query_vals)
 		elif  query_vals["action"] == "updatePlat":			
-			pass
+			return execute_update_plat(db_connection, query_vals)
 		elif  query_vals["action"] == "updateFranchise":
 			pass
 
@@ -615,6 +615,23 @@ def execute_update_dev(db_connection, query_vals):
 	query += "WHERE developerID = %s;"
 
 	params = (query_vals["devName"], query_vals["devCountry"], query_vals["devDate"], query_vals["devID"])
+
+	try:
+		execute_query(db_connection, query, params)
+	except:
+		return {"result": 0}
+	else:
+		return {"result": 1}
+
+def execute_update_plat(db_connection, query_vals):
+	# query_vals = {"platID", "platName", "platDate", "platInProd"}
+	query = "UPDATE `Platforms` SET "
+	query += "platformName = %s, "
+	query += "platformRelease = %s, "
+	query += "platformDeveloper = %s, "
+	query += "WHERE platformID = %s"
+
+	params = (query_vals["platName"], query_vals["platDate"], query_vals["platInProd"], query_vals["platID"],)
 
 	try:
 		execute_query(db_connection, query, params)

@@ -778,7 +778,7 @@ function bind_updateDev_buttons() {
             var row_element = event.target.parentNode.parentNode;
             var cell_elements = row_element.childNodes;
 
-            // updated title name
+            // updated dev name
             var td_cell = document.createElement('td');
             td_cell.textContent = payload["devName"];
             row_element.replaceChild(td_cell, cell_elements[0]);
@@ -885,27 +885,66 @@ function bind_updatePlat_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("savePlatButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      var req = new XMLHttpRequest();
+
       // get input values
-      // try query
+      platID = event.target.value
+      plat_attributes = event.target.parentNode.parentNode.childNodes
 
-      //if successful
-      // make the cells not editable
-      // change displayed button to Update/Edit
-      event.target.style.display = "none";
-      event.target.previousElementSibling.style.display = "inline";
+      var payload = {"action": "updatePlat",
+                      "platID": platID,
+                      "platName": plat_attributes[0].firstChild.value,
+                      "platDate": plat_attributes[1].firstChild.value,
+                      "platInProd": plat_attributes[2].firstChild.value}
 
-      // show update successful message
-      document.getElementById("updateSuccessful").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateSuccessful").style.display = "none";
-      }, 1500);
+      req.open('POST', '/update', true);
+      req.setRequestHeader('Content-Type', 'application/json');
 
-      // not successful
-      // show update failed message
-      document.getElementById("updateFailed").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("updateFailed").style.display = "none";
-      }, 1500);
+      req.addEventListener('load', function(){
+        if (req.status >= 200 && req.status < 400) {
+          res = JSON.parse(req.responseText);
+
+          if (res["result"]) {
+            // change displayed button to Update/Edit
+            event.target.style.display = "none";
+            event.target.previousElementSibling.style.display = "inline";
+
+            // make the cells not editable, displaying updated values
+            var row_element = event.target.parentNode.parentNode;
+            var cell_elements = row_element.childNodes;
+
+            // updated platform name
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["platName"];
+            row_element.replaceChild(td_cell, cell_elements[0]);
+
+            // updated platform release date
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["platDate"];
+            row_element.replaceChild(td_cell, cell_elements[1]);
+
+            // update platform in production
+            var td_cell = document.createElement('td');
+            td_cell.textContent = payload["platInProd"];
+            row_element.replaceChild(td_cell, cell_elements[2]);
+
+            // show update successful message
+            document.getElementById("updateSuccessful").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateSuccessful").style.display = "none";
+            }, 1500);
+          } else {
+            // show update failed message
+            document.getElementById("updateFailed").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("updateFailed").style.display = "none";
+            }, 1500);
+          }
+        } else {
+          console.log("Error in network request: " + req.statusText);
+        }
+      });
+      req.send(JSON.stringify(payload));
     });
   });
 }
