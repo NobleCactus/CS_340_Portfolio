@@ -112,7 +112,7 @@ def delete():
 		elif query_vals["action"] == "deletePlat":
 			result = execute_delPlat(db_connection,query_vals)
 		elif query_vals["action"] == "deleteFranchise":
-			pass
+			result = execute_delFranchise(db_connection,query_vals)
 		
 		# depending on table, build query and search DB
 		elif query_vals["action"] == "searchTitle":
