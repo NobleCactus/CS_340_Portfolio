@@ -1057,7 +1057,7 @@ function bind_updateFranchise_buttons() {
             // updated franchise developer
             var td_cell = document.createElement('td');
             td_cell.textContent = payload["franchiseDeveloper"];
-            row_element.replaceChild(td_cell, cell_elements[0]);
+            row_element.replaceChild(td_cell, cell_elements[1]);
 
             // show update successful message
             document.getElementById("updateSuccessful").style.display = "block";
