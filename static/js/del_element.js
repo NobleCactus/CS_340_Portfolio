@@ -118,8 +118,8 @@ function bindButtons() {
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class1', 'delButton');
-          del_button.setAttribute('class2', 'deleteTitle')
+          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'deleteTitle')
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -189,8 +189,8 @@ function bindButtons() {
           button_td = document.createElement('td');
           del_button = document.createElement('button');
           del_button.setAttribute('type', 'button');
-          del_button.setAttribute('class1', 'delButton');
-          del_button.setAttribute('class2', 'deleteDev')
+          del_button.setAttribute('class', 'delButton');
+          del_button.setAttribute('class', 'deleteDev')
           del_button.setAttribute('value', res[i][0]);
           del_button.textContent = "Delete"
           button_td.appendChild(del_button);
@@ -386,7 +386,7 @@ function bind_delete_buttons() {
       if (confirm('Are you sure you want to delete this from the database?')) {
         // POST with button's value, which is the row's ID (event.target.value)
         var req = new XMLHttpRequest();
-        var payload = {"action": event.target.class2,
+        var payload = {"action": event.target.class,
                       "ButtonVal": event.target.value
                       };
         req.open('POST', '/delete', true);
