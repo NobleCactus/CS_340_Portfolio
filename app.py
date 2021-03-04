@@ -39,7 +39,7 @@ def root():
 
 		# build query and search DB
 		query_params = build_query_searchTitle(query_vals)
-		print(query_params)
+		print("@@@@", query_params)
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		new_result = add_plats_to_titles(db_connection, result)
