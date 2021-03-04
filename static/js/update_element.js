@@ -462,13 +462,12 @@ function bind_updateTitle_buttons() {
           }
             // set default selections to original values
           var curr_plats = cell_elements[1].childNodes[0].childNodes;
-          console.log(cell_elements[1]);
-          for (var i = 0; i < curr_plats.length; i += 3) {
-            var index = 0;
+          for (var i = 0; i < curr_plats.length; i ++) {
+            var index = 1;
             while (curr_plats[i].textContent != td_cell.childNodes[index].textContent) {
-              index++;
+              index += 3;
             }
-            td_cell.childNodes[index].setAttribute("checked", true);
+            td_cell.childNodes[index - 1].setAttribute("checked", true);
           }
 
           row_element.replaceChild(td_cell, cell_elements[1]);
