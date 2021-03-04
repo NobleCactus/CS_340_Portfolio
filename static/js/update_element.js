@@ -582,14 +582,9 @@ function bind_updateTitle_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // validate at least one platform is checked and a date is selected
+
       var title_attributes = event.target.parentNode.parentNode.childNodes
-      console.log(title_attributes[1]);
-      console.log(title_attributes[2]);
-
-      var req = new XMLHttpRequest();
-
-      // get input values
-      var titleID = event.target.value
 
       // make a list of all checked platforms
       var plat_list = [];
@@ -600,6 +595,14 @@ function bind_updateTitle_buttons() {
           plat_name.push(title_attributes[1].childNodes[i + 1].textContent);
         }
       }
+
+      console.log(title_attributes[2].firstChild.value);
+      console.log(plat_list.length == 0);
+
+      var req = new XMLHttpRequest();
+
+      // get input values
+      var titleID = event.target.value
 
       var payload = {"action": "updateTitle",
                       "titleID": titleID,
