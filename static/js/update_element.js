@@ -462,7 +462,8 @@ function bind_updateTitle_buttons() {
           }
             // set default selections to original values
           var curr_plats = cell_elements[1].childNodes[0].childNodes;
-          for (var i = 0; i < curr_plats.length; i++) {
+          console.log(curr_plats);
+          for (var i = 0; i < curr_plats.length; i += 3) {
             var index = 0;
             while (curr_plats[i].textContent != td_cell.childNodes[index].textContent) {
               index++;
