@@ -370,7 +370,7 @@ def build_query_searchTitle(query_vals):
 		no_where = 0
 	if 	query_vals["titlePlatID"] != "":
 		query += " WHERE tpl.platformID LIKE %s"
-		params += ("%" + query_vals["titlePlatID"] + "%",)
+		params += (query_vals["titlePlatID"],)
 		no_where = 0
 	if query_vals["titleFromDate"] != "":
 		if no_where:
