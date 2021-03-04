@@ -158,3 +158,9 @@ h2 {
 .saveFranchiseButton {
 	display: none;
 }
+
+#noTitlePlatOrDate {
+	display: none;
+	color: red;
+	float: left;
+}

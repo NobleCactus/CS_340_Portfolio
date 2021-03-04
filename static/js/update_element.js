@@ -583,7 +583,6 @@ function bind_updateTitle_buttons() {
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
       // validate at least one platform is checked and a date is selected
-
       var title_attributes = event.target.parentNode.parentNode.childNodes
 
       // make a list of all checked platforms
@@ -596,111 +595,117 @@ function bind_updateTitle_buttons() {
         }
       }
 
-      console.log(title_attributes[2].firstChild.value == "");
-      console.log(plat_list.length == 0);
+      if (plat_list.length == 0 || title_attributes[2].firstChild.value == "") {
+        // displayed required field message
+        var requiredMessage = document.getElementById("noTitlePlatOrDate");
+        requiredMessage.style.display = "block"
+      } else {
+        var requiredMessage = document.getElementById("noTitlePlatOrDate");
+        requiredMessage.style.display = "none"
 
-      var req = new XMLHttpRequest();
+        var req = new XMLHttpRequest();
 
-      // get input values
-      var titleID = event.target.value
+        // get input values
+        var titleID = event.target.value
 
-      var payload = {"action": "updateTitle",
-                      "titleID": titleID,
-                      "titleName": title_attributes[0].firstChild.value,
-                      "titlePlats": plat_list,
-                      "titleRelease": title_attributes[2].firstChild.value,
-                      "titleGenre": title_attributes[3].firstChild.value,
-                      "titleFranchiseID": title_attributes[4].firstChild.value,
-                      "titleDevID": title_attributes[5].firstChild.value,
-                      "titleESRB": title_attributes[6].firstChild.value};
+        var payload = {"action": "updateTitle",
+                        "titleID": titleID,
+                        "titleName": title_attributes[0].firstChild.value,
+                        "titlePlats": plat_list,
+                        "titleRelease": title_attributes[2].firstChild.value,
+                        "titleGenre": title_attributes[3].firstChild.value,
+                        "titleFranchiseID": title_attributes[4].firstChild.value,
+                        "titleDevID": title_attributes[5].firstChild.value,
+                        "titleESRB": title_attributes[6].firstChild.value};
 
-      req.open('POST', '/update', true);
-      req.setRequestHeader('Content-Type', 'application/json');
+        req.open('POST', '/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
 
-      req.addEventListener('load', function(){
-        if (req.status >= 200 && req.status < 400) {
-          res = JSON.parse(req.responseText);
-          
-          // successful UPDATE
-          if (res["result"]) {
-            // change displayed button to Update/Edit
-            event.target.style.display = "none";
-            event.target.previousElementSibling.style.display = "inline";
-
-            // make the cells not editable, displaying updated values
-            var row_element = event.target.parentNode.parentNode;
-            var cell_elements = row_element.childNodes;
+        req.addEventListener('load', function(){
+          if (req.status >= 200 && req.status < 400) {
+            res = JSON.parse(req.responseText);
             
-            // updated title name
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["titleName"];
-            row_element.replaceChild(td_cell, cell_elements[0]);
+            // successful UPDATE
+            if (res["result"]) {
+              // change displayed button to Update/Edit
+              event.target.style.display = "none";
+              event.target.previousElementSibling.style.display = "inline";
 
-            // updated platform list
-            td_cell = document.createElement('td');
-            var plat_list_tag = document.createElement('ul');
-            plat_list_tag.setAttribute("class", "platformList");
-            for (var i = 0; i < plat_name.length; i++) {
-              list_item = document.createElement('li');
-              list_item.textContent = plat_name[i];
-              plat_list_tag.appendChild(list_item);
+              // make the cells not editable, displaying updated values
+              var row_element = event.target.parentNode.parentNode;
+              var cell_elements = row_element.childNodes;
+              
+              // updated title name
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["titleName"];
+              row_element.replaceChild(td_cell, cell_elements[0]);
+
+              // updated platform list
+              td_cell = document.createElement('td');
+              var plat_list_tag = document.createElement('ul');
+              plat_list_tag.setAttribute("class", "platformList");
+              for (var i = 0; i < plat_name.length; i++) {
+                list_item = document.createElement('li');
+                list_item.textContent = plat_name[i];
+                plat_list_tag.appendChild(list_item);
+              }
+              td_cell.appendChild(plat_list_tag);
+              row_element.replaceChild(td_cell, cell_elements[1]);
+
+              // updated release date
+              td_cell = document.createElement('td');
+              td_cell.textContent = payload["titleRelease"];
+              row_element.replaceChild(td_cell, cell_elements[2]);
+
+              // updated genre
+              td_cell = document.createElement('td');
+              td_cell.textContent = payload["titleGenre"];
+              row_element.replaceChild(td_cell, cell_elements[3]);
+
+              // updated franchise
+              td_cell = document.createElement('td');
+              var franchise_items = title_attributes[4].firstChild.childNodes;
+              var index = 0;
+              while (title_attributes[4].firstChild.value != franchise_items[index].value) {
+                index++;
+              }
+              td_cell.textContent = franchise_items[index].textContent;
+              row_element.replaceChild(td_cell, cell_elements[4]);
+
+              // updated dev
+              td_cell = document.createElement('td');
+              var dev_items = title_attributes[5].firstChild.childNodes;
+              var index = 0;
+              while (title_attributes[5].firstChild.value != dev_items[index].value) {
+                index++;
+              }
+              td_cell.textContent = dev_items[index].textContent;
+              row_element.replaceChild(td_cell, cell_elements[5]);
+
+              // updated ESRB
+              td_cell = document.createElement('td');
+              td_cell.textContent = title_attributes[6].firstChild.value;
+              row_element.replaceChild(td_cell, cell_elements[6]);
+
+              // show update successful message
+              document.getElementById("updateSuccessful").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateSuccessful").style.display = "none";
+              }, 1500);
+            
+            // failed update
+            } else {
+              document.getElementById("updateFailed").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateFailed").style.display = "none";
+              }, 1500);
             }
-            td_cell.appendChild(plat_list_tag);
-            row_element.replaceChild(td_cell, cell_elements[1]);
-
-            // updated release date
-            td_cell = document.createElement('td');
-            td_cell.textContent = payload["titleRelease"];
-            row_element.replaceChild(td_cell, cell_elements[2]);
-
-            // updated genre
-            td_cell = document.createElement('td');
-            td_cell.textContent = payload["titleGenre"];
-            row_element.replaceChild(td_cell, cell_elements[3]);
-
-            // updated franchise
-            td_cell = document.createElement('td');
-            var franchise_items = title_attributes[4].firstChild.childNodes;
-            var index = 0;
-            while (title_attributes[4].firstChild.value != franchise_items[index].value) {
-              index++;
-            }
-            td_cell.textContent = franchise_items[index].textContent;
-            row_element.replaceChild(td_cell, cell_elements[4]);
-
-            // updated dev
-            td_cell = document.createElement('td');
-            var dev_items = title_attributes[5].firstChild.childNodes;
-            var index = 0;
-            while (title_attributes[5].firstChild.value != dev_items[index].value) {
-              index++;
-            }
-            td_cell.textContent = dev_items[index].textContent;
-            row_element.replaceChild(td_cell, cell_elements[5]);
-
-            // updated ESRB
-            td_cell = document.createElement('td');
-            td_cell.textContent = title_attributes[6].firstChild.value;
-            row_element.replaceChild(td_cell, cell_elements[6]);
-
-            // show update successful message
-            document.getElementById("updateSuccessful").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateSuccessful").style.display = "none";
-            }, 1500);
-          
-          // failed update
           } else {
-            document.getElementById("updateFailed").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateFailed").style.display = "none";
-            }, 1500);
+              console.log("Error in network request: " + req.statusText);
           }
-        } else {
-            console.log("Error in network request: " + req.statusText);
-        }
-      });
-      req.send(JSON.stringify(payload));
+        });
+        req.send(JSON.stringify(payload));
+      }
     });
   });
 }
