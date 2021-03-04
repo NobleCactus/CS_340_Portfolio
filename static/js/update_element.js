@@ -594,8 +594,8 @@ function bind_updateTitle_buttons() {
       var plat_name = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 3) {
         if (title_attributes[1].childNodes[i].checked) {
-          plat_list.push(title_attributes[1].childNodes[i].value)
-          plat_name.push(title_attributes[1].childNodes[i].textContent)
+          plat_list.push(title_attributes[1].childNodes[i].value);
+          plat_name.push(title_attributes[1].childNodes[i + 1].textContent);
         }
       }
 
