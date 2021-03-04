@@ -447,7 +447,9 @@ function bind_updateTitle_buttons() {
           plat_option.setAttribute("value", plat_elements[0][0]);
           //plat_option.textContent = plat_elements[0][1];
           td_cell.appendChild(plat_option);
-          td_cell.textContent += plat_elements[0][1];
+          var plat_name = document.createElement("span");
+          plat_name.textContent = plat_elements[0][1];
+          td_cell.appendChild(plat_name);
           for (var i = 1; i < plat_elements.length; i++) {
             var break_tag = document.createElement("br");
             td_cell.appendChild(break_tag);
