@@ -438,7 +438,6 @@ function bind_updateTitle_buttons() {
 
           // platform list options
           var plat_elements = res["Plats"];
-          console.log(plat_elements);
           td_cell = document.createElement('td');
           td_cell.style.textAlign = "left";
           var plat_option = document.createElement("input");
