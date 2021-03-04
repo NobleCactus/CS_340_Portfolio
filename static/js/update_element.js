@@ -582,11 +582,14 @@ function bind_updateTitle_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveTitleButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      var title_attributes = event.target.parentNode.parentNode.childNodes
+      console.log(title_attributes[1]);
+      console.log(title_attributes[2]);
+
       var req = new XMLHttpRequest();
 
       // get input values
       var titleID = event.target.value
-      var title_attributes = event.target.parentNode.parentNode.childNodes
 
       // make a list of all checked platforms
       var plat_list = [];
