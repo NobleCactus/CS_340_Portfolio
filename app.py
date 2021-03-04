@@ -39,6 +39,7 @@ def root():
 
 		# build query and search DB
 		query_params = build_query_searchTitle(query_vals)
+		print(query_params)
 		result = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		new_result = add_plats_to_titles(db_connection, result)
@@ -357,9 +358,6 @@ def execute_delFranchise(db_connection, query_vals):
 
 def build_query_searchTitle(query_vals):
 	# query_vals = {"titleName", "titlePlatIDs", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
-
-	# getting an error trying to format t.titleRelease date
-	# DATE_FORMAT(t.titleRelease, '%%Y-%%m-%%d') AS t.titleRelease
 	query = "SELECT DISTINCT t.titleID, t.titleName, DATE_FORMAT(t.titleRelease, '%%Y-%%m-%%d') AS titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 	query += "LEFT JOIN TitlesPlatforms AS tpl ON t.titleID = tpl.titleID "
 	query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
