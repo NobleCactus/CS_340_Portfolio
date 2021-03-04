@@ -556,37 +556,33 @@ def execute_update_title(db_connection, query_vals):
 	# query_vals = {"titleID", "titleName", titlePlats, "titleRelease", "titleGenre", 
 	#						"titleFranchiseID", "titleDevID", "titleESRB"}
 	query = "UPDATE `VideoGameTitles` SET "	
+	
 	query += "titleName = %s, "
-	query += "titleRelease = %s, "
-	query += "titleGenre = %s, "
-	query += "titleFranchiseID = %s, "
-	query += "titleDeveloperID = %s, "
-	query += "titleESRB = %s "
-	query += "WHERE titleID = %s;"
-
+	query += "titleRelease = %s"
 	params = (query_vals["titleName"], query_vals["titleRelease"])
 
 	if query_vals["titleGenre"] != "":
+		query += ", titleGenre = %s"
 		params += (query_vals["titleGenre"],)
 	else :
-		# *** find how to input NULL (can't use string "NULL", can't use none)
-		params += (None,)
+		query += ", titleGenre = NULL"
 
 	if query_vals["titleFranchiseID"] != "":
+		query += ", titleFranchiseID = %s"
 		params += (query_vals["titleFranchiseID"],)
 	else:
-		# *** find how to input NULL (can't use string "NULL", can't use none)
-		# because franchiseID is an FK, can't have an empty ID
-		params += (None,)
+		query += ", titleFranchiseID = NULL"
 
+	query += ", titleDeveloperID = %s"
 	params += (query_vals["titleDevID"],)
 	
 	if query_vals["titleESRB"] != "":
+		query += ", titleESRB = %s"
 		params += (query_vals["titleESRB"],)
 	else:
-	# *** find how to input NULL (can't use string "NULL", can't use none)
-		params += (None,)
+		query += ", titleESRB = NULL"
 
+	query += " WHERE titleID = %s;"
 	params += (query_vals["titleID"],)
 
 	try:
