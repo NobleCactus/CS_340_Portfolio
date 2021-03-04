@@ -592,7 +592,7 @@ function bind_updateTitle_buttons() {
       console.log(title_attributes[1].childNodes);
       var plat_list = [];
       var plat_name = [];
-      for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
+      for (var i = 0; i < title_attributes[1].childNodes.length; i += 3) {
         if (title_attributes[1].childNodes[i].checked) {
           plat_list.push(title_attributes[1].childNodes[i].value)
           plat_name.push(title_attributes[1].childNodes[i].textContent)
