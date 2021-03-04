@@ -589,6 +589,7 @@ function bind_updateTitle_buttons() {
       var title_attributes = event.target.parentNode.parentNode.childNodes
 
       // make a list of all checked platforms
+      console.log(title_attributes[1].childNodes);
       var plat_list = [];
       var plat_name = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 2) {
