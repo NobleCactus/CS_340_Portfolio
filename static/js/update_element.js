@@ -438,6 +438,7 @@ function bind_updateTitle_buttons() {
 
           // platform list options
           var plat_elements = res["Plats"];
+          console.log(plat_elements);
           td_cell = document.createElement('td');
           td_cell.style.textAlign = "left";
           var plat_option = document.createElement("input");
@@ -589,7 +590,6 @@ function bind_updateTitle_buttons() {
       var title_attributes = event.target.parentNode.parentNode.childNodes
 
       // make a list of all checked platforms
-      console.log(title_attributes[1].childNodes);
       var plat_list = [];
       var plat_name = [];
       for (var i = 0; i < title_attributes[1].childNodes.length; i += 3) {
