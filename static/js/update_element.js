@@ -596,7 +596,7 @@ function bind_updateTitle_buttons() {
         }
       }
 
-      console.log(title_attributes[2].firstChild.value);
+      console.log(title_attributes[2].firstChild.value == "");
       console.log(plat_list.length == 0);
 
       var req = new XMLHttpRequest();
