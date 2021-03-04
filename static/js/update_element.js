@@ -440,12 +440,9 @@ function bind_updateTitle_buttons() {
           var plat_elements = res["Plats"];
           td_cell = document.createElement('td');
           td_cell.style.textAlign = "left";
-
-            //*** platform names isn't showing on webpage, but it is in the HTML ***
           var plat_option = document.createElement("input");
           plat_option.setAttribute("type", "checkbox");
           plat_option.setAttribute("value", plat_elements[0][0]);
-          //plat_option.textContent = plat_elements[0][1];
           td_cell.appendChild(plat_option);
           var plat_name = document.createElement("span");
           plat_name.textContent = plat_elements[0][1];
@@ -457,8 +454,11 @@ function bind_updateTitle_buttons() {
             plat_option = document.createElement("input");
             plat_option.setAttribute("type", "checkbox");
             plat_option.setAttribute("value", plat_elements[i][0]);
-            plat_option.textContent = plat_elements[i][1];
             td_cell.appendChild(plat_option);
+
+            plat_name = document.createElement("span");
+            plat_name.textContent = plat_elements[i][1];
+            td_cell.appendChild(plat_name);
           }
             // set default selections to original values
           var curr_plats = cell_elements[1].childNodes[0].childNodes;
