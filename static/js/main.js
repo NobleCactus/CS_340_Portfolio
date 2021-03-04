@@ -21,8 +21,6 @@ function bindButtons() {
 			if (req.status >= 200 && req.status < 400) {
 				res = JSON.parse(req.responseText);
 
-				console.log(res);
-
 				// clear out current elements in the search result table
 				var prevTableRows = document.getElementsByClassName('searchResultRow');
 				while (prevTableRows[0]) {
