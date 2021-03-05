@@ -89,6 +89,7 @@ function bindButtons() {
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
+          title_tr.setAttribute('id', res[i][0]);
           
           // title name cells
           td_cell = document.createElement('td');
@@ -390,6 +391,7 @@ function bind_delete_buttons() {
         req.open('POST', '/delete', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
+        document.getElementById(event.target.value).delete;
         // if successful:
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
@@ -420,6 +422,7 @@ function bind_delete_buttons() {
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
           }, 1500);
+
 
         // not successful
         document.getElementById("updateFailed").style.display = "block";
