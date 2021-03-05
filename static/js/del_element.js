@@ -391,8 +391,10 @@ function bind_delete_buttons() {
         req.open('POST', '/delete', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
-        document.getElementById(event.target.value).delete;
+
         // if successful:
+        var row = document.getElementById(event.target.value);
+        row.parentNode.removeChild(row);
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
