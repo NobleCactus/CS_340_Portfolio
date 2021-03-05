@@ -177,6 +177,7 @@ function bindButtons() {
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
+          title_tr.setAttribute('id', res[i][0]);
           
           // name, country, date founded cells
           for (var j = 1; j < 4; j++) {
@@ -261,6 +262,7 @@ function bindButtons() {
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
+          title_tr.setAttribute('id', res[i][0]);
           
           // name, release, dev cells
           for (var j = 1; j < 4; j++) {
@@ -336,6 +338,7 @@ function bindButtons() {
         for (var i = 0; i < res.length; i++) {
           title_tr = document.createElement('tr');
           title_tr.setAttribute('class', 'searchResultRow');
+          title_tr.setAttribute('id', res[i][0]);
           
           // name, developer cells
           for (var j = 1; j < 3; j++) {
@@ -420,6 +423,8 @@ function bind_delete_buttons() {
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         // if successful:
+        var row = document.getElementById(event.target.value);
+        row.parentNode.removeChild(row);        
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
@@ -446,6 +451,8 @@ function bind_delete_buttons() {
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         // if successful:
+        var row = document.getElementById(event.target.value);
+        row.parentNode.removeChild(row);        
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
@@ -471,6 +478,8 @@ function bind_delete_buttons() {
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         // if successful:
+        var row = document.getElementById(event.target.value);
+        row.parentNode.removeChild(row);        
         document.getElementById("delSuccessful").style.display = "block";
           setTimeout(function() {
           document.getElementById("delSuccessful").style.display = "none"
