@@ -99,7 +99,6 @@ function bindButtons() {
           td_cell = document.createElement('td');
           plat_list = document.createElement('ul');
           plat_list.setAttribute('class', 'platformList');
-          console.log(res[i][7]);
           for (var j = 0; j < res[i][7].length; j++) {
             plat_item = document.createElement('li');
             plat_item.textContent = res[i][7][j];

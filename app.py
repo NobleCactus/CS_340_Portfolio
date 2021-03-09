@@ -434,7 +434,8 @@ def add_plats_to_titles(db_connection, titles_result):
 		titlesPlats_query = "SELECT p.platformName as Platform FROM `TitlesPlatforms` as tp "
 		titlesPlats_query += "JOIN `VideoGameTitles` as t ON tp.titleID = t.titleID "
 		titlesPlats_query += "JOIN `Platforms` as p ON tp.platformID = p.platformID "
-		titlesPlats_query += "WHERE t.titleID = %s"
+		titlesPlats_query += "WHERE t.titleID = %s "
+		titlesPlats_query += "ORDER BY p.platformName"
 		titlesPlats_params = (title_info[0])
 		titles_Plats = execute_query(db_connection, titlesPlats_query, titlesPlats_params).fetchall()
 
