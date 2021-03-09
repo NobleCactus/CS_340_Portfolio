@@ -783,6 +783,11 @@ function bind_updateDev_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveDevButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // get input values
+      var devID = event.target.value
+      var dev_attributes = event.target.parentNode.parentNode.childNodes
+
+      // validate required inputs
       if (dev_attributes[0].firstChild.value.trim() == "" || dev_attributes[2].firstChild.value == "") {
         // displayed required field message
         document.getElementById("missingDevInputs").style.display = "block";
@@ -790,12 +795,7 @@ function bind_updateDev_buttons() {
       } else {
         document.getElementById("missingDevInputs").style.display = "none";
 
-
         var req = new XMLHttpRequest();
-
-        // get input values
-        var devID = event.target.value
-        var dev_attributes = event.target.parentNode.parentNode.childNodes
 
         var payload = {"action": "updateDev",
                         "devID": devID,
@@ -927,6 +927,11 @@ function bind_updatePlat_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("savePlatButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // get input values
+      var platID = event.target.value
+      var plat_attributes = event.target.parentNode.parentNode.childNodes
+
+      // validate required inputs
       if (plat_attributes[0].firstChild.value.trim() == "" || plat_attributes[1].firstChild.value == "") {
         // displayed required field message
         document.getElementById("missingPlatInputs").style.display = "block";
@@ -936,12 +941,7 @@ function bind_updatePlat_buttons() {
 
         var req = new XMLHttpRequest();
 
-        // get input values
-        var platID = event.target.value
-        var plat_attributes = event.target.parentNode.parentNode.childNodes
-
         var inProd_val;
-
         if (plat_attributes[3].firstChild.value == "Y") {
           inProd_val = 1;
         } else {
@@ -1073,6 +1073,11 @@ function bind_updateFranchise_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
+      // get input values
+      var franchiseID = event.target.value
+      var franchise_attributes = event.target.parentNode.parentNode.childNodes
+
+      // validate required inputs
       if (franchise_attributes[0].firstChild.value.trim() == "") {
         // displayed required field message
         document.getElementById("missingFranchiseInputs").style.display = "block";
@@ -1081,10 +1086,6 @@ function bind_updateFranchise_buttons() {
         document.getElementById("missingFranchiseInputs").style.display = "none";
 
         var req = new XMLHttpRequest();
-
-        // get input values
-        var franchiseID = event.target.value
-        var franchise_attributes = event.target.parentNode.parentNode.childNodes
 
         var payload = {"action": "updateFranchise",
                         "franchiseID": franchiseID,
