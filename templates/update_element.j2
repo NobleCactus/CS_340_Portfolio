@@ -196,13 +196,24 @@
     <br/>
 
     <span class="successFailMessage" id="updateSuccessful">Update Successful!</span>
-    <span class="successFailMessage" id="updateFailed">Update Failed!</span>
+    <span class="successFailMessage" id="updateFailed">Update Failed! The name of the Title/Studio/Platform/Franchise must be unique.</span>
 
     <div id="searchResults">
       <h2 id="searchResHeader">Search Results</h2>
-      <div class="requiredMessage" id="noTitlePlatOrDate">
-        *Required: at least one platform, and a release date must be selected
+
+      <div class="requiredMessage" id="missingTitleInputs">
+        *Required: the Title name can't be blank, at least one platform must be checked, and a release date must be selected
       </div>
+      <div clas="requiredMessage" id="missingDevInputs">
+        *Required: the Development Studio name can't be blank, and a founding date must be selected
+      </div>
+      <div clas="requiredMessage" id="missingPlatInputs">
+        *Required: the Platform name can't be blank, and a founding date must be selected
+      </div>
+      <div clas="requiredMessage" id="missingFranchiseInputs">
+        *Required: the Franchise name can't be blank
+      </div>
+
       <table id="searchResultTable">
       </table>
     </div>

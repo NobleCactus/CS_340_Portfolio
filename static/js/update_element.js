@@ -42,6 +42,11 @@ function bindButtons() {
   });
 
   document.getElementById("searchTitleButton").addEventListener("click", function(event) {
+    document.getElementById("missingTitleInputs").style.display = "none";
+    document.getElementById("missingDevInputs").style.display = "none";
+    document.getElementById("missingPlatInputs").style.display = "none";
+    document.getElementById("missingFranchiseInputs").style.display = "none";
+
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchTitle",
@@ -146,6 +151,11 @@ function bindButtons() {
   });
 
   document.getElementById("searchDevButton").addEventListener("click", function(event) {
+    document.getElementById("missingTitleInputs").style.display = "none";
+    document.getElementById("missingDevInputs").style.display = "none";
+    document.getElementById("missingPlatInputs").style.display = "none";
+    document.getElementById("missingFranchiseInputs").style.display = "none";
+
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchDev",
@@ -222,6 +232,11 @@ function bindButtons() {
   });
 
   document.getElementById("searchPlatButton").addEventListener("click", function(event) {
+    document.getElementById("missingTitleInputs").style.display = "none";
+    document.getElementById("missingDevInputs").style.display = "none";
+    document.getElementById("missingPlatInputs").style.display = "none";
+    document.getElementById("missingFranchiseInputs").style.display = "none";
+
     var req = new XMLHttpRequest();
 
     var platInProd = Array.from(document.getElementsByClassName("searchPlatInProd"));
@@ -323,6 +338,11 @@ function bindButtons() {
   });
 
   document.getElementById("searchFranchiseButton").addEventListener("click", function(event) {
+    document.getElementById("missingTitleInputs").style.display = "none";
+    document.getElementById("missingDevInputs").style.display = "none";
+    document.getElementById("missingPlatInputs").style.display = "none";
+    document.getElementById("missingFranchiseInputs").style.display = "none";
+
     var req = new XMLHttpRequest();
 
     var payload = {"action": "searchFranchise",
@@ -595,13 +615,12 @@ function bind_updateTitle_buttons() {
         }
       }
 
-      if (plat_list.length == 0 || title_attributes[2].firstChild.value == "") {
+      if (title_attributes[0].firstChild.value.trim() == "" || plat_list.length == 0 || title_attributes[2].firstChild.value == "") {
         // displayed required field message
-        var requiredMessage = document.getElementById("noTitlePlatOrDate");
-        requiredMessage.style.display = "block"
+        document.getElementById("missingTitleInputs").style.display = "block";
+
       } else {
-        var requiredMessage = document.getElementById("noTitlePlatOrDate");
-        requiredMessage.style.display = "none"
+        document.getElementById("missingTitleInputs").style.display = "none";
 
         var req = new XMLHttpRequest();
 
@@ -764,66 +783,75 @@ function bind_updateDev_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveDevButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      var req = new XMLHttpRequest();
+      if (dev_attributes[0].firstChild.value.trim() == "" || dev_attributes[2].firstChild.value == "") {
+        // displayed required field message
+        document.getElementById("missingDevInputs").style.display = "block";
 
-      // get input values
-      var devID = event.target.value
-      var dev_attributes = event.target.parentNode.parentNode.childNodes
+      } else {
+        document.getElementById("missingDevInputs").style.display = "none";
 
-      var payload = {"action": "updateDev",
-                      "devID": devID,
-                      "devName": dev_attributes[0].firstChild.value,
-                      "devCountry": dev_attributes[1].firstChild.value,
-                      "devDate": dev_attributes[2].firstChild.value}
 
-      req.open('POST', '/update', true);
-      req.setRequestHeader('Content-Type', 'application/json');
+        var req = new XMLHttpRequest();
 
-      req.addEventListener('load', function(){
-        if (req.status >= 200 && req.status < 400) {
-          res = JSON.parse(req.responseText);
+        // get input values
+        var devID = event.target.value
+        var dev_attributes = event.target.parentNode.parentNode.childNodes
 
-          if (res["result"]) {
-            // change displayed button to Update/Edit
-            event.target.style.display = "none";
-            event.target.previousElementSibling.style.display = "inline";
+        var payload = {"action": "updateDev",
+                        "devID": devID,
+                        "devName": dev_attributes[0].firstChild.value,
+                        "devCountry": dev_attributes[1].firstChild.value,
+                        "devDate": dev_attributes[2].firstChild.value}
 
-            // make the cells not editable, displaying updated values
-            var row_element = event.target.parentNode.parentNode;
-            var cell_elements = row_element.childNodes;
+        req.open('POST', '/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
 
-            // updated dev name
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["devName"];
-            row_element.replaceChild(td_cell, cell_elements[0]);
+        req.addEventListener('load', function(){
+          if (req.status >= 200 && req.status < 400) {
+            res = JSON.parse(req.responseText);
 
-            // updated country
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["devCountry"];
-            row_element.replaceChild(td_cell, cell_elements[1]);
+            if (res["result"]) {
+              // change displayed button to Update/Edit
+              event.target.style.display = "none";
+              event.target.previousElementSibling.style.display = "inline";
 
-            // updated founding date
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["devDate"];
-            row_element.replaceChild(td_cell, cell_elements[2]);
+              // make the cells not editable, displaying updated values
+              var row_element = event.target.parentNode.parentNode;
+              var cell_elements = row_element.childNodes;
 
-            // show update successful message
-            document.getElementById("updateSuccessful").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateSuccessful").style.display = "none";
-            }, 1500);
+              // updated dev name
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["devName"];
+              row_element.replaceChild(td_cell, cell_elements[0]);
+
+              // updated country
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["devCountry"];
+              row_element.replaceChild(td_cell, cell_elements[1]);
+
+              // updated founding date
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["devDate"];
+              row_element.replaceChild(td_cell, cell_elements[2]);
+
+              // show update successful message
+              document.getElementById("updateSuccessful").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateSuccessful").style.display = "none";
+              }, 1500);
+            } else {
+              // show update failed message
+              document.getElementById("updateFailed").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateFailed").style.display = "none";
+              }, 1500);
+            }
           } else {
-            // show update failed message
-            document.getElementById("updateFailed").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateFailed").style.display = "none";
-            }, 1500);
+              console.log("Error in network request: " + req.statusText);
           }
-        } else {
-            console.log("Error in network request: " + req.statusText);
-        }
-      });
-      req.send(JSON.stringify(payload));
+        });
+        req.send(JSON.stringify(payload));
+      }
     });
   });
 }
@@ -899,80 +927,88 @@ function bind_updatePlat_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("savePlatButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      var req = new XMLHttpRequest();
+      if (plat_attributes[0].firstChild.value.trim() == "" || plat_attributes[1].firstChild.value == "") {
+        // displayed required field message
+        document.getElementById("missingPlatInputs").style.display = "block";
 
-      // get input values
-      var platID = event.target.value
-      var plat_attributes = event.target.parentNode.parentNode.childNodes
-
-      var inProd_val;
-
-      if (plat_attributes[3].firstChild.value == "Y") {
-        inProd_val = 1;
       } else {
-        inProd_val = 0;
-      }
+        document.getElementById("missingPlatInputs").style.display = "none";
 
-      var payload = {"action": "updatePlat",
-                      "platID": platID,
-                      "platName": plat_attributes[0].firstChild.value,
-                      "platDate": plat_attributes[1].firstChild.value,
-                      "platDev": plat_attributes[2].firstChild.value,
-                      "platInProd": inProd_val}
+        var req = new XMLHttpRequest();
 
-      req.open('POST', '/update', true);
-      req.setRequestHeader('Content-Type', 'application/json');
+        // get input values
+        var platID = event.target.value
+        var plat_attributes = event.target.parentNode.parentNode.childNodes
 
-      req.addEventListener('load', function(){
-        if (req.status >= 200 && req.status < 400) {
-          res = JSON.parse(req.responseText);
+        var inProd_val;
 
-          if (res["result"]) {
-            // change displayed button to Update/Edit
-            event.target.style.display = "none";
-            event.target.previousElementSibling.style.display = "inline";
-
-            // make the cells not editable, displaying updated values
-            var row_element = event.target.parentNode.parentNode;
-            var cell_elements = row_element.childNodes;
-
-            // updated platform name
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["platName"];
-            row_element.replaceChild(td_cell, cell_elements[0]);
-
-            // updated platform release date
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["platDate"];
-            row_element.replaceChild(td_cell, cell_elements[1]);
-
-            // update platform dev
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["platDev"];
-            row_element.replaceChild(td_cell, cell_elements[2]);
-
-            // update platform in production
-            var td_cell = document.createElement('td');
-            td_cell.textContent = plat_attributes[3].firstChild.value;
-            row_element.replaceChild(td_cell, cell_elements[3]);
-
-            // show update successful message
-            document.getElementById("updateSuccessful").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateSuccessful").style.display = "none";
-            }, 1500);
-          } else {
-            // show update failed message
-            document.getElementById("updateFailed").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateFailed").style.display = "none";
-            }, 1500);
-          }
+        if (plat_attributes[3].firstChild.value == "Y") {
+          inProd_val = 1;
         } else {
-          console.log("Error in network request: " + req.statusText);
+          inProd_val = 0;
         }
-      });
-      req.send(JSON.stringify(payload));
+
+        var payload = {"action": "updatePlat",
+                        "platID": platID,
+                        "platName": plat_attributes[0].firstChild.value,
+                        "platDate": plat_attributes[1].firstChild.value,
+                        "platDev": plat_attributes[2].firstChild.value,
+                        "platInProd": inProd_val}
+
+        req.open('POST', '/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+
+        req.addEventListener('load', function(){
+          if (req.status >= 200 && req.status < 400) {
+            res = JSON.parse(req.responseText);
+
+            if (res["result"]) {
+              // change displayed button to Update/Edit
+              event.target.style.display = "none";
+              event.target.previousElementSibling.style.display = "inline";
+
+              // make the cells not editable, displaying updated values
+              var row_element = event.target.parentNode.parentNode;
+              var cell_elements = row_element.childNodes;
+
+              // updated platform name
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["platName"];
+              row_element.replaceChild(td_cell, cell_elements[0]);
+
+              // updated platform release date
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["platDate"];
+              row_element.replaceChild(td_cell, cell_elements[1]);
+
+              // update platform dev
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["platDev"];
+              row_element.replaceChild(td_cell, cell_elements[2]);
+
+              // update platform in production
+              var td_cell = document.createElement('td');
+              td_cell.textContent = plat_attributes[3].firstChild.value;
+              row_element.replaceChild(td_cell, cell_elements[3]);
+
+              // show update successful message
+              document.getElementById("updateSuccessful").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateSuccessful").style.display = "none";
+              }, 1500);
+            } else {
+              // show update failed message
+              document.getElementById("updateFailed").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateFailed").style.display = "none";
+              }, 1500);
+            }
+          } else {
+            console.log("Error in network request: " + req.statusText);
+          }
+        });
+        req.send(JSON.stringify(payload));
+      }
     });
   });
 }
@@ -1037,60 +1073,68 @@ function bind_updateFranchise_buttons() {
   // executes UPDATE query with inputs
   Array.from(document.getElementsByClassName("saveFranchiseButton")).forEach(function(element) {
     element.addEventListener("click", function(event) {
-      var req = new XMLHttpRequest();
+      if (franchise_attributes[0].firstChild.value.trim() == "") {
+        // displayed required field message
+        document.getElementById("missingFranchiseInputs").style.display = "block";
 
-      // get input values
-      var franchiseID = event.target.value
-      var franchise_attributes = event.target.parentNode.parentNode.childNodes
+      } else {
+        document.getElementById("missingFranchiseInputs").style.display = "none";
 
-      var payload = {"action": "updateFranchise",
-                      "franchiseID": franchiseID,
-                      "franchiseName": franchise_attributes[0].firstChild.value,
-                      "franchiseDev": franchise_attributes[1].firstChild.value}
+        var req = new XMLHttpRequest();
 
-      req.open('POST', '/update', true);
-      req.setRequestHeader('Content-Type', 'application/json');
+        // get input values
+        var franchiseID = event.target.value
+        var franchise_attributes = event.target.parentNode.parentNode.childNodes
 
-      req.addEventListener('load', function(){
-        if (req.status >= 200 && req.status < 400) {
-          res = JSON.parse(req.responseText);
+        var payload = {"action": "updateFranchise",
+                        "franchiseID": franchiseID,
+                        "franchiseName": franchise_attributes[0].firstChild.value,
+                        "franchiseDev": franchise_attributes[1].firstChild.value}
 
-          if (res["result"]) {
-            // change displayed button to Update/Edit
-            event.target.style.display = "none";
-            event.target.previousElementSibling.style.display = "inline";
+        req.open('POST', '/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
 
-            // make the cells not editable, displaying updated values
-            var row_element = event.target.parentNode.parentNode;
-            var cell_elements = row_element.childNodes;
+        req.addEventListener('load', function(){
+          if (req.status >= 200 && req.status < 400) {
+            res = JSON.parse(req.responseText);
 
-            // updated franchise name
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["franchiseName"];
-            row_element.replaceChild(td_cell, cell_elements[0]);
+            if (res["result"]) {
+              // change displayed button to Update/Edit
+              event.target.style.display = "none";
+              event.target.previousElementSibling.style.display = "inline";
 
-            // updated franchise developer
-            var td_cell = document.createElement('td');
-            td_cell.textContent = payload["franchiseDev"];
-            row_element.replaceChild(td_cell, cell_elements[1]);
+              // make the cells not editable, displaying updated values
+              var row_element = event.target.parentNode.parentNode;
+              var cell_elements = row_element.childNodes;
 
-            // show update successful message
-            document.getElementById("updateSuccessful").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateSuccessful").style.display = "none";
-            }, 1500);
+              // updated franchise name
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["franchiseName"];
+              row_element.replaceChild(td_cell, cell_elements[0]);
+
+              // updated franchise developer
+              var td_cell = document.createElement('td');
+              td_cell.textContent = payload["franchiseDev"];
+              row_element.replaceChild(td_cell, cell_elements[1]);
+
+              // show update successful message
+              document.getElementById("updateSuccessful").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateSuccessful").style.display = "none";
+              }, 1500);
+            } else {
+              // show update failed message
+              document.getElementById("updateFailed").style.display = "block";
+              setTimeout(function() {
+                document.getElementById("updateFailed").style.display = "none";
+              }, 1500);
+            }
           } else {
-            // show update failed message
-            document.getElementById("updateFailed").style.display = "block";
-            setTimeout(function() {
-              document.getElementById("updateFailed").style.display = "none";
-            }, 1500);
+            console.log("Error in network request: " + req.statusText);
           }
-        } else {
-          console.log("Error in network request: " + req.statusText);
-        }
-      });
-      req.send(JSON.stringify(payload));
+        });
+        req.send(JSON.stringify(payload));
+      }
     });
   });
 }
