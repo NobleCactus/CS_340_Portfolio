@@ -885,7 +885,7 @@ function bind_updatePlat_buttons() {
         row_element.replaceChild(td_cell, cell_elements[1]);
 
         // developer input
-        dev_elements = ["Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
+        dev_elements = ["Apple", "Atari", "Google", "Microsoft", "Nintendo", "Sega", "Sony"];
         td_cell = document.createElement('td');
         var update_dev = document.createElement('select');
         for (var i = 0; i < dev_elements.length; i++) {
