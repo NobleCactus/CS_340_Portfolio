@@ -152,7 +152,6 @@ def update():
 		
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
-		print("@@@@@", franchiseDev)
 
 		return render_template("update_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
@@ -518,7 +517,7 @@ def build_query_searchPlat(query_vals):
 			need_where = 0
 		else:
 			query += " AND "
-		query += " AND platformDeveloper = %s"
+		query += " platformDeveloper = %s"
 		params += (query_vals["platDev"],)
 	if query_vals["platInProd"] != "":
 		if need_where:
