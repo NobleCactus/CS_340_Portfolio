@@ -152,6 +152,7 @@ def update():
 		
 		franchiseDev_query = "SELECT franchiseDeveloper FROM `Franchises` GROUP BY franchiseDeveloper"
 		franchiseDev = execute_query(db_connection, franchiseDev_query).fetchall()
+		print("@@@@@", franchiseDev)
 
 		return render_template("update_element.j2", platforms=plat, franchises=franchise, devs=dev, platDev=platDev, franchiseDev=franchiseDev)
 	else:
