@@ -546,7 +546,7 @@ def build_query_searchFranchise(query_vals):
 			need_where = 0
 		else:
 			query += " AND "
-		query += " AND franchiseDeveloper = %s"
+		query += " franchiseDeveloper = %s"
 		params += (query_vals["franchiseDev"],)
 	query += " ORDER BY franchiseName;"
 
