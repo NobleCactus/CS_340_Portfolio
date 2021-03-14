@@ -13,7 +13,7 @@ def root():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
 
-		# build query and search DB with empty inputs to get all Titles
+		# initially show table of all Video Game Titles by querying with empty inputs
 		query_params = build_query_searchTitle({"titleName": "", 
 												"titlePlatID": "",
 												"titleFromDate": "",
@@ -23,13 +23,6 @@ def root():
 												"titleDevID": "",
 												"titleESRB": ""})
 		table = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
-
-		# get all Video Game Titles
-		#table_query = "SELECT t.titleID, t.titleName, t.titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
-		#table_query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
-		#table_query += "LEFT JOIN `Franchises` AS f ON t.titlefranchiseID = f.franchiseID "
-		#table_query += "ORDER BY t.titleName;"
-		#table = execute_query(db_connection, table_query).fetchall()
 
 		# add the list of platforms for each title
 		new_table = add_plats_to_titles(db_connection, table)
