@@ -16,10 +16,11 @@ def root():
 		# build query and search DB with empty inputs to get all Titles
 		query_params = build_query_searchTitle({"titleName": "", 
 												"titlePlatID": "",
-												"titleRelease": "",
+												"titleFromDate": "",
+												"titleToDate": "",
 												"titleGenre": "",
-												"titleFranchise": "",
-												"titleDev": "",
+												"titleFranchiseID": "",
+												"titleDevID": "",
 												"titleESRB": ""})
 		table = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
@@ -366,7 +367,7 @@ def execute_delFranchise(db_connection, query_vals):
 		return {"result": 1}
 
 def build_query_searchTitle(query_vals):
-	# query_vals = {"titleName", "titlePlatID", "titleRelease", "titleGenre", "titleFranchise", "titleDev", "titleESRB"}
+	# query_vals = {"titleName", "titlePlatID", "titleFromDate", "titleToDate" "titleGenre", "titleFranchiseID", "titleDevID", "titleESRB"}
 	query = "SELECT DISTINCT t.titleID, t.titleName, DATE_FORMAT(t.titleRelease, '%%Y-%%m-%%d') AS titleRelease, t.titleGenre, f.franchiseName, d.developerName, t.titleESRB FROM `VideoGameTitles` AS t "
 	query += "LEFT JOIN TitlesPlatforms AS tpl ON t.titleID = tpl.titleID "
 	query += "LEFT JOIN `DevelopmentStudios` AS d ON t.titleDeveloperID = d.developerID "
