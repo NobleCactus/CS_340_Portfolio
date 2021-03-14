@@ -14,7 +14,13 @@ def root():
 	if request.method == 'GET':
 
 		# build query and search DB with empty inputs to get all Titles
-		query_params = build_query_searchTitle(["", "", "", "", "", "", ""])
+		query_params = build_query_searchTitle({"titleName": "", 
+												"titlePlatIDs": "",
+												"titleRelease": "",
+												"titleGenre": "",
+												"titleFranchise": "",
+												"titleDev": "",
+												"titleESRB": ""})
 		table = execute_query(db_connection, query_params[0], query_params[1]).fetchall()
 
 		# get all Video Game Titles
