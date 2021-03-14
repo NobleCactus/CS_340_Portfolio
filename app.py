@@ -51,13 +51,13 @@ def add():
 	db_connection = connect_to_database()
 	if request.method == 'GET':
 		# get platforms/franchises/devs with corresponding table values to dynamically populate drop down menu
-		plat_query =  "SELECT platformID, platformName FROM `Platforms`"
+		plat_query =  "SELECT platformID, platformName FROM `Platforms`;"
 		plat = execute_query(db_connection, plat_query).fetchall()
 		
-		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`"
+		franchise_query =  "SELECT franchiseID, franchiseName FROM `Franchises`;"
 		franchise = execute_query(db_connection, franchise_query).fetchall()
 		
-		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`"
+		dev_query =  "SELECT developerID, developerName FROM `DevelopmentStudios`;"
 		dev = execute_query(db_connection, dev_query).fetchall()
 
 		return render_template("add_element.j2", platforms=plat, franchises=franchise, devs=dev)
